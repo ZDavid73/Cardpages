@@ -1,23 +1,33 @@
 import React, { useState } from 'react';
-import { loginUser } from '../../services/AuthService';
 import { useNavigate } from 'react-router-dom';
+import { loginUser } from '../../services/AuthService'; 
 
-const Login = () => {
+interface LoginProps {
+  onLogin: () => void; 
+}
+
+const Login: React.FC<LoginProps> = ({ onLogin }) => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const [error, setError] = useState<string | null>(null); 
+  const [error, setError] = useState<string | null>(null);
   const navigate = useNavigate();
 
   const handleLogin = async (e: React.FormEvent) => {
     e.preventDefault();
     try {
-      await loginUser(email, password);
-      navigate('/search');
-    } catch (error: unknown) { 
-      if (error instanceof Error) {
-        setError(error.message); 
+      const user = await loginUser(email, password); 
+
+      if (user) {
+        onLogin(); 
+        navigate('/'); 
       } else {
-        setError('An unexpected error occurred');
+        setError('Failed to login. Please check your credentials.');
+      }
+    } catch (err: unknown) {
+      if (err instanceof Error) {
+        setError(err.message || 'Invalid email or password');
+      } else {
+        setError('An unknown error occurred');
       }
     }
   };

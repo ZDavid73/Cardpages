@@ -1,27 +1,58 @@
-import  { useState } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { searchCards } from '../../services/ApiService';
+import './SearchBar.css';
 
 interface Card {
   id: string;
   name: string;
-  imageUrl: string; 
+  images: {
+    small: string;
+    large: string;
+  };
 }
 
 const SearchBar = () => {
-  const [game, setGame] = useState('pokemon'); 
+  const [game, setGame] = useState('pokemon');
   const [query, setQuery] = useState('');
   const [results, setResults] = useState<Card[]>([]); 
   const [error, setError] = useState<string | null>(null);
+  const [selectedCard, setSelectedCard] = useState<Card | null>(null);
 
-  const handleSearch = async () => {
-    try {
-      const cards = await searchCards(game, query);
-      setResults(cards);
-      setError(null);
-    } catch (error) {
-      console.error('Error fetching cards:', error);
-      setError('No cards found');
+  const debounceRef = useRef<NodeJS.Timeout | null>(null);
+
+  useEffect(() => {
+    if (query.length === 0) {
+      setResults([]);
+      return;
     }
+
+    if (debounceRef.current) {
+      clearTimeout(debounceRef.current);
+    }
+
+    debounceRef.current = setTimeout(async () => {
+      try {
+        const cards: Card[] = await searchCards(game, query);
+        setResults(cards);
+        setError(null);
+      } catch {
+        setError('No cards found');
+      }
+    }, 500);
+
+    return () => {
+      if (debounceRef.current) {
+        clearTimeout(debounceRef.current);
+      }
+    };
+  }, [query, game]);
+
+  const handleCardClick = (card: Card) => {
+    setSelectedCard(card);
+  };
+
+  const handleClosePopup = () => {
+    setSelectedCard(null);
   };
 
   return (
@@ -40,18 +71,31 @@ const SearchBar = () => {
         onChange={(e) => setQuery(e.target.value)}
         placeholder="Enter card name"
       />
-      <button onClick={handleSearch}>Search</button>
 
       {error && <p>{error}</p>}
 
       <ul style={{ listStyle: 'none', padding: 0 }}>
         {results.map((card) => (
           <li key={card.id} style={{ marginBottom: '20px' }}>
-            <img src={card.imageUrl} alt={card.name} style={{ width: '100px', height: 'auto' }} />
-            <p>{card.name}</p>
+            <img
+              src={card.images.small}
+              alt={card.name}
+              style={{ width: '100px', height: 'auto', cursor: 'pointer' }}
+              onClick={() => handleCardClick(card)}
+            />
           </li>
         ))}
       </ul>
+
+      {selectedCard && (
+        <div className="popup">
+          <div className="popup-content">
+            <button onClick={handleClosePopup}>Close</button>
+            <img src={selectedCard.images.large} alt={selectedCard.name} />
+            <h3>{selectedCard.name}</h3>
+          </div>
+        </div>
+      )}
     </div>
   );
 };

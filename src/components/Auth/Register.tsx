@@ -1,29 +1,31 @@
 import React, { useState } from 'react';
-import { registerUser } from '../../services/AuthService';
 import { useNavigate } from 'react-router-dom';
+import { registerUser } from '../../services/AuthService';
 
-const Register = () => {
+interface RegisterProps {
+  onRegister: () => void; // Aceptamos el prop onRegister
+}
+
+const Register: React.FC<RegisterProps> = ({ onRegister }) => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const [confirmPassword, setConfirmPassword] = useState(''); 
-  const [showPassword, setShowPassword] = useState(false); 
   const [error, setError] = useState<string | null>(null);
   const navigate = useNavigate();
 
   const handleRegister = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (password !== confirmPassword) {
-      setError('Passwords do not match');
-      return;
-    }
     try {
-      await registerUser(email, password); 
-      navigate('/login'); 
-    } catch (error: unknown) {
-      if (error instanceof Error) {
-        setError(error.message);
+      const user = await registerUser(email, password);
+
+      if (user) {
+        onRegister(); // Llamamos a la función onRegister después de un registro exitoso
+        navigate('/login'); 
+      }
+    } catch (err: unknown) {
+      if (err instanceof Error) {
+        setError(err.message || 'Failed to register');
       } else {
-        setError('An unexpected error occurred');
+        setError('Failed to register');
       }
     }
   };
@@ -41,27 +43,12 @@ const Register = () => {
           required
         />
         <input
-          type={showPassword ? 'text' : 'password'} 
+          type="password"
           value={password}
           onChange={(e) => setPassword(e.target.value)}
           placeholder="Password"
           required
         />
-        <input
-          type={showPassword ? 'text' : 'password'}
-          value={confirmPassword}
-          onChange={(e) => setConfirmPassword(e.target.value)}
-          placeholder="Confirm Password"
-          required
-        />
-        <label>
-          <input
-            type="checkbox"
-            checked={showPassword}
-            onChange={() => setShowPassword(!showPassword)} 
-          />
-          Show Passwords
-        </label>
         <button type="submit">Register</button>
       </form>
     </div>

@@ -1,11 +1,11 @@
-import { Link } from 'react-router-dom';
+import Navbar from '../../components/Navbar/Navbar';
 
-const AuthPage = () => {
+const AuthPage = ({ isLoggedIn, onLogout }: { isLoggedIn: boolean; onLogout: () => void }) => {
   return (
     <div>
+      <Navbar isLoggedIn={isLoggedIn} onLogout={onLogout} />
       <h1>Welcome to Card Trader</h1>
-      <Link to="/login"><button>Login</button></Link>
-      <Link to="/register"><button>Register</button></Link>
+      <p>Please login or register to start trading cards!</p>
     </div>
   );
 };
