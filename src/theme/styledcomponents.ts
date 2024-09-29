@@ -1,91 +1,73 @@
-// Botón genérico
-const Button = styled.button`
-  background-color: ${(props) => props.bgColor || "#6a5acd"}; 
-  color: white;
+import styled from 'styled-components';
+//HOMEEE
+// Estilos generales de botones
+export const Button = styled.button`
+  padding: 0.75em 1.5em;
   font-size: 16px;
-  padding: 10px 20px;
-  margin: 10px;
+  font-family: 'Sora', sans-serif;
+  color: ${({ theme }) => theme.colors.primary};
+  background-color: ${({ theme }) => theme.colors.bg};
+  border: 2px solid ${({ theme }) => theme.colors.primary};
   border-radius: 5px;
-  border: 2px solid ${(props) => props.bgColor || "#6a5acd"};
   cursor: pointer;
-  transition: background-color 0.3s ease, transform 0.2s ease;
+  transition: background-color 0.3s ease, color 0.3s ease;
 
   &:hover {
-    background-color: ${(props) => props.hoverColor || "#483D8B"};
-    transform: translateY(-2px); 
+    background-color: ${({ theme }) => theme.colors.primary};
+    color: ${({ theme }) => theme.colors.bg};
+  }
+
+  &:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
   }
 `;
 
-// Hero Section 
-const HeroSection = styled.section`
-  background-color: #000;
-  color: white;
-  padding: 4em;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-  flex-direction: column;
-
-  & > img {
-    width: 100%;
-    max-width: 600px;
-    border-radius: 10px;
-  }
-`;
-
-// Sección para las cartas HOME
-const CardsSection = styled.section`
-  background-color: #121212;
-  padding: 4em;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: row;
-  gap: 20px;
-
-  & > img {
-    width: 100%;
-    max-width: 300px;
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    transition: transform 0.3s ease;
-
-    &:hover {
-      transform: scale(1.05);
-    }
-  }
-`;
-
-// Estilo para el h1 HOME
-const Title = styled.h1`
+// Estilos generales de títulos
+export const Title = styled.h1`
   font-size: 2.5rem;
-  font-weight: bold;
-  margin-bottom: 20px;
-  color: white;
+  font-family: 'Sora', sans-serif;
+  font-weight: 700;
+  color: ${({ theme }) => theme.colors.primary};
+  margin-bottom: 40px;
+  text-align: center;
 `;
 
-// Contenedor del Header (Login/Register)
-const Header = styled.header`
-  background-color: #333;
-  padding: 1em;
+// Estilos generales de texto
+export const Text = styled.p`
+  font-size: 16px;
+  font-family: 'Sora', sans-serif;
+  color: ${({ theme }) => theme.colors.text};
+  margin-bottom: 16px;
+  line-height: 1.5;
+`;
+
+// Estilos generales para secciones
+export const Section = styled.section`
+  padding: 32px;
+  background-color: ${({ theme }) => theme.colors.bgSection};
+  border-radius: 8px;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+  margin-bottom: 32px;
+`;
+
+// Estilos generales para imágenes
+export const Image = styled.img`
+  max-width: 100%;
+  height: auto;
+  border-radius: 10px;
+  object-fit: cover;
+`;
+
+// Contenedores genéricos (divs)
+export const Container = styled.div`
   display: flex;
-  justify-content: space-between;
+  flex-direction: column;
   align-items: center;
-  
-  h1 {
-    color: white;
-    font-family: 'Arial';
-  }
+  justify-content: center;
+  padding: 1.5rem;
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
 `;
-
-// Estilo del logo
-const Logo = styled.div`
-  font-size: 1.5em;
-  color: white;
-  font-weight: bold;
-  cursor: pointer;
-`;
-
-
 
