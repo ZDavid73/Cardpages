@@ -1,19 +1,18 @@
 import { useState } from 'react';
 import { supabase } from '../../services/supabaseClient';
 
-export const useBuyCard = () => {
+export const useSellCard = () => {
   const [loading, setLoading] = useState<boolean>(false);
   const [error, setError] = useState<string | null>(null);
   const [success, setSuccess] = useState<boolean>(false);
 
-  const buyCard = async (cardId: string, buyerId: string) => {
+  const sellCard = async (cardId: string, sellerId: string, price: number) => {
     setLoading(true);
     setError(null);
     try {
       const { error } = await supabase
         .from('cards')
-        .update({ isSold: true, buyerId })
-        .eq('cardId', cardId);
+        .insert([{ cardId, sellerId, price, isSold: false, buyerId: null }]);
 
       if (error) throw error;
 
@@ -27,5 +26,5 @@ export const useBuyCard = () => {
     }
   };
 
-  return { buyCard, loading, error, success };
+  return { sellCard, loading, error, success };
 };
