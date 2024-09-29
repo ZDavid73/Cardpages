@@ -1,25 +1,63 @@
-import styled from 'styled-components';
-//HOMEEE
+
+//
 // Estilos generales de botones
-export const Button = styled.button`
-  padding: 0.75em 1.5em;
-  font-size: 16px;
+const buttonVariants = {
+  purple: {
+    bgColor: '#a71fd0',
+    textColor: '#fff',
+    hoverColor: '#7f00a5',
+    padding: '10px 20px',
+  },
+  gray: {
+    bgColor: '#2D2D2D',
+    textColor: '#fff',
+    hoverColor: '#a71fd0',
+    padding: '10px 20px',
+  },
+  green: {
+    bgColor: '#40C485',
+    textColor: '#fff',
+    hoverColor: '#008f4a',
+    padding: '10px 20px',
+  },
+  white: {
+    bgColor: '#ffffff',
+    textColor: '#000000',
+    hoverColor: '#898989',
+    padding: '10px 30px',
+  },
+};
+export const ButtonPurple = styled.button`
   font-family: 'Sora', sans-serif;
-  color: ${({ theme }) => theme.colors.primary};
-  background-color: ${({ theme }) => theme.colors.bg};
-  border: 2px solid ${({ theme }) => theme.colors.primary};
-  border-radius: 5px;
+  font-size: 16px;
+  color: #fff;
+  background-color: #a71fd0;
+  border: none;
+  border-radius: 10px 20px;
+  padding: 10px;
   cursor: pointer;
-  transition: background-color 0.3s ease, color 0.3s ease;
+  transition: background-color 0.3s ease;
+  margin: 10px;
 
   &:hover {
-    background-color: ${({ theme }) => theme.colors.primary};
-    color: ${({ theme }) => theme.colors.bg};
+    background-color: #7f00a5;
   }
+`;
 
-  &:disabled {
-    opacity: 0.6;
-    cursor: not-allowed;
+export const Button = styled.button<{ variant: 'purple' | 'gray' | 'green' | 'white' }>`
+  font-family: 'Sora', sans-serif;
+  font-size: 16px;
+  color: ${(props) => buttonVariants[props.variant].textColor};
+  background-color: ${(props) => buttonVariants[props.variant].bgColor};
+  border: none;
+  border-radius: 10px;
+  padding: ${(props) => buttonVariants[props.variant].padding};
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  margin: 10px;
+
+  &:hover {
+    background-color: ${(props) => buttonVariants[props.variant].hoverColor};
   }
 `;
 
