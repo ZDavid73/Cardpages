@@ -55,7 +55,7 @@ const TextHero = styled.div`
   }
 `;
 
-export const ExploreButton = styled.button`
+const ExploreButton = styled.button`
   background-color: #32cd32;
   color: white;
   font-size: 1em;
@@ -68,5 +68,44 @@ export const ExploreButton = styled.button`
     background-color: #228b22;
   }
 `;
+
+//cards section home
+const CardsSection = styled.section`
+  background-color: #111;
+  padding: 50px 20px;
+  display: flex;
+  justify-content: center;
+`;
+
+const CardContainer = styled.div`
+  background-color: #1e1e1e;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+  text-align: center;
+  max-width: 300px;
+`;
+
+const CardText = styled.div`
+  color: white;
+  margin-bottom: 20px;
+
+  h2 {
+    font-size: 1.5em;
+  }
+
+  p {
+    font-size: 1em;
+  }
+`;
+
+const CardButton = styled(ExploreButton)`
+  background-color: #4682b4;
+
+  &:hover {
+    background-color: #4169e1;
+  }
+`;
+
 
 
