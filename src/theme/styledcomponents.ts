@@ -1,4 +1,4 @@
-
+import styled from 'styled-components';
 //
 // Estilos generales de botones
 const buttonVariants = {
@@ -61,24 +61,65 @@ export const TextHome = styled.p`
 `;
 
 // Estilos generales de texto
+const textVariants = {
+  white: {
+    textColor: '#ffffff',
+  },
+  purple: {
+    textColor: '#a71fd0',
+  },
+};
+
 export const Tittle = styled.h1`
-  color: #ffffff; 
+  color: ${(props) => textVariants[props.variant].textColor}; 
   text-align:left;
-  margin-bottom: 32px;
+  margin-bottom: 20px;
   font-family: 'Sora', sans-serif;
-  font-size: 30px;
+  font-size: 32px;
   font-weight: 600;
 `;
 
 export const Text = styled.p`
-  color: #ffffff; 
+  color: ${(props) => textVariants[props.variant].textColor}; 
   text-align:left;
-  margin-bottom: 24px;
   font-family: 'Sora', sans-serif;
-  font-size: 20px;
+  font-size: 24px;
   font-weight: normal;
 
   &:hover {
     background-color: #a71fd0;
   }
+`;
+
+
+// Estilos generales de contenedores (divs)
+const divVariants = {
+  bigopacity: {
+    padding: '30px',
+    backgroundColor: 'rgba(16, 15, 15, 0.5)',  
+    marginBottom: '30px',
+  },
+  smallopacity: {
+    padding: '20px',
+    backgroundColor: 'rgba(16, 15, 15, 0.5)',  
+    marginBottom: '20px'
+  },
+  big: {
+    padding: '30px',
+    backgroundColor: '#2D2D2D',  
+    marginBottom: '30px'
+  },
+  small: {
+    padding: '20px',
+    backgroundColor: '#2D2D2D',  
+    marginBottom: '20px'
+  },
+};
+
+export const div = styled.h1`
+  padding: ${(props) => divVariants[props.variant].padding};
+  background-color: ${(props) => divVariants[props.variant].backgroundColor};
+  border-radius: 20px;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+  margin-bottom: ${(props) => divVariants[props.variant].marginBottom};
 `;
