@@ -1,16 +1,7 @@
 import { useState, useEffect, useRef } from 'react';
 import { searchCards } from '../../services/ApiService';
+import { Card } from '../../types/cardTypes';
 import './SearchBar.css';
-
-interface Card {
-  id: string;
-  name: string;
-  images: {
-    small: string;
-    large: string;
-  };
-  price: number;
-}
 
 const SearchBar = () => {
   const [query, setQuery] = useState('');
@@ -86,7 +77,6 @@ const SearchBar = () => {
             <button onClick={handleClosePopup}>Close</button>
             <img src={selectedCard.images.large} alt={selectedCard.name} />
             <h3>{selectedCard.name}</h3>
-            <p>{selectedCard.price}</p>
           </div>
         </div>
       )}
