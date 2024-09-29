@@ -12,7 +12,6 @@ interface Card {
 }
 
 const SearchBar = () => {
-  const [game, setGame] = useState('pokemon');
   const [query, setQuery] = useState('');
   const [results, setResults] = useState<Card[]>([]); 
   const [error, setError] = useState<string | null>(null);
@@ -32,7 +31,7 @@ const SearchBar = () => {
 
     debounceRef.current = setTimeout(async () => {
       try {
-        const cards: Card[] = await searchCards(game, query);
+        const cards: Card[] = await searchCards(query);
         setResults(cards);
         setError(null);
       } catch {
@@ -45,7 +44,7 @@ const SearchBar = () => {
         clearTimeout(debounceRef.current);
       }
     };
-  }, [query, game]);
+  }, [query]);
 
   const handleCardClick = (card: Card) => {
     setSelectedCard(card);
@@ -58,13 +57,6 @@ const SearchBar = () => {
   return (
     <div>
       <h2>Search Cards</h2>
-      <select value={game} onChange={(e) => setGame(e.target.value)}>
-        <option value="pokemon">Pokémon</option>
-        <option value="one-piece">One Piece</option>
-        <option value="dragon-ball-fusion">Dragon Ball Fusion</option>
-        <option value="digimon">Digimon</option>
-        <option value="magic-the-gathering">Magic The Gathering</option>
-      </select>
       <input
         type="text"
         value={query}
