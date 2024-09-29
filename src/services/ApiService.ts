@@ -18,8 +18,8 @@ interface ApiResponseCard {
   };
 }
 
-export const searchCards = async (game: string, query: string): Promise<Card[]> => {
-  const url = `/api/${game}/cards?property=name&value=${query}`; 
+export const searchCards = async (query: string): Promise<Card[]> => {
+  const url = `https://api.pokemontcg.io/v2/cards?q=name:${query}*`; 
   const response = await axios.get(url);
 
   if (!response.data || !response.data.data) {
