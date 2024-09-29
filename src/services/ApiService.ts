@@ -15,7 +15,12 @@ interface ApiResponseCard {
   images: {
     small: string;
     large: string;
-  };
+  }
+  cardmarket: {
+    prices: {
+      averageSellPrice: number;
+    };
+    }
 }
 
 export const searchCards = async (query: string): Promise<Card[]> => {
@@ -33,6 +38,7 @@ export const searchCards = async (query: string): Promise<Card[]> => {
       small: card.images.small,
       large: card.images.large,
     },
+    price: card.cardmarket.prices.averageSellPrice,
   }));
 
   return cards;
