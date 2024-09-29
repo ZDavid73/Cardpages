@@ -7,6 +7,7 @@ interface Card {
     small: string;
     large: string;
   };
+  price: number;
 }
 
 interface ApiResponseCard {

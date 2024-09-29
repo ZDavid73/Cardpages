@@ -9,6 +9,7 @@ interface Card {
     small: string;
     large: string;
   };
+  price: number;
 }
 
 const SearchBar = () => {
@@ -85,6 +86,7 @@ const SearchBar = () => {
             <button onClick={handleClosePopup}>Close</button>
             <img src={selectedCard.images.large} alt={selectedCard.name} />
             <h3>{selectedCard.name}</h3>
+            <p>{selectedCard.price}</p>
           </div>
         </div>
       )}
