@@ -1,6 +1,6 @@
-import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import React from 'react';
 import NavbarView from './NavbarView';
+import useNavbar from '../../hooks/useNavbar';
 
 interface NavbarProps {
   isLoggedIn: boolean;
@@ -8,15 +8,7 @@ interface NavbarProps {
 }
 
 const Navbar: React.FC<NavbarProps> = ({ isLoggedIn, onLogout }) => {
-  const [searchQuery, setSearchQuery] = useState('');
-  const navigate = useNavigate();
-
-  const handleSearch = (e: React.FormEvent) => {
-    e.preventDefault();
-    if (searchQuery.trim()) {
-      navigate(`/search?query=${searchQuery}`);
-    }
-  };
+  const { searchQuery, setSearchQuery, handleSearch } = useNavbar();
 
   return (
     <NavbarView
