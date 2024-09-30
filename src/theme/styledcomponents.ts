@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-//
+
 // Estilos generales de textoHome
 export const TextHome = styled.p`
   color: #ffffff; 
@@ -7,12 +7,13 @@ export const TextHome = styled.p`
   margin-bottom: 20px;
   font-family: 'Sora', sans-serif;
   font-size: 50px;
-  font-weight: bold
+  font-weight: bold;
 
   &:hover {
     background-color: #a71fd0;
   }
 `;
+
 // Estilos generales de botones
 const buttonVariants = {
   purple: {
@@ -59,43 +60,43 @@ export const Button = styled.button<{ variant: 'purple' | 'gray' | 'green' | 'wh
   }
 `;
 
-//Estilo generales inputs
+// Estilo generales inputs
 const inputVariants = {
   searchwhite: {
     textColor: '#2D2D2D',
-    borderRadious: '20px',
+    borderRadius: '20px', // Fixed typo
     borderBottom: 'transparent',
     bgColor: '#ffffff',
     width: '90%',
-    fWeihgt: 'normal',
-    fSize: '24px',
+    fontWeight: 'normal', // Fixed typo
+    fontSize: '24px', // Fixed typo
   },
   searchgray: {
     textColor: '#ffffff',
-    borderRadious: '20px',
+    borderRadius: '20px',
     borderBottom: 'transparent',
     bgColor: '#2D2D2D',
     width: '90%',
-    fWeihgt: 'normal',
-    fSize: '24px',
+    fontWeight: 'normal',
+    fontSize: '24px',
   },
   boxwhite: {
     textColor: '#2D2D2D',
-    borderRadious: '10px',
+    borderRadius: '10px',
     borderBottom: 'transparent',
     bgColor: '#ffffff',
     width: '70%',
-    fWeihgt: 'normal',
-    fSize: '24px',
+    fontWeight: 'normal',
+    fontSize: '24px',
   },
   borderpurple: {
     textColor: '#ffffff',
-    borderRadious: '20px',
+    borderRadius: '20px',
     borderBottom: '2px solid #a71fd0',
     bgColor: '#2D2D2D',
     width: '70%',
-    fWeihgt: 'semi-bold',
-    fSize: '32px',
+    fontWeight: '600',
+    fontSize: '32px',
   },
 };
 
@@ -103,19 +104,19 @@ export const Input = styled.input<{ variant: 'searchwhite' | 'searchgray' | 'box
   width: ${(props) => inputVariants[props.variant].width};
   padding: 10px 20px;
   margin: 15px;
-  border-radius: ${(props) => inputVariants[props.variant].borderRadious};
+  border-radius: ${(props) => inputVariants[props.variant].borderRadius};
   border: none;
   border-bottom: ${(props) => inputVariants[props.variant].borderBottom};
   background-color: ${(props) => inputVariants[props.variant].bgColor};
   color: ${(props) => inputVariants[props.variant].textColor};
   font-family: 'Sora', sans-serif;
-  font-size: ${(props) => inputVariants[props.variant].fSize};  
-  font-weight: ${(props) => inputVariants[props.variant].fWeihgt}; 
+  font-size: ${(props) => inputVariants[props.variant].fontSize};  
+  font-weight: ${(props) => inputVariants[props.variant].fontWeight}; 
 
-  & input:focus{
-  outline: 2px solid #a71fd0;
-}
-`
+  &:focus {
+    outline: 2px solid #a71fd0;
+  }
+`;
 
 // Estilos generales de texto
 const textVariants = {
@@ -175,7 +176,7 @@ const divVariants = {
   },
 };
 
-export const div = styled.div<{ variant: 'bigopacity' | 'smallopacity' | 'big' | 'small' }>`
+export const Container = styled.div<{ variant: 'bigopacity' | 'smallopacity' | 'big' | 'small' }>`
   padding: ${(props) => divVariants[props.variant].padding};
   background-color: ${(props) => divVariants[props.variant].backgroundColor};
   border-radius: 20px;
