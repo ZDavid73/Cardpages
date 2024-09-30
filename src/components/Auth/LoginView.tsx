@@ -14,7 +14,7 @@ interface LoginViewProps {
 
 const LoginView: React.FC<LoginViewProps> = ({ email, setEmail, password, setPassword, error, handleLogin }) => {
   return (
-    <div className='divlogin'>
+    <div className="divlogin">
       <Tittle variant="white">Login</Tittle>
 
       {error && <Text variant="purple">{error}</Text>}
