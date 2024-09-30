@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import  { useState } from 'react';
 import { searchCards } from '../../services/ApiService';
 
@@ -57,3 +58,33 @@ const SearchBar = () => {
 };
 
 export default SearchBar;
+=======
+import useSearch from '../../hooks/useSearch';
+import SearchBarView from './SearchBarView';
+
+const SearchBar = () => {
+  const {
+    query,
+    results,
+    error,
+    selectedCard,
+    setQuery,
+    handleCardClick,
+    handleClosePopup,
+  } = useSearch();
+
+  return (
+    <SearchBarView
+      query={query}
+      error={error}
+      results={results}
+      onQueryChange={(e) => setQuery(e.target.value)}
+      onCardClick={handleCardClick}
+      selectedCard={selectedCard}
+      onClosePopup={handleClosePopup}
+    />
+  );
+};
+
+export default SearchBar;
+>>>>>>> fe20a6379c38ea7269afce0db7b02b547b1f2607
