@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { registerUser } from '../../services/AuthService';
+import RegisterView from './RegisterView';
 
 interface RegisterProps {
   onRegister: () => void; // Aceptamos el prop onRegister
@@ -31,27 +32,14 @@ const Register: React.FC<RegisterProps> = ({ onRegister }) => {
   };
 
   return (
-    <div>
-      <h2>Register</h2>
-      {error && <p>{error}</p>}
-      <form onSubmit={handleRegister}>
-        <input
-          type="email"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-          placeholder="Email"
-          required
-        />
-        <input
-          type="password"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-          placeholder="Password"
-          required
-        />
-        <button type="submit">Register</button>
-      </form>
-    </div>
+    <RegisterView
+      email={email}
+      password={password}
+      error={error}
+      onEmailChange={(e) => setEmail(e.target.value)}
+      onPasswordChange={(e) => setPassword(e.target.value)}
+      onSubmit={handleRegister}
+    />
   );
 };
 
