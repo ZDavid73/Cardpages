@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom'; // Importa Link
 import { Button, Input, Tittle, Text } from '../../theme/styledcomponents'; 
+import './LoginView.css';
 
 interface LoginViewProps {
   email: string;
