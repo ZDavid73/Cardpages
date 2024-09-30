@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom'; // Importa Link desde react-router-dom
 
 interface RegisterViewProps {
   email: string;
@@ -38,6 +39,9 @@ const RegisterView: React.FC<RegisterViewProps> = ({
         />
         <button type="submit">Register</button>
       </form>
+      <p>
+        Already have an account? <Link to="/login">Log in here</Link>
+      </p>
     </div>
   );
 };
