@@ -15,8 +15,7 @@
     padding: 40px;
     border-radius: 15px;
     box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1); 
-    backdrop-filter: blur(10px); 
-    width: 350px; 
+    backdrop-filter: blur(10px);  
   }
   
   input, button {

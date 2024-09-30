@@ -122,16 +122,23 @@ export const Input = styled.input<{ variant: 'searchwhite' | 'searchgray' | 'box
 const textVariants = {
   white: {
     textColor: '#ffffff',
+    fontSize: '24px',
   },
   purple: {
     textColor: '#a71fd0',
+    fontSize: '24px',
   },
   green: {
     textColor: '#40C485',
+    fontSize: '14px',
+  },
+  gray: {
+    textColor: '#2D2D2D',
+    fontSize: '14px',
   },
 };
 
-export const Tittle = styled.h1<{ variant: 'white' | 'purple' }>`
+export const Tittle = styled.h1<{ variant: 'white' | 'purple' | 'green' | 'gray' }>`
   color: ${(props) => textVariants[props.variant].textColor}; 
   text-align:left;
   margin-bottom: 20px;
@@ -140,11 +147,11 @@ export const Tittle = styled.h1<{ variant: 'white' | 'purple' }>`
   font-weight: 600;
 `;
 
-export const Text = styled.p<{ variant: 'white' | 'purple' }>`
+export const Text = styled.p<{ variant: 'white' | 'purple'| 'green' | 'gray' }>`
   color: ${(props) => textVariants[props.variant].textColor}; 
   text-align:left;
   font-family: 'Sora', sans-serif;
-  font-size: 24px;
+  font-size: ${(props) => textVariants[props.variant].fontSize};
   font-weight: normal;
 `;
 
