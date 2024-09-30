@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom'; // Importa Link
 
 interface LoginViewProps {
   email: string;
@@ -31,6 +32,9 @@ const LoginView: React.FC<LoginViewProps> = ({ email, setEmail, password, setPas
         />
         <button type="submit">Login</button>
       </form>
+      <p>
+        Don't have an account? <Link to="/register">Create one here</Link>
+      </p>
     </div>
   );
 };
