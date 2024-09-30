@@ -146,22 +146,18 @@ export const Text = styled.p<{ variant: 'white' | 'purple' }>`
   font-family: 'Sora', sans-serif;
   font-size: 24px;
   font-weight: normal;
-
-  &:hover {
-    background-color: #a71fd0;
-  }
 `;
 
 // Estilos generales de contenedores (divs)
 const divVariants = {
   bigopacity: {
     padding: '30px',
-    backgroundColor: 'rgba(16, 15, 15, 0.5)',  
+    backgroundColor: 'rgba(16, 15, 15, 0.05)',  
     marginBottom: '30px',
   },
   smallopacity: {
     padding: '20px',
-    backgroundColor: 'rgba(16, 15, 15, 0.5)',  
+    backgroundColor: 'rgba(16, 15, 15, 0.05)',  
     marginBottom: '20px'
   },
   big: {
