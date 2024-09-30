@@ -70,7 +70,7 @@ const textVariants = {
   },
 };
 
-export const Tittle = styled.h1`
+export const Tittle = styled.h1<{ variant: 'white' | 'purple' }>`
   color: ${(props) => textVariants[props.variant].textColor}; 
   text-align:left;
   margin-bottom: 20px;
@@ -79,7 +79,7 @@ export const Tittle = styled.h1`
   font-weight: 600;
 `;
 
-export const Text = styled.p`
+export const Text = styled.p<{ variant: 'white' | 'purple' }>`
   color: ${(props) => textVariants[props.variant].textColor}; 
   text-align:left;
   font-family: 'Sora', sans-serif;
@@ -116,7 +116,7 @@ const divVariants = {
   },
 };
 
-export const div = styled.h1`
+export const div = styled.div<{ variant: 'bigopacity' | 'smallopacity' | 'big' | 'small' }>`
   padding: ${(props) => divVariants[props.variant].padding};
   background-color: ${(props) => divVariants[props.variant].backgroundColor};
   border-radius: 20px;
