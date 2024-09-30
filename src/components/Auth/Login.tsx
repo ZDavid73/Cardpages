@@ -1,9 +1,10 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { loginUser } from '../../services/AuthService'; 
+import { loginUser } from '../../services/AuthService';
+import LoginView from './LoginView';
 
 interface LoginProps {
-  onLogin: () => void; 
+  onLogin: () => void;
 }
 
 const Login: React.FC<LoginProps> = ({ onLogin }) => {
@@ -15,11 +16,11 @@ const Login: React.FC<LoginProps> = ({ onLogin }) => {
   const handleLogin = async (e: React.FormEvent) => {
     e.preventDefault();
     try {
-      const user = await loginUser(email, password); 
+      const user = await loginUser(email, password);
 
       if (user) {
-        onLogin(); 
-        navigate('/'); 
+        onLogin(); // Lógica cuando el login es exitoso
+        navigate('/'); // Redirigir a la página principal
       } else {
         setError('Failed to login. Please check your credentials.');
       }
@@ -33,27 +34,14 @@ const Login: React.FC<LoginProps> = ({ onLogin }) => {
   };
 
   return (
-    <div>
-      <h2>Login</h2>
-      {error && <p>{error}</p>}
-      <form onSubmit={handleLogin}>
-        <input
-          type="email"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-          placeholder="Email"
-          required
-        />
-        <input
-          type="password"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-          placeholder="Password"
-          required
-        />
-        <button type="submit">Login</button>
-      </form>
-    </div>
+    <LoginView
+      email={email}
+      setEmail={setEmail}
+      password={password}
+      setPassword={setPassword}
+      error={error}
+      handleLogin={handleLogin}
+    />
   );
 };
 
