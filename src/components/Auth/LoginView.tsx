@@ -15,11 +15,11 @@ interface LoginViewProps {
 const LoginView: React.FC<LoginViewProps> = ({ email, setEmail, password, setPassword, error, handleLogin }) => {
   return (
     <div className="divlogin">
-      <Tittle variant="white">Login</Tittle>
-
-      {error && <Text variant="purple">{error}</Text>}
-      
       <form onSubmit={handleLogin}>
+        <Tittle variant="white">Login</Tittle>
+
+        {error && <Text variant="purple">{error}</Text>}
+        
         <Input
           type="email"
           variant="searchgray" 
@@ -39,11 +39,11 @@ const LoginView: React.FC<LoginViewProps> = ({ email, setEmail, password, setPas
         />
         
         <Button variant="purple" type="submit">Login</Button>
+        
+        <Text variant="white">
+          Don't have an account? <Link to="/register">Create one here</Link>
+        </Text>
       </form>
-      
-      <Text variant="white">
-        Don't have an account? <Link to="/register">Create one here</Link>
-      </Text>
     </div>
   );
 };

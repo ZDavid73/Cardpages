@@ -1,7 +1,6 @@
 .divlogin {
     display: flex;
-    flex-direction: column;
-    justify-content: center;
+    justify-content: center; 
     align-items: center;
     height: 100vh;
     background-image: url('https://i.pinimg.com/originals/81/68/c8/8168c8b3dbc41415bdd2efcfe7a0894c.jpg');
@@ -17,6 +16,7 @@
     border-radius: 15px;
     box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1); 
     backdrop-filter: blur(10px); 
+    width: 350px; 
   }
   
   input, button {
@@ -37,4 +37,5 @@
   a:hover {
     text-decoration: underline;
   }
+
   
