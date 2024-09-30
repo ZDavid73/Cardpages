@@ -1,7 +1,7 @@
 import { useState, useEffect, useRef } from 'react';
 import { searchCards } from '../../services/ApiService';
 import { Card } from '../../types/cardTypes';
-import './SearchBar.css';
+import SearchBarView from './SearchBarView';
 
 const SearchBar = () => {
   const [query, setQuery] = useState('');
@@ -47,40 +47,15 @@ const SearchBar = () => {
   };
 
   return (
-    <div>
-      <h2>Search Cards</h2>
-      <input
-        type="text"
-        value={query}
-        onChange={(e) => setQuery(e.target.value)}
-        placeholder="Enter card name"
-      />
-
-      {error && <p>{error}</p>}
-
-      <ul style={{ listStyle: 'none', padding: 0 }}>
-        {results.map((card) => (
-          <li key={card.id} style={{ marginBottom: '20px' }}>
-            <img
-              src={card.images.small}
-              alt={card.name}
-              style={{ width: '100px', height: 'auto', cursor: 'pointer' }}
-              onClick={() => handleCardClick(card)}
-            />
-          </li>
-        ))}
-      </ul>
-
-      {selectedCard && (
-        <div className="popup">
-          <div className="popup-content">
-            <button onClick={handleClosePopup}>Close</button>
-            <img src={selectedCard.images.large} alt={selectedCard.name} />
-            <h3>{selectedCard.name}</h3>
-          </div>
-        </div>
-      )}
-    </div>
+    <SearchBarView
+      query={query}
+      error={error}
+      results={results}
+      onQueryChange={(e) => setQuery(e.target.value)}
+      onCardClick={handleCardClick}
+      selectedCard={selectedCard}
+      onClosePopup={handleClosePopup}
+    />
   );
 };
 
