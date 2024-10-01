@@ -122,11 +122,11 @@ export const Input = styled.input<{ variant: 'searchwhite' | 'searchgray' | 'box
 const textVariants = {
   white: {
     textColor: '#ffffff',
-    fontSize: '20px',
+    fontSize: '16px',
   },
   purple: {
     textColor: '#a71fd0',
-    fontSize: '20px',
+    fontSize: '16px',
   },
   green: {
     textColor: '#40C485',
@@ -138,7 +138,7 @@ const textVariants = {
   },
 };
 
-export const Tittle = styled.h1<{ variant: 'white' | 'purple' | 'green' | 'gray' }>`
+export const Tittle = styled.h1<{ variant: 'white' | 'purple' }>`
   color: ${(props) => textVariants[props.variant].textColor}; 
   text-align:left;
   margin-bottom: 20px;
