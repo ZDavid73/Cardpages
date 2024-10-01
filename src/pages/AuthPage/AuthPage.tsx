@@ -7,6 +7,8 @@ const AuthPage = ({ isLoggedIn, onLogout }: { isLoggedIn: boolean; onLogout: () 
       <h1>Welcome to Card Trader</h1>
       <p>Please login or register to start trading cards!</p>
     </div>
+    
+
   );
 };
 

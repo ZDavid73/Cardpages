@@ -1,5 +1,6 @@
 import React from 'react';
 import {Navbar} from '../../components/imports';
+import Carousel from '../../components/Carousel/Carousel';
 
 interface HomePageProps {
   isLoggedIn: boolean;
@@ -25,6 +26,7 @@ const HomePage: React.FC<HomePageProps> = ({ isLoggedIn, onLogout }) => {
       ) : (
         <div>
           <h2>Please login or register to continue.</h2>
+          <Carousel></Carousel>
         </div>
       )}
     </div>
