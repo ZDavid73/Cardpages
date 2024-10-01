@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link } from 'react-router-dom'; // Importa Link
+import { Link } from 'react-router-dom'; 
 import { Button, Input, Tittle, Text } from '../../theme/styledcomponents'; 
 import './LoginView.css';
 
@@ -40,7 +40,7 @@ const LoginView: React.FC<LoginViewProps> = ({ email, setEmail, password, setPas
         
         <Button variant="purple" type="submit">Login</Button>
         
-        <Text variant="white">
+        <Text variant="gray">
           Don't have an account? <Link to="/register">Create one here</Link>
         </Text>
       </form>

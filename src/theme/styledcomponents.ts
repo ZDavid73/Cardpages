@@ -122,19 +122,19 @@ export const Input = styled.input<{ variant: 'searchwhite' | 'searchgray' | 'box
 const textVariants = {
   white: {
     textColor: '#ffffff',
-    fontSize: '24px',
+    fontSize: '20px',
   },
   purple: {
     textColor: '#a71fd0',
-    fontSize: '24px',
+    fontSize: '20px',
   },
   green: {
     textColor: '#40C485',
-    fontSize: '14px',
+    fontSize: '16px',
   },
   gray: {
-    textColor: '#2D2D2D',
-    fontSize: '14px',
+    textColor: '#D2D2D2',
+    fontSize: '16px',
   },
 };
 
