@@ -1,5 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom'; // Importa Link desde react-router-dom
+import { Button, Input, Tittle, Text } from '../../theme/styledcomponents'; 
+import './RegisterView.css';
 
 interface RegisterViewProps {
   email: string;
@@ -19,29 +21,36 @@ const RegisterView: React.FC<RegisterViewProps> = ({
   onSubmit,
 }) => {
   return (
-    <div>
-      <h2>Register</h2>
-      {error && <p>{error}</p>}
+    <div className="divregister">
+      <Tittle variant="gray">Register</Tittle>
+
+      {error && <Text variant="gray">{error}</Text>}
+      
       <form onSubmit={onSubmit}>
-        <input
+        <Input
           type="email"
+          variant="searchgray" 
           value={email}
           onChange={onEmailChange}
           placeholder="Email"
           required
         />
-        <input
+        
+        <Input
           type="password"
+          variant="searchgray"
           value={password}
           onChange={onPasswordChange}
           placeholder="Password"
           required
         />
-        <button type="submit">Register</button>
+        
+        <Button variant="green" type="submit">Register</Button>
       </form>
-      <p>
+
+      <Text variant="gray">
         Already have an account? <Link to="/login">Log in here</Link>
-      </p>
+      </Text>
     </div>
   );
 };
