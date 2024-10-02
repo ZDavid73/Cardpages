@@ -53,4 +53,3 @@ const RegisterView: React.FC<RegisterViewProps> = ({
 };
 
 export default RegisterView;
-
