@@ -2,7 +2,8 @@ import React from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
 import 'swiper/css/pagination';
-import { Pagination } from 'swiper/modules';
+import 'swiper/css/autoplay'; // Asegúrate de importar Autoplay
+import { Pagination, Autoplay } from 'swiper/modules'; // Incluye Autoplay
 import { Slide } from '../../services/slidesData';
 
 interface CarouselViewProps {
@@ -13,7 +14,7 @@ interface CarouselViewProps {
 const CarouselView: React.FC<CarouselViewProps> = ({ slidesData, onSlideClick }) => {
   return (
     <Swiper
-      modules={[Pagination]}
+      modules={[Pagination, Autoplay]}
       spaceBetween={50}
       slidesPerView={1}
       pagination={{ clickable: true }}
@@ -31,13 +32,12 @@ const CarouselView: React.FC<CarouselViewProps> = ({ slidesData, onSlideClick })
             style={{
               backgroundImage: `url(${slide.imgSrc})`,
               backgroundSize: 'cover',
-              backgroundPosition: 'center',
-              height: '400px',
+              backgroundPosition: 'center'
             }}
           >
             <div className="overlay">
               <p>{slide.text}</p>
-              <button onClick={() => onSlideClick('/register')}>Click me</button>
+              <button onClick={() => onSlideClick('/register')}>Register now</button>
               <img src={slide.smallImgSrc} alt={`Small Image ${index + 1}`} />
             </div>
           </div>

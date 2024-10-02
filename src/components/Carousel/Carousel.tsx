@@ -6,12 +6,11 @@ import { useNavigate } from 'react-router-dom';
 const Carousel: React.FC = () => {
   const navigate = useNavigate();
 
-  const handleSlideClick = (path: string) => {
-    navigate(path);
-  };
-
   return (
-    <CarouselView slidesData={slidesData} onSlideClick={handleSlideClick} />
+    <CarouselView 
+      slidesData={slidesData} 
+      onSlideClick={(path) => navigate(path)} 
+    />
   );
 };
 
