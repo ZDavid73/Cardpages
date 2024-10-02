@@ -154,7 +154,13 @@ export const Text = styled.p<{ variant: 'white' | 'purple'| 'green' | 'gray' }>`
   font-size: ${(props) => textVariants[props.variant].fontSize};
   font-weight: normal;
 `;
-
+export const TextLogo = styled.p`
+  color: #ffffff; 
+  text-align:left;
+  font-family: 'Fuente Logo', sans-serif;
+  font-size: 50px;
+  font-weight: normal;
+`;
 // Estilos generales de contenedores (divs)
 const divVariants = {
   bigopacity: {
