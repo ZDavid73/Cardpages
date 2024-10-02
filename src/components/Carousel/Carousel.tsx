@@ -6,8 +6,11 @@ import 'swiper/css/pagination';
 import 'swiper/css/scrollbar';
 import { Navigation, Pagination, Scrollbar, A11y } from 'swiper/modules';
 import { slidesData } from './slidesData';
+import { useNavigate } from 'react-router-dom';
 
 const Carousel: React.FC = () => {
+  const navigate = useNavigate();
+
   return (
     <Swiper
       modules={[Navigation, Pagination, Scrollbar, A11y]}
@@ -25,7 +28,7 @@ const Carousel: React.FC = () => {
             <img src={slide.imgSrc} alt={`Slide ${index + 1}`} />
             <div className="overlay">
               <p>{slide.text}</p>
-              <button onClick={slide.buttonAction}>Click me</button>
+              <button onClick={() => navigate('/register')}>Click me</button>
               <img src={slide.smallImgSrc} alt={`Small Image ${index + 1}`} />
             </div>
           </div>
