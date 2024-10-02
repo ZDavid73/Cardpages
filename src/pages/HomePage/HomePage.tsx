@@ -1,6 +1,6 @@
 import Navbar from '../../components/Navbar/Navbar';
 
-const AuthPage = ({ isLoggedIn, onLogout }: { isLoggedIn: boolean; onLogout: () => void }) => {
+const HomePage = ({ isLoggedIn, onLogout }: { isLoggedIn: boolean; onLogout: () => void }) => {
   return (
     <div>
       <Navbar isLoggedIn={isLoggedIn} onLogout={onLogout} />
@@ -12,4 +12,4 @@ const AuthPage = ({ isLoggedIn, onLogout }: { isLoggedIn: boolean; onLogout: () 
   );
 };
 
-export default AuthPage;
+export default HomePage;
