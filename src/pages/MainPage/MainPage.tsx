@@ -7,7 +7,7 @@ interface HomePageProps {
   onLogout: () => void;
 }
 
-const HomePage: React.FC<HomePageProps> = ({ isLoggedIn, onLogout }) => {
+const MainPage: React.FC<HomePageProps> = ({ isLoggedIn, onLogout }) => {
   return (
     <div>
       <Navbar isLoggedIn={isLoggedIn} onLogout={onLogout} />
@@ -33,4 +33,4 @@ const HomePage: React.FC<HomePageProps> = ({ isLoggedIn, onLogout }) => {
   );
 };
 
-export default HomePage;
+export default MainPage;
