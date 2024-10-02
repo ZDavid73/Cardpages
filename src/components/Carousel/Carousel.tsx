@@ -4,9 +4,8 @@ import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 import 'swiper/css/scrollbar';
-
-// Importación de los módulos desde "swiper/modules"
 import { Navigation, Pagination, Scrollbar, A11y } from 'swiper/modules';
+import { slidesData } from './slidesData';
 
 const Carousel: React.FC = () => {
   return (
@@ -18,57 +17,20 @@ const Carousel: React.FC = () => {
       pagination={{ clickable: true }}
       scrollbar={{ draggable: true }}
       loop={true}
+      autoplay={{ delay: 3000, disableOnInteraction: true }}
     >
-      <SwiperSlide>
-        <div className="carousel-item">
-          <img src="https://tcg.pokemon.com/assets/img/home/featured-switcher/lapras-stellar-large-up-2x.jpg" alt="" />
-          <div className="overlay">
-            <p>Slide 1 Text</p>
-            <button onClick={() => console.log("Button 1 clicked")}>
-              Click me
-            </button>
-            <img src="https://dz3we2x72f7ol.cloudfront.net/expansions/stellar-crown/es-es/SV07_ES_32-2x.png" alt="Small Image 1" />
+      {slidesData.map((slide, index) => (
+        <SwiperSlide key={index}>
+          <div className="carousel-item">
+            <img src={slide.imgSrc} alt={`Slide ${index + 1}`} />
+            <div className="overlay">
+              <p>{slide.text}</p>
+              <button onClick={slide.buttonAction}>Click me</button>
+              <img src={slide.smallImgSrc} alt={`Small Image ${index + 1}`} />
+            </div>
           </div>
-        </div>
-      </SwiperSlide>
-      <SwiperSlide>
-        <div className="carousel-item">
-          <img src="https://tcg.pokemon.com/assets/img/home/featured-switcher/terapagos-stellar-large-up-2x.jpg" alt="" />
-          <div className="overlay">
-            <p>Slide 1 Text</p>
-            <button onClick={() => console.log("Button 1 clicked")}>
-              Click me
-            </button>
-            <img src="https://dz3we2x72f7ol.cloudfront.net/expansions/stellar-crown/es-es/SV07_ES_128-2x.png" alt="Small Image 1" />
-          </div>
-        </div>
-      </SwiperSlide>
-      <SwiperSlide>
-        <div className="carousel-item">
-          <img src="https://tcg.pokemon.com/assets/img/home/featured-switcher/cinderace-stellar-large-up-2x.jpg" alt="" />
-          <div className="overlay">
-            <p>Slide 1 Text</p>
-            <button onClick={() => console.log("Button 1 clicked")}>
-              Click me
-            </button>
-            <img src="https://dz3we2x72f7ol.cloudfront.net/expansions/stellar-crown/es-es/SV07_ES_28-2x.png" alt="Small Image 1" />
-          </div>
-        </div>
-      </SwiperSlide>
-      <SwiperSlide>
-        <div className="carousel-item">
-          <img src="https://tcg.pokemon.com/assets/img/home/featured-switcher/galvantula-stellar-large-up-2x.jpg" alt="" />
-          <div className="overlay">
-            <p>Slide 1 Text</p>
-            <button onClick={() => console.log("Button 1 clicked")}>
-              Click me
-            </button>
-            <img src="https://dz3we2x72f7ol.cloudfront.net/expansions/stellar-crown/es-es/SV07_ES_51-2x.png" alt="Small Image 1" />
-          </div>
-        </div>
-      </SwiperSlide>
-
-      {/* Más slides */}
+        </SwiperSlide>
+      ))}
     </Swiper>
   );
 };
