@@ -1,5 +1,7 @@
 import React from 'react';
 import { Card } from '../../types/cardTypes';
+import { Input } from '../../theme/styledcomponents';
+import './SearchBarView.css'; 
 
 interface SearchBarViewProps {
   query: string;
@@ -22,30 +24,24 @@ const SearchBarView: React.FC<SearchBarViewProps> = ({
 }) => {
   return (
     <div>
-      <h2>Search Cards</h2>
-      <input
-        type="text"
-        value={query}
-        onChange={onQueryChange}
-        placeholder="Enter card name"
-      />
+      <Input variant='searchgray' value={query} onChange={onQueryChange} placeholder="Enter card name" />
 
       {error && <p>{error}</p>}
 
-      <ul style={{ listStyle: 'none', padding: 0 }}>
+      <ul className="list">
         {results.map((card) => (
-          <li key={card.id} style={{ marginBottom: '20px' }}>
+          <li key={card.id} className="list-item">
             <img
               src={card.images.small}
               alt={card.name}
-              style={{ width: '100px', height: 'auto', cursor: 'pointer' }}
+              className="card-image"
               onClick={() => onCardClick(card)}
             />
           </li>
         ))}
       </ul>
 
-      {selectedCard && (
+      {/*selectedCard && (
         <div className="popup">
           <div className="popup-content">
             <button onClick={onClosePopup}>Close</button>
@@ -53,7 +49,7 @@ const SearchBarView: React.FC<SearchBarViewProps> = ({
             <h3>{selectedCard.name}</h3>
           </div>
         </div>
-      )}
+      )*/}
     </div>
   );
 };
