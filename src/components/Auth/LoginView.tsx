@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom'; 
-import { Button, Input, Tittle, Text } from '../../theme/styledcomponents'; 
+import { Button, Input, Tittle, Text, TextLogo } from '../../theme/styledcomponents'; 
 import './LoginView.css';
 
 
@@ -17,13 +17,16 @@ const LoginView: React.FC<LoginViewProps> = ({ email, setEmail, password, setPas
   return (
     <div className="divlogin">
       <form onSubmit={handleLogin}>
-        <Tittle variant="white">Login</Tittle>
+        <Link to="/">
+          <TextLogo className='loginfont'>{'Capsule Corp'}</TextLogo>
+        </Link>
+        <Tittle variant="white">Log in to your account</Tittle>
 
         {error && <Text variant="purple">{error}</Text>}
         
         <Input
           type="email"
-          variant="searchgray" 
+          variant="searchwhite" 
           value={email}
           onChange={(e) => setEmail(e.target.value)}
           placeholder="Email"
@@ -32,7 +35,7 @@ const LoginView: React.FC<LoginViewProps> = ({ email, setEmail, password, setPas
         
         <Input
           type="password"
-          variant="searchgray"
+          variant="searchwhite"
           value={password}
           onChange={(e) => setPassword(e.target.value)}
           placeholder="Password"
@@ -41,13 +44,11 @@ const LoginView: React.FC<LoginViewProps> = ({ email, setEmail, password, setPas
         
         <Button variant="purple" type="submit">Login</Button>
         
-        <Text variant="gray">
-          Don't have an account? <Link to="/register">Create one here</Link>
+        <Text variant="white">
+          Don't have an account? <Link to="/register"> Create one here</Link>
         </Text>
       </form>
     </div>
   );
 };
-
-
 export default LoginView;

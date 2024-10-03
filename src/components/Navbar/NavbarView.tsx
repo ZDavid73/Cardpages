@@ -36,7 +36,7 @@ const NavbarView: React.FC<NavbarViewProps> = ({
     <nav className="navbar">
       <div className="navbar-logo">
         <Link to="/">
-          <TextLogo>{isMobile ? 'Corp' : 'Capsule Corp'}</TextLogo>
+          <TextLogo>{isMobile ? 'Capsule' : 'Capsule Corp'}</TextLogo>
         </Link>
       </div>
       {isLoggedIn && (

@@ -96,26 +96,26 @@ export const Button = styled.button<{ variant: 'purple' | 'gray' | 'green' | 'wh
 const inputVariants = {
   searchwhite: {
     textColor: '#2D2D2D',
-    borderRadius: '20px', 
+    borderRadius: '10px', 
     borderBottom: 'transparent',
     bgColor: '#ffffff',
     width: '90%',
     fontWeight: 'normal', 
     fontSize: {
-      default: '24px',   
-      small: '18px',
+      default: '20px',   
+      small: '16px',
     } 
   },
   searchgray: {
     textColor: '#ffffff',
-    borderRadius: '20px',
+    borderRadius: '10px',
     borderBottom: 'transparent',
     bgColor: '#2D2D2D',
     width: '90%',
     fontWeight: 'normal',
     fontSize: {
-      default: '24px',   
-      small: '18px',
+      default: '20px',   
+      small: '16px',
     } 
   },
   boxwhite: {
@@ -126,8 +126,8 @@ const inputVariants = {
     width: '70%',
     fontWeight: 'normal',
     fontSize: {
-      default: '24px',   
-      small: '18px',
+      default: '20px',   
+      small: '16px',
     } 
   },
   borderpurple: {

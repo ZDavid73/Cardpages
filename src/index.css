@@ -12,3 +12,7 @@ body {
 .navbar-logo a {
   text-decoration: none !important;
 }
+.divlogin a{
+  text-decoration: none !important;
+  margin: 0% !important;
+}
