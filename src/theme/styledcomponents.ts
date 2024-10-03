@@ -6,13 +6,9 @@ export const TextHome = styled.p`
   text-align:left;
   margin-bottom: 20px;
   font-family: 'Sora', sans-serif;
-  font-size: 50px;
+  font-size: 35px;
   font-weight: bold;
-
-  &:hover {
-    background-color: #a71fd0;
-  }
-`;
+  `;
 
 // Estilos generales de botones
 const buttonVariants = {
