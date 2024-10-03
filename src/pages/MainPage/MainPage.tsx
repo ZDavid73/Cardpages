@@ -1,17 +1,14 @@
 import React from 'react';
-import {Navbar} from '../../components/imports';
 import HomePage from '../HomePage/HomePage';
 import Profile from '../../components/Profile/Profile';
 
 interface HomePageProps {
   isLoggedIn: boolean;
-  onLogout: () => void;
 }
 
-const MainPage: React.FC<HomePageProps> = ({ isLoggedIn, onLogout }) => {
+const MainPage: React.FC<HomePageProps> = ({ isLoggedIn }) => {
   return (
     <div>
-      <Navbar isLoggedIn={isLoggedIn} onLogout={onLogout} />
 
       {isLoggedIn ? (
         <Profile/>

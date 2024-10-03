@@ -1,10 +1,13 @@
-import { createBrowserRouter, RouterProvider, Navigate } from 'react-router-dom';
+import { createBrowserRouter, RouterProvider, Navigate, Outlet } from 'react-router-dom';
 import { SearchPage } from '../pages/imports';
-import { Login, Register } from '../components/imports';
+import { Login, Navbar, Register } from '../components/imports';
 import { useState } from 'react';
-import MainPage from '../pages/MainPage/MainPage';
-import Profile from '../components/Profile/Profile';
 import { clearAuthUserId, getAuthUserId } from '../utils/storage';
+import MainPage from '../pages/MainPage/MainPage';
+import Catalogue from '../pages/Catalogue/Catalogue';
+import Purchases from '../pages/Purchases/Purchases';
+import About from '../pages/About/About';
+import Tournament from '../pages/TournamentPage/TournamentPage';
 
 const Router = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(getAuthUserId() ? true : false);
@@ -15,12 +18,35 @@ const Router = () => {
 
   const handleLogout = () => {
     clearAuthUserId();
+    setIsLoggedIn(false);
   };
 
   const router = createBrowserRouter([
     {
-      path: '/',
-      element: <MainPage isLoggedIn={isLoggedIn} onLogout={handleLogout} />,
+      path: '/', 
+      element: <><Navbar isLoggedIn={isLoggedIn} onLogout={handleLogout}/><Outlet/></>, 
+      children: [
+        {
+          index: true, 
+          element: <MainPage isLoggedIn={isLoggedIn}/>,
+        },
+        {
+          path: 'catalogue',
+          element: <Catalogue/>,
+        },
+        {
+          path: 'purchases',
+          element: <Purchases/>, 
+        },
+        {
+          path: 'tournaments',
+          element: <Tournament/>,
+        },
+        {
+          path: 'about',
+          element: <About/>,
+        }
+      ],
     },
     {
       path: '/search',
@@ -34,10 +60,6 @@ const Router = () => {
       path: '/register',
       element: isLoggedIn ? <Navigate to="/" /> : <Register onRegister={handleLogin} />,
     },
-    {
-      path: '/catalogue',
-      element: <Profile/>,
-    }
   ]);
 
   return <RouterProvider router={router} />;
