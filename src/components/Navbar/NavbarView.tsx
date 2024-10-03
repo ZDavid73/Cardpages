@@ -40,25 +40,13 @@ const NavbarView: React.FC<NavbarViewProps> = ({
         </Link>
       </div>
 
-      {isLoggedIn && (
-        <div className="navbar-search">
-          <Button variant='purple' onClick={handleSearchClick}><FaSearch/></Button>
-        </div>
-      )}
-
       <div className="navbar-links">
         {isLoggedIn ? (
           <>
-            <Link to="/sell">Vender</Link>
-            <Link to="/cart">
-              <FaShoppingCart />
-            </Link>
-            <Link to="/settings">
-              <FaCog />
-            </Link>
-            <button onClick={onLogout}>
-              <FaSignOutAlt />
-            </button>
+          <Button variant='purple' onClick={handleSearchClick}><FaSearch/></Button>
+          <Button variant='gray'><FaShoppingCart/></Button>
+          <Button variant='gray'><FaCog/></Button>
+          <Button variant='gray' onClick={onLogout}><FaSignOutAlt/></Button>
           </>
         ) : (
           <>

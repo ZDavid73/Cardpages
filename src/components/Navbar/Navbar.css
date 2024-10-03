@@ -32,13 +32,13 @@
   
 .navbar-links a, .navbar-links button {
     cursor: pointer;
-    text-decoration: none !important;
+    text-decoration: none ;
     width: 10vw;
     height: 7vh;
 }
 
 .navbar-links a:hover, .navbar-links button:hover {
-    text-decoration: none !important;
+    text-decoration: none;
 }
 
 /* Media queries para pantallas pequeñas (móviles) */
