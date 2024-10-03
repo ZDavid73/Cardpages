@@ -42,9 +42,7 @@ const NavbarView: React.FC<NavbarViewProps> = ({
 
       {isLoggedIn && (
         <div className="navbar-search">
-          <button onClick={handleSearchClick}>
-            <FaSearch />
-          </button>
+          <Button variant='purple' onClick={handleSearchClick}><FaSearch/></Button>
         </div>
       )}
 
