@@ -6,11 +6,15 @@ export const TextHome = styled.p`
   text-align:left;
   margin-bottom: 20px;
   font-family: 'Sora', sans-serif;
-  font-size: 50px;
+  font-size: 35px;
   font-weight: bold;
 
   &:hover {
     background-color: #a71fd0;
+  }
+  @media (max-width: 700px) {
+    font-size: 24px;
+    margin-bottom: 10px;
   }
 `;
 
@@ -44,7 +48,7 @@ const buttonVariants = {
 
 export const Button = styled.button<{ variant: 'purple' | 'gray' | 'green' | 'white' }>`
   font-family: 'Sora', sans-serif;
-  font-size: 20px;
+  font-size: 18px;
   font-weight: 600;
   color: ${(props) => buttonVariants[props.variant].textColor};
   background-color: ${(props) => buttonVariants[props.variant].bgColor};
