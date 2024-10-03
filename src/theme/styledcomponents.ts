@@ -6,9 +6,13 @@ export const TextHome = styled.p`
   text-align:left;
   margin-bottom: 20px;
   font-family: 'Sora', sans-serif;
-  font-size: 35px;
+  font-size: 50px;
   font-weight: bold;
-  `;
+
+  &:hover {
+    background-color: #a71fd0;
+  }
+`;
 
 // Estilos generales de botones
 const buttonVariants = {
@@ -40,7 +44,7 @@ const buttonVariants = {
 
 export const Button = styled.button<{ variant: 'purple' | 'gray' | 'green' | 'white' }>`
   font-family: 'Sora', sans-serif;
-  font-size: 18px;
+  font-size: 20px;
   font-weight: 600;
   color: ${(props) => buttonVariants[props.variant].textColor};
   background-color: ${(props) => buttonVariants[props.variant].bgColor};
@@ -54,18 +58,27 @@ export const Button = styled.button<{ variant: 'purple' | 'gray' | 'green' | 'wh
   &:hover {
     background-color: ${(props) => buttonVariants[props.variant].hoverColor};
   }
+
+  @media (max-width: 700px) {
+    font-size: 15px;
+    padding: 10px 20px;
+    margin: 5px;
+  }
 `;
 
 // Estilo generales inputs
 const inputVariants = {
   searchwhite: {
     textColor: '#2D2D2D',
-    borderRadius: '20px', // Fixed typo
+    borderRadius: '20px', 
     borderBottom: 'transparent',
     bgColor: '#ffffff',
     width: '90%',
-    fontWeight: 'normal', // Fixed typo
-    fontSize: '24px', // Fixed typo
+    fontWeight: 'normal', 
+    fontSize: {
+      default: '24px',   
+      small: '18px',
+    } 
   },
   searchgray: {
     textColor: '#ffffff',
@@ -74,7 +87,10 @@ const inputVariants = {
     bgColor: '#2D2D2D',
     width: '90%',
     fontWeight: 'normal',
-    fontSize: '24px',
+    fontSize: {
+      default: '24px',   
+      small: '18px',
+    } 
   },
   boxwhite: {
     textColor: '#2D2D2D',
@@ -83,7 +99,10 @@ const inputVariants = {
     bgColor: '#ffffff',
     width: '70%',
     fontWeight: 'normal',
-    fontSize: '24px',
+    fontSize: {
+      default: '24px',   
+      small: '18px',
+    } 
   },
   borderpurple: {
     textColor: '#ffffff',
@@ -92,7 +111,10 @@ const inputVariants = {
     bgColor: '#2D2D2D',
     width: '70%',
     fontWeight: '600',
-    fontSize: '32px',
+    fontSize: {
+      default: '32px',   
+      small: '24px',
+    }
   },
 };
 
@@ -106,11 +128,16 @@ export const Input = styled.input<{ variant: 'searchwhite' | 'searchgray' | 'box
   background-color: ${(props) => inputVariants[props.variant].bgColor};
   color: ${(props) => inputVariants[props.variant].textColor};
   font-family: 'Sora', sans-serif;
-  font-size: ${(props) => inputVariants[props.variant].fontSize};  
+  font-size: ${(props) => inputVariants[props.variant].fontSize.default};  
   font-weight: ${(props) => inputVariants[props.variant].fontWeight}; 
 
   &:focus {
     outline: 2px solid #a71fd0;
+  }
+
+  @media (max-width: 700px) {
+    margin: 10px;
+    font-size: ${(props) => inputVariants[props.variant].fontSize.small};
   }
 `;
 
@@ -118,19 +145,31 @@ export const Input = styled.input<{ variant: 'searchwhite' | 'searchgray' | 'box
 const textVariants = {
   white: {
     textColor: '#ffffff',
-    fontSize: '16px',
+    fontSize: {
+      default: '16px',
+      small: '14px',
+    }
   },
   purple: {
     textColor: '#a71fd0',
-    fontSize: '16px',
+    fontSize: {
+      default: '16px',
+      small: '14px',
+    }
   },
   green: {
     textColor: '#40C485',
-    fontSize: '16px',
+    fontSize: {
+      default: '16px',
+      small: '14px',
+    }
   },
   gray: {
     textColor: '#D2D2D2',
-    fontSize: '16px',
+    fontSize: {
+      default: '16px',
+      small: '14px',
+    }
   },
 };
 
@@ -141,14 +180,23 @@ export const Tittle = styled.h1<{ variant: 'white' | 'purple' }>`
   font-family: 'Sora', sans-serif;
   font-size: 32px;
   font-weight: 600;
+
+  @media (max-width: 700px) {
+    font-size: 24px;
+    margin-bottom: 10px;
+  }
 `;
 
 export const Text = styled.p<{ variant: 'white' | 'purple'| 'green' | 'gray' }>`
   color: ${(props) => textVariants[props.variant].textColor}; 
   text-align:left;
   font-family: 'Sora', sans-serif;
-  font-size: ${(props) => textVariants[props.variant].fontSize};
+  font-size: ${(props) => textVariants[props.variant].fontSize.default};
   font-weight: normal;
+
+  @media (max-width: 700px) {
+    font-size: ${(props) => textVariants[props.variant].fontSize.small};
+  }
 `;
 export const TextLogo = styled.p`
   color: #ffffff; 
@@ -156,35 +204,68 @@ export const TextLogo = styled.p`
   font-family: 'Fuente Logo', sans-serif;
   font-size: 50px;
   font-weight: normal;
+
+  @media (max-width: 700px) {
+    font-size: 40px;
+    }
 `;
 // Estilos generales de contenedores (divs)
 const divVariants = {
   bigopacity: {
-    padding: '30px',
+    padding: {
+      default: '30px',   
+      small: '20px',
+    },
     backgroundColor: 'rgba(16, 15, 15, 0.5)',  
-    marginBottom: '30px',
+    marginBottom: {
+      default: '30px',   
+      small: '20px',
+    }
   },
   smallopacity: {
-    padding: '20px',
+    padding: {
+      default: '20px',   
+      small: '10px',
+    },
     backgroundColor: 'rgba(16, 15, 15, 0.5)',  
-    marginBottom: '20px'
+    marginBottom: {
+      default: '20px',   
+      small: '10px',
+    }
   },
   big: {
-    padding: '30px',
+    padding: {
+      default: '30px',   
+      small: '20px',
+    },
     backgroundColor: '#2D2D2D',  
-    marginBottom: '30px'
+    marginBottom: {
+      default: '30px',   
+      small: '20px',
+    }
   },
   small: {
-    padding: '20px',
+    padding: {
+      default: '20px',   
+      small: '10px',
+    },
     backgroundColor: '#2D2D2D',  
-    marginBottom: '20px'
+    marginBottom: {
+      default: '20px',   
+      small: '10px',
+    }
   },
 };
 
 export const Container = styled.div<{ variant: 'bigopacity' | 'smallopacity' | 'big' | 'small' }>`
-  padding: ${(props) => divVariants[props.variant].padding};
+  padding: ${(props) => divVariants[props.variant].padding.default};
   background-color: ${(props) => divVariants[props.variant].backgroundColor};
   border-radius: 20px;
   box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
-  margin-bottom: ${(props) => divVariants[props.variant].marginBottom};
+  margin-bottom: ${(props) => divVariants[props.variant].marginBottom.default};
+
+  @media (max-width: 700px) {
+    padding: ${(props) => divVariants[props.variant].padding.small};
+    margin-bottom: ${(props) => divVariants[props.variant].marginBottom.small};
+  }
 `;
