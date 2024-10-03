@@ -17,6 +17,7 @@ const Router = () => {
   };
 
   const handleLogout = () => {
+    setIsLoggedIn(false);
     clearAuthUserId();
   };
 
