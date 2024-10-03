@@ -1,0 +1,38 @@
+.carousel-item {
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    height: 67vh;
+    width: 90vw;
+    display: flex;
+    justify-content:space-between;
+    align-items: end;
+    padding: 5vw;
+} 
+.overlay{
+    width: 40vw;
+    height: 40vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+.overlay Button{
+    width: 20vw;
+    height: 8vh;
+}
+.carousel-item img{
+    height: 45vh;
+}
+
+.swiper-pagination-bullet {
+    width: 12px !important;
+    height: 12px !important;
+    background-color: rgba(16, 15, 15, 0.5) !important;
+    opacity: 1 !important;
+    border-radius: 50% !important;
+    transition: background-color 0.3s ease !important;
+}
+  
+.swiper-pagination-bullet-active {
+    background-color: #ffffff !important;
+}
