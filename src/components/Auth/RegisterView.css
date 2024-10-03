@@ -3,38 +3,61 @@
     justify-content: center; 
     align-items: center;
     height: 100vh;
-    background-image: url('https://zyemimihfcilkfzgwsxv.supabase.co/storage/v1/object/public/Img%20login%20register/register%20(1).webp');
+    width: 100vw;
     background-size: cover;
-  }
+}
   
-  form {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    background-color: rgba(16, 15, 15, 0.5); 
-    padding: 40px;
-    border-radius: 15px;
-    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1); 
-    backdrop-filter: blur(10px);  
-  }
+.divregister form {
+  width: 24%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: rgba(16, 15, 15, 0.5); 
+  padding: 40px;
+  border-radius: 15px;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1); 
+  backdrop-filter: blur(10px);  
+  justify-content: space-between; 
+}
   
-  input, button {
-    width: 100%;
+.divregister input {
+  width: 90%;
+  height: 4vh;
+}
+.divregister button {
     margin-bottom: 15px;
-  }
+    width: 100%;
+    height: 8vh;
+    margin-top: 10px;
+}
   
-  h1, p {
-    color: white;
-  }
-  
-  a {
-    color: #a71fd0;
+.divregister a {
+    color: #40C485;
     text-decoration: none;
     font-weight: bold;
-  }
+}
   
-  a:hover {
+.divregister a:hover {
     text-decoration: underline;
-  }
+}
 
-  
+/* Estilos para pantallas móviles */
+@media (max-width: 768px) {
+  .divregister{
+      padding: 5%;
+      width: 90%;
+      background-position: center;
+  }
+  .divregister input {
+    width: 86%;
+    height: 4vh;
+  }
+  .divregister button {
+    height: 6vh;
+}
+
+  .divregister form {
+      padding: 10%;
+      width: 80%;
+  }
+}

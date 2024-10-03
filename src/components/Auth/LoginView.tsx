@@ -15,7 +15,7 @@ interface LoginViewProps {
 
 const LoginView: React.FC<LoginViewProps> = ({ email, setEmail, password, setPassword, error, handleLogin }) => {
   return (
-    <div className="divlogin">
+    <div className="divlogin" style={{backgroundImage: `url('https://zyemimihfcilkfzgwsxv.supabase.co/storage/v1/object/public/Img%20login%20register/login%20(1).webp')`,}}>
       <form onSubmit={handleLogin}>
         <Link to="/">
           <TextLogo className='loginfont'>{'Capsule Corp'}</TextLogo>

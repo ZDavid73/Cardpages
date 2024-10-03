@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom'; // Importa Link desde react-router-dom
-import { Button, Input, Tittle, Text } from '../../theme/styledcomponents'; 
+import { Button, Input, Tittle, Text, TextLogo } from '../../theme/styledcomponents'; 
 import './RegisterView.css';
 
 
@@ -26,14 +26,17 @@ const RegisterView: React.FC<RegisterViewProps> = ({
   onSubmit,
 }) => {
   return (
-    <div className="divregister">
+    <div className="divregister" style={{backgroundImage: `url('https://zyemimihfcilkfzgwsxv.supabase.co/storage/v1/object/public/Img%20login%20register/register%20(1).webp')`}}>
       <form onSubmit={onSubmit}>
+      <Link to="/">
+          <TextLogo className='loginfont'>{'Capsule Corp'}</TextLogo>
+      </Link>
       <Tittle variant="white">Register</Tittle>
       {error && <Text variant="purple">{error}</Text>}
 
         <Input
           type="text"
-          variant="searchgray"
+          variant="searchwhite"
           value={username}
           onChange={onUserChange}
           placeholder="Username"
@@ -41,7 +44,7 @@ const RegisterView: React.FC<RegisterViewProps> = ({
         />
         <Input
           type="email"
-          variant="searchgray"
+          variant="searchwhite"
           value={email}
           onChange={onEmailChange}
           placeholder="Email"
@@ -49,7 +52,7 @@ const RegisterView: React.FC<RegisterViewProps> = ({
         />
         <Input
           type="password"
-          variant="searchgray"
+          variant="searchwhite"
           value={password}
           onChange={onPasswordChange}
           placeholder="Password"
