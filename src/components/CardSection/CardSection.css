@@ -1,0 +1,39 @@
+.HomepageContainer {
+    width: 89vw;
+    height: 65vh;
+    display: flex;
+    padding: 5vw;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.HomepageContainer.reverse {
+    flex-direction: row-reverse;
+}
+
+.HomepageContainer img {
+    height: 65vh;
+    width: auto;
+}
+
+.HomepageTextContainer, .HomepageTextContainer1 {
+    height: 35vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    background-color: #2D2D2D;
+    padding: 5%;
+}
+
+.HomepageTextContainer {
+    border-radius: 0px 10px 10px 0px;
+}
+
+.HomepageTextContainer1 {
+    border-radius: 10px 0px 0px 10px;
+}
+
+.HomepageTextContainer button, .HomepageTextContainer1 button {
+    width: 20vw;
+    height: 8vh;
+}

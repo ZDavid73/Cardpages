@@ -8,10 +8,7 @@ export const TextHome = styled.p`
   font-family: 'Sora', sans-serif;
   font-size: 35px;
   font-weight: bold;
-
-  &:hover {
-    background-color: #a71fd0;
-  }
+  
   @media (max-width: 700px) {
     font-size: 24px;
     margin-bottom: 10px;
@@ -29,7 +26,7 @@ const buttonVariants = {
   gray: {
     bgColor: '#2D2D2D',
     textColor: '#fff',
-    hoverColor: '#a71fd0',
+    hoverColor: '#40C485',
     padding: '10px 20px',
   },
   green: {
@@ -56,11 +53,31 @@ export const Button = styled.button<{ variant: 'purple' | 'gray' | 'green' | 'wh
   border-radius: 10px;
   padding: ${(props) => buttonVariants[props.variant].padding};
   cursor: pointer;
-  transition: background-color 0.3s ease;
-  margin: 10px;
+  position: relative; /* Necesario para manejar el pseudoelemento */
+  overflow: hidden; /* Evita que el pseudoelemento sobresalga del botón */
+  z-index: 1;
+  transition: color 0.3s ease;
+
+  /* Pseudoelemento para la animación de relleno */
+  &::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -100%; /* Inicialmente fuera del botón */
+    width: 100%;
+    height: 100%;
+    background-color: ${(props) => buttonVariants[props.variant].hoverColor};
+    transition: left 0.5s ease;
+    z-index: -1; /* Ubica el pseudoelemento debajo del texto */
+  }
+
+  /* Animación al hacer hover */
+  &:hover::before {
+    left: 0; /* Desplaza el pseudoelemento para cubrir el botón */
+  }
 
   &:hover {
-    background-color: ${(props) => buttonVariants[props.variant].hoverColor};
+    color: ${(props) => buttonVariants[props.variant].textColor};
   }
 
   @media (max-width: 700px) {
