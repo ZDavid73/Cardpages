@@ -10,7 +10,7 @@ export const TextHome = styled.p`
   font-weight: bold;
   
   @media (max-width: 700px) {
-    font-size: 24px;
+    font-size: 20px;
     margin-bottom: 10px;
   }
 `;
@@ -288,5 +288,6 @@ export const Container = styled.div<{ variant: 'bigopacity' | 'smallopacity' | '
   @media (max-width: 700px) {
     padding: ${(props) => divVariants[props.variant].padding.small};
     margin-bottom: ${(props) => divVariants[props.variant].marginBottom.small};
+    border-radius: 10px;
   }
 `;
