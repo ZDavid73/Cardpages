@@ -46,8 +46,8 @@
     .navbar {
         height: 5vh;
         padding: 10px 2vw;
-        width: 78vw;
-        padding: 5vw;
+        width: 90%vw;
+        padding: 5%;
         align-items: center;
         align-content: center;
         justify-content: space-between;

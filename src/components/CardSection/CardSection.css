@@ -37,3 +37,31 @@
     width: 20vw;
     height: 8vh;
 }
+
+/* Media queries para pantallas pequeñas (móviles) */
+@media (max-width: 768px) {
+    .HomepageContainer {
+        flex-direction: column;
+        height: auto;
+        width: 90%;
+        padding: 5%;
+    }
+
+    .HomepageContainer img {
+        display: none;
+    }
+
+    .HomepageTextContainer,
+    .HomepageTextContainer1 {
+        height: auto;
+        padding: 10%;
+        border-radius: 10px;
+    }
+
+    .HomepageTextContainer button,
+    .HomepageTextContainer1 button {
+        width: 60%;
+        height: 6vh;
+        margin: 5px auto;
+    }
+}
