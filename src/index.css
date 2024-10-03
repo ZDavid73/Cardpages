@@ -9,3 +9,6 @@ body {
   font-weight: normal;
   font-style: normal;
 }
+.navbar-logo a {
+  text-decoration: none !important;
+}

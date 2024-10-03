@@ -40,7 +40,7 @@ const buttonVariants = {
 
 export const Button = styled.button<{ variant: 'purple' | 'gray' | 'green' | 'white' }>`
   font-family: 'Sora', sans-serif;
-  font-size: 20px;
+  font-size: 18px;
   font-weight: 600;
   color: ${(props) => buttonVariants[props.variant].textColor};
   background-color: ${(props) => buttonVariants[props.variant].bgColor};

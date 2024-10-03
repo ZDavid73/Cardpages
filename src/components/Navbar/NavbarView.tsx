@@ -2,6 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { FaShoppingCart, FaCog, FaSignOutAlt, FaSearch } from 'react-icons/fa';
 import './Navbar.css'; 
+import {TextLogo, Button} from '../../theme/styledcomponents'; 
 
 interface NavbarViewProps {
   isLoggedIn: boolean;
@@ -20,9 +21,11 @@ const NavbarView: React.FC<NavbarViewProps> = ({
 }) => {
   return (
     <nav className="navbar">
-      <div className="navbar-logo">
-        <Link to="/">Capsule Corp</Link> 
-      </div>
+    <div className="navbar-logo">
+        <Link to="/">
+            <TextLogo>Capsule Corp</TextLogo>
+        </Link>
+    </div>
       {isLoggedIn && (
         <form className="navbar-search" onSubmit={handleSearch}>
           <input
@@ -53,8 +56,12 @@ const NavbarView: React.FC<NavbarViewProps> = ({
           </>
         ) : (
           <>
-            <Link to="/login">Login</Link>
-            <Link to="/register">Register</Link>
+            <Link to="/login"> 
+            <Button variant="purple">Login</Button>
+            </Link>
+            <Link to="/register">
+            <Button variant="gray">Register</Button>
+            </Link>
           </>
         )}
       </div>
