@@ -3,7 +3,6 @@ import { supabase } from "./supabaseClient";
 
 
 export const registerUser = async (email: string, password: string, username: string, avatar_url: string) => {
-  console.log('registerUser', email, password, username, avatar_url);
   const { data, error } = await supabase.auth.signUp({
     email, 
     password
@@ -19,7 +18,7 @@ export const registerUser = async (email: string, password: string, username: st
     .insert({
       id: user.id, 
       username,    
-      picture: 'https://static.vecteezy.com/system/resources/thumbnails/009/292/244/small/default-avatar-icon-of-social-media-user-vector.jpg', 
+      picture: avatar_url ? avatar_url : 'https://static.vecteezy.com/system/resources/thumbnails/009/292/244/small/default-avatar-icon-of-social-media-user-vector.jpg', 
     });
 
   if (profileError) throw new Error(profileError.message);
