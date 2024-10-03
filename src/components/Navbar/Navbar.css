@@ -41,7 +41,6 @@
     text-decoration: none;
 }
 
-/* Media queries para pantallas pequeñas (móviles) */
 @media (max-width: 768px) {
     .navbar {
         height: 5vh;
