@@ -1,4 +1,4 @@
-import { Carousel } from "../../components/imports";
+import { Carousel, Footer } from "../../components/imports";
 import {CardSection} from "../../components/imports";
 
 function HomePage() {
@@ -22,6 +22,7 @@ function HomePage() {
         imgSrc="https://zyemimihfcilkfzgwsxv.supabase.co/storage/v1/object/public/Homepage%20Images/Torneos.webp"
         altText="img-tournament"
       />
+      <Footer/>
     </>
   );
 }

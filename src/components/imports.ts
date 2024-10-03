@@ -9,3 +9,4 @@ export { default as SearchBar } from './SearchBar/SearchBar';
 export { default as Login } from './Auth/Login';
 export { default as Register } from './Auth/Register';
 export { default as Carousel } from './Carousel/Carousel';
+export {default as Footer} from './Footer/Footer';

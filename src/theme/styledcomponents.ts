@@ -26,6 +26,12 @@ const buttonVariants = {
   gray: {
     bgColor: '#2D2D2D',
     textColor: '#fff',
+    hoverColor: '#a71fd0',
+    padding: '10px 20px',
+  },
+  grayhome: {
+    bgColor: '#2D2D2D',
+    textColor: '#fff',
     hoverColor: '#40C485',
     padding: '10px 20px',
   },
@@ -43,7 +49,7 @@ const buttonVariants = {
   },
 };
 
-export const Button = styled.button<{ variant: 'purple' | 'gray' | 'green' | 'white' }>`
+export const Button = styled.button<{ variant: 'purple' | 'gray' | 'green' | 'white'| 'grayhome' }>`
   font-family: 'Sora', sans-serif;
   font-size: 18px;
   font-weight: 600;
@@ -198,7 +204,7 @@ export const Tittle = styled.h1<{ variant: 'white' | 'purple' }>`
   text-align:left;
   margin-bottom: 20px;
   font-family: 'Sora', sans-serif;
-  font-size: 32px;
+  font-size: 28px;
   font-weight: 600;
 
   @media (max-width: 700px) {

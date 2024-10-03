@@ -73,7 +73,7 @@ const NavbarView: React.FC<NavbarViewProps> = ({
               <Button variant="purple">Login</Button>
             </Link>
             <Link to="/register">
-              <Button variant="gray">Register</Button>
+              <Button variant="grayhome">Register</Button>
             </Link>
           </>
         )}
