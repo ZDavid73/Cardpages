@@ -16,6 +16,9 @@
     padding: 0;
     margin: 0;
 }
+.footerContainer ol{
+    list-style-type: none;
+}
 
 /* Media queries para pantallas pequeñas (móviles) */
 @media (max-width: 768px) {
