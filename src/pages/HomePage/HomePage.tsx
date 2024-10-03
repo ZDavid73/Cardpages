@@ -1,15 +1,12 @@
-import Navbar from '../../components/Navbar/Navbar';
+import { Carousel } from "../../components/imports"
 
-const HomePage = ({ isLoggedIn, onLogout }: { isLoggedIn: boolean; onLogout: () => void }) => {
+function HomePage() {
+
   return (
-    <div>
-      <Navbar isLoggedIn={isLoggedIn} onLogout={onLogout} />
-      <h1>Welcome to Card Trader</h1>
-      <p>Please login or register to start trading cards!</p>
-    </div>
-    
+    <>
+    <Carousel></Carousel>
+    </>
+  )
+}
 
-  );
-};
-
-export default HomePage;
+export default HomePage
