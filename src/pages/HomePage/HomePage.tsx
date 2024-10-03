@@ -1,11 +1,11 @@
 import Navbar from '../../components/Navbar/Navbar';
+import Profile from '../../components/Profile/Profile';
 
 const HomePage = ({ isLoggedIn, onLogout }: { isLoggedIn: boolean; onLogout: () => void }) => {
   return (
     <div>
       <Navbar isLoggedIn={isLoggedIn} onLogout={onLogout} />
-      <h1>Welcome to Card Trader</h1>
-      <p>Please login or register to start trading cards!</p>
+      <Profile></Profile>
     </div>
     
 

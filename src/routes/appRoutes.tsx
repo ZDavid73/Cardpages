@@ -1,7 +1,9 @@
 import { createBrowserRouter, RouterProvider, Navigate } from 'react-router-dom';
-import { HomePage, SearchPage } from '../pages/imports';
+import { SearchPage } from '../pages/imports';
 import { Login, Register } from '../components/imports';
 import { useState } from 'react';
+import MainPage from '../pages/MainPage/MainPage';
+import Profile from '../components/Profile/Profile';
 
 const Router = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -17,7 +19,7 @@ const Router = () => {
   const router = createBrowserRouter([
     {
       path: '/',
-      element: <HomePage isLoggedIn={isLoggedIn} onLogout={handleLogout} />,
+      element: <MainPage isLoggedIn={isLoggedIn} onLogout={handleLogout} />,
     },
     {
       path: '/search',
@@ -31,6 +33,10 @@ const Router = () => {
       path: '/register',
       element: isLoggedIn ? <Navigate to="/" /> : <Register onRegister={handleLogin} />,
     },
+    {
+      path: '/catalogue',
+      element: <Profile/>,
+    }
   ]);
 
   return <RouterProvider router={router} />;
