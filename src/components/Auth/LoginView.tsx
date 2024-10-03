@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { Button, Input, Tittle, Text } from '../../theme/styledcomponents'; 
 import './LoginView.css';
 
+
 interface LoginViewProps {
   email: string;
   setEmail: (email: string) => void;
@@ -47,5 +48,6 @@ const LoginView: React.FC<LoginViewProps> = ({ email, setEmail, password, setPas
     </div>
   );
 };
+
 
 export default LoginView;
