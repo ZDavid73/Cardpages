@@ -81,9 +81,8 @@ export const Button = styled.button<{ variant: 'purple' | 'gray' | 'green' | 'wh
   }
 
   @media (max-width: 700px) {
-    font-size: 15px;
-    padding: 10px 20px;
-    margin: 5px;
+    font-size: 14px;
+    padding: 4px 10px;
   }
 `;
 
@@ -223,11 +222,11 @@ export const TextLogo = styled.p`
   color: #ffffff; 
   text-align:left;
   font-family: 'Fuente Logo', sans-serif;
-  font-size: 50px;
+  font-size: 60px;
   font-weight: normal;
 
   @media (max-width: 700px) {
-    font-size: 40px;
+    font-size: 35px;
     }
 `;
 // Estilos generales de contenedores (divs)

@@ -33,8 +33,27 @@
 .navbar-links a, .navbar-links button {
     cursor: pointer;
     text-decoration: none !important;
+    width: 10vw;
+    height: 7vh;
 }
 
 .navbar-links a:hover, .navbar-links button:hover {
     text-decoration: none !important;
+}
+
+/* Media queries para pantallas pequeñas (móviles) */
+@media (max-width: 768px) {
+    .navbar {
+        height: 5vh;
+        padding: 10px 2vw;
+        width: 78vw;
+        padding: 5vw;
+        align-items: center;
+        align-content: center;
+        justify-content: space-between;
+    }
+    .navbar-links a, .navbar-links button {
+        width: 26vw;
+        height: 5vh;
+    }
 }

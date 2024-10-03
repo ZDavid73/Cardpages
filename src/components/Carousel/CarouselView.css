@@ -40,7 +40,10 @@
 /* Media queries para pantallas pequeñas (móviles) */
 @media (max-width: 768px) {
     .carousel-item {
-        height: 40vh;
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        height: 45vh;
         width: 78vw;
         padding: 5vw;
         align-items: center;

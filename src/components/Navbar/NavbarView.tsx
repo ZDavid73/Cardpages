@@ -1,8 +1,8 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { FaShoppingCart, FaCog, FaSignOutAlt, FaSearch } from 'react-icons/fa';
 import './Navbar.css'; 
-import {TextLogo, Button} from '../../theme/styledcomponents'; 
+import { TextLogo, Button } from '../../theme/styledcomponents'; 
 
 interface NavbarViewProps {
   isLoggedIn: boolean;
@@ -19,13 +19,26 @@ const NavbarView: React.FC<NavbarViewProps> = ({
   handleSearch,
   onLogout,
 }) => {
+  const [isMobile, setIsMobile] = useState(window.innerWidth < 768);
+
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth < 768);
+    };
+
+    window.addEventListener('resize', handleResize);
+    return () => {
+      window.removeEventListener('resize', handleResize);
+    };
+  }, []);
+
   return (
     <nav className="navbar">
-    <div className="navbar-logo">
+      <div className="navbar-logo">
         <Link to="/">
-            <TextLogo>Capsule Corp</TextLogo>
+          <TextLogo>{isMobile ? 'Corp' : 'Capsule Corp'}</TextLogo>
         </Link>
-    </div>
+      </div>
       {isLoggedIn && (
         <form className="navbar-search" onSubmit={handleSearch}>
           <input
@@ -57,10 +70,10 @@ const NavbarView: React.FC<NavbarViewProps> = ({
         ) : (
           <>
             <Link to="/login"> 
-            <Button variant="purple">Login</Button>
+              <Button variant="purple">Login</Button>
             </Link>
             <Link to="/register">
-            <Button variant="gray">Register</Button>
+              <Button variant="gray">Register</Button>
             </Link>
           </>
         )}
