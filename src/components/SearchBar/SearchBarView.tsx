@@ -19,8 +19,6 @@ const SearchBarView: React.FC<SearchBarViewProps> = ({
   results,
   onQueryChange,
   onCardClick,
-  selectedCard,
-  onClosePopup,
 }) => {
   return (
     <div>
