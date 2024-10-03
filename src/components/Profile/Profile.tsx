@@ -1,0 +1,24 @@
+import { NavLink } from "react-router-dom";
+import { Button, Container } from "../../theme/styledcomponents";
+import './Profile.css';
+
+const Profile = () => {
+    return (
+        <Container variant='small' className="profile">
+            <NavLink to='/'>
+                {({ isActive }) => <Button variant={isActive ? 'purple' : 'gray'}>Dashboard</Button>}
+            </NavLink>
+            <NavLink to='/catalogue'>
+                 {({ isActive }) => <Button variant={isActive ? 'purple' : 'gray'}>Catalogue</Button>}
+            </NavLink>
+            <NavLink to='/tournaments'>
+                 {({ isActive }) => <Button variant={isActive ? 'purple' : 'gray'}>Tournaments</Button>}
+            </NavLink>
+            <NavLink to='/purchases'>
+                 {({ isActive }) => <Button variant={isActive ? 'purple' : 'gray'}>Purchases</Button>}
+            </NavLink>
+        </Container>
+    )
+}
+
+export default Profile;

@@ -8,10 +8,16 @@ const useSearch = () => {
   const [error, setError] = useState<string | null>(null);
   const [selectedCard, setSelectedCard] = useState<Card | null>(null);
   const debounceRef = useRef<NodeJS.Timeout | null>(null);
+  const cache = useRef<{ [key: string]: Card[] }>({});
 
   useEffect(() => {
     if (query.length === 0) {
       setResults([]);
+      return;
+    }
+
+    if (cache.current[query]) {
+      setResults(cache.current[query]);
       return;
     }
 

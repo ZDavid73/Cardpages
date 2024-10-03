@@ -1,6 +1,7 @@
 import React from 'react';
 import {Navbar} from '../../components/imports';
 import HomePage from '../HomePage/HomePage';
+import Profile from '../../components/Profile/Profile';
 
 interface HomePageProps {
   isLoggedIn: boolean;
@@ -13,16 +14,7 @@ const MainPage: React.FC<HomePageProps> = ({ isLoggedIn, onLogout }) => {
       <Navbar isLoggedIn={isLoggedIn} onLogout={onLogout} />
 
       {isLoggedIn ? (
-        <div>
-          <h2>Welcome to the platform!</h2>
-          <ul>
-            <li>Ver Torneos</li>
-            <li>Ver Cartas</li>
-            <li>Comprar</li>
-            <li>Vender Cartas</li>
-            <li>Crear Torneos</li>
-          </ul>
-        </div>
+        <Profile/>
       ) : (
         <div>
           <HomePage></HomePage>

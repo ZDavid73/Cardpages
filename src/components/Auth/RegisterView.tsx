@@ -7,9 +7,11 @@ import './RegisterView.css';
 interface RegisterViewProps {
   email: string;
   password: string;
+  username: string;
   error: string | null;
   onEmailChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
   onPasswordChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
+  onUserChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
   onSubmit: (e: React.FormEvent) => void;
 }
 
@@ -17,6 +19,8 @@ const RegisterView: React.FC<RegisterViewProps> = ({
   email,
   password,
   error,
+  username,
+  onUserChange,
   onEmailChange,
   onPasswordChange,
   onSubmit,
@@ -26,7 +30,15 @@ const RegisterView: React.FC<RegisterViewProps> = ({
       <form onSubmit={onSubmit}>
       <Tittle variant="white">Register</Tittle>
       {error && <Text variant="purple">{error}</Text>}
-      
+
+        <Input
+          type="text"
+          variant="searchgray"
+          value={username}
+          onChange={onUserChange}
+          placeholder="Username"
+          required
+        />
         <Input
           type="email"
           variant="searchgray"
