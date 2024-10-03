@@ -4,16 +4,17 @@ import { Login, Register } from '../components/imports';
 import { useState } from 'react';
 import MainPage from '../pages/MainPage/MainPage';
 import Profile from '../components/Profile/Profile';
+import { clearAuthUserId, getAuthUserId } from '../utils/storage';
 
 const Router = () => {
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [isLoggedIn, setIsLoggedIn] = useState(getAuthUserId() ? true : false);
 
   const handleLogin = () => {
     setIsLoggedIn(true);
   };
 
   const handleLogout = () => {
-    setIsLoggedIn(false);
+    clearAuthUserId();
   };
 
   const router = createBrowserRouter([

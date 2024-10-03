@@ -24,9 +24,9 @@ export const useAuth = () => {
     }
   };
 
-  const handleRegister = async (email: string, password: string, onRegister: () => void) => {
+  const handleRegister = async (email: string, password: string, username: string, onRegister: () => void) => {
     try {
-      const user = await registerUser(email, password);
+      const user = await registerUser(email, password, username, '');
       if (user) {
         onRegister(); // Llamamos a la función onRegister después de un registro exitoso
         navigate('/login');
