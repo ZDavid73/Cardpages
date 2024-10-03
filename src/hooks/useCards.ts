@@ -1,67 +1,59 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
-import { useEffect, useState } from 'react';
+import { useState, useEffect } from 'react';
 import { SellingCard } from '../types/cardTypes';
-import { supabase } from '../services/supabaseClient';
+import { buyCard, fetchCards, sellCard } from '../services/databaseService';
 
 export const useCardTransactions = () => {
   const [cards, setCards] = useState<SellingCard[]>([]);
 
-  const fetchCards = async (): Promise<string | null> => {
+  const fetchAllCards = async (): Promise<string | null> => {
     try {
-      const { data, error } = await supabase
-        .from('cards')
-        .select('*');
-      
+      const { data, error } = await fetchCards();
       if (error) throw error;
       setCards(data || []);
       return null;
-    } catch (err: any) {
-      return err.message;
+    } catch (err) {
+      // Cambiamos any por un tipo de error específico o por unknown
+      if (err instanceof Error) {
+        return err.message;
+      }
+      return 'Unknown error occurred'; // Mensaje para manejar errores no esperados
     }
   };
 
-  const sellCard = async (
-    cardId: string,
-    sellerId: string,
-    price: number
-  ): Promise<string | null> => {
+  const handleSellCard = async (cardId: string, sellerId: string, price: number): Promise<string | null> => {
     try {
-      const { error } = await supabase
-        .from('cards')
-        .insert([{ cardId, sellerId, price, isSold: false, buyerId: null }]);
-      
+      const { error } = await sellCard(cardId, sellerId, price);
       if (error) throw error;
       return null;
-    } catch (err: any) {
-      return err.message;
+    } catch (err) {
+      if (err instanceof Error) {
+        return err.message;
+      }
+      return 'Unknown error occurred';
     }
   };
 
-  const buyCard = async (
-    cardId: string,
-    buyerId: string
-  ): Promise<string | null> => {
+  const handleBuyCard = async (cardId: string, buyerId: string): Promise<string | null> => {
     try {
-      const { error } = await supabase
-        .from('cards')
-        .update({ isSold: true, buyerId })
-        .eq('cardId', cardId);
-      
+      const { error } = await buyCard(cardId, buyerId);
       if (error) throw error;
       return null;
-    } catch (err: any) {
-      return err.message;
+    } catch (err) {
+      if (err instanceof Error) {
+        return err.message;
+      }
+      return 'Unknown error occurred';
     }
   };
 
   useEffect(() => {
-    fetchCards();
+    fetchAllCards();
   }, []);
 
   return {
     cards,
-    fetchCards,
-    sellCard,
-    buyCard
+    fetchAllCards,
+    handleSellCard,
+    handleBuyCard,
   };
 };

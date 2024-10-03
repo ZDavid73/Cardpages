@@ -32,16 +32,15 @@
   
 .navbar-links a, .navbar-links button {
     cursor: pointer;
-    text-decoration: none !important;
-    width: 10vw;
+    text-decoration: none ;
+    width: 100%;
     height: 7vh;
 }
 
 .navbar-links a:hover, .navbar-links button:hover {
-    text-decoration: none !important;
+    text-decoration: none;
 }
 
-/* Media queries para pantallas pequeñas (móviles) */
 @media (max-width: 768px) {
     .navbar {
         height: 5vh;
@@ -52,8 +51,11 @@
         align-content: center;
         justify-content: space-between;
     }
+    .navbar-links{
+        width: 50vw;
+    }
     .navbar-links a, .navbar-links button {
-        width: 26vw;
+        width: 100%;
         height: 5vh;
     }
 }

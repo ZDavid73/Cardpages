@@ -1,0 +1,25 @@
+.list {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap; /* Para que las cartas se organicen en varias filas */
+  }
+  
+  .list-item {
+    margin-bottom: 20px;
+    margin-right: 20px; /* Espacio entre las cartas */
+    flex-basis: calc(20% - 20px); /* Cada carta ocupará el 20% del ancho */
+    box-sizing: border-box;
+  }
+  
+  .card-image {
+    width: 100%;
+    height: auto;
+    cursor: pointer;
+    transition: transform 0.3s ease; /* Animación suave al hacer hover */
+  }
+  
+  .card-image:hover {
+    transform: scale(1.1); /* Efecto de agrandamiento */
+  }
+  

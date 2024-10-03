@@ -1,25 +1,20 @@
 import React, { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { FaShoppingCart, FaCog, FaSignOutAlt, FaSearch } from 'react-icons/fa';
 import './Navbar.css'; 
 import { TextLogo, Button } from '../../theme/styledcomponents'; 
 
 interface NavbarViewProps {
   isLoggedIn: boolean;
-  searchQuery: string;
-  setSearchQuery: (query: string) => void;
-  handleSearch: (e: React.FormEvent) => void;
   onLogout: () => void;
 }
 
 const NavbarView: React.FC<NavbarViewProps> = ({
   isLoggedIn,
-  searchQuery,
-  setSearchQuery,
-  handleSearch,
   onLogout,
 }) => {
   const [isMobile, setIsMobile] = useState(window.innerWidth < 768);
+  const navigate = useNavigate(); // Hook para redirección
 
   useEffect(() => {
     const handleResize = () => {
@@ -32,6 +27,11 @@ const NavbarView: React.FC<NavbarViewProps> = ({
     };
   }, []);
 
+  // Función para redirigir a la página de búsqueda
+  const handleSearchClick = () => {
+    navigate('/search'); // Redirige a la ruta "/search" que corresponde a `SearchPage`
+  };
+
   return (
     <nav className="navbar" role="navigation" aria-label="Main Navigation">
       <div className="navbar-logo">
@@ -39,37 +39,36 @@ const NavbarView: React.FC<NavbarViewProps> = ({
           <TextLogo>{isMobile ? 'Capsule' : 'Capsule Corp'}</TextLogo>
         </Link>
       </div>
-      {isLoggedIn && (
-        <form className="navbar-search" onSubmit={handleSearch} aria-label="Buscar">
-          <input
-            type="text"
-            placeholder="Search Cards"
-            value={searchQuery}
-            onChange={(e) => setSearchQuery(e.target.value)}
-            aria-label="Buscar tarjetas"
-          />
-          <button type="submit" aria-label="Buscar">
-            <FaSearch />
-          </button>
-        </form>
-      )}
 
       <div className="navbar-links">
         {isLoggedIn ? (
           <>
-            <Link to="/sell" aria-label="Ir a vender">Vender</Link>
-            <Link to="/cart" aria-label="Ir al carrito">
+            <Button 
+              variant='purple' 
+              onClick={handleSearchClick} 
+              aria-label="Buscar productos" // Añadido
+            >
+              <FaSearch />
+            </Button>
+            <Button 
+              variant='gray' 
+              aria-label="Ver carrito de compras" // Añadido
+            >
               <FaShoppingCart />
-              <span className="sr-only">Carrito</span> {/* Texto oculto para accesibilidad */}
-            </Link>
-            <Link to="/settings" aria-label="Ir a configuraciones">
+            </Button>
+            <Button 
+              variant='gray' 
+              aria-label="Configuración" // Añadido
+            >
               <FaCog />
-              <span className="sr-only">Configuraciones</span> {/* Texto oculto para accesibilidad */}
-            </Link>
-            <button onClick={onLogout} aria-label="Cerrar sesión">
+            </Button>
+            <Button 
+              variant='gray' 
+              onClick={onLogout} 
+              aria-label="Cerrar sesión" // Añadido
+            >
               <FaSignOutAlt />
-              <span className="sr-only">Cerrar sesión</span> {/* Texto oculto para accesibilidad */}
-            </button>
+            </Button>
           </>
         ) : (
           <>
@@ -85,4 +84,5 @@ const NavbarView: React.FC<NavbarViewProps> = ({
     </nav>
   );
 };
+
 export default NavbarView;

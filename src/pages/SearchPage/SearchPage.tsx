@@ -1,5 +1,6 @@
 import Navbar from '../../components/Navbar/Navbar';
 import SearchBar from '../../components/SearchBar/SearchBar';
+import { Tittle } from '../../theme/styledcomponents';
 
 interface SearchPageProps {
   isLoggedIn: boolean;
@@ -10,7 +11,7 @@ const SearchPage: React.FC<SearchPageProps> = ({ isLoggedIn, onLogout }) => {
   return (
     <div>
       <Navbar isLoggedIn={isLoggedIn} onLogout={onLogout} />
-      <h1>Search Cards</h1>
+      <Tittle variant='white'>Search Cards</Tittle>
       <SearchBar />
     </div>
   );

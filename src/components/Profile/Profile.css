@@ -1,5 +1,9 @@
 .profile{
     background-color: #1b1b1b;
-    width: 20%;
+    width: max-content;
     margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    border-radius: 10px;
+    gap: 10px;
 }
