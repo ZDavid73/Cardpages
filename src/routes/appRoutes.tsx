@@ -18,7 +18,6 @@ const Router = () => {
 
   const handleLogout = () => {
     clearAuthUserId();
-    setIsLoggedIn(false);
   };
 
   const router = createBrowserRouter([
