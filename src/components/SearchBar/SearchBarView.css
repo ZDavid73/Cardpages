@@ -22,4 +22,9 @@
   .card-image:hover {
     transform: scale(1.1); /* Efecto de agrandamiento */
   }
-  
+
+  @media (max-width: 700px) {
+    .list-item{
+        flex-basis: calc(50% - 20px);
+    }
+  }
