@@ -33,21 +33,22 @@ const NavbarView: React.FC<NavbarViewProps> = ({
   }, []);
 
   return (
-    <nav className="navbar">
+    <nav className="navbar" role="navigation" aria-label="Main Navigation">
       <div className="navbar-logo">
-        <Link to="/">
+        <Link to="/" aria-label="Ir a la página principal">
           <TextLogo>{isMobile ? 'Capsule' : 'Capsule Corp'}</TextLogo>
         </Link>
       </div>
       {isLoggedIn && (
-        <form className="navbar-search" onSubmit={handleSearch}>
+        <form className="navbar-search" onSubmit={handleSearch} aria-label="Buscar">
           <input
             type="text"
             placeholder="Search Cards"
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
+            aria-label="Buscar tarjetas"
           />
-          <button type="submit">
+          <button type="submit" aria-label="Buscar">
             <FaSearch />
           </button>
         </form>
@@ -56,23 +57,26 @@ const NavbarView: React.FC<NavbarViewProps> = ({
       <div className="navbar-links">
         {isLoggedIn ? (
           <>
-            <Link to="/sell">Vender</Link>
-            <Link to="/cart">
+            <Link to="/sell" aria-label="Ir a vender">Vender</Link>
+            <Link to="/cart" aria-label="Ir al carrito">
               <FaShoppingCart />
+              <span className="sr-only">Carrito</span> {/* Texto oculto para accesibilidad */}
             </Link>
-            <Link to="/settings">
+            <Link to="/settings" aria-label="Ir a configuraciones">
               <FaCog />
+              <span className="sr-only">Configuraciones</span> {/* Texto oculto para accesibilidad */}
             </Link>
-            <button onClick={onLogout}>
+            <button onClick={onLogout} aria-label="Cerrar sesión">
               <FaSignOutAlt />
+              <span className="sr-only">Cerrar sesión</span> {/* Texto oculto para accesibilidad */}
             </button>
           </>
         ) : (
           <>
-            <Link to="/login"> 
+            <Link to="/login" aria-label="Ir a iniciar sesión"> 
               <Button variant="purple">Login</Button>
             </Link>
-            <Link to="/register">
+            <Link to="/register" aria-label="Ir a registrarse">
               <Button variant="grayhome">Register</Button>
             </Link>
           </>
@@ -81,5 +85,4 @@ const NavbarView: React.FC<NavbarViewProps> = ({
     </nav>
   );
 };
-
 export default NavbarView;
