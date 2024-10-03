@@ -1,49 +1,28 @@
 import React, { useState } from 'react';
-import { loginUser } from '../../services/AuthService';
-import { useNavigate } from 'react-router-dom';
+import { useAuth } from '../../hooks/useAuth'; // Importa el nuevo hook
+import LoginView from './LoginView';
 
-const Login = () => {
+interface LoginProps {
+  onLogin: () => void;
+}
+
+const Login: React.FC<LoginProps> = ({ onLogin }) => {
+  const { error, handleLogin } = useAuth(); // Obtén error y la función handleLogin
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const [error, setError] = useState<string | null>(null); 
-  const navigate = useNavigate();
-
-  const handleLogin = async (e: React.FormEvent) => {
-    e.preventDefault();
-    try {
-      await loginUser(email, password);
-      navigate('/search');
-    } catch (error: unknown) { 
-      if (error instanceof Error) {
-        setError(error.message); 
-      } else {
-        setError('An unexpected error occurred');
-      }
-    }
-  };
 
   return (
-    <div>
-      <h2>Login</h2>
-      {error && <p>{error}</p>}
-      <form onSubmit={handleLogin}>
-        <input
-          type="email"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-          placeholder="Email"
-          required
-        />
-        <input
-          type="password"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-          placeholder="Password"
-          required
-        />
-        <button type="submit">Login</button>
-      </form>
-    </div>
+    <LoginView
+      email={email}
+      setEmail={setEmail}
+      password={password}
+      setPassword={setPassword}
+      error={error}
+      handleLogin={(e) => {
+        e.preventDefault();
+        handleLogin(email, password, onLogin); // Llama a handleLogin
+      }}
+    />
   );
 };
 

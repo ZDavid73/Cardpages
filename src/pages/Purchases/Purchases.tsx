@@ -1,13 +1,13 @@
 import Profile from "../../components/Profile/Profile"
 import { Text } from "../../theme/styledcomponents"
 
-const Tournament = () => {
+const Purchases = () => {
     return (
         <>
         <Profile/>
-        <Text variant='white'>Tournament</Text>
+        <Text variant='white'>Purchases</Text>
         </>
     )
 }
 
-export default Tournament
+export default Purchases

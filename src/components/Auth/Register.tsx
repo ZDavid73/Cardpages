@@ -1,70 +1,31 @@
 import React, { useState } from 'react';
-import { registerUser } from '../../services/AuthService';
-import { useNavigate } from 'react-router-dom';
+import { useAuth } from '../../hooks/useAuth'; // Importa el nuevo hook
+import RegisterView from './RegisterView';
 
-const Register = () => {
+interface RegisterProps {
+  onRegister: () => void; // Aceptamos el prop onRegister
+}
+
+const Register: React.FC<RegisterProps> = ({ onRegister }) => {
+  const { error, handleRegister } = useAuth(); // Obtén error y la función handleRegister
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const [confirmPassword, setConfirmPassword] = useState(''); 
-  const [showPassword, setShowPassword] = useState(false); 
-  const [error, setError] = useState<string | null>(null);
-  const navigate = useNavigate();
-
-  const handleRegister = async (e: React.FormEvent) => {
-    e.preventDefault();
-    if (password !== confirmPassword) {
-      setError('Passwords do not match');
-      return;
-    }
-    try {
-      await registerUser(email, password); 
-      navigate('/login'); 
-    } catch (error: unknown) {
-      if (error instanceof Error) {
-        setError(error.message);
-      } else {
-        setError('An unexpected error occurred');
-      }
-    }
-  };
+  const [username, setUsername] = useState('');
 
   return (
-    <div>
-      <h2>Register</h2>
-      {error && <p>{error}</p>}
-      <form onSubmit={handleRegister}>
-        <input
-          type="email"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-          placeholder="Email"
-          required
-        />
-        <input
-          type={showPassword ? 'text' : 'password'} 
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-          placeholder="Password"
-          required
-        />
-        <input
-          type={showPassword ? 'text' : 'password'}
-          value={confirmPassword}
-          onChange={(e) => setConfirmPassword(e.target.value)}
-          placeholder="Confirm Password"
-          required
-        />
-        <label>
-          <input
-            type="checkbox"
-            checked={showPassword}
-            onChange={() => setShowPassword(!showPassword)} 
-          />
-          Show Passwords
-        </label>
-        <button type="submit">Register</button>
-      </form>
-    </div>
+    <RegisterView
+      email={email}
+      password={password}
+      username={username}
+      error={error}
+      onEmailChange={(e) => setEmail(e.target.value)}
+      onPasswordChange={(e) => setPassword(e.target.value)}
+      onUserChange={(e) => setUsername(e.target.value)}
+      onSubmit={(e) => {
+        e.preventDefault();
+        handleRegister(email, password, username, onRegister); // Llama a handleRegister
+      }}
+    />
   );
 };
 

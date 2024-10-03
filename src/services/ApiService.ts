@@ -1,41 +1,42 @@
 import axios from 'axios';
+import { ApiResponseCard, Card } from '../types/cardTypes';
 
-interface Card {
-  id: string;
-  name: string;
-  imageUrl: string; 
-}
-
-export const searchCards = async (game: string, query: string): Promise<Card[]> => {
-  const apiBaseUrl = 'https://apitcg.com/api';
-  let gameEndpoint: string;
-
-  switch (game) {
-    case 'pokemon':
-      gameEndpoint = 'pokemon';
-      break;
-    case 'one-piece':
-      gameEndpoint = 'one-piece';
-      break;
-    case 'dragon-ball-fusion':
-      gameEndpoint = 'dragon-ball-fusion';
-      break;
-    case 'digimon':
-      gameEndpoint = 'digimon';
-      break;
-    case 'magic-the-gathering':
-      gameEndpoint = 'magic-the-gathering';
-      break;
-    default:
-      throw new Error('Invalid game selected');
-  }
-
-  const url = `${apiBaseUrl}/${gameEndpoint}/cards?property=name&value=${query}`;
+export const searchCards = async (query: string): Promise<Card[]> => {
+  const url = `https://api.pokemontcg.io/v2/cards?q=name:${query}*`; 
   const response = await axios.get(url);
 
-  if (!response.data.cards) {
+  if (!response.data || !response.data.data) {
     throw new Error('No cards found');
   }
 
-  return response.data.cards;
+  const cards: Card[] = response.data.data.map((card: ApiResponseCard) => ({
+    id: card.id,
+    name: card.name,
+    images: {
+      small: card.images.small,
+      large: card.images.large,
+    },
+  }));
+
+  return cards;
+};
+
+export const searchCardById = async (id: string): Promise<Card> => {
+  const url = `https://api.pokemontcg.io/v2/cards/${id}`;
+  const response = await axios.get(url);
+
+  if (!response.data || !response.data.data) {
+    throw new Error('Card not found');
+  }
+
+  const card: Card = {
+    id: response.data.data.id,
+    name: response.data.data.name,
+    images: {
+      small: response.data.data.images.small,
+      large: response.data.data.images.large,
+    },
+  };
+
+  return card;
 };
