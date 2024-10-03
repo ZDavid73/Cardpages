@@ -20,8 +20,23 @@ const Footer: React.FC = () => {
             </svg>
           </a>
         </li>
+        <li>
+          <a href="https://www.facebook.com" aria-label="Follow us on Facebook">
+            <svg xmlns="http://www.w3.org/2000/svg" width="3vw" viewBox="0 0 24 24">
+                <path fill="#ffffff" d="M22 12c0-5.52-4.48-10-10-10S2 6.48 2 12c0 4.84 3.44 8.87 8 9.8V15H8v-3h2V9.5C10 7.57 11.57 6 13.5 6H16v3h-2c-.55 0-1 .45-1 1v2h3v3h-3v6.95c5.05-.5 9-4.76 9-9.95" />
+            </svg>
+          </a>
+        </li>
+        <li>
+          <a href="https://x.com/home?lang=es" aria-label="Follow us on X">
+            <svg xmlns="http://www.w3.org/2000/svg" width="3vw" viewBox="0 0 24 24">
+                <path fill="#ffffff" d="M18.205 2.25h3.308l-7.227 8.26l8.502 11.24H16.13l-5.214-6.817L4.95 21.75H1.64l7.73-8.835L1.215 2.25H8.04l4.713 6.231zm-1.161 17.52h1.833L7.045 4.126H5.078z" />
+            </svg>
+          </a>
+        </li>
+        
       </ol>
-      <Text variant='white'>© 2024 MyCompany</Text>
+      <Text variant='white'>Copyright © 2024 Capsule Corp Inc.</Text>
     </div>
   );
 };
