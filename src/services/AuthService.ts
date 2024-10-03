@@ -36,5 +36,8 @@ export const loginUser = async (email: string, password: string) => {
   });
 
   if (error) throw new Error(error.message);
+
+  setAuthUserId(data.user.id);
+  
   return data.user;
 };
