@@ -1,4 +1,3 @@
-import { setAuthUserId } from "../utils/storage";
 import { supabase } from "./supabaseClient";
 
 
@@ -23,8 +22,6 @@ export const registerUser = async (email: string, password: string, username: st
 
   if (profileError) throw new Error(profileError.message);
 
-  setAuthUserId(user.id);
-
   return user;
 };
 
@@ -36,8 +33,6 @@ export const loginUser = async (email: string, password: string) => {
   });
 
   if (error) throw new Error(error.message);
-
-  setAuthUserId(data.user.id);
   
   return data.user;
 };

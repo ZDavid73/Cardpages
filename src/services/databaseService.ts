@@ -1,6 +1,7 @@
 import { supabase } from './supabaseClient';
 import { Deck } from '../types/deckTypes';
 import { Round, Tournament } from '../types/tournamentTypes';
+import { UserState } from '../features/auth/userSlice';
 
 // Cards-related functions
 export const fetchCards = async () => {
@@ -51,3 +52,11 @@ export const finishTournament = async (id: string, rounds: Round[]) => {
     .update({ status: 'finished', rounds })
     .eq('id', id);
 };
+
+export const getUserInfo = async (userId: string) => {
+  const user =  await supabase.from('users').select('*').eq('id', userId);
+
+  if (user.data) {
+    return user.data[0] as UserState;
+  }
+}
