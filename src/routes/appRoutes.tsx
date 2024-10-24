@@ -1,5 +1,5 @@
 import { createBrowserRouter, RouterProvider, Navigate, Outlet, Routes, Route } from 'react-router-dom';
-import { SearchPage } from '../pages/imports';
+import { HomePage, SearchPage } from '../pages/imports';
 import { Login, Navbar, Register } from '../components/imports';
 import { useState } from 'react';
 import { clearAuthUserId, getAuthUserId } from '../utils/storage';
@@ -28,7 +28,10 @@ const AppRouter = () => {
         
         
         <Routes>
-          <Route path="/" element={<MainPage isLoggedIn={isLoggedIn} />} />
+          <Route path="/" element={<HomePage isLoggedIn={isLoggedIn} />} />
+          <Route path="/home" element={<HomePage isLoggedIn={isLoggedIn} />} />
+
+
           <Route path="/catalogue" element={<Catalogue />} />
           <Route path="/purchases" element={<Purchases />} />
           <Route path="/tournaments" element={<Tournament />} />
