@@ -2,7 +2,7 @@ import { Navigate, Routes, Route, BrowserRouter } from 'react-router-dom';
 import { HomePage, SearchPage } from '../pages/imports';
 import { Login, Navbar, Register } from '../components/imports';
 import { useState } from 'react';
-import { clearAuthUserId, getAuthUserId } from '../utils/storage';
+import { clearAuthUserId } from '../utils/storage';
 import Catalogue from '../pages/Catalogue/Catalogue';
 import Purchases from '../pages/Purchases/Purchases';
 import About from '../pages/About/About';
@@ -19,11 +19,6 @@ const AppRouter = () => {
 
   const handleLogin = () => {
     setIsLoggedIn(true);
-  };
-
-  const handleLogout = () => {
-    setIsLoggedIn(false);
-    clearAuthUserId();
   };
 
   return (

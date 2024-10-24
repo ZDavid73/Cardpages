@@ -1,12 +1,8 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { useAuth } from '../../hooks/useAuth'; // Importa el nuevo hook
 import LoginView from './LoginView';
 
-interface LoginProps {
-  onLogin: () => void;
-}
-
-const Login: React.FC<LoginProps> = ({ onLogin }) => {
+const Login = () => {
   const { error, handleLogin } = useAuth(); // Obtén error y la función handleLogin
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -20,7 +16,7 @@ const Login: React.FC<LoginProps> = ({ onLogin }) => {
       error={error}
       handleLogin={(e) => {
         e.preventDefault();
-        handleLogin(email, password, onLogin); // Llama a handleLogin
+        handleLogin(email, password); // Llama a handleLogin
       }}
     />
   );

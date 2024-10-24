@@ -13,11 +13,10 @@ export const useAuth = () => {
   const dispatch = useDispatch();
   const user = useSelector((state) => state.user);
 
-  const handleLogin = async (email: string, password: string, onLogin: () => void) => {
+  const handleLogin = async (email: string, password: string) => {
     try {
       const user = await loginUser(email, password);
       if (user) {
-        onLogin();
         navigate('/dashboard'); 
 
         const actualUser = await getUserInfo(user.id);
