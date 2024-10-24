@@ -12,7 +12,8 @@ import ProtectedRoutes from './ProtectedRoutes';
 import Dashboard from '../pages/Dashboard/Dashboard';
 
 const AppRouter = () => {
-  const [isLoggedIn, setIsLoggedIn] = useState(getAuthUserId()? true : false);
+  const user = useSelector((state) => state.user);
+  const [isLoggedIn, setIsLoggedIn] = useState(user.id !== "" ? true : false);
 
   console.log(isLoggedIn);
 
@@ -24,9 +25,6 @@ const AppRouter = () => {
     setIsLoggedIn(false);
     clearAuthUserId();
   };
-
-  const user = useSelector((state) => state.user);
-  console.log(user);
 
   return (
     <BrowserRouter>
@@ -46,7 +44,7 @@ const AppRouter = () => {
             <Route path="/purchases" element={<Purchases />} />
             <Route path="/tournaments" element={<Tournament />} />
             <Route path="/about" element={<About />} />
-            <Route path="/search" element={<SearchPage isLoggedIn={isLoggedIn} onLogout={handleLogout} />} />
+            <Route path="/search" element={<SearchPage/>} />
             
           </Route>
           </Routes>

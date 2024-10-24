@@ -1,8 +1,8 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { loginUser, registerUser } from '../services/AuthService';
-import { clearAuthUserId, setAuthUserId } from '../utils/storage';
-import { useDispatch } from 'react-redux';
+import { clearAuthUserId, getAuthUserId, setAuthUserId } from '../utils/storage';
+import { useDispatch, useSelector } from 'react-redux';
 import { login, logout } from '../features/auth/userSlice';
 import { getUserInfo } from '../services/databaseService';
 
@@ -11,6 +11,7 @@ export const useAuth = () => {
   const [error, setError] = useState<string | null>(null);
   const navigate = useNavigate();
   const dispatch = useDispatch();
+  const user = useSelector((state) => state.user);
 
   const handleLogin = async (email: string, password: string, onLogin: () => void) => {
     try {
@@ -54,8 +55,12 @@ export const useAuth = () => {
   };
 
   const handleLogout = () => {
+    console.log('logout');
     clearAuthUserId();
+    console.log(getAuthUserId())
     logout();
+    console.log(user)
+    
   }
 
   return { error, handleLogin, handleRegister, handleLogout };

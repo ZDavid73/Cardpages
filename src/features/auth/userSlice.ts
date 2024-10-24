@@ -23,6 +23,7 @@ export const userSlice = createSlice({
       state.picture = action.payload.picture;
     },
     logout: (state) => {
+      console.log('logout desde slice');
       state.id = '';
       state.username = '';
       state.picture = '';
