@@ -1,4 +1,4 @@
-import { Navigate, Routes, Route, Router } from 'react-router-dom';
+import { Navigate, Routes, Route, BrowserRouter } from 'react-router-dom';
 import { HomePage, SearchPage } from '../pages/imports';
 import { Login, Navbar, Register } from '../components/imports';
 import { useState } from 'react';
@@ -12,7 +12,7 @@ import ProtectedRoutes from './ProtectedRoutes';
 import Dashboard from '../pages/Dashboard/Dashboard';
 
 const AppRouter = () => {
-  const [isLoggedIn, setIsLoggedIn] = useState(getAuthUserId() !== '' ? true : false);
+  const [isLoggedIn, setIsLoggedIn] = useState(getAuthUserId()? true : false);
 
   console.log(isLoggedIn);
 
@@ -29,13 +29,13 @@ const AppRouter = () => {
   console.log(user);
 
   return (
-    <Router>
+    <BrowserRouter>
       <>
         <Navbar isLoggedIn={isLoggedIn} onLogout={handleLogout}/>
         
         
         <Routes>
-          <Route path="/" element={<HomePage isLoggedIn={isLoggedIn} />} />
+          <Route path="/" element={<HomePage/>} />
           <Route path="/dashboard" element={<Dashboard/>} />
 
           <Route element={<ProtectedRoutes isLoggedIn={isLoggedIn}/>}>
@@ -49,7 +49,7 @@ const AppRouter = () => {
           </Route>
           </Routes>
       </>
-    </Router>
+    </BrowserRouter>
   )
 }
 

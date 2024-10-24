@@ -1,9 +1,9 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { loginUser, registerUser } from '../services/AuthService';
-import { setAuthUserId } from '../utils/storage';
+import { clearAuthUserId, setAuthUserId } from '../utils/storage';
 import { useDispatch } from 'react-redux';
-import { login } from '../features/auth/userSlice';
+import { login, logout } from '../features/auth/userSlice';
 import { getUserInfo } from '../services/databaseService';
 
 
@@ -53,5 +53,12 @@ export const useAuth = () => {
     }
   };
 
-  return { error, handleLogin, handleRegister };
+  const handleLogout = () => {
+    clearAuthUserId();
+    logout();
+  }
+
+  return { error, handleLogin, handleRegister, handleLogout };
 };
+
+
