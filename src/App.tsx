@@ -17,8 +17,6 @@ const App = () => {
                 }
             })
         }
-
-        console.log('hola')
     }, [dispatch]);
 
     return (

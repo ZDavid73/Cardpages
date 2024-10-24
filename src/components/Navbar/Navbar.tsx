@@ -1,17 +1,18 @@
 import React from 'react';
 import NavbarView from './NavbarView';
+import { useAuth } from '../../hooks/useAuth';
 
 interface NavbarProps {
   isLoggedIn: boolean;
-  onLogout: () => void;
 }
 
-const Navbar: React.FC<NavbarProps> = ({ isLoggedIn, onLogout }) => {
+const Navbar: React.FC<NavbarProps> = ({ isLoggedIn }) => {
+  const {handleLogout} = useAuth();
 
   return (
     <NavbarView
       isLoggedIn={isLoggedIn}
-      onLogout={onLogout}
+      onLogout={() => handleLogout()}
     />
   );
 };

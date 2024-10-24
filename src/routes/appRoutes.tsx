@@ -31,12 +31,15 @@ const AppRouter = () => {
   return (
     <BrowserRouter>
       <>
-        <Navbar isLoggedIn={isLoggedIn} onLogout={handleLogout}/>
+        <Navbar isLoggedIn={isLoggedIn}/>
         
         
         <Routes>
-          <Route path="/" element={<HomePage/>} />
-          <Route path="/dashboard" element={<Dashboard/>} />
+          <Route path="/" element={!isLoggedIn ? <HomePage/> : <Navigate to="/dashboard"/>} />
+          <Route path="/dashboard" element={isLoggedIn ? <Dashboard/> : <Navigate to="/"/>} />
+
+          <Route path="/login" element={isLoggedIn ? <Navigate to="/" /> : <Login onLogin={handleLogin} />} />
+          <Route path="/register" element={isLoggedIn ? <Navigate to="/" /> : <Register onRegister={handleLogin} />} />
 
           <Route element={<ProtectedRoutes isLoggedIn={isLoggedIn}/>}>
             <Route path="/catalogue" element={<Catalogue />} />
@@ -44,8 +47,7 @@ const AppRouter = () => {
             <Route path="/tournaments" element={<Tournament />} />
             <Route path="/about" element={<About />} />
             <Route path="/search" element={<SearchPage isLoggedIn={isLoggedIn} onLogout={handleLogout} />} />
-            <Route path="/login" element={isLoggedIn ? <Navigate to="/" /> : <Login onLogin={handleLogin} />} />
-            <Route path="/register" element={isLoggedIn ? <Navigate to="/" /> : <Register onRegister={handleLogin} />} />
+            
           </Route>
           </Routes>
       </>

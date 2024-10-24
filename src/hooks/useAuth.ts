@@ -17,7 +17,7 @@ export const useAuth = () => {
       const user = await loginUser(email, password);
       if (user) {
         onLogin();
-        navigate('/'); 
+        navigate('/dashboard'); 
 
         const actualUser = await getUserInfo(user.id);
          if (actualUser) {
