@@ -55,7 +55,7 @@ export const useAuth = () => {
     console.log('logout');
     clearAuthUserId();
     console.log(getAuthUserId())
-    logout(); 
+    dispatch(logout());
   }
 
   return { error, handleLogin, handleRegister, handleLogout };
