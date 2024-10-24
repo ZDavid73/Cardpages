@@ -1,4 +1,4 @@
-import { createBrowserRouter, RouterProvider, Navigate, Outlet } from 'react-router-dom';
+import { createBrowserRouter, RouterProvider, Navigate, Outlet, Routes, Route } from 'react-router-dom';
 import { SearchPage } from '../pages/imports';
 import { Login, Navbar, Register } from '../components/imports';
 import { useState } from 'react';
@@ -8,6 +8,39 @@ import Catalogue from '../pages/Catalogue/Catalogue';
 import Purchases from '../pages/Purchases/Purchases';
 import About from '../pages/About/About';
 import Tournament from '../pages/TournamentPage/TournamentPage';
+
+const AppRouter = () => {
+  const [isLoggedIn, setIsLoggedIn] = useState(getAuthUserId() ? true : false);
+
+  const handleLogin = () => {
+    setIsLoggedIn(true);
+  };
+
+  const handleLogout = () => {
+    setIsLoggedIn(false);
+    clearAuthUserId();
+  };
+
+  return (
+    <Router>
+      <>
+        <Navbar isLoggedIn={isLoggedIn} onLogout={handleLogout}/>
+        
+        
+        <Routes>
+          <Route path="/" element={<MainPage isLoggedIn={isLoggedIn} />} />
+          <Route path="/catalogue" element={<Catalogue />} />
+          <Route path="/purchases" element={<Purchases />} />
+          <Route path="/tournaments" element={<Tournament />} />
+          <Route path="/about" element={<About />} />
+          <Route path="/search" element={<SearchPage isLoggedIn={isLoggedIn} onLogout={handleLogout} />} />
+          <Route path="/login" element={isLoggedIn ? <Navigate to="/" /> : <Login onLogin={handleLogin} />} />
+          <Route path="/register" element={isLoggedIn ? <Navigate to="/" /> : <Register onRegister={handleLogin} />} />
+          </Routes>
+      </>
+    </Router>
+  )
+}
 
 const Router = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(getAuthUserId() ? true : false);
@@ -20,6 +53,8 @@ const Router = () => {
     setIsLoggedIn(false);
     clearAuthUserId();
   };
+
+
 
   const router = createBrowserRouter([
     {
