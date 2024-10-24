@@ -14,6 +14,8 @@ export const TextHome = styled.p`
     margin-bottom: 10px;
   }
 `;
+//Estilo para profile photo
+
 
 // Estilos generales de botones
 const buttonVariants = {
