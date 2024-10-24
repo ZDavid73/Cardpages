@@ -15,7 +15,15 @@ export const TextHome = styled.p`
   }
 `;
 //Estilo para profile photo
+export const ProfilePhoto = styled.img`
+  width: 50px;
+  border-radius: 100%;
+  margin: 20px;
 
+  @media (max-width: 700px) {
+  display: none;
+  }
+`;
 
 // Estilos generales de botones
 const buttonVariants = {
