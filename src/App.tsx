@@ -1,41 +1,27 @@
-import { useState } from 'react';
-import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
-import { HomePage, SearchPage } from './pages/imports';
-import { Login, Register } from './components/imports'; 
+import { useDispatch } from "react-redux";
+import AppRouter from "./routes/appRoutes";
+import { useEffect } from "react";
+import { getAuthUserId } from "./utils/storage";
+import { getUserInfo } from "./services/databaseService";
+import { login } from "./features/auth/userSlice";
 
 const App = () => {
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
+    const dispatch = useDispatch();
 
-  const handleLogin = () => {
-    setIsLoggedIn(true);
-  };
+    useEffect(() => {
+        const userId = getAuthUserId();
+        if (userId){
+            getUserInfo(userId).then((user) => {
+                if (user){
+                    dispatch(login(user));
+                }
+            })
+        }
+    }, [dispatch]);
 
-  const handleLogout = () => {
-    setIsLoggedIn(false);
-  };
-
-  return (
-    <Router>
-      <Routes>
-        <Route 
-          path="/" 
-          element={<HomePage isLoggedIn={isLoggedIn} onLogout={handleLogout} />} 
-        />
-        <Route 
-          path="/search" 
-          element={<SearchPage isLoggedIn={isLoggedIn} onLogout={handleLogout} />} 
-        />
-        <Route 
-          path="/login" 
-          element={isLoggedIn ? <Navigate to="/" /> : <Login onLogin={handleLogin} />} 
-        />
-        <Route 
-          path="/register" 
-          element={isLoggedIn ? <Navigate to="/" /> : <Register onRegister={handleLogin} />} 
-        />
-      </Routes>
-    </Router>
-  );
-};
+    return (
+        <AppRouter />
+    );
+}
 
 export default App;

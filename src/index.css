@@ -1,0 +1,22 @@
+body {
+    background-color: #100F0F;
+    margin: 0;
+    padding: 0;
+  }
+@font-face{
+  font-family: 'Fuente Logo';
+  src: url('https://zyemimihfcilkfzgwsxv.supabase.co/storage/v1/object/sign/fonts/Stella%20Demo.ttf?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1cmwiOiJmb250cy9TdGVsbGEgRGVtby50dGYiLCJpYXQiOjE3Mjc5MTgxMjcsImV4cCI6MTc1OTQ1NDEyN30.QA29UReLc2_UAF0N9SFDtT1hUww-7o50mvHYtGlo-Qk&t=2024-10-03T01%3A15%3A28.395Z');
+  font-weight: normal;
+  font-style: normal;
+}
+.navbar-logo a {
+  text-decoration: none !important;
+}
+.divlogin a {
+  text-decoration: none !important;
+  margin: 0% !important;
+}
+.divregister a{
+  text-decoration: none !important;
+  margin: 0% !important;
+}

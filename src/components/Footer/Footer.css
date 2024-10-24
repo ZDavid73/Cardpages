@@ -1,0 +1,39 @@
+.footerContainer{
+    height: 12vh;
+    width: 89vw;
+    display: flex;
+    flex-direction: column;
+    justify-content:center;
+    align-items:center;
+    padding: 5vw;
+    background-color: #1B1B1B;
+}
+.footerIcons{
+    width: 20vw;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0;
+    margin: 0;
+}
+.footerContainer ol{
+    list-style-type: none;
+}
+
+/* Media queries para pantallas pequeñas (móviles) */
+@media (max-width: 768px) {
+    .footerContainer {
+        height: auto;
+        width: 90% ;
+        padding: 5%;
+        margin-top: 10px;
+    }
+
+    .footerIcons {
+        width: 40vw; /* Increase width to make icons more spaced out */
+    }
+
+    .footerIcons a svg {
+        width: 8vw; /* Aumenta el tamaño de los íconos en tablets */
+    }
+}

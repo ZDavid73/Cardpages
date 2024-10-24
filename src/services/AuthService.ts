@@ -1,18 +1,30 @@
-import { createClient } from '@supabase/supabase-js';
+import { supabase } from "./supabaseClient";
 
-const supabaseUrl = 'https://zyemimihfcilkfzgwsxv.supabase.co';
-const supabaseKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Inp5ZW1pbWloZmNpbGtmemd3c3h2Iiwicm9sZSI6InNlcnZpY2Vfcm9sZSIsImlhdCI6MTcyNzE0OTYwOSwiZXhwIjoyMDQyNzI1NjA5fQ.exRwRJzNe1OwcnY-7oc6ZMWVu4Q1vUBaz9Ex-eAmYNo'; 
-const supabase = createClient(supabaseUrl, supabaseKey);
 
-export const registerUser = async (email: string, password: string) => {
+export const registerUser = async (email: string, password: string, username: string, avatar_url: string) => {
   const { data, error } = await supabase.auth.signUp({
     email, 
     password
   });
 
   if (error) throw new Error(error.message);
-  return data.user;
+
+  const user = data.user;
+  if (!user) throw new Error('User registration failed');
+
+  const { error: profileError } = await supabase
+    .from('users')
+    .insert({
+      id: user.id, 
+      username,    
+      picture: avatar_url ? avatar_url : 'https://static.vecteezy.com/system/resources/thumbnails/009/292/244/small/default-avatar-icon-of-social-media-user-vector.jpg', 
+    });
+
+  if (profileError) throw new Error(profileError.message);
+
+  return user;
 };
+
 
 export const loginUser = async (email: string, password: string) => {
   const { data, error } = await supabase.auth.signInWithPassword({
@@ -21,5 +33,6 @@ export const loginUser = async (email: string, password: string) => {
   });
 
   if (error) throw new Error(error.message);
+  
   return data.user;
 };
