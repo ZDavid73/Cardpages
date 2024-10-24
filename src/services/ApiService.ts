@@ -1,25 +1,8 @@
 import axios from 'axios';
+import { ApiResponseCard, Card } from '../types/cardTypes';
 
-interface Card {
-  id: string;
-  name: string;
-  images: {
-    small: string;
-    large: string;
-  };
-}
-
-interface ApiResponseCard {
-  id: string;
-  name: string;
-  images: {
-    small: string;
-    large: string;
-  };
-}
-
-export const searchCards = async (game: string, query: string): Promise<Card[]> => {
-  const url = `/api/${game}/cards?property=name&value=${query}`; 
+export const searchCards = async (query: string): Promise<Card[]> => {
+  const url = `https://api.pokemontcg.io/v2/cards?q=name:${query}*`; 
   const response = await axios.get(url);
 
   if (!response.data || !response.data.data) {
