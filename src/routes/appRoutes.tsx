@@ -8,6 +8,7 @@ import Catalogue from '../pages/Catalogue/Catalogue';
 import Purchases from '../pages/Purchases/Purchases';
 import About from '../pages/About/About';
 import Tournament from '../pages/TournamentPage/TournamentPage';
+import { useSelector } from 'react-redux';
 
 const AppRouter = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(getAuthUserId() ? true : false);
@@ -47,6 +48,10 @@ const AppRouter = () => {
 
 const Router = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(getAuthUserId() ? true : false);
+
+  const user = useSelector((state) => state.user);
+
+  console.log(user);
 
   const handleLogin = () => {
     setIsLoggedIn(true);

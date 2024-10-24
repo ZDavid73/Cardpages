@@ -1,17 +1,30 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { loginUser, registerUser } from '../services/AuthService';
+import { setAuthUserId } from '../utils/storage';
+import { useDispatch } from 'react-redux';
+import { login } from '../features/auth/userSlice';
+import { getUserInfo } from '../services/databaseService';
+
 
 export const useAuth = () => {
   const [error, setError] = useState<string | null>(null);
   const navigate = useNavigate();
+  const dispatch = useDispatch();
 
   const handleLogin = async (email: string, password: string, onLogin: () => void) => {
     try {
       const user = await loginUser(email, password);
       if (user) {
-        onLogin(); // Lógica cuando el login es exitoso
-        navigate('/'); // Redirigir a la página principal
+        onLogin();
+        navigate('/'); 
+
+        const actualUser = await getUserInfo(user.id);
+         if (actualUser) {
+          dispatch(login(actualUser));
+        }
+
+        setAuthUserId(user.id);
       } else {
         setError('Failed to login. Please check your credentials.');
       }
