@@ -6,7 +6,6 @@ export interface Card {
         large: string;
     };
     flavorText: string;
-    description: string;
 }
 
 export interface ApiResponseCard {
