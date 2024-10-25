@@ -96,5 +96,6 @@ export const useTournament = () => {
     handleRemoveTournament,
     handleAddPlayerToTournament,
     handleFinishTournament,
+    startTournament
   };
 };
