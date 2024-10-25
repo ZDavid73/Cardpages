@@ -21,6 +21,7 @@ export const useTournament = () => {
   const handleAddTournament = async ({ name, date, location, host }: NewTournamentData): Promise<void> => {
     const newTournament: Tournament = {
       id: crypto.randomUUID(),
+      picture: 'https://i.blogs.es/82d7ef/pokemon/450_1000.webp',
       name,
       date,
       location,
@@ -84,6 +85,10 @@ export const useTournament = () => {
       }
     }
   };
+
+  const startTournament = () => {
+    
+  }
 
   return {
     tournaments,

@@ -20,11 +20,11 @@ const TourThumb = ({ tournament }: TourThumbProps) => {
             <div className='tour-button'>
             {
                 user.id === tournament.host ? 
-                <Button variant='purple'>
+                <Button variant='purple' onClick={() => {}}>
                     Start
                 </Button>
                 :
-                <Button variant='gray'>
+                <Button variant='gray' onClick={() => {}}>
                     Join
                 </Button>
             }
