@@ -15,3 +15,11 @@ export interface ApiResponseCard {
         large: string;
     }
 }
+
+export interface SellingCard {
+    cardId: string;
+    sellerId: string;
+    isSold: boolean;
+    buyerId?: string | null;
+    price: number;
+  }

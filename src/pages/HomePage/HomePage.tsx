@@ -1,34 +1,32 @@
-import React from 'react';
-import {Navbar} from '../../components/imports';
+import { Suspense, lazy } from "react";
 
-interface HomePageProps {
-  isLoggedIn: boolean;
-  onLogout: () => void;
-}
+const Carousel = lazy(() => import("../../components/Carousel/Carousel"));
+const CardSection = lazy(() => import("../../components/CardSection/CardSection"));
+const Footer = lazy(() => import("../../components/Footer/Footer"));
 
-const HomePage: React.FC<HomePageProps> = ({ isLoggedIn, onLogout }) => {
+function HomePage() {
   return (
-    <div>
-      <Navbar isLoggedIn={isLoggedIn} onLogout={onLogout} />
-
-      {isLoggedIn ? (
-        <div>
-          <h2>Welcome to the platform!</h2>
-          <ul>
-            <li>Ver Torneos</li>
-            <li>Ver Cartas</li>
-            <li>Comprar</li>
-            <li>Vender Cartas</li>
-            <li>Crear Torneos</li>
-          </ul>
-        </div>
-      ) : (
-        <div>
-          <h2>Please login or register to continue.</h2>
-        </div>
-      )}
-    </div>
+    <Suspense fallback={<div>Loading...</div>}>
+      <Carousel />
+      <CardSection
+        text="Buy, sell, and trade cards and decks to build your ultimate collection."
+        imgSrc="https://zyemimihfcilkfzgwsxv.supabase.co/storage/v1/object/public/Homepage%20Images/Cartas.webp"
+        altText="Imagen de cartas"
+      />
+      <CardSection
+        text="Discover card details and uncover the stories behind each one."
+        imgSrc="https://zyemimihfcilkfzgwsxv.supabase.co/storage/v1/object/public/Homepage%20Images/Detalles.webp"
+        altText="Imagen de detalles"
+        reverse
+      />
+      <CardSection
+        text="Join the action and test your skills in competitive deck tournaments!"
+        imgSrc="https://zyemimihfcilkfzgwsxv.supabase.co/storage/v1/object/public/Homepage%20Images/Torneos.webp"
+        altText="Imagen de torneos"
+      />
+      <Footer />
+    </Suspense>
   );
-};
+}
 
 export default HomePage;
