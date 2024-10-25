@@ -12,6 +12,7 @@ export interface Round {
 
 export interface Tournament {
     id: string;
+    picture: string;
     name: string;
     date: string;
     location: string;
