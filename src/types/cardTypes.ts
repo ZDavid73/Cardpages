@@ -5,6 +5,8 @@ export interface Card {
         small: string;
         large: string;
     };
+    flavorText: string;
+    description: string;
 }
 
 export interface ApiResponseCard {
@@ -14,6 +16,7 @@ export interface ApiResponseCard {
         small: string;
         large: string;
     }
+    flavorText: string;
 }
 
 export interface SellingCard {
@@ -22,4 +25,6 @@ export interface SellingCard {
     isSold: boolean;
     buyerId?: string | null;
     price: number;
+    flavorText: string;
+    description: string;
   }
