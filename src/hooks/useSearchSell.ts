@@ -25,7 +25,16 @@ const useSearchSell = () => {
       clearTimeout(debounceRef.current);
     }
 
-    
+    debounceRef.current = setTimeout(async () => {
+      try {
+        const cards: Card[] = await searchCards(query);
+        setResults(cards); 
+        setError(null);
+        cache.current[query] = cards; 
+      } catch {
+        setError('No cards found');
+      }
+    }, 500); 
 
     return () => {
       if (debounceRef.current) {
