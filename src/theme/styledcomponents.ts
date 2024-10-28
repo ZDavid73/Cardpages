@@ -172,8 +172,8 @@ const textVariants = {
   white: {
     textColor: '#ffffff',
     fontSize: {
-      default: '16px',
-      small: '14px',
+      default: '14px',
+      small: '12px',
     }
   },
   purple: {
@@ -204,11 +204,11 @@ export const Tittle = styled.h1<{ variant: 'white' | 'purple' }>`
   text-align:left;
   margin-bottom: 20px;
   font-family: 'Sora', sans-serif;
-  font-size: 28px;
+  font-size: 24px;
   font-weight: 600;
 
   @media (max-width: 700px) {
-    font-size: 24px;
+    font-size: 20px;
     margin-bottom: 10px;
   }
 `;
@@ -272,13 +272,13 @@ const divVariants = {
   },
   small: {
     padding: {
-      default: '20px',   
-      small: '10px',
+      default: '15px',   
+      small: '8px',
     },
     backgroundColor: '#2D2D2D',  
     marginBottom: {
-      default: '20px',   
-      small: '10px',
+      default: '15px',   
+      small: '8px',
     }
   },
 };

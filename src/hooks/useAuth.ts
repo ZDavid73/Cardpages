@@ -60,5 +60,3 @@ export const useAuth = () => {
 
   return { error, handleLogin, handleRegister, handleLogout };
 };
-
-
