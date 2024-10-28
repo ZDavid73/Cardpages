@@ -10,6 +10,44 @@ const useSearchSell = () => {
   const debounceRef = useRef<NodeJS.Timeout | null>(null); 
   const cache = useRef<{ [key: string]: Card[] }>({}); 
 
+  useEffect(() => {
+    if (query.length === 0) {
+      setResults([]); 
+      return;
+    }
+
+    if (cache.current[query]) {
+      setResults(cache.current[query]);
+      return;
+    }
+
+    if (debounceRef.current) {
+      clearTimeout(debounceRef.current);
+    }
+
+    
+
+    return () => {
+      if (debounceRef.current) {
+        clearTimeout(debounceRef.current);
+      }
+    };
+  }, [query]);
+
+  const handleCardClick = (card: Card) => {
+    if (!selectedCards.some((selectedCard) => selectedCard.id === card.id)) {
+      setSelectedCards((prevCards) => [...prevCards, card]);
+    }
+  };
+
+  return {
+    query,
+    results,
+    error,
+    selectedCards,
+    setQuery,
+    handleCardClick,
+  };
   
 };
 
