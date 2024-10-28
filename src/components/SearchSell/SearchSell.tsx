@@ -1,4 +1,3 @@
-import React from 'react';
 import useSearchSell from '../../hooks/useSearchSell';
 
 const SearchSell = () => {
@@ -6,13 +5,13 @@ const SearchSell = () => {
 
   return (
     <div className="search-sell-container">
-      <h1>Busca tu carta para vender</h1>
+      <h1>Sell Card</h1>
 
       <input
         type="text"
         value={query}
         onChange={(e) => setQuery(e.target.value)}
-        placeholder="Escribe el nombre de la carta"
+        placeholder="Search for your card..."
         className="search-input"
       />
 
