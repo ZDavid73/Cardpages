@@ -29,9 +29,21 @@ const SearchSell = () => {
             <p>{card.name}</p>
           </div>
         ))}
-      
+      </div>
+
+      {selectedCards.length > 0 && (
+        <div className="selected-cards">
+          <h2>Cartas seleccionadas:</h2>
+          <div className="card-grid">
+            {selectedCards.map((card) => (
+              <div key={card.id} className="card-item">
+                <img src={card.images.small} alt={card.name} />
+                <p>{card.name}</p>
+              </div>
+            ))}
+          </div>
         </div>
-      
+      )}
     </div>
   );
 };
