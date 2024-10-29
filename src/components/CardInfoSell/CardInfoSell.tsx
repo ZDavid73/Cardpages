@@ -7,7 +7,15 @@ const AddCardForm = () => {
 
   const isFormValid = name !== '' && price !== '' && description !== '';
 
-
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    if (isFormValid) {
+      console.log('Post Card:', { name, price: parseFloat(price), description });
+      setName('');
+      setPrice('');
+      setDescription('');
+    }
+  };
 
   return (
     
