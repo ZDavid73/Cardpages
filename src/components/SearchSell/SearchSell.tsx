@@ -17,6 +17,10 @@ const SearchSell = () => {
 
       {error && <p className="error-message">{error}</p>}
 
+      {results.length === 0 && query !== '' && !error && (
+        <p className="no-results-message">No cards found</p>
+      )}
+
       <div className="results">
         {results.map((card) => (
           <div
@@ -32,7 +36,7 @@ const SearchSell = () => {
 
       {selectedCards.length > 0 && (
         <div className="selected-cards">
-          <h2>Cartas seleccionadas:</h2>
+          <h2>Selected Cards:</h2>
           <div className="card-grid">
             {selectedCards.map((card) => (
               <div key={card.id} className="card-item">
