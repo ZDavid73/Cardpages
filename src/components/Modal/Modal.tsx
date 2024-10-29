@@ -1,14 +1,22 @@
+import { useSelector } from 'react-redux';
 import './Modal.css';
+import { createPortal } from 'react-dom';
+import { AppState } from '../../types/stateType';
+import useModal from '../../hooks/useModal';
 
-type ModalProps = {
-    children: React.ReactNode;
-}
+const Modal = () => {
+    const { modal } = useSelector((state: AppState) => state);
+    const { renderModalContent } = useModal();
 
-const Modal = ({ children }: ModalProps) => {
+    if (!modal.isOpen) return null;
+
     return (
-        <div className="modal-overlay">
-            {children}
-        </div>
+        createPortal(
+            <div className="modal-overlay">
+                { renderModalContent() }
+            </div>,
+            document.getElementById('root') as HTMLElement
+        )
     );
 }
 

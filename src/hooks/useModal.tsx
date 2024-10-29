@@ -1,6 +1,7 @@
 import { useDispatch, useSelector } from "react-redux";
 import { AppState } from "../types/stateType";
 import { openModal, closeModal } from "../features/modalSlice";
+import CreateTour from "../components/CreateTour/CreateTour";
 
 const useModal = () => {
     const dispatch = useDispatch();
@@ -16,12 +17,8 @@ const useModal = () => {
 
     const renderModalContent = () => {
         switch (modal.modal) {
-            case 'login':
-                return <div>login</div>;
-            case 'register':
-                return <div>register</div>;
-            case 'forgot-password':
-                return <div>forgot-password</div>;
+            case "createTournament":
+                return <CreateTour/>
             default:
                 return null;
         }
