@@ -1,9 +1,15 @@
 import { useEffect, useState } from "react";
 import { fetchTournaments, addTournament, removeTournament, addPlayerToTournament, finishTournament } from '../services/databaseService'; // Importamos desde databaseService
 import { NewTournamentData, Tournament } from "../types/tournamentTypes";
+import { useDispatch, useSelector } from "react-redux";
+import { AppState } from "../types/stateType";
+import { closeModal } from "../features/modalSlice";
 
 export const useTournament = () => {
+  const user = useSelector((state: AppState) => state.user);
   const [tournaments, setTournaments] = useState<Tournament[]>([]);
+  const [createTourForm, setCreateTourForm] = useState<NewTournamentData | null>(null);
+  const dispatch = useDispatch();
 
   useEffect(() => {
     const fetchAllTournaments = async () => {
@@ -18,25 +24,37 @@ export const useTournament = () => {
     fetchAllTournaments();
   }, []);
 
-  const handleAddTournament = async ({ name, date, location, host }: NewTournamentData): Promise<void> => {
+  const handleChangeCreateTourForm = (data:string, form: string) => {
+    setCreateTourForm(
+      (prev) => ({
+        ...prev,
+        [form]: data
+      } as NewTournamentData
+    ))
+  }
+
+  const handleAddTournament = async (): Promise<void> => {
+    if (!createTourForm) {
+      console.error('Create tournament form data is missing');
+      return;
+    }
+
     const newTournament: Tournament = {
+      ...createTourForm,
       id: crypto.randomUUID(),
       picture: 'https://i.blogs.es/82d7ef/pokemon/450_1000.webp',
-      name,
-      date,
-      location,
-      host,
+      host: user.id,
       status: 'upcoming',
       players: [],
       rounds: [],
     };
 
-    setTournaments((prev) => [...prev, newTournament]);
-
-    const { error } = await addTournament(newTournament); // Asegúrate de que addTournament devuelve { error: Error | null }
+    const { error } = await addTournament(newTournament);
     if (error) {
       console.error('Error adding tournament to Supabase:', error.message);
     }
+
+    dispatch(closeModal());
   };
 
   const handleRemoveTournament = async (id: string): Promise<void> => {
@@ -96,6 +114,7 @@ export const useTournament = () => {
     handleRemoveTournament,
     handleAddPlayerToTournament,
     handleFinishTournament,
+    handleChangeCreateTourForm,
     startTournament
   };
 };

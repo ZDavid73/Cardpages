@@ -1,16 +1,19 @@
 import useModal from "../../hooks/useModal";
 import './CreateTour.css'
 import { Button, Container, Input, Text, Tittle } from "../../theme/styledcomponents"
-import { FaArrowLeft } from 'react-icons/fa';
+import { FaArrowCircleLeft } from 'react-icons/fa';
 
 const CreateTour = () => {
     const { handleClose } = useModal()
 
     return (
         <Container variant='big'>
-            <Button variant="white" onClick={() => handleClose()}><FaArrowLeft/></Button>
+            <section className="create-tour-tittle">
+            <FaArrowCircleLeft onClick={() => handleClose()} color="white"/>
             <Tittle variant="white">Create a tournament</Tittle>
-            <div className="tour-forms">
+            </section>
+            
+            <section className="create-tour-forms">
                 <form>
                     <div>
                     <label htmlFor="city"><Text variant="white">City</Text></label>
@@ -32,9 +35,11 @@ const CreateTour = () => {
 
                     <label htmlFor="max"><Text variant="white">Number of participants</Text></label>
                     <Input variant="searchwhite" type="number" id="max" name="max" required/>
+
+                    <Button variant="purple">Create Tournament</Button>
                     </div>
                 </form>
-            </div>
+            </section>
 
         </Container>
     )

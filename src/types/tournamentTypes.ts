@@ -13,9 +13,12 @@ export interface Round {
 export interface Tournament {
     id: string;
     picture: string;
-    name: string;
     date: string;
     location: string;
+    desc: string;
+    address: string;
+    hour: string;
+    max: number;
     host: string;
     status: string;
     players: string[];
@@ -28,8 +31,10 @@ export interface MatchPlayers {
 }
 
 export interface NewTournamentData {
-    name: string;
     date: string;
     location: string;
-    host: string;
-  };
+    desc: string;
+    address: string;
+    hour: string;
+    max: number;
+};

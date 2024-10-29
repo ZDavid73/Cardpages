@@ -1,0 +1,21 @@
+.create-tour-tittle{
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    height: max-content;
+}
+
+.create-tour-forms{
+    margin: 8px;
+}
+
+.create-tour-forms form{
+    display: flex;
+    gap: 32px;
+}
+
+.create-tour-forms form div{
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+}
