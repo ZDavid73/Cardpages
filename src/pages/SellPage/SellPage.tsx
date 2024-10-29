@@ -1,12 +1,13 @@
-import SearchSell from '../../components/SearchSell/SearchSell'; 
+import SearchSell from '../../components/SearchSell/SearchSell';
+import AddCardForm from '../../components/CardInfoSell/CardInfoSell';
 
 const SellPage = () => {
   return (
     <div className="sell-page">
-      <h1>Sell Card</h1>
-      <p>Usa el buscador para seleccionar las cartas que deseas vender.</p>
 
       <SearchSell />
+
+      <AddCardForm />
 
       <div className="other-content">
         <p>tutututututut</p>
@@ -16,3 +17,4 @@ const SellPage = () => {
 };
 
 export default SellPage;
+
