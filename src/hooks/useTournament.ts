@@ -31,6 +31,8 @@ export const useTournament = () => {
         [form]: data
       } as NewTournamentData
     ))
+
+    console.log(createTourForm);
   }
 
   const handleAddTournament = async (): Promise<void> => {

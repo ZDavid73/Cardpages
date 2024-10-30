@@ -32,6 +32,7 @@ export const fetchTournaments = async () => {
 };
 
 export const addTournament = async (tournament: Tournament) => {
+  console.log(tournament);
   return await supabase.from('tournaments').insert([tournament]);
 };
 
