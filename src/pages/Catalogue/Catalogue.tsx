@@ -1,11 +1,15 @@
+import './Catalogue.css'
+import Header from "../../components/Header/Header"
 import Profile from "../../components/Profile/Profile"
-import { Text } from "../../theme/styledcomponents"
 
 const Catalogue = () => {
     return (
         <>
-        <Profile/>
-        <Text variant='white'>Catalogue</Text>
+        <div className="catalogue-sectionheader">
+           <Profile/>
+            <Header/> 
+        </div>
+        
         </>
     )
 }
