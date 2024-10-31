@@ -1,0 +1,30 @@
+.list {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+  }
+  
+  .list-item {
+    margin-bottom: 20px;
+    margin-right: 20px;
+    flex-basis: calc(20% - 20px); 
+    box-sizing: border-box;
+  }
+  
+  .card-image {
+    width: 100%;
+    height: auto;
+    cursor: pointer;
+    transition: transform 0.3s ease; 
+  }
+  
+  .card-image:hover {
+    transform: scale(1.1); 
+  }
+
+  @media (max-width: 700px) {
+    .list-item{
+        flex-basis: calc(50% - 20px);
+    }
+  }
