@@ -9,6 +9,7 @@ import { useSelector } from 'react-redux';
 import ProtectedRoutes from './ProtectedRoutes';
 import Dashboard from '../pages/Dashboard/Dashboard';
 import { AppState } from '../types/stateType';
+import Modal from '../components/Modal/Modal';
 
 const AppRouter = () => {
   const user = useSelector((state: AppState) => state.user);
@@ -18,6 +19,7 @@ const AppRouter = () => {
     <BrowserRouter>
       <>
         <Navbar isLoggedIn={isLoggedIn}/>
+        <Modal/>
         
         
         <Routes>
