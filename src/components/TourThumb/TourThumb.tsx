@@ -4,6 +4,7 @@ import { Tournament } from '../../types/tournamentTypes';
 import './TourThumb.css';
 import { FaLocationPin } from 'react-icons/fa6';
 import { AppState } from '../../types/stateType';
+import useModal from '../../hooks/useModal';
 
 type TourThumbProps = {
     tournament: Tournament
@@ -11,6 +12,7 @@ type TourThumbProps = {
 
 const TourThumb = ({ tournament }: TourThumbProps) => {
     const { user } = useSelector((state: AppState) => state);
+    const { handleOpen } = useModal();
 
     return (
         <section 
@@ -24,7 +26,7 @@ const TourThumb = ({ tournament }: TourThumbProps) => {
                     Start
                 </Button>
                 :
-                <Button variant='gray' onClick={() => {}}>
+                <Button variant='gray' onClick={() => handleOpen('joinTournament')}>
                     Join
                 </Button>
             }
