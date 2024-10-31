@@ -1,14 +1,14 @@
 import useSearchSell from '../../hooks/useSearchSell';
-import { input } from '../../theme/styledcomponents';
+import { Input, Tittle} from '../../theme/styledcomponents';
 
 const SearchSell = () => {
   const { query, results, error, selectedCards, setQuery, handleCardClick } = useSearchSell();
 
   return (
     <div className="search-sell-container">
-      <h1>Sell Card</h1>
+      <Tittle variant='white'>Sell Card</Tittle>
 
-      <input
+      <Input variant='searchgray'
         type="text"
         value={query}
         onChange={(e) => setQuery(e.target.value)}
