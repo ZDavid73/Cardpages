@@ -1,7 +1,10 @@
 import './Header.css'
 import {Container, Tittle, Text} from '../../theme/styledcomponents';
+import { useSelector } from "react-redux";
+import { AppState } from "../../types/stateType";
 
 const Header = () => {
+  const user = useSelector((state: AppState) => state.user);
     return (
       <div className='calatogues-header'>
         <div className='catalogues-image' 
@@ -16,7 +19,7 @@ const Header = () => {
           }}
           ></div>
         <Container variant='small' className='username-calatogues'>
-            <Tittle variant='white'>Valentina's catalogue</Tittle>
+            <Tittle variant='white'>{user.username}'s catalogue</Tittle>
             <Text variant='purple' className='number-of-sales'>0 sales</Text>
         </Container>
       </div>
