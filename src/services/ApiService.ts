@@ -16,6 +16,7 @@ export const searchCards = async (query: string): Promise<Card[]> => {
       small: card.images.small,
       large: card.images.large,
     },
+    flavorText: card.flavorText,
   }));
 
   return cards;
@@ -36,6 +37,7 @@ export const searchCardById = async (id: string): Promise<Card> => {
       small: response.data.data.images.small,
       large: response.data.data.images.large,
     },
+    flavorText: response.data.data.flavorText,
   };
 
   return card;
