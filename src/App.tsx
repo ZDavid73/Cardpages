@@ -1,6 +1,6 @@
 import { useDispatch } from "react-redux";
 import AppRouter from "./routes/appRoutes";
-import { useEffect } from "react";
+import { useEffect, useMemo } from "react";
 import { getAuthUserId } from "./utils/storage";
 import { getUserInfo } from "./services/databaseService";
 import { login } from "./features/auth/userSlice";
@@ -8,8 +8,9 @@ import { login } from "./features/auth/userSlice";
 const App = () => {
     const dispatch = useDispatch();
 
+    const userId = useMemo(() => getAuthUserId(), []);
+
     useEffect(() => {
-        const userId = getAuthUserId();
         if (userId){
             getUserInfo(userId).then((user) => {
                 if (user){
@@ -17,7 +18,7 @@ const App = () => {
                 }
             })
         }
-    }, [dispatch]);
+    }, [userId, dispatch]);
 
     return (
         <AppRouter />
