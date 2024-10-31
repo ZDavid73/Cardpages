@@ -7,9 +7,9 @@ interface BracketProps {
 }
 
 const Bracket: React.FC<BracketProps> = ({ rounds, onWin }) => (
-  <div className="bracket">
+  <div className="bracket-tree">
     {rounds.map((round, roundIdx) => (
-      <div key={roundIdx} className="round">
+      <div key={roundIdx} className="round-tree">
         <h3>Ronda {roundIdx + 1}</h3>
         {round.map((match, matchIdx) => (
           <MatchNode
