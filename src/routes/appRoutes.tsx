@@ -36,6 +36,7 @@ const AppRouter = () => {
             <Route path="/tournaments" element={<Tournament />} />
             <Route path="/about" element={< SearchSell/>} />
             <Route path="/search" element={<SearchPage/>} />
+            <Route path="/about" element={<About/>} />
             
           </Route>
           </Routes>
