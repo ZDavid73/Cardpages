@@ -3,7 +3,7 @@ import { HomePage, SearchPage } from '../pages/imports';
 import { Login, Navbar, Register } from '../components/imports';
 import Catalogue from '../pages/Catalogue/Catalogue';
 import Purchases from '../pages/Purchases/Purchases';
-import About from '../pages/About/About';
+import AboutPage from '../pages/About/About';
 import Tournament from '../pages/TournamentPage/TournamentPage';
 import { useSelector } from 'react-redux';
 import ProtectedRoutes from './ProtectedRoutes';
@@ -36,7 +36,7 @@ const AppRouter = () => {
             <Route path="/tournaments" element={<Tournament />} />
             <Route path="/about" element={< SearchSell/>} />
             <Route path="/search" element={<SearchPage/>} />
-            <Route path="/about" element={<About/>} />
+            <Route path="/about" element={<AboutPage/>} />
             
           </Route>
           </Routes>

@@ -22,8 +22,11 @@ const useModal = () => {
                 return <CreateTour/>
 
                 case "createDeck":
-                return <AddDeck/>
-                
+                return <AddDeck />;
+
+                case "createCard":
+                return <AddDeck />;
+
                 default:
                 return null;
         }

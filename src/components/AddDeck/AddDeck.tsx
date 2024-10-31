@@ -1,7 +1,7 @@
 const AddDeck = () => {
     return (
       <div className='catalogues-deckmodal'>
-        <p>Add deck</p>
+        <p>Deck added</p>
       </div>
     );
   };

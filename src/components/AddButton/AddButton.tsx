@@ -1,9 +1,9 @@
+import { useState } from 'react';
 import './AddButton.css';
 import useModal from '../../hooks/useModal';
-import { useState } from 'react';
 
 const AddButton = () => {
-  const { handleOpen, renderModalContent } = useModal();
+  const { handleOpen } = useModal();
   const [showOptions, setShowOptions] = useState(false);
 
   const toggleOptions = () => {
@@ -28,7 +28,6 @@ const AddButton = () => {
           <button onClick={() => handleOptionClick('Add Deck')}>Add Deck</button>
         </div>
       )}
-      {renderModalContent()}
     </div>
   );
 };
