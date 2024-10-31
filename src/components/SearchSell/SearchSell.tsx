@@ -1,5 +1,5 @@
 import useSearchSell from '../../hooks/useSearchSell';
-import { Input, Tittle} from '../../theme/styledcomponents';
+import { Input, Tittle } from '../../theme/styledcomponents';
 import './SearchSell.css';
 
 const SearchSell = () => {
@@ -9,7 +9,8 @@ const SearchSell = () => {
     <div className="search-sell-container">
       <Tittle variant='white'>Sell Card</Tittle>
 
-      <Input variant='searchgray'
+      <Input
+        variant='searchgray'
         type="text"
         value={query}
         onChange={(e) => setQuery(e.target.value)}
