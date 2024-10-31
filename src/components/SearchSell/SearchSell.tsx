@@ -1,4 +1,5 @@
 import useSearchSell from '../../hooks/useSearchSell';
+import { input } from '../../theme/styledcomponents';
 
 const SearchSell = () => {
   const { query, results, error, selectedCards, setQuery, handleCardClick } = useSearchSell();
