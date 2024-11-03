@@ -36,7 +36,9 @@ export const useTournament = () => {
     console.log(createTourForm);
   }
 
-  const handleAddTournament = async (): Promise<void> => {
+  const handleAddTournament = async (e: React.MouseEvent<HTMLButtonElement, MouseEvent>): Promise<void> => {
+    e.preventDefault();
+
     if (!createTourForm) {
       console.error('Create tournament form data is missing');
       return;
@@ -71,7 +73,8 @@ export const useTournament = () => {
     ))
   }
 
-  const handleAddPlayer = async (tourId: string) => {
+  const handleAddPlayer = async (tourId: string, e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
+    e.preventDefault();
 
     console.log(addPlayerToTournamentForm);
 
@@ -90,6 +93,8 @@ export const useTournament = () => {
     if (error) {
       console.error('Error adding player to tournament in Supabase:', error.message);
     }
+
+    dispatch(closeModal());
   }
 
   const handleFinishTournament = async (tournamentId: string): Promise<void> => {

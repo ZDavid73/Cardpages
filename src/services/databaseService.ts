@@ -48,25 +48,19 @@ export const addPlayerToTournament = async (id: string, player: Player) => {
   .single();
 
   if (fetchError) {
-    throw new Error(`Error fetching tournament data: ${fetchError.message}`);
+    return { data: null, error: fetchError }; // Return early if fetch fails
   }
 
-  console.log(data);
-
-  // Step 2: Append the new player to the existing players array
+  // Add the new player to the players array
   const updatedPlayers = data.players ? [...data.players, player] : [player];
 
-  console.log(updatedPlayers);
+  // Update the tournament with the new players array
+  const { error } = await supabase
+  .from('tournaments')
+  .update({ players: updatedPlayers })
+  .eq('id', id);
 
-  // Step 3: Update the tournament record with the new players array
-  const { error: updateError } = await supabase
-    .from('tournaments')
-    .update({ players: updatedPlayers })
-    .eq('id', id);
-
-  if (updateError) {
-    throw new Error(`Error updating tournament data: ${updateError.message}`);
-  }
+  return { data: updatedPlayers, error }; // Return the response object with data and error
 };
 
 export const finishTournament = async (id: string, rounds: Round[]) => {

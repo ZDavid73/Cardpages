@@ -12,6 +12,8 @@ const JoinTour = () => {
     const { handleClose } = useModal()
     const { handleAddPlayer, handleChangeAddPlayerToTournament } = useTournament()
 
+    console.log(modalDetails)
+
     if (isTournament(modalDetails)) {
         return (
             <Container variant='big'>
@@ -43,7 +45,7 @@ const JoinTour = () => {
                                 <option value="deck2">Deck 2</option>
                             </select>
 
-                            <Button variant='purple' type="submit" onClick={() => handleAddPlayer(modalDetails.id)}>Join me in!</Button>
+                            <Button variant='purple' type="submit" onClick={(e) => handleAddPlayer(modalDetails.id, e)}>Join me in!</Button>
                         </form>
                     </section>
                 </section>

@@ -38,7 +38,7 @@ const CreateTour = () => {
                     <label htmlFor="max"><Text variant="white">Number of participants</Text></label>
                     <Input variant="searchwhite" type="number" id="max" name="max" onChange={(e) => handleChangeCreateTourForm(e.target.value, e.target.name)}  required/>
 
-                    <Button onClick={() => handleAddTournament()} variant="purple">Create Tournament</Button>
+                    <Button onClick={(e) => handleAddTournament(e)} variant="purple" type="submit">Create Tournament</Button>
                     </div>
                 </form>
             </section>
