@@ -12,7 +12,7 @@ const JoinTour = () => {
     const userId = useSelector((state: AppState) => state.user.id);
 
     const { handleClose } = useModal()
-    const { handleAddPlayer, handleChangeAddPlayerToTournament } = useTournament()
+    const { handleAddPlayer, handleChangeAddPlayerToTournament, handleRemovePlayer } = useTournament()
 
     if (isTournament(modalDetails)) {
         return (
@@ -40,7 +40,12 @@ const JoinTour = () => {
 
                     <section className='join-tour-form'>
                         { modalDetails.players.some(player => player.id === userId) ?
-                            <Text variant='white'>You are already in this tournament</Text>
+                            <>
+                            <Text variant='white'>You are already in this tournament!</Text>
+                            <Button variant='purple' onClick={() => handleRemovePlayer(modalDetails.id)}>
+                                Abandon tournament
+                            </Button>
+                            </>
                             :
                             <form>
                             <select name="deck" id="seldeck" onChange={(e) => handleChangeAddPlayerToTournament(e.target.value, e.target.name)}>

@@ -63,6 +63,29 @@ export const addPlayerToTournament = async (id: string, player: Player) => {
   return { data: updatedPlayers, error }; // Return the response object with data and error
 };
 
+export const removePlayerFromTournament = async (id: string, playerId: string) => {
+  const { data, error: fetchError } = await supabase
+  .from('tournaments')
+  .select('players')
+  .eq('id', id)
+  .single();
+
+  if (fetchError) {
+    return { data: null, error: fetchError }; // Return early if fetch fails
+  }
+
+  // Remove the player from the players array
+  const updatedPlayers = data.players.filter((player: Player) => player.id !== playerId);
+
+  // Update the tournament with the new players array
+  const { error } = await supabase
+  .from('tournaments')
+  .update({ players: updatedPlayers })
+  .eq('id', id);
+
+  return { data: updatedPlayers, error }; // Return the response object with data and error
+};
+
 export const finishTournament = async (id: string, rounds: Round[]) => {
   return await supabase
     .from('tournaments')

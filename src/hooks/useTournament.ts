@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { addTournament, addPlayerToTournament } from '../services/databaseService'; // Importamos desde databaseService
+import { addTournament, addPlayerToTournament, removePlayerFromTournament } from '../services/databaseService'; // Importamos desde databaseService
 import { NewTournamentData, Player, Tournament } from "../types/tournamentTypes";
 import { useDispatch, useSelector } from "react-redux";
 import { AppState } from "../types/stateType";
@@ -77,9 +77,20 @@ export const useTournament = () => {
     dispatch(closeModal());
   }
 
+  const handleRemovePlayer = async (tourId: string) => {
+    const { error } = await removePlayerFromTournament(tourId, user.id);
+
+    if (error) {
+      console.error('Error removing player from tournament in Supabase:', error.message);
+    }
+
+    dispatch(closeModal());
+  }
+
   return {
     handleAddTournament,
     handleAddPlayer,
+    handleRemovePlayer,
     handleChangeAddPlayerToTournament,
     handleChangeCreateTourForm,
   };
