@@ -29,7 +29,18 @@ export const fetchAllTournaments = createAsyncThunk(
 export const tournamentSlice = createSlice({
   name: 'tournaments',
   initialState,
-  reducers: {},
+  reducers: {
+    insertTourData: (state, action) => {
+      state.tournaments.push(action.payload);
+    },
+    updateTourData: (state, action) => {
+      const index = state.tournaments.findIndex(tour => tour.id === action.payload.id);
+      state.tournaments[index] = action.payload;
+    },
+    deleteTourData: (state, action) => {
+      state.tournaments = state.tournaments.filter(tour => tour.id !== action.payload);
+    },
+  },
   extraReducers: (builder) => {
     builder
       .addCase(fetchAllTournaments.pending, (state) => {
@@ -46,5 +57,7 @@ export const tournamentSlice = createSlice({
       });
   },
 })
+
+export const { insertTourData, updateTourData, deleteTourData } = tournamentSlice.actions
 
 export default tournamentSlice.reducer

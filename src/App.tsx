@@ -4,8 +4,8 @@ import { useEffect, useMemo } from "react";
 import { getAuthUserId } from "./utils/storage";
 import { getUserInfo } from "./services/databaseService";
 import { login } from "./features/auth/userSlice";
-import { fetchAllTournaments } from "./features/tournamentSlice";
 import { AppDispatch } from "./store/store";
+import DataSync from "./components/DataSync/DataSync";
 
 const App = () => {
     const dispatch = useDispatch<AppDispatch>();
@@ -13,9 +13,7 @@ const App = () => {
 
     //PENDIENTE: hacer ese mundo de fetchs en otro archivo y llamarlo desde acá
 
-    useEffect(() => {
-        dispatch(fetchAllTournaments())
-    }, )
+    
 
     useEffect(() => {
         if (userId){
@@ -28,7 +26,10 @@ const App = () => {
     }, [userId, dispatch]);
 
     return (
+        <>
+        <DataSync/>
         <AppRouter />
+        </>
     );
 }
 
