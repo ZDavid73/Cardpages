@@ -2,15 +2,20 @@ import React from 'react';
 //import * as d3 from 'd3';
 
 interface MatchNodeProps {
-  match: string[]; 
+  match: string[];
   onWin: (winner: string) => void;
 }
 
 const MatchNode: React.FC<MatchNodeProps> = ({ match, onWin }) => {
-   const handleDrag = d3.drag<SVGElement, unknown>().on('end', (event: d3.D3DragEvent<SVGElement, unknown, unknown>) => {
-    const winner = event.subject?.textContent;
-    if (winner) onWin(winner);
-  });
+  const handleDrag = d3.drag<SVGElement, unknown>()
+    .on('start', (event) => {
+      d3.select(event.sourceEvent.target).style('opacity', 0.5);
+    })
+    .on('end', (event, d) => {
+      const winner = d3.select(event.sourceEvent.target).text();
+      d3.select(event.sourceEvent.target).style('opacity', 1);
+      onWin(winner);
+    });
 
   return (
     <div className="match-node">

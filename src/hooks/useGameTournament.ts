@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 
 export const useGameTournament = (players: string[]) => {
   const [rounds, setRounds] = useState<string[][][]>([]);
+  const [results, setResults] = useState<string[]>([]);
 
   useEffect(() => {
     if (players.length > 1) {
@@ -22,7 +23,11 @@ export const useGameTournament = (players: string[]) => {
     updatedRounds[nextRoundIdx][Math.floor(matchIdx / 2)].push(winner);
 
     setRounds(updatedRounds);
+
+    if (nextRoundIdx === rounds.length) {
+      setResults((prev) => [...prev, winner]);
+    }
   };
 
-  return { rounds, handleWin };
+  return { rounds, handleWin, results };
 };
