@@ -1,8 +1,11 @@
 import { useDispatch, useSelector } from "react-redux";
 import { AppState } from "../types/stateType";
-import { openModal, closeModal } from "../features/modalSlice";
+import { openModal, closeModal, setModalDetails } from "../features/modalSlice";
 import CreateTour from "../components/CreateTour/CreateTour";
 import JoinTour from "../components/JoinTour/JoinTour";
+import { Tournament } from "../types/tournamentTypes";
+import { Deck } from "../types/deckTypes";
+import { Card } from "../types/cardTypes";
 
 const useModal = () => {
     const dispatch = useDispatch();
@@ -12,7 +15,8 @@ const useModal = () => {
         dispatch(closeModal());
     }
 
-    const handleOpen = (modal: string) => {
+    const handleOpen = (modal: string, details?: Tournament | Deck | Card) => {
+        dispatch(setModalDetails(details));
         dispatch(openModal(modal));
     }
 

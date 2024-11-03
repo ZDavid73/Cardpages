@@ -6,14 +6,12 @@ export interface TournamentState {
     tournaments: Tournament[];
     loading: boolean;
     error: string | null;
-    tournamentDetails: Tournament | null;
 }
 
 const initialState: TournamentState = {
     tournaments: [],
     loading: false,
     error: null,
-    tournamentDetails: null,
 }
 
 export const fetchAllTournaments = createAsyncThunk(
@@ -31,11 +29,7 @@ export const fetchAllTournaments = createAsyncThunk(
 export const tournamentSlice = createSlice({
   name: 'tournaments',
   initialState,
-  reducers: {
-    setTournamentDetails: (state, action) => {
-      state.tournamentDetails = action.payload;
-    },
-  },
+  reducers: {},
   extraReducers: (builder) => {
     builder
       .addCase(fetchAllTournaments.pending, (state) => {
