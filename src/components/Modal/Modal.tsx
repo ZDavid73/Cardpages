@@ -13,7 +13,9 @@ const Modal = () => {
     return (
         createPortal(
             <div className="modal-overlay">
-                { renderModalContent() }
+                <div className="modal-content">
+                {renderModalContent()}
+                </div>
             </div>,
             document.getElementById('root') as HTMLElement
         )

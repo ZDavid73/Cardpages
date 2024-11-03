@@ -19,3 +19,13 @@
     flex-direction: column;
     gap: 0;
 }
+
+@media (max-width: 768px){
+    .create-tour-forms form{
+        flex-direction: column;
+    }
+
+    .create-tour-forms {
+        width: 80vw;
+    }
+}

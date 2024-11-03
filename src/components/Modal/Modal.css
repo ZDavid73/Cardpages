@@ -10,3 +10,12 @@
     justify-content: center;
     align-items: center;
 }
+
+.modal-content {
+    max-height: 80vh; 
+    overflow-y: auto; 
+}
+
+.modal-overlay.centered .modal-content {
+    align-self: center;
+}
