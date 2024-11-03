@@ -24,7 +24,7 @@ const Tournament = () => {
 
         { tournaments.tournaments.length > 0  &&
         tournaments.tournaments.map((t) => (
-            <TourThumb tournament={t}/>
+            <TourThumb key={t.id} tournament={t}/>
         ))
         }
         </>

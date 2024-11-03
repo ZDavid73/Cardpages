@@ -10,6 +10,11 @@ export interface Round {
     matches: Match[]; 
 };
 
+export interface Player {
+    id: string;
+    deck: string;
+}
+
 export interface Tournament {
     id: string;
     picture: string;
@@ -21,7 +26,7 @@ export interface Tournament {
     max: number;
     host: string;
     status: string;
-    players: string[];
+    players: Player[];
     rounds: Round[];
 }
 

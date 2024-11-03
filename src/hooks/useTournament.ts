@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
-import { fetchTournaments, addTournament, removeTournament, addPlayerToTournament, finishTournament } from '../services/databaseService'; // Importamos desde databaseService
-import { NewTournamentData, Tournament } from "../types/tournamentTypes";
+import { fetchTournaments, addTournament, addPlayerToTournament, finishTournament } from '../services/databaseService'; // Importamos desde databaseService
+import { NewTournamentData, Player, Tournament } from "../types/tournamentTypes";
 import { useDispatch, useSelector } from "react-redux";
 import { AppState } from "../types/stateType";
 import { closeModal } from "../features/modalSlice";
@@ -9,6 +9,7 @@ export const useTournament = () => {
   const user = useSelector((state: AppState) => state.user);
   const [tournaments, setTournaments] = useState<Tournament[]>([]);
   const [createTourForm, setCreateTourForm] = useState<NewTournamentData | null>(null);
+  const [addPlayerToTournamentForm, setAddPlayerToTournamentForm] = useState<Player | null>(null);
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -59,33 +60,37 @@ export const useTournament = () => {
     dispatch(closeModal());
   };
 
-  const handleRemoveTournament = async (id: string): Promise<void> => {
-    setTournaments((prev) => prev.filter((t) => t.id !== id));
+  const handleChangeAddPlayerToTournament = (data: string, form: string) => {
+    console.log(data, form);
+    console.log(addPlayerToTournamentForm);
+    setAddPlayerToTournamentForm(
+      (prev) => ({
+        ...prev,
+        [form]: data
+      } as Player
+    ))
+  }
 
-    const { error } = await removeTournament(id); // Asegúrate de que removeTournament devuelve { error: Error | null }
+  const handleAddPlayer = async (tourId: string) => {
+
+    console.log(addPlayerToTournamentForm);
+
+    if ( !addPlayerToTournamentForm?.deck ) {
+      console.error('Add player to tournament form data is missing');
+      return;
+    }
+
+    const newPlayer = {
+      ...addPlayerToTournamentForm,
+      id: user.id,
+    }
+
+    const { error } = await addPlayerToTournament(tourId, newPlayer);
+
     if (error) {
-      console.error('Error removing tournament from Supabase:', error.message);
+      console.error('Error adding player to tournament in Supabase:', error.message);
     }
-  };
-
-  const handleAddPlayerToTournament = async (id: string, player: string): Promise<void> => {
-    setTournaments((prev) =>
-      prev.map((t) => {
-        if (t.id === id) {
-          return { ...t, players: [...t.players, player] };
-        }
-        return t;
-      })
-    );
-
-    const tournament = tournaments.find((t) => t.id === id);
-    if (tournament) {
-      const { error } = await addPlayerToTournament(id, [...tournament.players, player]); // Asegúrate de que addPlayerToTournament devuelve { error: Error | null }
-      if (error) {
-        console.error('Error adding player to Supabase:', error.message);
-      }
-    }
-  };
+  }
 
   const handleFinishTournament = async (tournamentId: string): Promise<void> => {
     setTournaments((prev) =>
@@ -113,8 +118,8 @@ export const useTournament = () => {
   return {
     tournaments,
     handleAddTournament,
-    handleRemoveTournament,
-    handleAddPlayerToTournament,
+    handleAddPlayer,
+    handleChangeAddPlayerToTournament,
     handleFinishTournament,
     handleChangeCreateTourForm,
     startTournament

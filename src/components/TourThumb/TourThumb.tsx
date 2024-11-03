@@ -11,7 +11,7 @@ type TourThumbProps = {
 }
 
 const TourThumb = ({ tournament }: TourThumbProps) => {
-    const { user } = useSelector((state: AppState) => state);
+    const id = useSelector((state: AppState) => state.user.id);
     const { handleOpen } = useModal();
 
     return (
@@ -21,12 +21,12 @@ const TourThumb = ({ tournament }: TourThumbProps) => {
         >
             <div className='tour-button'>
             {
-                user.id === tournament.host ? 
+                id === tournament.host ? 
                 <Button variant='purple' onClick={() => {}}>
                     Start
                 </Button>
                 :
-                <Button variant='gray' onClick={() => handleOpen('joinTournament')}>
+                <Button variant='gray' onClick={() => handleOpen('joinTournament', tournament)}>
                     Join
                 </Button>
             }

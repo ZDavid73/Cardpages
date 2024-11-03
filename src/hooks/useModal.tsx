@@ -9,7 +9,7 @@ import { Card } from "../types/cardTypes";
 
 const useModal = () => {
     const dispatch = useDispatch();
-    const { modal } = useSelector((state: AppState) => state);
+    const modal = useSelector((state: AppState) => state.modal);
 
     const handleClose = () => {
         dispatch(closeModal());

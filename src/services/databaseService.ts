@@ -1,6 +1,6 @@
 import { supabase } from './supabaseClient';
 import { Deck } from '../types/deckTypes';
-import { Round, Tournament } from '../types/tournamentTypes';
+import { Player, Round, Tournament } from '../types/tournamentTypes';
 import { UserState } from '../features/auth/userSlice';
 
 // Cards-related functions
@@ -40,11 +40,33 @@ export const removeTournament = async (id: string) => {
   return await supabase.from('tournaments').delete().eq('id', id);
 };
 
-export const addPlayerToTournament = async (id: string, players: string[]) => {
-  return await supabase
+export const addPlayerToTournament = async (id: string, player: Player) => {
+  const { data, error: fetchError } = await supabase
+  .from('tournaments')
+  .select('players')
+  .eq('id', id)
+  .single();
+
+  if (fetchError) {
+    throw new Error(`Error fetching tournament data: ${fetchError.message}`);
+  }
+
+  console.log(data);
+
+  // Step 2: Append the new player to the existing players array
+  const updatedPlayers = data.players ? [...data.players, player] : [player];
+
+  console.log(updatedPlayers);
+
+  // Step 3: Update the tournament record with the new players array
+  const { error: updateError } = await supabase
     .from('tournaments')
-    .update({ players })
+    .update({ players: updatedPlayers })
     .eq('id', id);
+
+  if (updateError) {
+    throw new Error(`Error updating tournament data: ${updateError.message}`);
+  }
 };
 
 export const finishTournament = async (id: string, rounds: Round[]) => {
