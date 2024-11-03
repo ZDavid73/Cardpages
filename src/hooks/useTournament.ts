@@ -1,5 +1,5 @@
-import { useEffect, useState } from "react";
-import { fetchTournaments, addTournament, addPlayerToTournament, finishTournament } from '../services/databaseService'; // Importamos desde databaseService
+import { useState } from "react";
+import { addTournament, addPlayerToTournament } from '../services/databaseService'; // Importamos desde databaseService
 import { NewTournamentData, Player, Tournament } from "../types/tournamentTypes";
 import { useDispatch, useSelector } from "react-redux";
 import { AppState } from "../types/stateType";
@@ -7,23 +7,9 @@ import { closeModal } from "../features/modalSlice";
 
 export const useTournament = () => {
   const user = useSelector((state: AppState) => state.user);
-  const [tournaments, setTournaments] = useState<Tournament[]>([]);
   const [createTourForm, setCreateTourForm] = useState<NewTournamentData | null>(null);
   const [addPlayerToTournamentForm, setAddPlayerToTournamentForm] = useState<Player | null>(null);
   const dispatch = useDispatch();
-
-  useEffect(() => {
-    const fetchAllTournaments = async () => {
-      const { data, error } = await fetchTournaments();
-      if (error) {
-        console.error('Error fetching tournaments:', error.message);
-      } else {
-        setTournaments(data || []);
-      }
-    };
-    
-    fetchAllTournaments();
-  }, []);
 
   const handleChangeCreateTourForm = (data:string, form: string) => {
     setCreateTourForm(
@@ -32,8 +18,6 @@ export const useTournament = () => {
         [form]: data
       } as NewTournamentData
     ))
-
-    console.log(createTourForm);
   }
 
   const handleAddTournament = async (e: React.MouseEvent<HTMLButtonElement, MouseEvent>): Promise<void> => {
@@ -63,8 +47,6 @@ export const useTournament = () => {
   };
 
   const handleChangeAddPlayerToTournament = (data: string, form: string) => {
-    console.log(data, form);
-    console.log(addPlayerToTournamentForm);
     setAddPlayerToTournamentForm(
       (prev) => ({
         ...prev,
@@ -75,8 +57,6 @@ export const useTournament = () => {
 
   const handleAddPlayer = async (tourId: string, e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
     e.preventDefault();
-
-    console.log(addPlayerToTournamentForm);
 
     if ( !addPlayerToTournamentForm?.deck ) {
       console.error('Add player to tournament form data is missing');
@@ -97,36 +77,10 @@ export const useTournament = () => {
     dispatch(closeModal());
   }
 
-  const handleFinishTournament = async (tournamentId: string): Promise<void> => {
-    setTournaments((prev) =>
-      prev.map((t) => {
-        if (t.id === tournamentId) {
-          return { ...t, status: 'finished' };
-        }
-        return t;
-      })
-    );
-
-    const tournament = tournaments.find((t) => t.id === tournamentId);
-    if (tournament) {
-          const { error } = await finishTournament(tournamentId, tournament.rounds); // Asegúrate de que finishTournament devuelve { error: Error | null }
-      if (error) {
-        console.error('Error finishing tournament in Supabase:', error.message);
-      }
-    }
-  };
-
-  const startTournament = () => {
-    
-  }
-
   return {
-    tournaments,
     handleAddTournament,
     handleAddPlayer,
     handleChangeAddPlayerToTournament,
-    handleFinishTournament,
     handleChangeCreateTourForm,
-    startTournament
   };
 };

@@ -9,10 +9,10 @@ import { useTournament } from '../../hooks/useTournament';
 
 const JoinTour = () => {
     const { modalDetails } = useSelector((state: AppState) => state.modal);
+    const userId = useSelector((state: AppState) => state.user.id);
+
     const { handleClose } = useModal()
     const { handleAddPlayer, handleChangeAddPlayerToTournament } = useTournament()
-
-    console.log(modalDetails)
 
     if (isTournament(modalDetails)) {
         return (
@@ -39,14 +39,17 @@ const JoinTour = () => {
                     </section>
 
                     <section className='join-tour-form'>
-                        <form>
+                        { modalDetails.players.some(player => player.id === userId) ?
+                            <Text variant='white'>You are already in this tournament</Text>
+                            :
+                            <form>
                             <select name="deck" id="seldeck" onChange={(e) => handleChangeAddPlayerToTournament(e.target.value, e.target.name)}>
                                 <option value="deck1">Deck 1</option>
                                 <option value="deck2">Deck 2</option>
                             </select>
-
                             <Button variant='purple' type="submit" onClick={(e) => handleAddPlayer(modalDetails.id, e)}>Join me in!</Button>
-                        </form>
+                            </form>
+                        }
                     </section>
                 </section>
             </Container>
