@@ -10,6 +10,7 @@ import ProtectedRoutes from './ProtectedRoutes';
 import Dashboard from '../pages/Dashboard/Dashboard';
 import { AppState } from '../types/stateType';
 import SearchSell from '../components/SearchSell/SearchSell';
+import SellPage from '../pages/SellPage/SellPage';
 
 const AppRouter = () => {
   const user = useSelector((state: AppState) => state.user);
@@ -32,7 +33,7 @@ const AppRouter = () => {
             <Route path="/catalogue" element={<Catalogue />} />
             <Route path="/purchases" element={<Purchases />} />
             <Route path="/tournaments" element={<Tournament />} />
-            <Route path="/about" element={< SearchSell/>} />
+            <Route path="/about" element={< SellPage/>} />
             <Route path="/search" element={<SearchPage/>} />
             
           </Route>
