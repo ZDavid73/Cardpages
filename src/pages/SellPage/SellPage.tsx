@@ -3,16 +3,15 @@ import CardForm from '../../components/CardInfoSell/CardInfoSell';
 import { Card } from '../../types/cardTypes';
 
 const SellPage = () => {
+  
+  const [selectedCard, setSelectedCard] = useState<Card | null>(null);
+
   return (
     <div className="sell-page">
-
-      <SearchSell />
-
-      <CardForm />
-
-      <div className="other-content">
-        <p>tutututututut</p>
-      </div>
+      <h1>Sell Card</h1>
+      <p>Usa el buscador para seleccionar la carta que deseas vender.</p>
+      <SearchSell selectedCard={selectedCard} setSelectedCard={setSelectedCard} />
+      <CardForm selectedCard={selectedCard} />
     </div>
   );
 };
