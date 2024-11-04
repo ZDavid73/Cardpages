@@ -1,16 +1,27 @@
+import React from 'react';
 import useSearchSell from '../../hooks/useSearchSell';
 import { Input, Tittle } from '../../theme/styledcomponents';
 import './SearchSell.css';
+import { Card } from '../../types/cardTypes';
 
-const SearchSell = () => {
-  const { query, results, error, selectedCards, setQuery, handleCardClick } = useSearchSell();
+interface SearchSellProps {
+  selectedCard: Card | null;
+  setSelectedCard: (card: Card) => void;
+}
+
+const SearchSell: React.FC<SearchSellProps> = ({ selectedCard, setSelectedCard }) => {
+  const { query, results, error, setQuery } = useSearchSell();
+
+  const handleCardClick = (card: Card) => {
+    setSelectedCard(card);
+  };
 
   return (
     <div className="search-sell-container">
-      <Tittle variant='white'>Sell Card</Tittle>
+      <Tittle variant="white">Sell Card</Tittle>
 
       <Input
-        variant='searchgray'
+        variant="searchgray"
         type="text"
         value={query}
         onChange={(e) => setQuery(e.target.value)}
@@ -28,7 +39,7 @@ const SearchSell = () => {
         {results.map((card) => (
           <div
             key={card.id}
-            className="card-result"
+            className={`card-result ${selectedCard?.id === card.id ? 'selected' : ''}`}
             onClick={() => handleCardClick(card)}
           >
             <img src={card.images.small} alt={card.name} />
@@ -36,20 +47,6 @@ const SearchSell = () => {
           </div>
         ))}
       </div>
-
-      {selectedCards.length > 0 && (
-        <div className="selected-cards">
-          <h2>Selected Cards:</h2>
-          <div className="card-grid">
-            {selectedCards.map((card) => (
-              <div key={card.id} className="card-item">
-                <img src={card.images.small} alt={card.name} />
-                <p>{card.name}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      )}
     </div>
   );
 };

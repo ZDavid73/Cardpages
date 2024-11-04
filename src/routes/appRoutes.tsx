@@ -9,7 +9,6 @@ import { useSelector } from 'react-redux';
 import ProtectedRoutes from './ProtectedRoutes';
 import Dashboard from '../pages/Dashboard/Dashboard';
 import { AppState } from '../types/stateType';
-import SearchSell from '../components/SearchSell/SearchSell';
 import SellPage from '../pages/SellPage/SellPage';
 
 const AppRouter = () => {
