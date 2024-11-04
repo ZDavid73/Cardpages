@@ -27,13 +27,14 @@
 
 .card-selected {
   border: 3px solid rgba(168, 44, 212, 0.6); 
+  background-color: #A82CD4;
   border-radius: 8px; 
   transform: scale(1.05);
 }
 
 
 @media (max-width: 700px) {
-  .results {
-    grid-template-columns: repeat(2, 1fr); 
+  .list-item{
+      flex-basis: calc(50% - 20px);
   }
 }
