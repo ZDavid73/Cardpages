@@ -25,21 +25,13 @@
   border-radius: 4px;
 }
 
-.card-result p {
-  font-size: 12px; 
-  font-weight: bold;
-  color: #333;
-  text-align: center;
-  margin-top: 8px; 
-}
-
 .card-selected {
-  border: 3px solid rgba(128, 0, 128, 0.6); 
+  border: 3px solid rgba(168, 44, 212, 0.6); 
   border-radius: 8px; 
   transform: scale(1.05);
 }
 
-/* Responsive */
+
 @media (max-width: 700px) {
   .results {
     grid-template-columns: repeat(2, 1fr); 
