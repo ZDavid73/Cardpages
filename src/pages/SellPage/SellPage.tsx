@@ -1,5 +1,5 @@
 import SearchSell from '../../components/SearchSell/SearchSell';
-import AddCardForm from '../../components/CardInfoSell/CardInfoSell';
+import CardForm from '../../components/CardInfoSell/CardInfoSell';
 
 const SellPage = () => {
   return (
@@ -7,7 +7,7 @@ const SellPage = () => {
 
       <SearchSell />
 
-      <AddCardForm />
+      <CardForm />
 
       <div className="other-content">
         <p>tutututututut</p>

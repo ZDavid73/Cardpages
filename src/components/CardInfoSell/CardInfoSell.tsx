@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-const AddCardForm = () => {
+const CardForm = () => {
   const [name, setName] = useState('');
   const [price, setPrice] = useState('');
   const [description, setDescription] = useState('');
@@ -64,4 +64,4 @@ const AddCardForm = () => {
   );
 };
 
-export default AddCardForm;
+export default CardForm;
