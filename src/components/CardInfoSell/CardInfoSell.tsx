@@ -1,62 +1,50 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
+import { Card } from '../../types/cardTypes';
 
-const CardForm = () => {
-  const [name, setName] = useState('');
+interface CardFormProps {
+  selectedCard: Card | null;
+}
+
+const CardForm: React.FC<CardFormProps> = ({ selectedCard }) => {
+  const [cardName, setCardName] = useState('');
   const [price, setPrice] = useState('');
   const [description, setDescription] = useState('');
 
-  const isFormValid = name !== '' && price !== '' && description !== '';
-
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    if (isFormValid) {
-      console.log('Post Card:', { name, price: parseFloat(price), description });
-      setName('');
-      setPrice('');
-      setDescription('');
+  useEffect(() => {
+    if (selectedCard) {
+      setCardName(selectedCard.name);
     }
+  }, [selectedCard]);
+
+  const isFormValid = cardName && price && description;
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    console.log('Card posted:', { cardName, price, description });
   };
 
   return (
-    <div className="add-card-form">
-      <h2>Add a New Card</h2>
+    <div className="card-form">
       <form onSubmit={handleSubmit}>
-        <div className="form-group">
-          <label htmlFor="name">Card Name</label>
-          <input
-            type="text"
-            id="name"
-            value={name}
-            onChange={(e) => setName(e.target.value)}
-            placeholder="Enter card name"
-            required
-          />
-        </div>
-
-        <div className="form-group">
-          <label htmlFor="price">Price</label>
-          <input
-            type="number"
-            id="price"
-            value={price}
-            onChange={(e) => setPrice(e.target.value.replace(/\D/g, ''))} 
-            placeholder="Enter price"
-            required
-          />
-        </div>
-
-        <div className="form-group">
-          <label htmlFor="description">Description</label>
-          <textarea
-            id="description"
-            value={description}
-            onChange={(e) => setDescription(e.target.value)}
-            placeholder="Enter description"
-            required
-          />
-        </div>
-
-        <button type="submit" disabled={!isFormValid} className="submit-button">
+        <input
+          type="text"
+          value={cardName}
+          onChange={(e) => setCardName(e.target.value)}
+          placeholder="Card Name"
+          disabled 
+        />
+        <input
+          type="number"
+          value={price}
+          onChange={(e) => setPrice(e.target.value)}
+          placeholder="Price"
+        />
+        <textarea
+          value={description}
+          onChange={(e) => setDescription(e.target.value)}
+          placeholder="Description"
+        />
+        <button type="submit" disabled={!isFormValid}>
           Post Card
         </button>
       </form>
