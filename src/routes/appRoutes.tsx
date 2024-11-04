@@ -19,7 +19,6 @@ const AppRouter = () => {
     <BrowserRouter>
       <>
         <Navbar isLoggedIn={isLoggedIn}/>
-        <Modal/>
         
         
         <Routes>
