@@ -3,13 +3,13 @@ import { HomePage, SearchPage } from '../pages/imports';
 import { Login, Navbar, Register } from '../components/imports';
 import Catalogue from '../pages/Catalogue/Catalogue';
 import Purchases from '../pages/Purchases/Purchases';
-import About from '../pages/About/About';
+import AboutPage from '../pages/About/About';
 import Tournament from '../pages/TournamentPage/TournamentPage';
 import { useSelector } from 'react-redux';
 import ProtectedRoutes from './ProtectedRoutes';
 import Dashboard from '../pages/Dashboard/Dashboard';
 import { AppState } from '../types/stateType';
-import SellPage from '../pages/SellPage/SellPage';
+import SearchSell from '../components/SearchSell/SearchSell';
 
 const AppRouter = () => {
   const user = useSelector((state: AppState) => state.user);
@@ -19,6 +19,7 @@ const AppRouter = () => {
     <BrowserRouter>
       <>
         <Navbar isLoggedIn={isLoggedIn}/>
+        <Modal/>
         
         
         <Routes>
@@ -34,6 +35,7 @@ const AppRouter = () => {
             <Route path="/tournaments" element={<Tournament />} />
             <Route path="/about" element={< SellPage/>} />
             <Route path="/search" element={<SearchPage/>} />
+            <Route path="/about" element={<AboutPage/>} />
             
           </Route>
           </Routes>

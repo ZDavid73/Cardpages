@@ -1,15 +1,21 @@
 import { useDispatch } from "react-redux";
 import AppRouter from "./routes/appRoutes";
-import { useEffect } from "react";
+import { useEffect, useMemo } from "react";
 import { getAuthUserId } from "./utils/storage";
 import { getUserInfo } from "./services/databaseService";
 import { login } from "./features/auth/userSlice";
+import { AppDispatch } from "./store/store";
+import DataSync from "./components/DataSync/DataSync";
 
 const App = () => {
-    const dispatch = useDispatch();
+    const dispatch = useDispatch<AppDispatch>();
+    const userId = useMemo(() => getAuthUserId(), []);
+
+    //PENDIENTE: hacer ese mundo de fetchs en otro archivo y llamarlo desde acá
+
+    
 
     useEffect(() => {
-        const userId = getAuthUserId();
         if (userId){
             getUserInfo(userId).then((user) => {
                 if (user){
@@ -17,10 +23,13 @@ const App = () => {
                 }
             })
         }
-    }, [dispatch]);
+    }, [userId, dispatch]);
 
     return (
+        <>
+        <DataSync/>
         <AppRouter />
+        </>
     );
 }
 

@@ -1,6 +1,6 @@
 import { supabase } from './supabaseClient';
 import { Deck } from '../types/deckTypes';
-import { Round, Tournament } from '../types/tournamentTypes';
+import { Player, Round, Tournament } from '../types/tournamentTypes';
 import { UserState } from '../features/auth/userSlice';
 
 // Cards-related functions
@@ -32,6 +32,7 @@ export const fetchTournaments = async () => {
 };
 
 export const addTournament = async (tournament: Tournament) => {
+  console.log(tournament);
   return await supabase.from('tournaments').insert([tournament]);
 };
 
@@ -39,11 +40,50 @@ export const removeTournament = async (id: string) => {
   return await supabase.from('tournaments').delete().eq('id', id);
 };
 
-export const addPlayerToTournament = async (id: string, players: string[]) => {
-  return await supabase
-    .from('tournaments')
-    .update({ players })
-    .eq('id', id);
+export const addPlayerToTournament = async (id: string, player: Player) => {
+  const { data, error: fetchError } = await supabase
+  .from('tournaments')
+  .select('players')
+  .eq('id', id)
+  .single();
+
+  if (fetchError) {
+    return { data: null, error: fetchError }; // Return early if fetch fails
+  }
+
+  // Add the new player to the players array
+  const updatedPlayers = data.players ? [...data.players, player] : [player];
+
+  // Update the tournament with the new players array
+  const { error } = await supabase
+  .from('tournaments')
+  .update({ players: updatedPlayers })
+  .eq('id', id);
+
+  return { data: updatedPlayers, error }; // Return the response object with data and error
+};
+
+export const removePlayerFromTournament = async (id: string, playerId: string) => {
+  const { data, error: fetchError } = await supabase
+  .from('tournaments')
+  .select('players')
+  .eq('id', id)
+  .single();
+
+  if (fetchError) {
+    return { data: null, error: fetchError }; // Return early if fetch fails
+  }
+
+  // Remove the player from the players array
+  const updatedPlayers = data.players.filter((player: Player) => player.id !== playerId);
+
+  // Update the tournament with the new players array
+  const { error } = await supabase
+  .from('tournaments')
+  .update({ players: updatedPlayers })
+  .eq('id', id);
+
+  return { data: updatedPlayers, error }; // Return the response object with data and error
 };
 
 export const finishTournament = async (id: string, rounds: Round[]) => {

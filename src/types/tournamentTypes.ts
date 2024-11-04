@@ -10,15 +10,23 @@ export interface Round {
     matches: Match[]; 
 };
 
+export interface Player {
+    id: string;
+    deck: string;
+}
+
 export interface Tournament {
     id: string;
     picture: string;
-    name: string;
     date: string;
     location: string;
+    desc: string;
+    address: string;
+    hour: string;
+    max: number;
     host: string;
     status: string;
-    players: string[];
+    players: Player[];
     rounds: Round[];
 }
 
@@ -28,8 +36,10 @@ export interface MatchPlayers {
 }
 
 export interface NewTournamentData {
-    name: string;
     date: string;
     location: string;
-    host: string;
-  };
+    desc: string;
+    address: string;
+    hour: string;
+    max: number;
+};

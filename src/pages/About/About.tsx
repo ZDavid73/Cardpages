@@ -1,7 +1,7 @@
 import Profile from "../../components/Profile/Profile";
 import { Text } from "../../theme/styledcomponents";
 
-const About = () => {
+const AboutPage = () => {
     return (
         <>
         <Profile/>
@@ -10,4 +10,4 @@ const About = () => {
     );
 }
 
-export default About;
+export default AboutPage;
