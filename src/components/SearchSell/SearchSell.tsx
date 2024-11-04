@@ -13,7 +13,7 @@ const SearchSell: React.FC<SearchSellProps> = ({ selectedCard, setSelectedCard }
   const { query, results, error, setQuery } = useSearchSell();
 
   const handleCardClick = (card: Card) => {
-    setSelectedCard(card);
+    setSelectedCard(card); 
   };
 
   return (
@@ -39,7 +39,7 @@ const SearchSell: React.FC<SearchSellProps> = ({ selectedCard, setSelectedCard }
         {results.map((card) => (
           <div
             key={card.id}
-            className={`card-result ${selectedCard?.id === card.id ? 'selected' : ''}`}
+            className={`card-result ${selectedCard?.id === card.id ? 'card-selected' : ''}`}
             onClick={() => handleCardClick(card)}
           >
             <img src={card.images.small} alt={card.name} />
