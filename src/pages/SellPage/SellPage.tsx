@@ -1,5 +1,6 @@
 import SearchSell from '../../components/SearchSell/SearchSell';
 import CardForm from '../../components/CardInfoSell/CardInfoSell';
+import { Card } from '../../types/cardTypes';
 
 const SellPage = () => {
   return (
