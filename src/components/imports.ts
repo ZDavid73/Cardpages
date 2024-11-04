@@ -10,3 +10,6 @@ export { default as Login } from './Auth/Login';
 export { default as Register } from './Auth/Register';
 export { default as Carousel } from './Carousel/Carousel';
 export {default as Footer} from './Footer/Footer';
+export {default as Bracket} from './Bracket/Bracket';
+export {default as MatchNode} from './MatchNode/MatchNode';
+export {default as Setup} from './Setup/Setup';
