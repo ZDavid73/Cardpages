@@ -36,7 +36,8 @@ const CardForm: React.FC<CardFormProps> = ({ selectedCard }) => {
           placeholder="Card Name"
           disabled 
         />
-        <input
+        <Input
+          variant="borderpurple"
           type="number"
           value={price}
           onChange={(e) => setPrice(e.target.value)}
