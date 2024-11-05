@@ -7,6 +7,7 @@ import JoinTour from "../components/JoinTour/JoinTour";
 import { Tournament } from "../types/tournamentTypes";
 import { Deck } from "../types/deckTypes";
 import { Card } from "../types/cardTypes";
+import SellPage from "../pages/SellPage/SellPage";
 
 const useModal = () => {
     const dispatch = useDispatch();
@@ -35,6 +36,9 @@ const useModal = () => {
                 default:
             case 'joinTournament':
                 return <JoinTour/>
+
+            case 'createCard':
+                return <SellPage/>
         }
     }
 
