@@ -10,6 +10,7 @@ import ProtectedRoutes from './ProtectedRoutes';
 import Dashboard from '../pages/Dashboard/Dashboard';
 import { AppState } from '../types/stateType';
 import SellPage from '../pages/SellPage/SellPage';
+import Modal from '../components/Modal/Modal';
 
 const AppRouter = () => {
   const user = useSelector((state: AppState) => state.user);
@@ -19,7 +20,7 @@ const AppRouter = () => {
     <BrowserRouter>
       <>
         <Navbar isLoggedIn={isLoggedIn}/>
-        
+        <Modal/>
         
         <Routes>
           <Route path="/" element={!isLoggedIn ? <HomePage/> : <Navigate to="/dashboard"/>} />
@@ -32,7 +33,6 @@ const AppRouter = () => {
             <Route path="/catalogue" element={<Catalogue />} />
             <Route path="/purchases" element={<Purchases />} />
             <Route path="/tournaments" element={<Tournament />} />
-            <Route path="/about" element={< SellPage/>} />
             <Route path="/search" element={<SearchPage/>} />
             <Route path="/about" element={<AboutPage/>} />
             

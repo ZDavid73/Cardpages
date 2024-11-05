@@ -13,6 +13,8 @@ const useModal = () => {
     const dispatch = useDispatch();
     const modal = useSelector((state: AppState) => state.modal);
 
+    console.log(modal);
+
     const handleClose = () => {
         dispatch(closeModal());
     }
@@ -28,9 +30,6 @@ const useModal = () => {
                 return <CreateTour/>
 
                 case "createDeck":
-                return <AddDeck />;
-
-                case "createCard":
                 return <AddDeck />;
 
                 default:
