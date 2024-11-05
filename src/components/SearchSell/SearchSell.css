@@ -5,7 +5,9 @@
   max-width: 800px; 
   margin-top: 20px;
 }
-
+.titulo {
+  margin-left: 25px;
+}
 .card-result {
   background-color: transparent; 
   border-radius: 8px;

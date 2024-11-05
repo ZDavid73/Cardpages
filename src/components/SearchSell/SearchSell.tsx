@@ -18,7 +18,8 @@ const SearchSell: React.FC<SearchSellProps> = ({ selectedCard, setSelectedCard }
 
   return (
     <div className="search-sell-container">
-      <Tittle variant="white">Sell Card</Tittle>
+      <div className='titulo'>
+      <Tittle variant="white">Sell Card</Tittle></div>
 
       <Input
         variant="searchwhite"
