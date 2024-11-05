@@ -28,7 +28,7 @@ const CardForm: React.FC<CardFormProps> = ({ selectedCard }) => {
   return (
     <div className="card-form">
       <form onSubmit={handleSubmit}>
-        <input
+        <Input
           variant="borderpurple"
           type="text"
           value={cardName}
