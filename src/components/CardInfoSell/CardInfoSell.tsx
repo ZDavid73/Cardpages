@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Card } from '../../types/cardTypes';
+import './CardInfoSell.css';
 
 interface CardFormProps {
   selectedCard: Card | null;

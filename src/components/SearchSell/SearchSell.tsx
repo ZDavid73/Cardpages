@@ -21,7 +21,7 @@ const SearchSell: React.FC<SearchSellProps> = ({ selectedCard, setSelectedCard }
       <Tittle variant="white">Sell Card</Tittle>
 
       <Input
-        variant="searchgray"
+        variant="searchwhite"
         type="text"
         value={query}
         onChange={(e) => setQuery(e.target.value)}
