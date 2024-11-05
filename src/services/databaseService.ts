@@ -22,7 +22,10 @@ export const buyCard = async (cardId: string, buyerId: string) => {
     .eq('cardId', cardId);
 };
 
-// Decks-related functions
+export const fetchDecks = async () => {
+  return await supabase.from('decks').select('*');
+}
+
 export const postDeck = async (deck: Deck) => {
   return await supabase.from('decks').insert([deck]);
 };
