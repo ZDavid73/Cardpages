@@ -43,7 +43,7 @@ const CardForm: React.FC<CardFormProps> = ({ selectedCard }) => {
           onChange={(e) => setPrice(e.target.value)}
           placeholder="Price"
         />
-        <textarea
+        <Input
           variant="boxwhite"
           value={description}
           onChange={(e) => setDescription(e.target.value)}
