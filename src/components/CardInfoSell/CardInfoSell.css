@@ -1,8 +1,11 @@
 .card-form{
     margin-top: 50px;
+    display: flex;
+    justify-content: center;
 }
 .card-form form {
     display: flex;
     flex-direction: column;
+    align-items: center;
     gap: 5px;
   }
