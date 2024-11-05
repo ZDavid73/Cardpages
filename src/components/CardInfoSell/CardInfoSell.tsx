@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Card } from '../../types/cardTypes';
-import { Input, Text } from '../../theme/styledcomponents';
+import { Input, Text,  } from '../../theme/styledcomponents';
 import './CardInfoSell.css';
 
 interface CardFormProps {
@@ -49,9 +49,9 @@ const CardForm: React.FC<CardFormProps> = ({ selectedCard }) => {
           onChange={(e) => setDescription(e.target.value)}
           placeholder="Description"
         />
-        <button type="submit" disabled={!isFormValid}>
+        <Button type="submit" disabled={!isFormValid}>
           Post Card
-        </button>
+        </Button>
       </form>
     </div>
   );
