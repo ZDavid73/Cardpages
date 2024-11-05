@@ -37,13 +37,14 @@ const CardForm: React.FC<CardFormProps> = ({ selectedCard }) => {
           disabled 
         />
         <Input
-          variant="borderpurple"
+          variant="boxwhite"
           type="number"
           value={price}
           onChange={(e) => setPrice(e.target.value)}
           placeholder="Price"
         />
         <textarea
+          variant="boxwhite"
           value={description}
           onChange={(e) => setDescription(e.target.value)}
           placeholder="Description"
