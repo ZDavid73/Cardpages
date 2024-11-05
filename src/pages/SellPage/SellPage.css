@@ -4,6 +4,7 @@
     height: 550px ; 
     background-color: #1d1d1d ;
     border-radius: 20px;
+    scrollbar-color: #ffffff #3c3c3c;
   }
 
   .sell-page > .search-sell-container {
@@ -18,3 +19,4 @@
     padding: 20px ;
     overflow-y: auto ;
   }
+  
