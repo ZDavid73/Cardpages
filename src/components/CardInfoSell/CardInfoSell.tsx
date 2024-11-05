@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Card } from '../../types/cardTypes';
+import { Input, Text } from '../../theme/styledcomponents';
 import './CardInfoSell.css';
 
 interface CardFormProps {
@@ -28,6 +29,7 @@ const CardForm: React.FC<CardFormProps> = ({ selectedCard }) => {
     <div className="card-form">
       <form onSubmit={handleSubmit}>
         <input
+          variant="borderpurple"
           type="text"
           value={cardName}
           onChange={(e) => setCardName(e.target.value)}
