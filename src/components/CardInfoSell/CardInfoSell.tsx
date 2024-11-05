@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Card } from '../../types/cardTypes';
-import { Input, Text,  } from '../../theme/styledcomponents';
+import { Input, Text, Button  } from '../../theme/styledcomponents';
 import './CardInfoSell.css';
 
 interface CardFormProps {
