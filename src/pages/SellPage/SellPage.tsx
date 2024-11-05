@@ -8,8 +8,6 @@ const SellPage = () => {
 
   return (
     <div className="sell-page">
-      <h1>Sell Card</h1>
-      <p>Usa el buscador para seleccionar la carta que deseas vender.</p>
       <SearchSell selectedCard={selectedCard} setSelectedCard={setSelectedCard} />
       <CardForm selectedCard={selectedCard} />
     </div>
