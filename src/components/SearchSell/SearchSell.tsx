@@ -43,7 +43,6 @@ const SearchSell: React.FC<SearchSellProps> = ({ selectedCard, setSelectedCard }
             onClick={() => handleCardClick(card)}
           >
             <img src={card.images.small} alt={card.name} />
-            <p>{card.name}</p>
           </div>
         ))}
       </div>
