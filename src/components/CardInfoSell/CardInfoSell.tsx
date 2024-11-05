@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Card } from '../../types/cardTypes';
-import { Input, Button  } from '../../theme/styledcomponents';
+import { Input, Button, Tittle  } from '../../theme/styledcomponents';
 import './CardInfoSell.css';
 
 interface CardFormProps {
@@ -28,6 +28,7 @@ const CardForm: React.FC<CardFormProps> = ({ selectedCard }) => {
   return (
     <div className='card-form'>
       <form onSubmit={handleSubmit}>
+
         <Input
           variant="borderpurple"
           type="text"
@@ -36,6 +37,7 @@ const CardForm: React.FC<CardFormProps> = ({ selectedCard }) => {
           placeholder="Card Name"
           disabled 
         />
+        <Tittle variant="white">Price</Tittle>
         <Input
           variant="boxwhite"
           type="number"
@@ -43,6 +45,7 @@ const CardForm: React.FC<CardFormProps> = ({ selectedCard }) => {
           onChange={(e) => setPrice(e.target.value)}
           placeholder="Price"
         />
+        <Tittle variant="white">Description</Tittle>
         <Input
           variant="boxwhite"
           value={description}
