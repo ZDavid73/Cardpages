@@ -49,7 +49,7 @@ const CardForm: React.FC<CardFormProps> = ({ selectedCard }) => {
           onChange={(e) => setDescription(e.target.value)}
           placeholder="Description"
         />
-        <Button type="submit" disabled={!isFormValid}>
+        <Button variant="purple" type="submit" disabled={!isFormValid}>
           Post Card
         </Button>
       </form>
