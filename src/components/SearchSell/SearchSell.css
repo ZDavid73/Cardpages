@@ -1,8 +1,8 @@
 .results {
   display: grid;
   grid-template-columns: repeat(3, 1fr); 
-  gap: 8px;
-  margin-top: 20px;
+  gap: 15px;
+  margin-top: 300px;
   max-width: 800px; 
   margin: 0 auto;
 }
@@ -22,13 +22,13 @@
 
 .card-result img {
   width: 100%; 
-  border-radius: 4px;
+  border-radius: 5px;
 }
 
 .card-selected {
-  border: 3px solid rgba(168, 44, 212, 0.6); 
+  border: 5px solid rgba(168, 44, 212, 0.6); 
   background-color: #A82CD4;
-  border-radius: 8px; 
+  border-radius: 9px; 
   transform: scale(1.05);
 }
 
