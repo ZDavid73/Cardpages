@@ -12,7 +12,7 @@ const AboutPage = () => {
         <HeaderAbout/>
         </div>
         <Tittle variant='white'>What We Offer</Tittle>
-
+        <Tittle variant='white'>Our Mission</Tittle>
         <Footer/>
         </>
     );
