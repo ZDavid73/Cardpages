@@ -1,35 +1,52 @@
 import React from 'react';
-//import * as d3 from 'd3';
+import { useDrag, useDrop } from 'react-dnd';
 
 interface MatchNodeProps {
   match: string[];
+  onPlacePlayer: (player: string) => void;
   onWin: (winner: string) => void;
 }
 
-const MatchNode: React.FC<MatchNodeProps> = ({ match, onWin }) => {
-  const handleDrag = d3.drag<SVGElement, unknown>()
-    .on('start', (event) => {
-      d3.select(event.sourceEvent.target).style('opacity', 0.5);
-    })
-    .on('end', (event, d) => {
-      const winner = d3.select(event.sourceEvent.target).text();
-      d3.select(event.sourceEvent.target).style('opacity', 1);
-      onWin(winner);
-    });
+const MatchNode: React.FC<MatchNodeProps> = ({ match, onPlacePlayer, onWin }) => {
+  const [{ isOver }, dropRef] = useDrop({
+    accept: 'PLAYER',
+    drop: (item: { name: string }) => onPlacePlayer(item.name),
+    collect: (monitor) => ({
+      isOver: monitor.isOver(),
+    }),
+  });
 
   return (
-    <div className="match-node">
+    <div ref={dropRef} className={`match-node ${isOver ? 'highlight' : ''}`}>
       {match.map((player, idx) => (
-        <div
-          key={idx}
-          className="player"
-          ref={(el) => {
-            if (el) d3.select(el).call(handleDrag);
-          }}
-        >
-          {player}
-        </div>
+        <PlayerSlot key={idx} player={player} onWin={onWin} />
       ))}
+    </div>
+  );
+};
+
+interface PlayerSlotProps {
+  player: string;
+  onWin: (winner: string) => void;
+}
+
+const PlayerSlot: React.FC<PlayerSlotProps> = ({ player, onWin }) => {
+  const [{ isDragging }, dragRef] = useDrag({
+    type: 'PLAYER',
+    item: { name: player },
+    canDrag: !!player,
+    collect: (monitor) => ({
+      isDragging: monitor.isDragging(),
+    }),
+  });
+
+  return (
+    <div
+      ref={dragRef}
+      className={`player-slot ${player ? 'filled' : 'empty'} ${isDragging ? 'dragging' : ''}`}
+      onClick={() => player && onWin(player)}
+    >
+      {player || 'Vacío'}
     </div>
   );
 };

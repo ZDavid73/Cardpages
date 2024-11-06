@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+import React from 'react';
+import { useDrag } from 'react-dnd';
 
 interface SetupProps {
   players: string[];
@@ -7,7 +8,7 @@ interface SetupProps {
 }
 
 const Setup: React.FC<SetupProps> = ({ players, addPlayer, resetPlayers }) => {
-  const [newPlayer, setNewPlayer] = useState('');
+  const [newPlayer, setNewPlayer] = React.useState('');
 
   const handleAddPlayer = () => {
     if (newPlayer.trim()) {
@@ -29,10 +30,23 @@ const Setup: React.FC<SetupProps> = ({ players, addPlayer, resetPlayers }) => {
       <button onClick={resetPlayers}>Reiniciar Jugadores</button>
       <ul>
         {players.map((player, index) => (
-          <li key={index}>{player}</li>
+          <DraggablePlayer key={index} name={player} />
         ))}
       </ul>
     </div>
+  );
+};
+
+const DraggablePlayer: React.FC<{ name: string }> = ({ name }) => {
+  const [, dragRef] = useDrag({
+    type: 'PLAYER',
+    item: { name },
+  });
+
+  return (
+    <li ref={dragRef} className="draggable-player">
+      {name}
+    </li>
   );
 };
 
