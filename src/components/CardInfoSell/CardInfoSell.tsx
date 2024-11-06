@@ -46,6 +46,7 @@ const CardForm = ({selectedCard}: CardFormProps) => {
           placeholder="Card Name"
           disabled 
         />
+        <label htmlFor="card-price">Price</label>
         <Input
           variant="boxwhite"
           type="number"
