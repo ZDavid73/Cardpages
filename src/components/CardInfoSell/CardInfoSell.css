@@ -1,13 +1,61 @@
-.card-form{
+.card-form {
     margin-top: 50px;
     display: flex;
     justify-content: center;
-    gap: 20px;
 }
 
-.card-form label{
+.card-form form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    padding: 20px;
+}
+
+.info-card {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    margin: 25px; 
+}
+
+.card-form label {
     font-family: 'Sora', sans-serif;
-    font-size: 18px;
+    font-size: 16px;
     font-weight: 600;
     color: #ffffff;
+    margin-bottom: 10px; 
+    text-align: left;
+}
+
+.card-form input {
+    width: 100%;
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #d3d3d3;
+    outline: none;
+    font-size: 14px;
+}
+
+.card-form button {
+    width: 100%;
+    margin-top: 20px;
+    padding: 10px;
+    font-size: 16px;
+    font-weight: bold;
+    color: #fff;
+    background-color: #6a1b9a;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.card-form button:disabled {
+    background-color: #888;
+    cursor: not-allowed;
+}
+
+.card-form button:hover:not(:disabled) {
+    background-color: #7e57c2;
 }
