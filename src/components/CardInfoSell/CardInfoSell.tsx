@@ -1,11 +1,11 @@
-import { useEffect, useState } from 'react';
-import { Card } from '../../types/cardTypes';
-import { Input, Button  } from '../../theme/styledcomponents';
+import React, { useEffect, useState } from 'react';
+import { SellingCard } from '../../types/cardTypes';
+import { useCardTransactions, } from '../../hooks/useCards';
+import { Input, Button,  } from '../../theme/styledcomponents';
 import './CardInfoSell.css';
-import { useCardTransactions } from '../../hooks/useCards';
 
 interface CardFormProps {
-  selectedCard: Card | null;
+  selectedCard: SellingCard | null;
 }
 
 const CardForm = ({selectedCard}: CardFormProps) => {
@@ -22,15 +22,22 @@ const CardForm = ({selectedCard}: CardFormProps) => {
 
   const isFormValid = cardName && price && description;
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (selectedCard) {
-      handleSellCard(selectedCard, Number(price), description)
-  }}
+
+    if (selectedCard && price) {
+      const error = await handleSellCard(selectedCard.cardId, selectedCard.sellerId, parseFloat(price));
+      if (error) {
+        console.error('Error selling card:', error);
+      } else {
+        console.log('Card posted:', { cardName, price, description });
+      }
+    }
+  };
 
   return (
-    <div className="card-form">
-      <form onSubmit={(e) => handleSubmit(e)}>
+    <div className='card-form'>
+      <form onSubmit={handleSubmit}>
         <Input
           variant="borderpurple"
           type="text"
@@ -45,7 +52,7 @@ const CardForm = ({selectedCard}: CardFormProps) => {
           value={price}
           onChange={(e) => setPrice(e.target.value)}
           placeholder="Price"
-        />
+        />        
         <Input
           variant="boxwhite"
           value={description}

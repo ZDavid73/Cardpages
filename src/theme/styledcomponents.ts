@@ -49,7 +49,7 @@ const buttonVariants = {
   },
 };
 
-export const Button = styled.button<{ variant: 'purple' | 'gray' | 'green' | 'white'| 'grayhome' }>`
+export const Button = styled.button<{ variant: 'purple' | 'gray' | 'green' | 'white' | 'grayhome' }>`
   font-family: 'Sora', sans-serif;
   font-size: 18px;
   font-weight: 600;
@@ -58,6 +58,62 @@ export const Button = styled.button<{ variant: 'purple' | 'gray' | 'green' | 'wh
   border: none;
   border-radius: 10px;
   padding: ${(props) => buttonVariants[props.variant].padding};
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+
+  /* Hover directo sin pseudoelemento */
+  &:hover {
+    background-color: ${(props) => buttonVariants[props.variant].hoverColor};
+  }
+
+  @media (max-width: 700px) {
+    font-size: 14px;
+    padding: 4px 10px;
+  }
+`;
+
+const buttonVariantsForm = {
+  purpleForm: {
+    bgColor: '#a71fd0',
+    textColor: '#fff',
+    hoverColor: '#7f00a5',
+    padding: '10px 20px',
+  },
+  grayForm: {
+    bgColor: '#2D2D2D',
+    textColor: '#fff',
+    hoverColor: '#a71fd0',
+    padding: '10px 20px',
+  },
+  grayhomeForm: {
+    bgColor: '#2D2D2D',
+    textColor: '#fff',
+    hoverColor: '#40C485',
+    padding: '10px 20px',
+  },
+  greenForm: {
+    bgColor: '#40C485',
+    textColor: '#fff',
+    hoverColor: '#008f4a',
+    padding: '10px 20px',
+  },
+  whiteForm: {
+    bgColor: '#ffffff',
+    textColor: '#000000',
+    hoverColor: '#898989',
+    padding: '10px 30px',
+  },
+};
+
+export const ButtonForm = styled.button<{ variant: 'purpleForm' | 'grayForm' | 'greenForm' | 'whiteForm'| 'grayhomeForm' }>`
+  font-family: 'Sora', sans-serif;
+  font-size: 18px;
+  font-weight: 600;
+  color: ${(props) => buttonVariantsForm[props.variant].textColor};
+  background-color: ${(props) => buttonVariantsForm[props.variant].bgColor};
+  border: none;
+  border-radius: 10px;
+  padding: ${(props) => buttonVariantsForm[props.variant].padding};
   cursor: pointer;
   position: relative; /* Necesario para manejar el pseudoelemento */
   overflow: hidden; /* Evita que el pseudoelemento sobresalga del botón */
@@ -72,7 +128,7 @@ export const Button = styled.button<{ variant: 'purple' | 'gray' | 'green' | 'wh
     left: -100%; /* Inicialmente fuera del botón */
     width: 100%;
     height: 100%;
-    background-color: ${(props) => buttonVariants[props.variant].hoverColor};
+    background-color: ${(props) => buttonVariantsForm[props.variant].hoverColor};
     transition: left 0.5s ease;
     z-index: -1; /* Ubica el pseudoelemento debajo del texto */
   }
@@ -83,7 +139,7 @@ export const Button = styled.button<{ variant: 'purple' | 'gray' | 'green' | 'wh
   }
 
   &:hover {
-    color: ${(props) => buttonVariants[props.variant].textColor};
+    color: ${(props) => buttonVariantsForm[props.variant].textColor};
   }
 
   @media (max-width: 700px) {
@@ -142,12 +198,47 @@ const inputVariants = {
       small: '24px',
     }
   },
+  search: {
+    textColor: '#2D2D2D',
+    borderRadius: '30px', 
+    borderBottom: 'transparent',
+    bgColor: '#ffffff',
+    width: '90%',
+    fontWeight: 'normal', 
+    fontSize: {
+      default: '18px',   
+      small: '14px',
+    } 
+  },
+  inputform: {
+    textColor: '#2D2D2D',
+    borderRadius: '10px', 
+    borderBottom: 'transparent',
+    bgColor: '#ffffff',
+    width: '20vw',
+    fontWeight: 'normal', 
+    fontSize: {
+      default: '15px',   
+      small: '12px',
+    } 
+  },
+  inputdescription: {
+    textColor: '#2D2D2D',
+    borderRadius: '10px', 
+    borderBottom: 'transparent',
+    bgColor: '#ffffff',
+    width: '90%',
+    fontWeight: 'normal', 
+    fontSize: {
+      default: '15px',   
+      small: '12px',
+    } 
+  },
 };
 
-export const Input = styled.input<{ variant: 'searchwhite' | 'searchgray' | 'boxwhite' | 'borderpurple' }>`
+export const Input = styled.input<{ variant: 'searchwhite' | 'searchgray' | 'boxwhite' | 'borderpurple'| 'search' | 'inputform' | 'inputdescription'}>`
   width: ${(props) => inputVariants[props.variant].width};
   padding: 10px 20px;
-  margin: 15px;
   border-radius: ${(props) => inputVariants[props.variant].borderRadius};
   border: none;
   border-bottom: ${(props) => inputVariants[props.variant].borderBottom};
@@ -172,8 +263,8 @@ const textVariants = {
   white: {
     textColor: '#ffffff',
     fontSize: {
-      default: '14px',
-      small: '12px',
+      default: '15px',
+      small: '13px',
     }
   },
   purple: {
@@ -186,8 +277,8 @@ const textVariants = {
   green: {
     textColor: '#40C485',
     fontSize: {
-      default: '16px',
-      small: '14px',
+      default: '14px',
+      small: '12px',
     }
   },
   gray: {
@@ -218,7 +309,8 @@ export const Text = styled.p<{ variant: 'white' | 'purple'| 'green' | 'gray' }>`
   text-align:left;
   font-family: 'Sora', sans-serif;
   font-size: ${(props) => textVariants[props.variant].fontSize.default};
-  font-weight: normal;
+  font-weight: 500;
+  margin: 0px;
 
   @media (max-width: 700px) {
     font-size: ${(props) => textVariants[props.variant].fontSize.small};
@@ -295,4 +387,10 @@ export const Container = styled.div<{ variant: 'bigopacity' | 'smallopacity' | '
     margin-bottom: ${(props) => divVariants[props.variant].marginBottom.small};
     border-radius: 10px;
   }
+`;
+
+export const StyledHr = styled.hr`
+  border: 1.6px solid #A82CD4;
+  margin: 20px 0;
+  width: 100%;
 `;

@@ -6,7 +6,7 @@ import 'swiper/css/pagination';
 import 'swiper/css/autoplay';
 import { Pagination, Autoplay } from 'swiper/modules';
 import { Slide } from '../../services/slidesData';
-import { TextHome, Button, Container } from '../../theme/styledcomponents';
+import { TextHome, ButtonForm, Container } from '../../theme/styledcomponents';
 
 interface CarouselViewProps {
   slidesData: Slide[];
@@ -45,13 +45,13 @@ const CarouselView: React.FC<CarouselViewProps> = ({ slidesData, onSlideClick })
           >
             <Container variant="smallopacity" className="overlay" aria-hidden="true">
               <TextHome>{slide.text}</TextHome>
-              <Button 
-                variant="green" 
+              <ButtonForm 
+                variant="greenForm" 
                 onClick={() => onSlideClick('/register')} 
                 aria-label="Register now"
               >
                 Register now
-              </Button>
+              </ButtonForm>
             </Container>
             <img
               className="carousel-image"

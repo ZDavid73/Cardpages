@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { FaShoppingCart, FaCog, FaSignOutAlt, FaSearch } from 'react-icons/fa';
 import './Navbar.css'; 
-import { TextLogo, Button } from '../../theme/styledcomponents'; 
+import { TextLogo, Button, ButtonForm } from '../../theme/styledcomponents'; 
 
 interface NavbarViewProps {
   isLoggedIn: boolean;
@@ -73,10 +73,10 @@ const NavbarView: React.FC<NavbarViewProps> = ({
         ) : (
           <>
             <Link to="/login" aria-label="Ir a iniciar sesión"> 
-              <Button variant="purple">Login</Button>
+              <ButtonForm variant="purpleForm">Login</ButtonForm>
             </Link>
             <Link to="/register" aria-label="Ir a registrarse">
-              <Button variant="grayhome">Register</Button>
+              <ButtonForm variant="grayhomeForm">Register</ButtonForm>
             </Link>
           </>
         )}
