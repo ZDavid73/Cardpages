@@ -5,7 +5,7 @@ import { AppState } from '../../types/stateType';
 import useModal from '../../hooks/useModal';
 
 const Modal = () => {
-    const { modal } = useSelector((state: AppState) => state);
+    const modal = useSelector((state: AppState) => state.modal);
     const { renderModalContent, handleClose } = useModal();
 
     if (!modal.isOpen) return null;

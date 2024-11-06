@@ -1,16 +1,18 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Card } from '../../types/cardTypes';
 import { Input, Button  } from '../../theme/styledcomponents';
 import './CardInfoSell.css';
+import { useCardTransactions } from '../../hooks/useCards';
 
 interface CardFormProps {
   selectedCard: Card | null;
 }
 
-const CardForm: React.FC<CardFormProps> = ({ selectedCard }) => {
+const CardForm = ({selectedCard}: CardFormProps) => {
   const [cardName, setCardName] = useState('');
   const [price, setPrice] = useState('');
   const [description, setDescription] = useState('');
+  const { handleSellCard } = useCardTransactions();
 
   useEffect(() => {
     if (selectedCard) {
@@ -22,12 +24,13 @@ const CardForm: React.FC<CardFormProps> = ({ selectedCard }) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log('Card posted:', { cardName, price, description });
-  };
+    if (selectedCard) {
+      handleSellCard(selectedCard, Number(price), description)
+  }}
 
   return (
     <div className="card-form">
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={(e) => handleSubmit(e)}>
         <Input
           variant="borderpurple"
           type="text"
@@ -55,6 +58,6 @@ const CardForm: React.FC<CardFormProps> = ({ selectedCard }) => {
       </form>
     </div>
   );
-};
+}
 
 export default CardForm;

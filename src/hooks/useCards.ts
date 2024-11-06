@@ -3,10 +3,12 @@ import { Card, SellingCard } from '../types/cardTypes';
 import { buyCard, fetchCards, sellCard } from '../services/databaseService';
 import { useSelector } from 'react-redux';
 import { AppState } from '../types/stateType';
+import useModal from './useModal';
 
 export const useCardTransactions = () => {
   const [cards, setCards] = useState<SellingCard[]>([]);
   const userId = useSelector((state: AppState) => state.user.id);
+  const { handleClose } = useModal()
  
   const fetchAllCards = async (): Promise<string | null> => {
     try {
@@ -24,20 +26,27 @@ export const useCardTransactions = () => {
 
   const handleSellCard = async (card: Card, price: number, desc: string): Promise<string | null> => {
 
-    //PENDING: arreglar el tipo de card
-    const sellingCard = {
-      ...card,
+    const sellingCard: SellingCard = {
+      id: crypto.randomUUID(),
+      cardId: card.id,
       sellerId: userId,
-      price,
-      desc,
+      isSold: false,
+      buyerId: null,
+      price: price,
+      flavorText: card.flavorText? card.flavorText : '',
+      description: desc,
     }
+
+    handleClose();
 
     try {
       const { error } = await sellCard(sellingCard);
       if (error) throw error;
+      console.log(error)
       return null;
     } catch (err) {
       if (err instanceof Error) {
+        console.log(err.message);
         return err.message;
       }
       return 'Unknown error occurred';

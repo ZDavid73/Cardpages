@@ -10,9 +10,9 @@ export const fetchCards = async () => {
 };
 
 export const sellCard = async (card: SellingCard) => {
-  return await supabase
-    .from('cards')
-    .insert([{ card }]);
+  console.log(card);
+
+  return await supabase.from('cards').insert([ card ]);
 };
 
 export const buyCard = async (cardId: string, buyerId: string) => {
@@ -36,7 +36,6 @@ export const fetchTournaments = async () => {
 };
 
 export const addTournament = async (tournament: Tournament) => {
-  console.log(tournament);
   return await supabase.from('tournaments').insert([tournament]);
 };
 

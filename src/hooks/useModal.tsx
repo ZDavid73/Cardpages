@@ -13,8 +13,6 @@ const useModal = () => {
     const dispatch = useDispatch();
     const modal = useSelector((state: AppState) => state.modal);
 
-    console.log(modal);
-
     const handleClose = () => {
         dispatch(closeModal());
     }
