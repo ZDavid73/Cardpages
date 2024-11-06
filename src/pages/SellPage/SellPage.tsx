@@ -10,6 +10,9 @@ const SellPage = () => {
   
   const [selectedCard, setSelectedCard] = useState<Card | null>(null);
 
+  const handleBackClick = () => {
+    console.log("Back clicked");
+  };  
   return (
     <div className='sell-page'>
       <div className='search-sell-container'>
