@@ -1,10 +1,13 @@
 import { useState, useEffect } from 'react';
-import { SellingCard } from '../types/cardTypes';
+import { Card, SellingCard } from '../types/cardTypes';
 import { buyCard, fetchCards, sellCard } from '../services/databaseService';
+import { useSelector } from 'react-redux';
+import { AppState } from '../types/stateType';
 
 export const useCardTransactions = () => {
   const [cards, setCards] = useState<SellingCard[]>([]);
-
+  const userId = useSelector((state: AppState) => state.user.id);
+ 
   const fetchAllCards = async (): Promise<string | null> => {
     try {
       const { data, error } = await fetchCards();
@@ -12,17 +15,25 @@ export const useCardTransactions = () => {
       setCards(data || []);
       return null;
     } catch (err) {
-      // Cambiamos any por un tipo de error específico o por unknown
       if (err instanceof Error) {
         return err.message;
       }
-      return 'Unknown error occurred'; // Mensaje para manejar errores no esperados
+      return 'Unknown error occurred'; 
     }
   };
 
-  const handleSellCard = async (cardId: string, sellerId: string, price: number): Promise<string | null> => {
+  const handleSellCard = async (card: Card, price: number, desc: string): Promise<string | null> => {
+
+    //PENDING: arreglar el tipo de card
+    const sellingCard = {
+      ...card,
+      sellerId: userId,
+      price,
+      desc,
+    }
+
     try {
-      const { error } = await sellCard(cardId, sellerId, price);
+      const { error } = await sellCard(sellingCard);
       if (error) throw error;
       return null;
     } catch (err) {

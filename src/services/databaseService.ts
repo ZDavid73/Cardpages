@@ -2,16 +2,17 @@ import { supabase } from './supabaseClient';
 import { Deck } from '../types/deckTypes';
 import { Player, Round, Tournament } from '../types/tournamentTypes';
 import { UserState } from '../features/auth/userSlice';
+import { SellingCard } from '../types/cardTypes';
 
 // Cards-related functions
 export const fetchCards = async () => {
   return await supabase.from('cards').select('*');
 };
 
-export const sellCard = async (cardId: string, sellerId: string, price: number) => {
+export const sellCard = async (card: SellingCard) => {
   return await supabase
     .from('cards')
-    .insert([{ cardId, sellerId, price, isSold: false, buyerId: null }]);
+    .insert([{ card }]);
 };
 
 export const buyCard = async (cardId: string, buyerId: string) => {
@@ -21,7 +22,10 @@ export const buyCard = async (cardId: string, buyerId: string) => {
     .eq('cardId', cardId);
 };
 
-// Decks-related functions
+export const fetchDecks = async () => {
+  return await supabase.from('decks').select('*');
+}
+
 export const postDeck = async (deck: Deck) => {
   return await supabase.from('decks').insert([deck]);
 };

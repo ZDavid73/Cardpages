@@ -4,6 +4,7 @@ import storage from "redux-persist/lib/storage";
 import { userSlice } from '../features/auth/userSlice';
 import { modalSlice } from '../features/modalSlice';
 import { tournamentSlice } from '../features/tournamentSlice';
+import { cardSlice } from '../features/cardSlice';
 
 const persistConfig = {
   key: 'user',
@@ -16,7 +17,8 @@ export const store = configureStore({
   reducer: {
     user: persistedReducer,
     modal: modalSlice.reducer,
-    tournaments: tournamentSlice.reducer
+    tournaments: tournamentSlice.reducer,
+    cards: cardSlice.reducer
   },
   devTools: process.env.NODE_ENV !== 'production',
   middleware: (getDefaultMiddleware) => getDefaultMiddleware({
