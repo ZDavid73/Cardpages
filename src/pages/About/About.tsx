@@ -21,7 +21,9 @@ const AboutPage = () => {
         <div className="Vision">
         <Tittle variant='white'>Our Vision</Tittle>
         </div>
+        <div className="Community">
         <Tittle variant='white'>Our Community</Tittle>
+        </div>
         </div>
         <Footer/>
         </>
