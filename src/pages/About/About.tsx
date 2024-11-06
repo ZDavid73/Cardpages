@@ -12,7 +12,9 @@ const AboutPage = () => {
         <HeaderAbout/>
         </div>
         <div className="About Content">
+        <div className="Offer">
         <Tittle variant='white'>What We Offer</Tittle>
+        </div>
         <Tittle variant='white'>Our Mission</Tittle>
         <Tittle variant='white'>Our Vision</Tittle>
         <Tittle variant='white'>Our Community</Tittle>
