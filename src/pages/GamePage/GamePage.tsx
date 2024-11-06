@@ -16,11 +16,13 @@ import { getUserInfo } from '../../services/databaseService';
 import { UserState } from '../../features/auth/userSlice';
 import './GamePage.css'
 import TournamentWinner from '../../components/TournamentWinner/TournamentWinner';
+import { useTournament } from '../../hooks/useTournament';
 
 const GamePage: React.FC = () => {
   //const { players, addPlayer, resetPlayers } = useSetup();
   const [usersInfo, setUsersInfo] = useState<UserState[]>([]);
   const { rounds, handlePlacePlayer, handleWin, tournamentWinner, setTournamentWinner } = useGameTournament(usersInfo.map((user) => user.username));
+  const { handleFinishTournament } = useTournament();
   const navigate = useNavigate()
   const location = useLocation()
   const tournament: Tournament = location.state.tournament
@@ -46,7 +48,10 @@ const GamePage: React.FC = () => {
   
     fetchUserInfo();
   }, [tournament.players]);
-  
+
+  if (tournamentWinner){
+    handleFinishTournament(tournament.id, tournamentWinner)
+  }
 
   return (
     <DndProvider backend={HTML5Backend}>
