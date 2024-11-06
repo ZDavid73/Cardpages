@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { FormEvent, useEffect, useState } from 'react';
 import { Card } from '../../types/cardTypes';
 import { Input, Button  } from '../../theme/styledcomponents';
 import './CardInfoSell.css';
@@ -22,7 +22,7 @@ const CardForm = ({selectedCard}: CardFormProps) => {
 
   const isFormValid = cardName && price && description;
 
-  const handleSubmit = (e) => {
+  const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     if (selectedCard) {
       handleSellCard(selectedCard, Number(price), description)
