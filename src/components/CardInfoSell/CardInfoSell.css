@@ -10,3 +10,9 @@
     width: 100%;
     gap: 20px;
   }
+.card-form label{
+    font-family: 'Sora', sans-serif;
+    font-size: 18px;
+    font-weight: 600;
+    color: #ffffff;
+}
