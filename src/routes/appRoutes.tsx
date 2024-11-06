@@ -9,8 +9,8 @@ import { useSelector } from 'react-redux';
 import ProtectedRoutes from './ProtectedRoutes';
 import Dashboard from '../pages/Dashboard/Dashboard';
 import { AppState } from '../types/stateType';
-import SellPage from '../pages/SellPage/SellPage';
 import Modal from '../components/Modal/Modal';
+import GamePage from '../pages/GamePage/GamePage';
 
 const AppRouter = () => {
   const user = useSelector((state: AppState) => state.user);
@@ -35,6 +35,7 @@ const AppRouter = () => {
             <Route path="/tournaments" element={<Tournament />} />
             <Route path="/search" element={<SearchPage/>} />
             <Route path="/about" element={<AboutPage/>} />
+            <Route path="/game" element={<GamePage/>} />
             
           </Route>
           </Routes>
