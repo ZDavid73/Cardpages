@@ -11,6 +11,7 @@ const SellPage = () => {
 
   return (
     <div className='sell-page'>
+      <Tittle variant='white'>Sell Card</Tittle>
       <div className='search-sell-container'>
       <SearchSell selectedCard={selectedCard} setSelectedCard={setSelectedCard} />
       </div>
