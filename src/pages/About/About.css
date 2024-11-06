@@ -3,3 +3,16 @@
     padding: 3%;
     display: flex;
 }
+.Vision, .Mission, .Community, .Offer {
+    padding: 0px;
+    margin: 50px;
+}
+
+.Offer li {
+    margin: 20px;
+    margin-top:30px ;
+}
+.Offer ul {
+    padding-left: 20px;
+    color: #fff; 
+}
