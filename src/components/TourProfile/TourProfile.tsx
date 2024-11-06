@@ -4,6 +4,7 @@ import './TourProfile.css';
 
 type TourProfileProps = {
     player: UserState;
+    ref: any;
 }
 
 const TourProfile = ({player}: TourProfileProps) => {

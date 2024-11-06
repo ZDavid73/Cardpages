@@ -1,8 +1,8 @@
 import React from 'react';
 import { Container, Text, Tittle } from '../../theme/styledcomponents';
 import { UserState } from '../../features/auth/userSlice';
-import TourProfile from '../TourProfile/TourProfile';
 import './Setup.css';
+import { useDrag } from 'react-dnd';
 
 interface SetupProps {
   players: UserState[];
@@ -32,13 +32,29 @@ const Setup: React.FC<SetupProps> = ({ players, max }) => {
       <button onClick={resetPlayers}>Reiniciar Jugadores</button>*/}
       <section className='tour-players'>
         {players.map((player, idx) => (
-          <TourProfile key={idx} player={player} />
+          <DraggablePlayer key={idx} player={player} />
         ))}
 
         <Text variant='white'>{players.length}/{max} players</Text>
         <Text variant='purple'>{players.length === max ? 'Ready to start!' : `There's not enough people to start yet!`}</Text>
       </section>
     </Container>
+  );
+};
+
+//
+
+const DraggablePlayer: React.FC<{ player: UserState }> = ({ player }) => {
+  const [, dragRef] = useDrag({
+    type: 'PLAYER',
+    item: { name },
+  });
+
+  return (
+    <div className="tour-profile" ref={dragRef}>
+            <img src={player.picture} alt={player.username} />
+            <Text variant="white">{player.username}</Text>
+    </div>
   );
 };
 
