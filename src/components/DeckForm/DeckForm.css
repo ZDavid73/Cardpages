@@ -1,7 +1,7 @@
 .Deck-form{
     display: flex;
     flex-direction: column;
-    gap: 12px;
+    gap: 14px;
 }
 
 .Deck-form label{
@@ -30,6 +30,12 @@
     color: #999;
 }
 
+.header-deck-text-form{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
 .header-deck-form hr{
     color: #A82CD4;
     border-radius: 4px;
@@ -37,9 +43,9 @@
 
 .deck-creation-form {
     width: 100%;
-    height: 14vh;
+    height: 17vh;
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(5, 1fr);
     row-gap: 3%;
     overflow-y: scroll;
 }
@@ -70,10 +76,43 @@
 .cover-deck-form{
     display: flex;
     align-items: center;
+    justify-content: space-between;
     padding: 0%;
     margin: 0%;
 }
 
 .cover-deck-form label{
     margin-right: 5%;
+}
+
+.deck-item {
+    position: relative;
+}
+
+.deck-card-image {
+    width: 5.2vw;
+    object-fit: cover;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.deck-card-image:hover {
+    background-color: #000000bb;
+}
+  
+.card-count-circle {
+    position: absolute;
+    bottom: 8px;
+    left: 45px;
+    background-color:#46005fd6;
+    color: white;
+    border-radius: 50%;  /* Forma circular */
+    width: 30px;
+    height: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Sora', sans-serif;
+    font-size: 12px;
+    font-weight: 500;
 }

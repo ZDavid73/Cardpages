@@ -215,6 +215,18 @@ const inputVariants = {
     borderRadius: '10px', 
     borderBottom: 'transparent',
     bgColor: '#ffffff',
+    width: '20vw',
+    fontWeight: 'normal', 
+    fontSize: {
+      default: '15px',   
+      small: '12px',
+    } 
+  },
+  inputdescription: {
+    textColor: '#2D2D2D',
+    borderRadius: '10px', 
+    borderBottom: 'transparent',
+    bgColor: '#ffffff',
     width: '90%',
     fontWeight: 'normal', 
     fontSize: {
@@ -224,7 +236,7 @@ const inputVariants = {
   },
 };
 
-export const Input = styled.input<{ variant: 'searchwhite' | 'searchgray' | 'boxwhite' | 'borderpurple'| 'search' | 'inputform'}>`
+export const Input = styled.input<{ variant: 'searchwhite' | 'searchgray' | 'boxwhite' | 'borderpurple'| 'search' | 'inputform' | 'inputdescription'}>`
   width: ${(props) => inputVariants[props.variant].width};
   padding: 10px 20px;
   border-radius: ${(props) => inputVariants[props.variant].borderRadius};
@@ -265,8 +277,8 @@ const textVariants = {
   green: {
     textColor: '#40C485',
     fontSize: {
-      default: '16px',
-      small: '14px',
+      default: '14px',
+      small: '12px',
     }
   },
   gray: {

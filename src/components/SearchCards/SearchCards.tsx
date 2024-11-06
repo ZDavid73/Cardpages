@@ -4,9 +4,11 @@ import { Card } from '../../types/cardTypes';
 import { cardsData } from '../../services/cardsData'; 
 import './SearchCard.css';
 import { Input, Text } from '../../theme/styledcomponents';
+import useDragDrop from '../../hooks/useDragDrop';
 
 const SearchCard: React.FC = () => {
-  const { query, results, error, loading, setQuery, handleCardClick } = useSearch();
+  const { query, results, error, loading, setQuery } = useSearch();
+  const { handleDrag } = useDragDrop();
 
   const defaultCards: Card[] = cardsData;
   const displayedCards = query.length === 0 ? defaultCards : results;
@@ -27,7 +29,8 @@ const SearchCard: React.FC = () => {
           <div
             key={card.id}
             className="card-item-search"
-            onClick={() => handleCardClick(card)}
+            draggable
+            onDragStart={(e) => handleDrag(e, card.id, card.images.small)}
           >
             <img src={card.images.small} alt={card.name} />
           </div>
