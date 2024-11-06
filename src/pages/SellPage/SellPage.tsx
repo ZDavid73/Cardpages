@@ -1,5 +1,6 @@
 import SearchSell from '../../components/SearchSell/SearchSell';
 import CardForm from '../../components/CardInfoSell/CardInfoSell';
+import { Tittle } from '../../theme/styledcomponents';
 import { Card } from '../../types/cardTypes';
 import { useState } from 'react';
 import './SellPage.css';
