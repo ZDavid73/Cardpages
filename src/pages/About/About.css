@@ -5,6 +5,7 @@
 }
 .Vision,.Mission ,.Community, .Offer {
     margin: 50px;
+    margin-top: 0px;
 }
 
 .Offer li {
