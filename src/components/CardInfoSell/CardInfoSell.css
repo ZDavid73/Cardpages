@@ -4,12 +4,7 @@
     justify-content: center;
     gap: 20px;
 }
-.card-form form {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    width: 100%;
-  }
+
 .card-form label{
     font-family: 'Sora', sans-serif;
     font-size: 18px;
