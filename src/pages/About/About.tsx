@@ -34,6 +34,7 @@ const AboutPage = () => {
             </Text>
         </li>
     </ul>
+        <div className="vi-mi">
         </div>
         <div className="Mission">
         <Tittle variant='white'>Our Mission</Tittle>
@@ -42,6 +43,7 @@ const AboutPage = () => {
         <div className="Vision">
         <Tittle variant='white'>Our Vision</Tittle>
         <Text variant='white'>We aim to be the go-to destination for TCG enthusiasts. Whether you're a collector seeking that rare card, a competitive player optimizing your decks, or a tournament organizer looking to elevate the level of competition, Capsule Corp is the place where it all happens. We strive to unite people of all experience levels, helping to make each interaction meaningful and enjoyable.</Text>
+        </div>
         </div>
         <div className="Community">
         <Tittle variant='white'>Our Community</Tittle>
