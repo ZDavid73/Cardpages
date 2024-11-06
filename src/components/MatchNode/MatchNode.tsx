@@ -1,5 +1,5 @@
 import React from 'react';
-//import * as d3 from 'd3';
+import * as d3 from 'd3';
 
 interface MatchNodeProps {
   match: string[];
@@ -11,7 +11,7 @@ const MatchNode: React.FC<MatchNodeProps> = ({ match, onWin }) => {
     .on('start', (event) => {
       d3.select(event.sourceEvent.target).style('opacity', 0.5);
     })
-    .on('end', (event, d) => {
+    .on('end', (event) => {
       const winner = d3.select(event.sourceEvent.target).text();
       d3.select(event.sourceEvent.target).style('opacity', 1);
       onWin(winner);

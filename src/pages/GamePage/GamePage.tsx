@@ -3,15 +3,51 @@ import Setup from '../../components/Setup/Setup';
 import Bracket from '../../components/Bracket/Bracket';
 import { useSetup } from '../../hooks/useSetup';
 import { useGameTournament } from '../../hooks/useGameTournament';
+import Header from '../../components/Header/Header';
+import { Tittle } from '../../theme/styledcomponents';
+import { FaArrowCircleLeft } from 'react-icons/fa';
+import { useLocation, useNavigate } from 'react-router-dom';
+import { useEffect, useState } from 'react';
+import { Tournament } from '../../types/tournamentTypes';
+import { getUserInfo } from '../../services/databaseService';
+import { UserState } from '../../features/auth/userSlice';
 
 const GamePage: React.FC = () => {
   const { players, addPlayer, resetPlayers } = useSetup();
   const { rounds, handleWin, results } = useGameTournament(players);
+  const navigate = useNavigate()
+  const location = useLocation()
+  const tournament: Tournament = location.state.tournament
+  const [usersInfo, setUsersInfo] = useState<UserState[]>([]);
+
+  useEffect(() => {
+    const fetchUserInfo = async () => {
+      try {
+        tournament.players.forEach(async (player) => {
+          const res = await getUserInfo(player.id)
+          if (res) {
+            setUsersInfo((prev) => [...prev, res]);
+          }
+        })
+      } catch (error) {
+        console.error('Error fetching user info:', error);
+      }
+    };
+
+    fetchUserInfo();
+  }, [tournament.players]);
 
   return (
-    <div className="game-page">
-      <h1>Torneo de Llaves</h1>
-      <Setup players={players} addPlayer={addPlayer} resetPlayers={resetPlayers} />
+    <>
+      <section className="create-tour-tittle">
+            <FaArrowCircleLeft onClick={() => navigate(-1)} color="white"/>
+            <Tittle variant="white">Tournament's details</Tittle>
+      </section>
+
+      <div className="catalogue-sectionheader">
+           <Setup players={tournament.players} addPlayer={addPlayer} resetPlayers={resetPlayers}/>
+            <Header/> 
+      </div>
       {players.length >= 2 && <Bracket rounds={rounds} onWin={handleWin} />}
       {results.length > 0 && (
         <div className="results">
@@ -23,7 +59,7 @@ const GamePage: React.FC = () => {
           </ul>
         </div>
       )}
-    </div>
+    </>
   );
 };
 

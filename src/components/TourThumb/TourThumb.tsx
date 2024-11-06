@@ -5,6 +5,7 @@ import './TourThumb.css';
 import { FaLocationPin } from 'react-icons/fa6';
 import { AppState } from '../../types/stateType';
 import useModal from '../../hooks/useModal';
+import { useNavigate } from 'react-router-dom';
 
 type TourThumbProps = {
     tournament: Tournament
@@ -13,6 +14,7 @@ type TourThumbProps = {
 const TourThumb = ({ tournament }: TourThumbProps) => {
     const id = useSelector((state: AppState) => state.user.id);
     const { handleOpen } = useModal();
+    const navigate = useNavigate();
 
     return (
         <section 
@@ -22,7 +24,7 @@ const TourThumb = ({ tournament }: TourThumbProps) => {
             <div className='tour-button'>
             {
                 id === tournament.host ? 
-                <Button variant='purple' onClick={() => {}}>
+                <Button variant='purple' onClick={() => navigate('/game', { state: { tournament } })}>
                     Start
                 </Button>
                 :
