@@ -21,7 +21,8 @@ const CardForm: React.FC<CardFormProps> = ({ selectedCard }) => {
 
   const isFormValid = cardName && price && description;
 
-  
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();}
 
   return (
     <div className='card-form'>
