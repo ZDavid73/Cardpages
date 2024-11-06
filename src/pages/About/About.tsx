@@ -11,7 +11,7 @@ const AboutPage = () => {
         <Profile/>
         <HeaderAbout/>
         </div>
-        <Tittle variant='purple'>About Us</Tittle>
+        <Tittle variant='white'>What We Offer</Tittle>
 
         <Footer/>
         </>
