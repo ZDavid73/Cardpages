@@ -14,6 +14,7 @@ const AboutPage = () => {
         <Tittle variant='white'>What We Offer</Tittle>
         <Tittle variant='white'>Our Mission</Tittle>
         <Tittle variant='white'>Our Vision</Tittle>
+        <Tittle variant='white'>Our Community</Tittle>
         <Footer/>
         </>
     );
