@@ -10,7 +10,7 @@ import './SellPage.css';
 const SellPage = () => {
   
   const [selectedCard, setSelectedCard] = useState<Card | null>(null);
-  
+  const {handleClose } = useModal();
   const handleOverlayClick = () => {
     handleClose();
 };  
