@@ -1,16 +1,15 @@
 import React from 'react';
-import { Container, Tittle } from '../../theme/styledcomponents';
+import { Container, Text, Tittle } from '../../theme/styledcomponents';
 import { UserState } from '../../features/auth/userSlice';
 import TourProfile from '../TourProfile/TourProfile';
 import './Setup.css';
 
 interface SetupProps {
   players: UserState[];
-  addPlayer: (name: string) => void;
-  resetPlayers: () => void;
+  max: number;
 }
 
-const Setup: React.FC<SetupProps> = ({ players }) => {
+const Setup: React.FC<SetupProps> = ({ players, max }) => {
   //const [newPlayer, setNewPlayer] = useState('');
 
   {/*const handleAddPlayer = () => {
@@ -35,6 +34,9 @@ const Setup: React.FC<SetupProps> = ({ players }) => {
         {players.map((player, idx) => (
           <TourProfile key={idx} player={player} />
         ))}
+
+        <Text variant='white'>{players.length}/{max} players</Text>
+        <Text variant='purple'>{players.length === max ? 'Ready to start!' : `There's not enough people to start yet!`}</Text>
       </section>
     </Container>
   );

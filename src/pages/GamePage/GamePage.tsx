@@ -1,7 +1,7 @@
 import React from 'react';
 import Setup from '../../components/Setup/Setup';
 import Bracket from '../../components/Bracket/Bracket';
-import { useSetup } from '../../hooks/useSetup';
+//import { useSetup } from '../../hooks/useSetup';
 import { useGameTournament } from '../../hooks/useGameTournament';
 import Header from '../../components/Header/Header';
 import { Tittle } from '../../theme/styledcomponents';
@@ -13,7 +13,7 @@ import { getUserInfo } from '../../services/databaseService';
 import { UserState } from '../../features/auth/userSlice';
 
 const GamePage: React.FC = () => {
-  const { players, addPlayer, resetPlayers } = useSetup();
+  //const { players, addPlayer, resetPlayers } = useSetup();
   const [usersInfo, setUsersInfo] = useState<UserState[]>([]);
   const { rounds, handleWin, results } = useGameTournament(usersInfo.map((user) => user.username));
   const navigate = useNavigate()
@@ -51,11 +51,11 @@ const GamePage: React.FC = () => {
       </section>
 
       <div className="catalogue-sectionheader">
-           <Setup players={usersInfo} addPlayer={addPlayer} resetPlayers={resetPlayers}/>
+           <Setup players={usersInfo} max={tournament.max}/>
             <Header/> 
       </div>
 
-      {players.length >= 2 && <Bracket rounds={rounds} onWin={handleWin} />}
+      {tournament.players.length >= 2 && <Bracket rounds={rounds} onWin={handleWin} />}
       {results.length > 0 && (
         <div className="results">
           <h2>Resultados del Torneo</h2>
