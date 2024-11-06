@@ -1,7 +1,6 @@
 import './HeaderABout.css'
 import {Container, Tittle, Text} from '../../theme/styledcomponents';
-import { useSelector } from "react-redux";
-import { AppState } from "../../types/stateType";
+
 
 const Header = () => {
   const user = useSelector((state: AppState) => state.user);
