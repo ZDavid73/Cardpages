@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import './AddButton.css';
 import useModal from '../../hooks/useModal';
+import { Button  } from '../../theme/styledcomponents';
 
 const AddButton = () => {
   const { handleOpen } = useModal();
@@ -21,11 +22,11 @@ const AddButton = () => {
 
   return (
     <div className='catalogues-button'>
-      <button onClick={toggleOptions}>+</button>
+      <Button variant="purple"onClick={toggleOptions}>+</Button>
       {showOptions && (
         <div className='options-menu'>
-          <button onClick={() => handleOptionClick('Add Card')}>Add Card</button>
-          <button onClick={() => handleOptionClick('Add Deck')}>Add Deck</button>
+          <Button variant="white" onClick={() => handleOptionClick('Add Card')}>Add Card</Button>
+          <Button variant="white" onClick={() => handleOptionClick('Add Deck')}>Add Deck</Button>
         </div>
       )}
     </div>
