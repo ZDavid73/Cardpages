@@ -6,7 +6,7 @@ const AboutPage = () => {
     
     return (
         <>
-        <div className="catalogue-sectionheader">
+        <div className="About-sectionheader">
         <Profile/>
         <HeaderAbout/>
         </div>
