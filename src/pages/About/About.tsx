@@ -15,7 +15,9 @@ const AboutPage = () => {
         <div className="Offer">
         <Tittle variant='white'>What We Offer</Tittle>
         </div>
+        <div className="Mission">
         <Tittle variant='white'>Our Mission</Tittle>
+        </div>
         <Tittle variant='white'>Our Vision</Tittle>
         <Tittle variant='white'>Our Community</Tittle>
         </div>
