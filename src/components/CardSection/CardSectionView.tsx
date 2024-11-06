@@ -1,5 +1,5 @@
 import React from 'react';
-import { TextHome, Button } from '../../theme/styledcomponents';
+import { TextHome, ButtonForm } from '../../theme/styledcomponents';
 import './CardSection.css';
 
 interface CardSectionProps {
@@ -23,7 +23,7 @@ const CardSection: React.FC<CardSectionProps> = ({
         <>
           <div className="HomepageTextContainer1" id={`section-heading-right`}>
             <TextHome>{text}</TextHome>
-            <Button variant="white" onClick={onExploreClick} aria-label="Explore more about this section">Explore more</Button>
+            <ButtonForm variant="whiteForm" onClick={onExploreClick} aria-label="Explore more about this section">Explore more</ButtonForm>
           </div>
           <img src={imgSrc} alt={altText} aria-labelledby={`section-heading-right`} />
         </>
@@ -32,7 +32,7 @@ const CardSection: React.FC<CardSectionProps> = ({
           <img src={imgSrc} alt={altText} aria-labelledby={`section-heading-left`} />
           <div className="HomepageTextContainer" id={`section-heading-left`}>
             <TextHome>{text}</TextHome>
-            <Button variant="white" onClick={onExploreClick} aria-label="Explore more about this section">Explore more</Button>
+            <ButtonForm variant="whiteForm" onClick={onExploreClick} aria-label="Explore more about this section">Explore more</ButtonForm>
           </div>
         </>
       )}

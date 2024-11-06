@@ -1,0 +1,41 @@
+.search-bar{
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+}
+.results-container {
+    width: 100%;
+    height: 45vh;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    row-gap: 3%;
+    overflow-y: scroll;
+}
+.card-item-search img{
+    width: 8.5vw;
+    border-radius: 8px;
+}
+
+/* Personalización de la barra de desplazamiento */
+.results-container::-webkit-scrollbar {
+    width: 10px; /* Ancho de la barra de desplazamiento */
+}
+
+.results-container::-webkit-scrollbar-track {
+    background-color: #ffffff39; /* Fondo de la barra de desplazamiento */
+    border-radius: 10px;
+}
+
+.results-container::-webkit-scrollbar-thumb {
+    background-color: #D9D9D9; /* Color de la barra deslizadora */
+    border-radius: 10px;
+}
+
+.results-container::-webkit-scrollbar-button {
+    display: none; /* Elimina las flechitas */
+}
+
+/* Elimina la barra horizontal si no se necesita */
+.results-container {
+    overflow-x: hidden;
+}
