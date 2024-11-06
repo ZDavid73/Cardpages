@@ -34,7 +34,7 @@ export const useDeckBuilder = () => {
     setLocalDeck((p) => ({ ...p, desc }));
   };
 
-  const handlePostDeck = async () => {
+  const handlePostDeck = async (deck) => {
     if (localDeck.cards.length === 0) {
       console.error('Deck is empty! Cannot save.');
       return;
@@ -42,10 +42,7 @@ export const useDeckBuilder = () => {
 
     const newDeck: Deck = {
       id: crypto.randomUUID(),
-      name: localDeck.name,
-      creator: 'empty for now',
-      desc: localDeck.desc,
-      cards: localDeck.cards,
+      ...deck,
     };
 
     const { error } = await postDeck(newDeck);
