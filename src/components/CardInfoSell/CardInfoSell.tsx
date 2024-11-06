@@ -22,7 +22,16 @@ const CardForm: React.FC<CardFormProps> = ({ selectedCard }) => {
   const isFormValid = cardName && price && description;
 
   const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();}
+    e.preventDefault();
+    if (selectedCard && price) {
+      const error = await handleSellCard(selectedCard.id, selectedCard.sellerId, parseFloat(price));
+      if (error) {
+        console.error('Error selling card:', error);
+      } else {
+        console.log('Card posted:', { cardName, price, description });
+      }
+    }
+  };
 
   return (
     <div className='card-form'>
