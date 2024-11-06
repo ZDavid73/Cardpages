@@ -9,7 +9,7 @@ const Header = () => {
       <div className='calatogues-header'>
         <div className='catalogues-image' 
          style={{
-            backgroundImage: `url('')`, 
+            backgroundImage: `url('https://zyemimihfcilkfzgwsxv.supabase.co/storage/v1/object/public/Header%20Images/pokemon-101-1280x960.webp')`, 
             backgroundSize: 'cover',
             backgroundPosition: 'center',
             backgroundRepeat: 'no-repeat',
