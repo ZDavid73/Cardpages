@@ -47,7 +47,7 @@ const Setup: React.FC<SetupProps> = ({ players, max }) => {
 const DraggablePlayer: React.FC<{ player: UserState }> = ({ player }) => {
   const [, dragRef] = useDrag({
     type: 'PLAYER',
-    item: { name },
+    item: { name: player.username },
   });
 
   return (

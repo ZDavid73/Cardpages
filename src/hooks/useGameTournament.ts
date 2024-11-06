@@ -18,7 +18,6 @@ export const useGameTournament = (players: string[]) => {
     // Revisa si la última ronda está completa y necesita crear una nueva ronda
     const lastRound = rounds[rounds.length - 1];
     if (lastRound && lastRound.every(match => match.every(player => player !== ''))) {
-      const nextRoundIdx = rounds.length;
 
       // Si solo queda un partido en la última ronda y tiene dos jugadores, es la ronda final
       if (lastRound.length === 1 && lastRound[0].filter(player => player !== '').length === 2) {

@@ -1,0 +1,38 @@
+.bracket-tree{
+    display: flex;
+    justify-content: center;
+    gap: 32px;
+}
+
+.round-tree{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 32px;
+    height: 100%;
+    width: max-content;
+}
+
+.match-node{
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.player-slot{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    padding: 8px;
+    width: 100%;
+    border-radius: 8px;
+}
+
+.empty{
+    background-color: #616161;
+}
+
+.filled{
+    background-color: #a71fd0;
+}

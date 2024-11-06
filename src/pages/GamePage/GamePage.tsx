@@ -14,6 +14,7 @@ import { useEffect, useState } from 'react';
 import { Tournament } from '../../types/tournamentTypes';
 import { getUserInfo } from '../../services/databaseService';
 import { UserState } from '../../features/auth/userSlice';
+import './GamePage.css'
 
 const GamePage: React.FC = () => {
   //const { players, addPlayer, resetPlayers } = useSetup();
