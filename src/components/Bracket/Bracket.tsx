@@ -11,7 +11,7 @@ const Bracket: React.FC<BracketProps> = ({ rounds, onPlacePlayer, onWin }) => (
   <div className="bracket-tree">
     {rounds.map((round, roundIdx) => (
       <div key={roundIdx} className="round-tree">
-        <h3>Ronda {roundIdx + 1}</h3>
+        {/*<Tittle variant='purple'>Ronda {roundIdx + 1}</Tittle>*/}
         {round.map((match, matchIdx) => (
           <MatchNode
             key={matchIdx}

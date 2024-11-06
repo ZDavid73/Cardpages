@@ -15,6 +15,7 @@ import { Tournament } from '../../types/tournamentTypes';
 import { getUserInfo } from '../../services/databaseService';
 import { UserState } from '../../features/auth/userSlice';
 import './GamePage.css'
+import TournamentWinner from '../../components/TournamentWinner/TournamentWinner';
 
 const GamePage: React.FC = () => {
   //const { players, addPlayer, resetPlayers } = useSetup();
@@ -60,6 +61,7 @@ const GamePage: React.FC = () => {
             <Header/> 
       </div>
       
+      <section className='whole-tree'>
         {tournament.players.length >= 2 && (
           <Bracket
             rounds={rounds}
@@ -68,14 +70,13 @@ const GamePage: React.FC = () => {
           />
         )}
         {rounds.length > 0 && rounds[rounds.length - 1].length === 1 && rounds[rounds.length - 1][0].filter(player => player !== '').length === 2 && (
-          <WinnerBox setWinner={setTournamentWinner} />
+          <WinnerBox setWinner={setTournamentWinner} winner={tournamentWinner} />
         )}
+        
         {tournamentWinner && (
-          <div className="results">
-            <h2>Ganador del Torneo</h2>
-            <p>{tournamentWinner}</p>
-          </div>
+          <TournamentWinner winner={usersInfo.find(u => u.username === tournamentWinner)}/>
         )}
+        </section>
       </div>
     </DndProvider>
   );

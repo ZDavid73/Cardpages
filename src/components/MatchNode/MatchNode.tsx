@@ -1,5 +1,6 @@
 import React from 'react';
 import { useDrag, useDrop } from 'react-dnd';
+import { Text } from '../../theme/styledcomponents';
 
 interface MatchNodeProps {
   match: string[];
@@ -46,7 +47,7 @@ const PlayerSlot: React.FC<PlayerSlotProps> = ({ player, onWin }) => {
       className={`player-slot ${player ? 'filled' : 'empty'} ${isDragging ? 'dragging' : ''}`}
       onClick={() => player && onWin(player)}
     >
-      {player || 'Vacío'}
+      <Text variant={player ? 'white' : 'gray'}>{player || 'Drag here'}</Text>
     </div>
   );
 };

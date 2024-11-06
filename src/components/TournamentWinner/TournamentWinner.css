@@ -1,0 +1,19 @@
+.tournament-winner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  margin-top: 20px;
+  border: solid 1px #bd6615;
+  padding: 24px;
+  width: 20%;
+  border-radius: 18px;
+}
+
+.tournament-winner img {
+  height: 100px;
+  width: 100px;
+  border-radius: 50%;
+  object-fit: cover;
+}

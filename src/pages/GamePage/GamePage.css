@@ -2,21 +2,21 @@
     display: flex;
     justify-content: center;
     gap: 32px;
+    height: 100%;
 }
 
-.round-tree{
+.round-tree, .winner-box{
     display: flex;
     flex-direction: column;
     justify-content: center;
-    gap: 32px;
-    height: 100%;
+    gap: 32px;;
     width: max-content;
 }
 
 .match-node{
     display: flex;
     flex-direction: column;
-    gap: 16px;
+    gap: 8px;
 }
 
 .player-slot{
@@ -29,10 +29,23 @@
     border-radius: 8px;
 }
 
+.winner-box{
+    background-color: #bd6615;
+    padding: 16px;
+    border-radius: 8px;
+}
+
 .empty{
     background-color: #616161;
 }
 
 .filled{
     background-color: #a71fd0;
+}
+
+.whole-tree{
+    display: flex;
+    gap: 32px;
+    align-items: center;
+    justify-content: center;
 }

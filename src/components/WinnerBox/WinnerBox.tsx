@@ -1,11 +1,13 @@
 import React from 'react';
 import { useDrop } from 'react-dnd';
+import { Text } from '../../theme/styledcomponents';
 
 interface WinnerBoxProps {
   setWinner: (winner: string) => void;
+  winner: string | null;
 }
 
-const WinnerBox: React.FC<WinnerBoxProps> = ({ setWinner }) => {
+const WinnerBox: React.FC<WinnerBoxProps> = ({ setWinner, winner }) => {
   const [{ isOver }, dropRef] = useDrop({
     accept: 'PLAYER',
     drop: (item: { name: string }) => setWinner(item.name),
@@ -16,7 +18,7 @@ const WinnerBox: React.FC<WinnerBoxProps> = ({ setWinner }) => {
 
   return (
     <div ref={dropRef} className={`winner-box ${isOver ? 'highlight' : ''}`}>
-      <h3>Arrastra aquí al ganador del torneo</h3>
+      <Text variant='white'>{winner? winner : 'Drag the winner!'}</Text>
     </div>
   );
 };
