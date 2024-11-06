@@ -1,6 +1,6 @@
 import React from 'react';
 import useSearchSell from '../../hooks/useSearchSell';
-import { Input, Tittle } from '../../theme/styledcomponents';
+import { Input } from '../../theme/styledcomponents';
 import './SearchSell.css';
 import { Card } from '../../types/cardTypes';
 
@@ -18,8 +18,6 @@ const SearchSell: React.FC<SearchSellProps> = ({ selectedCard, setSelectedCard }
 
   return (
     <div className="search-sell-container">
-      <div className='titulo'>
-      <Tittle variant="white">Sell Card</Tittle></div>
 
       <Input
         variant="searchwhite"
