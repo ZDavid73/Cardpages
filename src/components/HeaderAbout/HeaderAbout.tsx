@@ -19,7 +19,7 @@ const Header = () => {
           }}
           ></div>
         <Container variant='small' className='username-calatogues'>
-            <Tittle variant='white'>{user.username}'s catalogue</Tittle>
+            <Tittle variant='white'>Capsule corp Inc. </Tittle>
             <Text variant='purple' className='number-of-sales'>0 sales</Text>
         </Container>
       </div>
