@@ -20,16 +20,14 @@ const SearchSell: React.FC<SearchSellProps> = ({ selectedCard, setSelectedCard }
     <div className="search-sell-container">
 
       <Input
-        variant="searchwhite"
+        variant="search"
         type="text"
         value={query}
         onChange={(e) => setQuery(e.target.value)}
         placeholder="Search for your card..."
         className="search-input"
       />
-
       {error && <p className="error-message">{error}</p>}
-
       {results.length === 0 && query !== '' && !error && (
         <p className="no-results-message">No cards found</p>
       )}
