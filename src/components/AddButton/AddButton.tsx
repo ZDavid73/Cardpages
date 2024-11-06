@@ -14,7 +14,7 @@ const AddButton = () => {
     if (option === 'Add Deck') {
       handleOpen('createDeck');
     } else if (option === 'Add Card') {
-      handleOpen('createTournament');
+      handleOpen('createCard');
     }
     setShowOptions(false);
   };
