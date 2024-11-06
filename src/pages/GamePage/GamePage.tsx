@@ -48,6 +48,8 @@ const GamePage: React.FC = () => {
            <Setup players={usersInfo} addPlayer={addPlayer} resetPlayers={resetPlayers}/>
             <Header/> 
       </div>
+
+      <p>{tournament.location}</p>
       {players.length >= 2 && <Bracket rounds={rounds} onWin={handleWin} />}
       {results.length > 0 && (
         <div className="results">

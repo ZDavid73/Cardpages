@@ -22,6 +22,8 @@ export const registerUser = async (email: string, password: string, username: st
 
   if (profileError) throw new Error(profileError.message);
 
+  loginUser(email, password);
+
   return user;
 };
 
