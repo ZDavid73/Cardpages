@@ -17,8 +17,6 @@ const CardForm: React.FC<CardFormProps> = ({ selectedCard }) => {
   useEffect(() => {
     if (selectedCard) {
       setCardName(selectedCard.name);
-      setPrice(selectedCard.price.toString());
-      setDescription(selectedCard.description);
     }
   }, [selectedCard]);
 
@@ -28,7 +26,7 @@ const CardForm: React.FC<CardFormProps> = ({ selectedCard }) => {
     e.preventDefault();
 
     if (selectedCard && price) {
-      const error = await handleSellCard(selectedCard.id, selectedCard.sellerId, parseFloat(price));
+      const error = await handleSellCard(selectedCard.cardId, selectedCard.sellerId, parseFloat(price));
       if (error) {
         console.error('Error selling card:', error);
       } else {
