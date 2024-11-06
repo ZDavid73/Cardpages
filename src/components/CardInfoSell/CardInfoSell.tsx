@@ -52,7 +52,8 @@ const CardForm = ({selectedCard}: CardFormProps) => {
           value={price}
           onChange={(e) => setPrice(e.target.value)}
           placeholder="Price"
-        />        
+        /> 
+        <label htmlFor="card-description">Description</label>       
         <Input
           variant="boxwhite"
           value={description}
