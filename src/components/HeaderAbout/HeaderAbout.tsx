@@ -1,4 +1,4 @@
-import './HeaderAbout.css'
+import './HeaderABout.css'
 import {Container, Tittle, Text} from '../../theme/styledcomponents';
 import { useSelector } from "react-redux";
 import { AppState } from "../../types/stateType";
@@ -9,7 +9,7 @@ const Header = () => {
       <div className='calatogues-header'>
         <div className='catalogues-image' 
          style={{
-            backgroundImage: `url('https://zyemimihfcilkfzgwsxv.supabase.co/storage/v1/object/public/Header%20Images/pokemon-101-1280x960.webp')`, 
+            backgroundImage: `url('')`, 
             backgroundSize: 'cover',
             backgroundPosition: 'center',
             backgroundRepeat: 'no-repeat',
