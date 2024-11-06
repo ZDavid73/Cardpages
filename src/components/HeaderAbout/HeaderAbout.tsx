@@ -1,4 +1,3 @@
-import './HeaderABout.css'
 import {Container, Tittle} from '../../theme/styledcomponents';
 
 
