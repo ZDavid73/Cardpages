@@ -17,6 +17,8 @@ const CardForm: React.FC<CardFormProps> = ({ selectedCard }) => {
   useEffect(() => {
     if (selectedCard) {
       setCardName(selectedCard.name);
+      setPrice(selectedCard.price.toString());
+      setDescription(selectedCard.description);
     }
   }, [selectedCard]);
 
