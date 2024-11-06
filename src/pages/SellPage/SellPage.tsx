@@ -11,8 +11,10 @@ const SellPage = () => {
 
   return (
     <div className='sell-page'>
-      <Tittle variant='white'>Sell Card</Tittle>
       <div className='search-sell-container'>
+      <div className='headertittle'>
+      <Tittle variant='white'>Sell Card</Tittle>
+      </div>
       <SearchSell selectedCard={selectedCard} setSelectedCard={setSelectedCard} />
       </div>
       <div className='card-form-container'>
