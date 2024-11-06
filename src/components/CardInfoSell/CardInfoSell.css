@@ -21,7 +21,7 @@
 
 .card-form label {
     font-family: 'Sora', sans-serif;
-    font-size: 16px;
+    font-size: 20px;
     font-weight: 600;
     color: #ffffff;
     margin-bottom: 10px; 
@@ -31,10 +31,6 @@
 .card-form input {
     width: 100%;
     padding: 10px;
-    border-radius: 5px;
-    border: 1px solid #d3d3d3;
-    outline: none;
-    font-size: 14px;
 }
 
 .card-form button {
