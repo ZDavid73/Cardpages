@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from 'react';
-import { SellingCard } from '../../types/cardTypes';
+import { Card } from '../../types/cardTypes';
 import { useCardTransactions, } from '../../hooks/useCards';
 import { Input, Button,  } from '../../theme/styledcomponents';
 import './CardInfoSell.css';
 
 interface CardFormProps {
-  selectedCard: SellingCard | null;
+  selectedCard: Card | null;
 }
 
 const CardForm = ({selectedCard}: CardFormProps) => {
