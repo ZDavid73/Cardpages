@@ -7,7 +7,7 @@ interface MatchNodeProps {
 }
 
 const MatchNode: React.FC<MatchNodeProps> = ({ match, onWin }) => {
-  const handleDrag = d3.drag<SVGElement, unknown>()
+  const handleDrag = d3.drag<HTMLDivElement, unknown>()
     .on('start', (event) => {
       d3.select(event.sourceEvent.target).style('opacity', 0.5);
     })

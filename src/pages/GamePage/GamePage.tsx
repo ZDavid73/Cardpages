@@ -14,28 +14,34 @@ import { UserState } from '../../features/auth/userSlice';
 
 const GamePage: React.FC = () => {
   const { players, addPlayer, resetPlayers } = useSetup();
-  const { rounds, handleWin, results } = useGameTournament(players);
+  const [usersInfo, setUsersInfo] = useState<UserState[]>([]);
+  const { rounds, handleWin, results } = useGameTournament(usersInfo.map((user) => user.username));
   const navigate = useNavigate()
   const location = useLocation()
   const tournament: Tournament = location.state.tournament
-  const [usersInfo, setUsersInfo] = useState<UserState[]>([]);
+
 
   useEffect(() => {
     const fetchUserInfo = async () => {
       try {
-        tournament.players.forEach(async (player) => {
-          const res = await getUserInfo(player.id)
-          if (res) {
-            setUsersInfo((prev) => [...prev, res]);
-          }
-        })
+        const fetchedUsers = await Promise.all(
+          tournament.players.map(async (player) => {
+            const res = await getUserInfo(player.id);
+            return res;
+          })
+        );
+        
+        if ( fetchedUsers.every((user) => user !== null && typeof user === 'object' && 'username' in user) ) {
+          setUsersInfo(fetchedUsers);
+        }
       } catch (error) {
         console.error('Error fetching user info:', error);
       }
     };
-
+  
     fetchUserInfo();
   }, [tournament.players]);
+  
 
   return (
     <>
@@ -49,7 +55,6 @@ const GamePage: React.FC = () => {
             <Header/> 
       </div>
 
-      <p>{tournament.location}</p>
       {players.length >= 2 && <Bracket rounds={rounds} onWin={handleWin} />}
       {results.length > 0 && (
         <div className="results">

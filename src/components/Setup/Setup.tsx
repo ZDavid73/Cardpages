@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import { Container, Text, Tittle } from '../../theme/styledcomponents';
+import React from 'react';
+import { Container, Tittle } from '../../theme/styledcomponents';
 import { UserState } from '../../features/auth/userSlice';
 import TourProfile from '../TourProfile/TourProfile';
 import './Setup.css';
@@ -10,15 +10,15 @@ interface SetupProps {
   resetPlayers: () => void;
 }
 
-const Setup: React.FC<SetupProps> = ({ players, addPlayer, resetPlayers }) => {
-  const [newPlayer, setNewPlayer] = useState('');
+const Setup: React.FC<SetupProps> = ({ players }) => {
+  //const [newPlayer, setNewPlayer] = useState('');
 
-  const handleAddPlayer = () => {
+  {/*const handleAddPlayer = () => {
     if (newPlayer.trim()) {
       addPlayer(newPlayer);
       setNewPlayer('');
     }
-  };
+  };*/}
 
   return (
     <Container variant='small'>

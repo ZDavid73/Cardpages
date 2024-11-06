@@ -5,11 +5,11 @@ export const useGameTournament = (players: string[]) => {
   const [results, setResults] = useState<string[]>([]);
 
   useEffect(() => {
-    if (players.length > 1) {
+    if (players.length > 1 && rounds.length === 0) {
       const initialRound = [...Array(Math.ceil(players.length / 2))].map(() => ['', '']);
       setRounds([initialRound]);
     }
-  }, [players]);
+  }, [players, rounds]);
 
   const handleWin = (roundIdx: number, matchIdx: number, winner: string) => {
     const nextRoundIdx = roundIdx + 1;
