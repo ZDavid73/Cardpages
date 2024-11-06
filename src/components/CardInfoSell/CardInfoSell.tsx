@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Card } from '../../types/cardTypes';
-import { useCardTransactions } from '../../hooks/useCards';
+import { useCardTransactions, } from '../../hooks/useCards';
 import { Input, Button,  } from '../../theme/styledcomponents';
 import './CardInfoSell.css';
 
@@ -12,6 +12,7 @@ const CardForm: React.FC<CardFormProps> = ({ selectedCard }) => {
   const [cardName, setCardName] = useState('');
   const [price, setPrice] = useState('');
   const [description, setDescription] = useState('');
+  const { handleSellCard } = useCardTransactions();
 
   useEffect(() => {
     if (selectedCard) {
@@ -23,6 +24,7 @@ const CardForm: React.FC<CardFormProps> = ({ selectedCard }) => {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+
     if (selectedCard && price) {
       const error = await handleSellCard(selectedCard.id, selectedCard.sellerId, parseFloat(price));
       if (error) {
