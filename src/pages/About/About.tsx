@@ -6,8 +6,10 @@ const AboutPage = () => {
     
     return (
         <>
+        <div className="catalogue-sectionheader">
         <Profile/>
         <HeaderAbout/>
+        </div>
         <Tittle variant='purple'>About Us</Tittle>
 
         <Footer/>
