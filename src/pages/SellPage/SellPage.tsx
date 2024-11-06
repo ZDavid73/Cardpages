@@ -10,15 +10,15 @@ const SellPage = () => {
   
   const [selectedCard, setSelectedCard] = useState<Card | null>(null);
 
-  const handleBackClick = () => {
-    console.log("Back clicked");
-  };  
+  const handleOverlayClick = () => {
+    handleClose();
+};  
 
   return (
     <div className='sell-page'>
       <div className='search-sell-container'>
       <div className='headertittle'>
-       <FaChevronLeft onClick={handleBackClick} className='FaChevronLeft' /> 
+       <FaChevronLeft onClick={handleOverlayClick} className='FaChevronLeft' /> 
       <Tittle variant='white'>Sell Card</Tittle>
       </div>
       <SearchSell selectedCard={selectedCard} setSelectedCard={setSelectedCard} />
