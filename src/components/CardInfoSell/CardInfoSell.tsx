@@ -46,6 +46,7 @@ const CardForm = ({selectedCard}: CardFormProps) => {
           placeholder="Card Name"
           disabled 
         />
+        <div className='info-card'>
         <label htmlFor="card-price">Price</label>
         <Input
           variant="boxwhite"
@@ -53,14 +54,15 @@ const CardForm = ({selectedCard}: CardFormProps) => {
           value={price}
           onChange={(e) => setPrice(e.target.value)}
           placeholder="Price"
-        /> 
+        /></div> 
+        <div className='info-card'>
         <label htmlFor="card-description">Description</label>       
         <Input
           variant="boxwhite"
           value={description}
           onChange={(e) => setDescription(e.target.value)}
           placeholder="Description"
-        />
+        /></div>
         <Button variant="purple" type="submit" disabled={!isFormValid}>
           Post Card
         </Button>
