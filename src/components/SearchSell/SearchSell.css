@@ -1,3 +1,6 @@
+.search-sell-container{
+  margin-left: 20px;
+}
 .results {
   display: grid;
   grid-template-columns: repeat(3, 1fr); 
