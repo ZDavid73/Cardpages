@@ -3,7 +3,7 @@
     padding: 3%;
     display: flex;
 }
-.Vision, .Mission, .Community, .Offer {
+.Vision,.Mission ,.Community, .Offer {
     padding: 0px;
     margin: 50px;
 }
@@ -17,10 +17,12 @@
     color: #fff; 
 }
 
-.Vision{
-    flex: 1 1 50% ;
-  }
-
-  .Mission{
-    flex: 1 1 50% ; 
-  }
+.Mission, .Vision {
+    width: 40%;
+}
+.Mission {
+    order: 1;
+}
+.Vision {
+    order: 2;
+}
