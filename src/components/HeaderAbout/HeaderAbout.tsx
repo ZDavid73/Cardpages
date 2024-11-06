@@ -1,9 +1,8 @@
 import './HeaderABout.css'
-import {Container, Tittle, Text} from '../../theme/styledcomponents';
+import {Container, Tittle} from '../../theme/styledcomponents';
 
 
 const Header = () => {
-  const user = useSelector((state: AppState) => state.user);
     return (
       <div className='calatogues-header'>
         <div className='catalogues-image' 
