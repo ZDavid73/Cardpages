@@ -25,8 +25,8 @@ const CardForm = ({selectedCard}: CardFormProps) => {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 
-    if (selectedCard && price) {
-      const error = await handleSellCard(selectedCard.cardId, selectedCard.sellerId, parseFloat(price));
+    if (selectedCard && price && description) {
+      const error = await handleSellCard(selectedCard, parseFloat(price), description);
       if (error) {
         console.error('Error selling card:', error);
       } else {
