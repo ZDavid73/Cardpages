@@ -4,7 +4,6 @@
     display: flex;
 }
 .Vision,.Mission ,.Community, .Offer {
-    padding: 0px;
     margin: 50px;
 }
 
@@ -13,16 +12,12 @@
     margin-top:30px ;
 }
 .Offer ul {
-    padding-left: 20px;
     color: #fff; 
 }
-
+.Mi-Vi {
+    display: flex;
+}
 .Mission, .Vision {
     width: 40%;
 }
-.Mission {
-    order: 1;
-}
-.Vision {
-    order: 2;
-}
+
