@@ -2,7 +2,7 @@ import './HeaderABout.css'
 import {Container, Tittle} from '../../theme/styledcomponents';
 
 
-const Header = () => {
+const HeaderAbout = () => {
     return (
       <div className='calatogues-header'>
         <div className='catalogues-image' 
@@ -23,4 +23,4 @@ const Header = () => {
     );
   };
   
-  export default Header;
+  export default HeaderAbout;
