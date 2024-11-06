@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Card } from '../../types/cardTypes';
+import { useCardTransactions } from '../../hooks/useCards';
 import { Input, Button,  } from '../../theme/styledcomponents';
 import './CardInfoSell.css';
 
