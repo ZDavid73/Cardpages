@@ -21,10 +21,7 @@ const CardForm: React.FC<CardFormProps> = ({ selectedCard }) => {
 
   const isFormValid = cardName && price && description;
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    console.log('Card posted:', { cardName, price, description });
-  };
+  
 
   return (
     <div className='card-form'>
