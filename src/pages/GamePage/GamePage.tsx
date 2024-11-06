@@ -45,7 +45,7 @@ const GamePage: React.FC = () => {
       </section>
 
       <div className="catalogue-sectionheader">
-           <Setup players={tournament.players} addPlayer={addPlayer} resetPlayers={resetPlayers}/>
+           <Setup players={usersInfo} addPlayer={addPlayer} resetPlayers={resetPlayers}/>
             <Header/> 
       </div>
       {players.length >= 2 && <Bracket rounds={rounds} onWin={handleWin} />}

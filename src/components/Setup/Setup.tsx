@@ -1,9 +1,11 @@
 import React, { useState } from 'react';
 import { Container, Text, Tittle } from '../../theme/styledcomponents';
-import { Player } from '../../types/tournamentTypes';
+import { UserState } from '../../features/auth/userSlice';
+import TourProfile from '../TourProfile/TourProfile';
+import './Setup.css';
 
 interface SetupProps {
-  players: Player[];
+  players: UserState[];
   addPlayer: (name: string) => void;
   resetPlayers: () => void;
 }
@@ -29,13 +31,11 @@ const Setup: React.FC<SetupProps> = ({ players, addPlayer, resetPlayers }) => {
       />
       <button onClick={handleAddPlayer}>Agregar Jugador</button>
       <button onClick={resetPlayers}>Reiniciar Jugadores</button>*/}
-      <ul>
+      <section className='tour-players'>
         {players.map((player, idx) => (
-          <li key={idx}>
-            <Text variant='white'>{player.id}</Text>
-          </li>
+          <TourProfile key={idx} player={player} />
         ))}
-      </ul>
+      </section>
     </Container>
   );
 };
