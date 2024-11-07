@@ -16,11 +16,8 @@ const Catalogue = () => {
                 <Profile />
                 <Header />
             </div>
+            <section>
             <Tittle variant="white">Cards On Sale</Tittle>
-
-            <SellCardButton />
-            <AddButton />
-
             <section className="cards-section">
                 {cardsState.loading && <Text variant="white">Loading cards...</Text>}
                 {cardsState.error && (
@@ -46,6 +43,11 @@ const Catalogue = () => {
                     </div>
                 )}
             </section>
+            </section>
+            <SellCardButton />
+            <AddButton />
+
+            
         </>
     );
 };
