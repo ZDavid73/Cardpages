@@ -19,7 +19,11 @@ const Tournament = () => {
         <TourSection state={tournaments} items={tournaments.tournaments.filter(t => t.host === userId)}/>
 
         <Tittle variant='white'>Tournaments you have joined</Tittle>
+        <TourSection state={tournaments} items={tournaments.tournaments.filter(t => t.players.some(p => p.id === userId))}/>
+        
         <Tittle variant='white'>Tournaments you have participated in</Tittle>
+        <TourSection state={tournaments} items={tournaments.tournaments.filter(t => t.status === 'finished' && t.players.some(p => p.id === userId))}/>
+
         </>
     )
 }
