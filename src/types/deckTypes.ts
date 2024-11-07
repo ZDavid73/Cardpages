@@ -1,9 +1,11 @@
-import { Card } from "./cardTypes";
+import { ItemType } from "../hooks/useDragDrop";
 
 export interface Deck {
     id: string;
     name: string;
     creator: string;
     desc: string;
-    cards: Card[];
+    cards: ItemType[];
+    price: number;
+    cover: string;
 }

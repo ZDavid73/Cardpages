@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-interface ItemType {
+export interface ItemType {
     item: string;
     quantity: number;
     image: string;

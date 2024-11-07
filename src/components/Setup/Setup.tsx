@@ -7,9 +7,10 @@ import { useDrag } from 'react-dnd';
 interface SetupProps {
   players: UserState[];
   max: number;
+  status: string;
 }
 
-const Setup: React.FC<SetupProps> = ({ players, max }) => {
+const Setup: React.FC<SetupProps> = ({ players, max, status }) => {
   //const [newPlayer, setNewPlayer] = useState('');
 
   {/*const handleAddPlayer = () => {
@@ -36,7 +37,7 @@ const Setup: React.FC<SetupProps> = ({ players, max }) => {
         ))}
 
         <Text variant='white'>{players.length}/{max} players</Text>
-        <Text variant='purple'>{players.length === max ? 'Ready to start!' : `There's not enough people to start yet!`}</Text>
+        <Text variant='purple'>{players.length === max ? status === 'finished' ? 'This tournament has finished!' : 'Ready to start!' : `There's not enough people to start yet!`}</Text>
       </section>
     </Container>
   );

@@ -103,3 +103,13 @@ export const getUserInfo = async (userId: string) => {
     return user.data[0] as UserState;
   }
 }
+
+export const uploadImage = async (file: File) => {
+  const { data, error } = await supabase.storage.from('Decks').upload(file.name, file);
+
+  if (error) {
+    return { data: null, error };
+  }
+
+  return { data, error: null };
+}

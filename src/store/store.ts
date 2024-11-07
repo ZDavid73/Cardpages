@@ -5,6 +5,7 @@ import { userSlice } from '../features/auth/userSlice';
 import { modalSlice } from '../features/modalSlice';
 import { tournamentSlice } from '../features/tournamentSlice';
 import { cardSlice } from '../features/cardSlice';
+import { decksSlice } from '../features/deckSlice';
 
 const persistConfig = {
   key: 'user',
@@ -18,7 +19,8 @@ export const store = configureStore({
     user: persistedReducer,
     modal: modalSlice.reducer,
     tournaments: tournamentSlice.reducer,
-    cards: cardSlice.reducer
+    cards: cardSlice.reducer,
+    decks: decksSlice.reducer
   },
   devTools: process.env.NODE_ENV !== 'production',
   middleware: (getDefaultMiddleware) => getDefaultMiddleware({

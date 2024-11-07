@@ -4,4 +4,23 @@
     margin-top: 20px;
     gap: 12px;
     overflow-x: scroll;
+    width: 100%;
+}
+
+.item-section::-webkit-scrollbar {
+    height: 10px; /* Ancho de la barra de desplazamiento */
+}
+
+.item-section::-webkit-scrollbar-track {
+    background-color: #ffffff39; /* Fondo de la barra de desplazamiento */
+    border-radius: 10px;
+}
+
+.item-section::-webkit-scrollbar-thumb {
+    background-color: #D9D9D9; /* Color de la barra deslizadora */
+    border-radius: 10px;
+}
+
+.item-section::-webkit-scrollbar-button {
+    display: none; /* Elimina las flechitas */
 }
