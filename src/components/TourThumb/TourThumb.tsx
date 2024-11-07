@@ -23,6 +23,8 @@ const TourThumb = ({ tournament }: TourThumbProps) => {
         >
             <div className='tour-button'>
             {
+                tournament.status === 'finished' ?
+                <Button variant='gray' onClick={() => navigate('/game', { state: { tournament } })}>Finished</Button> :
                 id === tournament.host ? 
                 <Button variant='purple' onClick={() => navigate('/game', { state: { tournament } })}>
                     Start
