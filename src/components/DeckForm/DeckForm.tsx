@@ -3,6 +3,7 @@ import { FaLock } from "react-icons/fa";
 import './DeckForm.css';
 import useDragDrop from '../../hooks/useDragDrop';
 import { useState, useEffect } from 'react';
+import { useDeckBuilder } from '../../hooks/useDecks';
 
 const DeckForm = () => {
     const { items, handleDrop, handleDragOver, handleClickRemove } = useDragDrop();
@@ -16,9 +17,10 @@ const DeckForm = () => {
     const [deckCover, setDeckCover] = useState<File | null>(null);
     const [deckPrice, setDeckPrice] = useState<string>('');
     const [deckDescription, setDeckDescription] = useState<string>('');
+    const { handlePostDeck } = useDeckBuilder();
 
     const isFormValid = 
-      cardCount >= 24 && 
+      cardCount >= 2 && 
       deckName.trim() !== '' && 
       deckCover && 
       deckPrice && 
@@ -28,7 +30,7 @@ const DeckForm = () => {
     }, [cardCount, deckName, deckCover, deckPrice, deckDescription]);
 
     return (
-      <form className="Deck-form">
+      <form className="Deck-form" onSubmit={(e) => handlePostDeck({deckCover, deckDescription, deckName, deckPrice, items, e})}>
         <div className="header-deck-form">
           <div 
             contentEditable="true" 
@@ -118,7 +120,7 @@ const DeckForm = () => {
         />
         
         {/* Cambié el estado de disabled usando isFormValid */}
-        <Button variant="purple" disabled={!isFormValid}>Post Deck</Button>
+        <Button variant="purple" disabled={!isFormValid} type='submit'>Post Deck</Button>
       </form>
     );
   };  

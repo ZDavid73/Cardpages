@@ -1,65 +1,46 @@
-import { useState } from 'react';
 import { postDeck } from '../services/databaseService'; // Importamos desde databaseService
-import { Card } from '../types/cardTypes';
 import { Deck } from '../types/deckTypes';
-
-const startingDeck: Deck = {
-  id: '',
-  name: '',
-  creator: '',
-  desc: '',
-  cards: [],
-};
+import { useSelector } from 'react-redux';
+import { AppState } from '../types/stateType';
+import { ItemType } from './useDragDrop';
+import { FormEvent } from 'react';
 
 export const useDeckBuilder = () => {
-  const [localDeck, setLocalDeck] = useState<Deck>(startingDeck);
+  const userId = useSelector((state: AppState) => state.user.id);
 
-  const addCardToDeck = (card: Card) => {
-    setLocalDeck((p) => ({ ...p, cards: [...p.cards, card] }));
-  };
+interface HandlePostDeckProps {
+  deckCover: File | null;
+  deckDescription: string;
+  deckName: string;
+  deckPrice: string;
+  items: ItemType[];
+  e: FormEvent<HTMLFormElement>;
+}
 
-  const removeCardFromDeck = (cardId: string) => {
-    setLocalDeck((p) => ({ ...p, cards: p.cards.filter((c) => c.id !== cardId) }));
-  };
-
-  const clearDeck = () => {
-    setLocalDeck(startingDeck);
-  };
-
-  const updateName = (name: string) => {
-    setLocalDeck((p) => ({ ...p, name }));
-  };
-
-  const updateDesc = (desc: string) => {
-    setLocalDeck((p) => ({ ...p, desc }));
-  };
-
-  const handlePostDeck = async (deck) => {
-    if (localDeck.cards.length === 0) {
-      console.error('Deck is empty! Cannot save.');
-      return;
-    }
+  const handlePostDeck = async ({deckCover, deckDescription,deckName, deckPrice, items, e}: HandlePostDeckProps) => {
+    e.preventDefault();
 
     const newDeck: Deck = {
       id: crypto.randomUUID(),
-      ...deck,
+      name: deckName,
+      creator: userId,
+      desc: deckDescription,
+      cards: items,
+      price: Number(deckPrice),
+      cover: String(deckCover),
     };
+
+    console.log('Deck to save:', newDeck);
 
     const { error } = await postDeck(newDeck);
     if (error) {
       console.error('Error saving deck to Supabase:', error.message);
     } else {
-      clearDeck();
+      console.log('Deck saved successfully!');
     }
   };
 
   return {
-    localDeck,
-    addCardToDeck,
-    removeCardFromDeck,
-    clearDeck,
-    updateName,
-    updateDesc,
     handlePostDeck,
   };
 };
