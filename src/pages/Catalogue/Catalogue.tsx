@@ -9,10 +9,14 @@ import { Tittle, Text  } from '../../theme/styledcomponents';
 import { FaEdit } from "react-icons/fa";
 import Footer from '../../components/Footer/Footer';
 import useModal from '../../hooks/useModal';
+import TourSection from '../../components/ItemSection/ItemSection';
 
 
 const Catalogue = () => {
     const cardsState = useSelector((state: AppState) => state.cards);
+    const tournaments = useSelector((state: AppState) => state.tournaments);
+    const userId = useSelector((state: AppState) => state.user.id);
+
     const { handleOpen } = useModal();
 
     return (
@@ -46,6 +50,10 @@ const Catalogue = () => {
             </>
         )}<SellCardButton />
     </div>
+
+    <Tittle variant="white">Tournaments</Tittle>
+
+    <TourSection state={tournaments} items={tournaments.tournaments.filter(t => t.players.every(p => p.id !== userId))}/>
 </section>
             <AddButton /> 
             <Footer/> 
