@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { addTournament, addPlayerToTournament, removePlayerFromTournament } from '../services/databaseService'; // Importamos desde databaseService
+import { addTournament, addPlayerToTournament, removePlayerFromTournament, finishTournament } from '../services/databaseService'; // Importamos desde databaseService
 import { NewTournamentData, Player, Tournament } from "../types/tournamentTypes";
 import { useDispatch, useSelector } from "react-redux";
 import { AppState } from "../types/stateType";
@@ -36,6 +36,7 @@ export const useTournament = () => {
       status: 'upcoming',
       players: [],
       rounds: [],
+      winner: '',
     };
 
     const { error } = await addTournament(newTournament);
@@ -87,11 +88,20 @@ export const useTournament = () => {
     dispatch(closeModal());
   }
 
+  const handleFinishTournament = async (id: string, winner: string) => {
+    const { error } = await finishTournament(id, winner);
+
+    if (error) {
+      console.error('Error finishing tournament in Supabase:', error.message);
+    }
+  }
+
   return {
     handleAddTournament,
     handleAddPlayer,
     handleRemovePlayer,
     handleChangeAddPlayerToTournament,
     handleChangeCreateTourForm,
+    handleFinishTournament,
   };
 };

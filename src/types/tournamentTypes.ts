@@ -28,6 +28,7 @@ export interface Tournament {
     status: string;
     players: Player[];
     rounds: Round[];
+    winner: string;
 }
 
 export interface MatchPlayers {
