@@ -14,6 +14,7 @@ import useModal from '../../hooks/useModal';
 const Catalogue = () => {
     const cardsState = useSelector((state: AppState) => state.cards);
     const { handleOpen } = useModal();
+    const userId = useSelector((state: AppState) => state.user.id);
 
     return (
         <>
@@ -33,7 +34,7 @@ const Catalogue = () => {
         )}
         {!cardsState.loading && !cardsState.error && cardsState.cards.length > 0 && (
             <>
-                {cardsState.cards.map((card) => (
+                {cardsState.cards.filter(c => c.sellerId === userId).map((card) => (
                     <div key={card.id} className="card-item">
                         <img src={card.images.small} alt={`Card ${card.id}`} className="card-image"/>
                         <div className='infocard'>
