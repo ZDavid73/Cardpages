@@ -19,11 +19,9 @@ const SearchSell: React.FC<SearchSellProps> = ({ selectedCard, setSelectedCard }
   const [image, setImage] = React.useState<string | null>(null);
 
   useEffect(() => {
-    if (isCard(modalDetails)) {
-      if (modalDetails.images.small !== image) {
-        setImage(modalDetails.images.small);
-      }
-    }
+    if (modalDetails) {if (isCard(modalDetails)) {
+      setImage(modalDetails.images.small);
+    }}
   }, [modalDetails, image]);
 
   const handleCardClick = (card: Card) => {
