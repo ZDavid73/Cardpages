@@ -4,27 +4,16 @@ import { Tittle } from '../../theme/styledcomponents';
 import { FaChevronLeft } from "react-icons/fa";
 import useModal from '../../hooks/useModal';
 import { Card } from '../../types/cardTypes';
-import { useEffect, useState } from 'react';
-import { useSelector } from 'react-redux';
+import { useState } from 'react';
 import './SellPage.css';
 
 const SellPage = () => {
   
   const [selectedCard, setSelectedCard] = useState<Card | null>(null);
   const {handleClose } = useModal();
-  const modal = useSelector((state: AppState) => state.modal);
-  
-  
-  useEffect(() => {
-    if(modal.details && modal.modal === "createCard"){
-      setSelectedCard(modal.details as Card);
-    }
-  }, [modal.details, modal.modal]);
-
   const handleOverlayClick = () => {
     handleClose();
 };  
-
 
   return (
     <div className='sell-page'>
@@ -43,4 +32,3 @@ const SellPage = () => {
 };
 
 export default SellPage;
-
