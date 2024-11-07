@@ -6,14 +6,13 @@ import Profile from "../../components/Profile/Profile"
 import AddButton from '../../components/AddButton/AddButton'
 import SellCardButton from '../../components/AddCard/AddCard'
 import { Tittle, Text  } from '../../theme/styledcomponents';
-import { FaEdit } from "react-icons/fa";
 import Footer from '../../components/Footer/Footer';
-import useModal from '../../hooks/useModal';
+import TourSection from '../../components/ItemSection/ItemSection';
 
 
 const Catalogue = () => {
     const cardsState = useSelector((state: AppState) => state.cards);
-    const { handleOpen } = useModal();
+    const tournaments = useSelector((state: AppState) => state.tournaments);
    
 
     return (
@@ -22,8 +21,16 @@ const Catalogue = () => {
                 <Profile />
                 <Header />
             </div>  
+
+            
     <section className="cardsOnSale">
+    <Tittle variant="white">Upcoming events</Tittle>
+
+
+<TourSection state={tournaments} items={tournaments.tournaments}/>
         <Tittle variant="white">Cards On Sale</Tittle>
+
+        
     <div className="cards-container">
         {cardsState.loading && <Text variant="white">Loading cards...</Text>}
         {cardsState.error && (
@@ -46,6 +53,7 @@ const Catalogue = () => {
             </>
         )}<SellCardButton />
     </div>
+    
 </section>
             <AddButton /> 
             <Footer/> 

@@ -25,6 +25,10 @@ const Catalogue = () => {
                 <Header />
             </div>  
     <section className="cardsOnSale">
+    <Tittle variant="white">Tournaments</Tittle>
+
+<TourSection state={tournaments} items={tournaments.tournaments.filter(t => t.players.every(p => p.id !== userId))}/>
+
         <Tittle variant="white">Cards On Sale</Tittle>
     <div className="cards-container">
         {cardsState.loading && <Text variant="white">Loading cards...</Text>}
@@ -50,9 +54,7 @@ const Catalogue = () => {
         )}<SellCardButton />
     </div>
 
-    <Tittle variant="white">Tournaments</Tittle>
-
-    <TourSection state={tournaments} items={tournaments.tournaments.filter(t => t.players.every(p => p.id !== userId))}/>
+    
 </section>
             <AddButton /> 
             <Footer/> 
