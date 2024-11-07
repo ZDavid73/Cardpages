@@ -1,6 +1,6 @@
 import { supabase } from './supabaseClient';
 import { Deck } from '../types/deckTypes';
-import { Player, Round, Tournament } from '../types/tournamentTypes';
+import { Player, Tournament } from '../types/tournamentTypes';
 import { UserState } from '../features/auth/userSlice';
 import { SellingCard } from '../types/cardTypes';
 
@@ -89,11 +89,11 @@ export const removePlayerFromTournament = async (id: string, playerId: string) =
   return { data: updatedPlayers, error }; // Return the response object with data and error
 };
 
-export const finishTournament = async (id: string, rounds: Round[]) => {
+export const finishTournament = async (id: string, winner: string) => {
   return await supabase
-    .from('tournaments')
-    .update({ status: 'finished', rounds })
-    .eq('id', id);
+  .from('tournaments')
+  .update({ status: 'finished', winner })
+  .eq('id', id);
 };
 
 export const getUserInfo = async (userId: string) => {
