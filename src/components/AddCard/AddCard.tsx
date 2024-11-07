@@ -11,7 +11,7 @@ const SellCardButton = () => {
 
   return (
     <div className="sell-card-button">
-      <button variant="white" onClick={openSellCardModal}>
+      <button onClick={openSellCardModal}>
         +
       </button>
     <Text variant="white">Sell Card</Text>
