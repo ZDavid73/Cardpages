@@ -11,6 +11,7 @@ interface SearchSellProps {
 
 const SearchSell: React.FC<SearchSellProps> = ({ selectedCard, setSelectedCard }) => {
   const { query, results, error, setQuery } = useSearchSell();
+  const modalDetails = useSelector((state: AppState) => state.modal.modalDetails);
 
   const handleCardClick = (card: Card) => {
     setSelectedCard(card); 
