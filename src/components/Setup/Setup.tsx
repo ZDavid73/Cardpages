@@ -4,6 +4,7 @@ import { UserState } from '../../features/auth/userSlice';
 import './Setup.css';
 import { useDrag } from 'react-dnd';
 import { Tournament } from '../../types/tournamentTypes';
+import { FaCrown } from 'react-icons/fa';
 
 interface SetupProps {
   players: UserState[];
@@ -45,6 +46,7 @@ const DraggablePlayer: React.FC<{ player: UserState, won?: boolean }> = ({ playe
     <div className={`tour-profile ${won ? 'winner' : null}`} ref={dragRef}>
             <img src={player.picture} alt={player.username} />
             <Text variant="white">{player.username}</Text>
+            { won && <FaCrown color="orange" size={24}/> }
     </div>
   );
 };
