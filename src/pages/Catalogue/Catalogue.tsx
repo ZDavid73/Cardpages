@@ -40,9 +40,9 @@ const Catalogue = () => {
                     </div>
                 ))}
             </>
-        )}
+        )}<SellCardButton />
     </div>
-    <SellCardButton />
+    
 </section>
             <AddButton />
 
