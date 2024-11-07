@@ -1,5 +1,5 @@
 import { useSelector } from 'react-redux';
-import { Button, Container, Text } from '../../theme/styledcomponents';
+import { Button, Text } from '../../theme/styledcomponents';
 import { Tournament } from '../../types/tournamentTypes';
 import './TourThumb.css';
 import { FaLocationPin } from 'react-icons/fa6';
@@ -33,10 +33,10 @@ const TourThumb = ({ tournament }: TourThumbProps) => {
                 </Button>
             }
             </div>
-            <Container variant='smallopacity'>
+            <div className='thumb-tour-info'>
             <Text variant='white'><FaLocationPin/>{tournament.location}</Text>
             <Text variant='white'>{tournament.date}</Text>
-            </Container>
+            </div>
         </section>
     );
 }
