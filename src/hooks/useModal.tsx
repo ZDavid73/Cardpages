@@ -6,7 +6,7 @@ import AddDeck from "../components/AddDeck/AddDeck";
 import JoinTour from "../components/JoinTour/JoinTour";
 import { Tournament } from "../types/tournamentTypes";
 import { Deck } from "../types/deckTypes";
-import { Card } from "../types/cardTypes";
+import { SellingCard } from "../types/cardTypes";
 import SellPage from "../pages/SellPage/SellPage";
 
 const useModal = () => {
@@ -17,7 +17,7 @@ const useModal = () => {
         dispatch(closeModal());
     }
 
-    const handleOpen = (modal: string, details?: Tournament | Deck | Card) => {
+    const handleOpen = (modal: string, details?: Tournament | Deck | SellingCard) => {
         dispatch(setModalDetails(details));
         dispatch(openModal(modal));
     }

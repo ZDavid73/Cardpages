@@ -1,4 +1,4 @@
-import { Card } from "../types/cardTypes";
+import { Card, SellingCard } from "../types/cardTypes";
 import { Deck } from "../types/deckTypes";
 import { Tournament } from "../types/tournamentTypes";
 
@@ -10,8 +10,8 @@ function isTournament(details: Tournament | Deck | Card | null): details is Tour
     return (details as Deck).cards !== undefined;
   }
   
-  function isCard(details: Tournament | Deck | Card | null): details is Card {
-    return (details as Card).images !== undefined;
+  function isCard(details: Tournament | Deck | SellingCard | null): details is SellingCard {
+    return (details as SellingCard).images !== undefined;
   }
 
 export { isTournament, isDeck, isCard }

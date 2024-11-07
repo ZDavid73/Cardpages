@@ -62,7 +62,7 @@ const GamePage: React.FC = () => {
       </section>
 
       <div className="catalogue-sectionheader">
-           <Setup players={usersInfo} max={tournament.max} status={tournament.status}/>
+           <Setup players={usersInfo} tournament={tournament}/>
             <Header/> 
       </div>
 
