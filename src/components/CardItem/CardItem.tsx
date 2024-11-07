@@ -2,7 +2,6 @@ import { CardState } from '../../features/cardSlice';
 import { Text } from '../../theme/styledcomponents';
 import { SellingCard } from '../../types/cardTypes';
 import SellingCardThumb from '../CardThumb/CardThum';
-import './ItemSection.css';
 
 type SellingCardSectionProps = {
     items: SellingCard[];

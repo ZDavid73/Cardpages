@@ -8,7 +8,7 @@ import { Tittle  } from '../../theme/styledcomponents';
 import SellingCardSection from '../../components/CardItem/CardItem';
 
 const Catalogue = () => {
-    const sellingCards = useSelector((state: AppState) => state.sellingCards);
+    const sellingCards = useSelector((state: AppState) => state.SellingCards);
 
     return (
         <>

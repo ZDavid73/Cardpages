@@ -3,7 +3,6 @@ import { Button, Container, Text } from '../../theme/styledcomponents';
 import { SellingCard } from '../../types/cardTypes';
 import { AppState } from '../../types/stateType';
 import { useNavigate } from 'react-router-dom';
-import './SellingCardThumb.css';
 
 type SellingCardThumbProps = {
     card: SellingCard;
