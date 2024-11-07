@@ -5,7 +5,7 @@ import Header from "../../components/Header/Header"
 import Profile from "../../components/Profile/Profile"
 import AddButton from '../../components/AddButton/AddButton'
 import SellCardButton from '../../components/AddCard/AddCard'
-import { Tittle, Text, Button  } from '../../theme/styledcomponents';
+import { Tittle, Text  } from '../../theme/styledcomponents';
 import { FaEdit } from "react-icons/fa";
 
 const Catalogue = () => {
@@ -35,7 +35,7 @@ const Catalogue = () => {
                         <div className='infocard'>
                         <Tittle variant="white">{card.name}</Tittle>
                         <Text variant="white">$ {card.price} USD</Text>
-                        <Button variant="purple" className="edit-button">Edit</Button>
+                        <FaEdit className='FaEdit'/>
                         </div>
                     </div>
                 ))}
