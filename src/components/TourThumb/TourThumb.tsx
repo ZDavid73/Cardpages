@@ -1,5 +1,5 @@
 import { useSelector } from 'react-redux';
-import { Button, Container, Text } from '../../theme/styledcomponents';
+import { Button, Text } from '../../theme/styledcomponents';
 import { Tournament } from '../../types/tournamentTypes';
 import './TourThumb.css';
 import { FaLocationPin } from 'react-icons/fa6';
@@ -23,20 +23,22 @@ const TourThumb = ({ tournament }: TourThumbProps) => {
         >
             <div className='tour-button'>
             {
+                tournament.status === 'finished' ?
+                <Button variant='gray' onClick={() => navigate('/game', { state: { tournament } })}>Finished</Button> :
                 id === tournament.host ? 
                 <Button variant='purple' onClick={() => navigate('/game', { state: { tournament } })}>
                     Start
                 </Button>
                 :
                 <Button variant='gray' onClick={() => handleOpen('joinTournament', tournament)}>
-                    Join
+                    {tournament.players.some(p => p.id === id) ? 'Joined' : 'Join'}
                 </Button>
             }
             </div>
-            <Container variant='smallopacity'>
+            <div className='thumb-tour-info'>
             <Text variant='white'><FaLocationPin/>{tournament.location}</Text>
             <Text variant='white'>{tournament.date}</Text>
-            </Container>
+            </div>
         </section>
     );
 }

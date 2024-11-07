@@ -62,11 +62,12 @@ const GamePage: React.FC = () => {
       </section>
 
       <div className="catalogue-sectionheader">
-           <Setup players={usersInfo} max={tournament.max}/>
+           <Setup players={usersInfo} max={tournament.max} status={tournament.status}/>
             <Header/> 
       </div>
-      
-      <section className='whole-tree'>
+
+      { tournament.status === 'upcoming' && (
+        <section className='whole-tree'>
         {tournament.players.length >= 2 && (
           <Bracket
             rounds={rounds}
@@ -82,6 +83,7 @@ const GamePage: React.FC = () => {
           <TournamentWinner winner={usersInfo.find(u => u.username === tournamentWinner)}/>
         )}
         </section>
+      )}
       </div>
     </DndProvider>
   );
