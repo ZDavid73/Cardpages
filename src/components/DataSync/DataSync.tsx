@@ -32,6 +32,8 @@ const DataSync = () => {
   }, [dispatch]);
 
   useEffect(() => {
+    dispatch(fetchAllCards());
+
     const subscriptionCard = supabase
     .channel('cards')
     .on(
