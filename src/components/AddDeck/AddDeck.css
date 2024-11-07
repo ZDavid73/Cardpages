@@ -30,6 +30,7 @@
     padding-bottom: 2.3%;
     border-radius: 40px;
     color: #A82CD4;
+    cursor: pointer;
 }
 .header-deck{
     display: flex;

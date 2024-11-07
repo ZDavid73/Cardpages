@@ -70,7 +70,7 @@ const useDragDrop = () => {
         handleDrop,
         handleDragOver,
         handleDropDelete,
-        handleClickRemove, // Export the new function
+        handleClickRemove,
     };
 };
 
