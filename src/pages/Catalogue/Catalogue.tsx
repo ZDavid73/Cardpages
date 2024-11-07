@@ -40,7 +40,7 @@ const Catalogue = () => {
                         <Tittle variant="white">{card.name}</Tittle>
                         <Text variant="white">$ {card.price} USD</Text>
                         </div>
-                        <FaEdit className='FaEdit' onClick={() => handleOpen ()}/>
+                        <FaEdit className='FaEdit' onClick={() => handleOpen ('createCard', card)}/>
                     </div>
                 ))}
             </>

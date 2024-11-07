@@ -1,12 +1,12 @@
 import { createSlice } from '@reduxjs/toolkit'
 import { Tournament } from '../types/tournamentTypes';
 import { Deck } from '../types/deckTypes';
-import { Card } from '../types/cardTypes';
+import { Card, SellingCard } from '../types/cardTypes';
 
 export interface ModalState {
     isOpen: boolean;
     modal: string | null;
-    modalDetails: Tournament | Deck | Card | null;
+    modalDetails: Tournament | SellingCard | Deck | null;
 }
 
 const initialState: ModalState = {
