@@ -3,6 +3,9 @@ import { Card } from '../../types/cardTypes';
 import { useCardTransactions, } from '../../hooks/useCards';
 import { Input, Button,  } from '../../theme/styledcomponents';
 import './CardInfoSell.css';
+import { useSelector } from 'react-redux';
+import { AppState } from '../../types/stateType';
+import { isCard } from '../../utils/typeGuards';
 
 interface CardFormProps {
   selectedCard: Card | null;
@@ -13,6 +16,22 @@ const CardForm = ({selectedCard}: CardFormProps) => {
   const [price, setPrice] = useState('');
   const [description, setDescription] = useState('');
   const { handleSellCard } = useCardTransactions();
+  const modalDetails = useSelector((state: AppState) => state.modal.modalDetails);
+
+  useEffect(() => {
+    if (isCard(modalDetails)) {
+      if (modalDetails.price !== parseFloat(price)) {
+        setPrice(String(modalDetails.price));
+      }
+      if (modalDetails.description !== description) {
+        setDescription(modalDetails.description);
+      }
+      if (modalDetails.name !== cardName) {
+        setCardName(modalDetails.name);
+      }
+    }
+  }, [modalDetails, price, description, cardName]);
+  
 
   useEffect(() => {
     if (selectedCard) {

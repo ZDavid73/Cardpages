@@ -7,9 +7,13 @@ import AddButton from '../../components/AddButton/AddButton'
 import SellCardButton from '../../components/AddCard/AddCard'
 import { Tittle, Text  } from '../../theme/styledcomponents';
 import { FaEdit } from "react-icons/fa";
+import Footer from '../../components/Footer/Footer';
+import useModal from '../../hooks/useModal';
+
 
 const Catalogue = () => {
     const cardsState = useSelector((state: AppState) => state.cards);
+    const { handleOpen } = useModal();
 
     return (
         <>
@@ -36,15 +40,17 @@ const Catalogue = () => {
                         <Tittle variant="white">{card.name}</Tittle>
                         <Text variant="white">$ {card.price} USD</Text>
                         </div>
-                        <FaEdit className='FaEdit'/>
+                        <FaEdit className='FaEdit' onClick={() => handleOpen ('createCard', card)}/>
                     </div>
                 ))}
             </>
         )}<SellCardButton />
     </div>
 </section>
-            <AddButton />  
+            <AddButton /> 
+            <Footer/> 
         </>
+        
     );
 };
 
