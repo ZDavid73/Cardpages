@@ -21,6 +21,7 @@ const CardForm = ({selectedCard}: CardFormProps) => {
   if (isCard(modalDetails)) {
     setPrice(String(modalDetails.price));
     setDescription(modalDetails.description);
+    setCardName(modalDetails.name);
 
   }
 
