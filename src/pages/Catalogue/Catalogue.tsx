@@ -15,9 +15,9 @@ const Catalogue = () => {
             <div className="catalogue-sectionheader">
                 <Profile />
                 <Header />
-            </div>
-            <Tittle variant="white">Cards On Sale</Tittle>
+            </div>  
     <section className="cardsOnSale">
+        <Tittle variant="white">Cards On Sale</Tittle>
     <div className="cards-container">
         {cardsState.loading && <Text variant="white">Loading cards...</Text>}
         {cardsState.error && (
