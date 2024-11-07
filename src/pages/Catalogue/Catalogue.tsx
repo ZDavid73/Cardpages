@@ -32,8 +32,8 @@ const Catalogue = () => {
                     <div key={card.id} className="card-item">
                         <img src={card.images.small} alt={`Card ${card.id}`} className="card-image"/>
                         <div className='infocard'>
-                        <Text variant="white">Price: ${card.price}</Text>
-                        <Text variant="white">{card.name}</Text>
+                        <Tittle variant="white">{card.name}</Tittle>
+                        <Text variant="white">$ {card.price} USD</Text>
                         <Button variant="purple" className="edit-button">Edit</Button>
                         </div>
                     </div>
