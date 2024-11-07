@@ -1,4 +1,4 @@
-import { postDeck } from '../services/databaseService'; // Importamos desde databaseService
+import { postDeck, uploadImage } from '../services/databaseService'; // Importamos desde databaseService
 import { Deck } from '../types/deckTypes';
 import { useSelector } from 'react-redux';
 import { AppState } from '../types/stateType';
@@ -20,6 +20,10 @@ interface HandlePostDeckProps {
   const handlePostDeck = async ({deckCover, deckDescription,deckName, deckPrice, items, e}: HandlePostDeckProps) => {
     e.preventDefault();
 
+    const data = await uploadImage(deckCover as File);
+
+    console.log(data);
+
     const newDeck: Deck = {
       id: crypto.randomUUID(),
       name: deckName,
@@ -27,7 +31,7 @@ interface HandlePostDeckProps {
       desc: deckDescription,
       cards: items,
       price: Number(deckPrice),
-      cover: String(deckCover),
+      cover: `https://zyemimihfcilkfzgwsxv.supabase.co/storage/v1/object/public/${data.data?.fullPath}`,
     };
 
     const { error } = await postDeck(newDeck);
