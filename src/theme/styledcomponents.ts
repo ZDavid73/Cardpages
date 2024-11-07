@@ -49,26 +49,23 @@ const buttonVariants = {
   },
 };
 
-export const Button = styled.button<{ variant: 'purple' | 'gray' | 'green' | 'white' | 'grayhome' }>`
+export const Button = styled.button<{ variant: 'purple' | 'gray' | 'green' | 'white' | 'grayhome'; disabled?: boolean }>`
   font-family: 'Sora', sans-serif;
   font-size: 18px;
   font-weight: 600;
-  color: ${(props) => buttonVariants[props.variant].textColor};
-  background-color: ${(props) => buttonVariants[props.variant].bgColor};
+  color: ${(props) => {
+    console.log('disabled:', props.disabled); // Verificar si el valor se pasa
+    return props.disabled ? '#BABABA' : buttonVariants[props.variant].textColor;
+  }};
+  background-color: ${(props) => props.disabled ? '#5C1D71' : buttonVariants[props.variant].bgColor};
   border: none;
   border-radius: 10px;
   padding: ${(props) => buttonVariants[props.variant].padding};
-  cursor: pointer;
+  cursor: ${(props) => props.disabled ? 'not-allowed' : 'pointer'};
   transition: background-color 0.3s ease;
 
-  /* Hover directo sin pseudoelemento */
   &:hover {
-    background-color: ${(props) => buttonVariants[props.variant].hoverColor};
-  }
-
-  @media (max-width: 700px) {
-    font-size: 14px;
-    padding: 4px 10px;
+    background-color: ${(props) => !props.disabled && buttonVariants[props.variant].hoverColor};
   }
 `;
 
