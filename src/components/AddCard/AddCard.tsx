@@ -1,4 +1,4 @@
-import { Button, Text } from '../../theme/styledcomponents';
+import { Text } from '../../theme/styledcomponents';
 import useModal from '../../hooks/useModal';
 import './AddCard.css';
 
@@ -11,9 +11,9 @@ const SellCardButton = () => {
 
   return (
     <div className="sell-card-button">
-      <Button variant="white" onClick={openSellCardModal}>
+      <button variant="white" onClick={openSellCardModal}>
         +
-      </Button>
+      </button>
     <Text variant="white">Sell Card</Text>
     </div>
   );
