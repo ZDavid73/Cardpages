@@ -7,7 +7,7 @@ import AddButton from '../../components/AddButton/AddButton'
 import SellCardButton from '../../components/AddCard/AddCard'
 import { Tittle, Text  } from '../../theme/styledcomponents';
 import { FaEdit } from "react-icons/fa";
-
+import Footer from '../../components/Footer/Footer';
 
 const Catalogue = () => {
     const cardsState = useSelector((state: AppState) => state.cards);
