@@ -36,6 +36,7 @@ export const useCardTransactions = () => {
       flavorText: card.flavorText? card.flavorText : '',
       description: desc,
       images: card.images,
+      name: card.name,
     }
 
     handleClose();

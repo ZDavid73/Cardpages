@@ -20,6 +20,7 @@ export interface ApiResponseCard {
 
 export interface SellingCard {
     id: string;
+    name: string;
     cardId: string;
     sellerId: string;
     isSold: boolean;
