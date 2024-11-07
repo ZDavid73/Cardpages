@@ -1,0 +1,19 @@
+.item-holder{
+    text-align: center;
+    width: 20%;
+    height: 200px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    align-self: center;
+    border-radius: 10px;
+    background-color: rgba(58, 55, 55, 0.5);
+
+}
+
+@media (max-width: 768px){
+    .item-holder{
+        width: 40%;
+    }
+}

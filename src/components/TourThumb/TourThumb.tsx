@@ -31,7 +31,7 @@ const TourThumb = ({ tournament }: TourThumbProps) => {
                 </Button>
                 :
                 <Button variant='gray' onClick={() => handleOpen('joinTournament', tournament)}>
-                    Join
+                    {tournament.players.some(p => p.id === id) ? 'Joined' : 'Join'}
                 </Button>
             }
             </div>
