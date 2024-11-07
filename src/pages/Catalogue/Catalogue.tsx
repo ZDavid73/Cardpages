@@ -16,35 +16,35 @@ const Catalogue = () => {
                 <Profile />
                 <Header />
             </div>
-            <section className='cardsOnSale'>
             <Tittle variant="white">Cards On Sale</Tittle>
-            <section className="cards-section">
-                {cardsState.loading && <Text variant="white">Loading cards...</Text>}
-                {cardsState.error && (
-                    <Text variant="white">Oh no! There was an error loading the cards. Try again later.</Text>
-                )}
-                {!cardsState.loading && !cardsState.error && cardsState.cards.length === 0 && (
-                    <Text variant="white">No cards available for sale.</Text>
-                )}
-                {!cardsState.loading && !cardsState.error && cardsState.cards.length > 0 && (
-                    <div className="cards-container">
-                        {cardsState.cards.map((card) => (
-                            <div key={card.id} className="card-item">
-                                <img
-                                    src={card.images.small}
-                                    alt={`Card ${card.id}`}
-                                    className="card-image"
-                                />
-                                <Text variant="white">Price: ${card.price}</Text>
-                                <Text variant="white">{card.description}</Text>
-                                <Button variant='purple' className="edit-button">Edit</Button>
-                            </div>
-                        ))}
+            <section className="cardsOnSale">
+    <div className="cards-container">
+        {cardsState.loading && <Text variant="white">Loading cards...</Text>}
+        {cardsState.error && (
+            <Text variant="white">Oh no! There was an error loading the cards. Try again later.</Text>
+        )}
+        {!cardsState.loading && !cardsState.error && cardsState.cards.length === 0 && (
+            <Text variant="white">No cards available for sale.</Text>
+        )}
+        {!cardsState.loading && !cardsState.error && cardsState.cards.length > 0 && (
+            <>
+                {cardsState.cards.map((card) => (
+                    <div key={card.id} className="card-item">
+                        <img
+                            src={card.images.small}
+                            alt={`Card ${card.id}`}
+                            className="card-image"
+                        />
+                        <Text variant="white">Price: ${card.price}</Text>
+                        <Text variant="white">{card.description}</Text>
+                        <Button variant="purple" className="edit-button">Edit</Button>
                     </div>
-                )}
-            </section>
-            </section>
-            <SellCardButton />
+                ))}
+            </>
+        )}
+    </div>
+    <SellCardButton />
+</section>
             <AddButton />
 
             
