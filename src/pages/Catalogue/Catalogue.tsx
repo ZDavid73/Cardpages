@@ -35,8 +35,8 @@ const Catalogue = () => {
                         <div className='infocard'>
                         <Tittle variant="white">{card.name}</Tittle>
                         <Text variant="white">$ {card.price} USD</Text>
-                        <FaEdit className='FaEdit'/>
                         </div>
+                        <FaEdit className='FaEdit'/>
                     </div>
                 ))}
             </>
