@@ -18,12 +18,20 @@ const CardForm = ({selectedCard}: CardFormProps) => {
   const { handleSellCard } = useCardTransactions();
   const modalDetails = useSelector((state: AppState) => state.modal.modalDetails);
 
-  if (isCard(modalDetails)) {
-    setPrice(String(modalDetails.price));
-    setDescription(modalDetails.description);
-    setCardName(modalDetails.name);
-
-  }
+  useEffect(() => {
+    if (isCard(modalDetails)) {
+      if (modalDetails.price !== parseFloat(price)) {
+        setPrice(String(modalDetails.price));
+      }
+      if (modalDetails.description !== description) {
+        setDescription(modalDetails.description);
+      }
+      if (modalDetails.name !== cardName) {
+        setCardName(modalDetails.name);
+      }
+    }
+  }, [modalDetails, price, description, cardName]);
+  
 
   useEffect(() => {
     if (selectedCard) {
