@@ -22,20 +22,13 @@ const Catalogue = () => {
             <AddButton />
 
             <section className="cards-section">
-                {/* Mostrar mensaje de carga */}
                 {cardsState.loading && <Text variant="white">Loading cards...</Text>}
-
-                {/* Mostrar mensaje de error */}
                 {cardsState.error && (
                     <Text variant="white">Oh no! There was an error loading the cards. Try again later.</Text>
                 )}
-
-                {/* Mostrar mensaje cuando no hay cartas */}
                 {!cardsState.loading && !cardsState.error && cardsState.cards.length === 0 && (
                     <Text variant="white">No cards available for sale.</Text>
                 )}
-
-                {/* Renderizar las imágenes de las cartas */}
                 {!cardsState.loading && !cardsState.error && cardsState.cards.length > 0 && (
                     <div className="cards-container">
                         {cardsState.cards.map((card) => (
