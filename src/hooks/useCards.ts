@@ -37,8 +37,7 @@ export const useCardTransactions = () => {
       description: desc,
       images: card.images,
       name: card.name,
-    }
-
+    } 
     handleClose();
 
     try {
