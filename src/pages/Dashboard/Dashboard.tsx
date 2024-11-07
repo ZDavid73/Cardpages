@@ -20,7 +20,7 @@ const Catalogue = () => {
                 <Header />
             </div>  
     <section className="cardsOnSale">
-        <Tittle variant="white">Cards On Sale</Tittle>
+        <Tittle variant="white">Cards For Sale</Tittle>
     <div className="cards-container">
         {cardsState.loading && <Text variant="white">Loading cards...</Text>}
         {cardsState.error && (
