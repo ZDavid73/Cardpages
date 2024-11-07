@@ -3,6 +3,8 @@ import useSearchSell from '../../hooks/useSearchSell';
 import { Input } from '../../theme/styledcomponents';
 import './SearchSell.css';
 import { Card } from '../../types/cardTypes';
+import { useSelector } from 'react-redux';
+import { AppState } from '../../types/stateType';
 
 interface SearchSellProps {
   selectedCard: Card | null;
@@ -12,6 +14,8 @@ interface SearchSellProps {
 const SearchSell: React.FC<SearchSellProps> = ({ selectedCard, setSelectedCard }) => {
   const { query, results, error, setQuery } = useSearchSell();
   const modalDetails = useSelector((state: AppState) => state.modal.modalDetails);
+
+  
 
   const handleCardClick = (card: Card) => {
     setSelectedCard(card); 
