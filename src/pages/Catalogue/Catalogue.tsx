@@ -6,6 +6,7 @@ import Profile from "../../components/Profile/Profile"
 import AddButton from '../../components/AddButton/AddButton'
 import SellCardButton from '../../components/AddCard/AddCard'
 import { Tittle, Text, Button  } from '../../theme/styledcomponents';
+import { FaChevronLeft } from "react-icons/fa";
 
 const Catalogue = () => {
     const cardsState = useSelector((state: AppState) => state.cards);
