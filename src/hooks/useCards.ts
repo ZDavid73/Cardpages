@@ -35,6 +35,7 @@ export const useCardTransactions = () => {
       price: price,
       flavorText: card.flavorText? card.flavorText : '',
       description: desc,
+      images: card.images,
     }
 
     handleClose();
