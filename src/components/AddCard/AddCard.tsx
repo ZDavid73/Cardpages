@@ -1,5 +1,6 @@
 import { Button, Text } from '../../theme/styledcomponents';
 import useModal from '../../hooks/useModal';
+import './AddCard.css';
 
 const SellCardButton = () => {
   const { handleOpen } = useModal();
