@@ -6,6 +6,8 @@ import SellCardButton from '../../components/AddCard/AddCard'
 import { Tittle  } from '../../theme/styledcomponents';
 
 const Catalogue = () => {
+    const sellingCards = useSelector((state: AppState) => state.sellingCards);
+
     return (
         <>
         <div className="catalogue-sectionheader">
