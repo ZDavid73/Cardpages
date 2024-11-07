@@ -24,3 +24,11 @@
     cursor: pointer;
   }
   
+  .sell-card-button Text {
+    margin-top: 10px;
+    font-size: 16px;
+    color: white;
+    text-align: center;
+    font-weight: 500;
+  }
+  
