@@ -27,4 +27,8 @@ export interface SellingCard {
     price: number;
     flavorText: string;
     description: string;
+    images: {
+        small: string;
+        large: string;
+    };
   }
