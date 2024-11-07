@@ -36,7 +36,6 @@ const Catalogue = () => {
                             className="card-image"
                         />
                         <Text variant="white">Price: ${card.price}</Text>
-                        <Text variant="white">{card.description}</Text>
                         <Button variant="purple" className="edit-button">Edit</Button>
                     </div>
                 ))}

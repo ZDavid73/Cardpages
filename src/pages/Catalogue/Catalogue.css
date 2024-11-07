@@ -1,16 +1,21 @@
+.catalogue-sectionheader{
+    margin: 0%;
+    padding: 3%;
+    display: flex;
+}
 .cardsOnSale {
     margin-top: 20px;
     padding: 10px;
-    display: flex; /* Añadido: Flexbox para alinear las cartas y el botón */
-    flex-direction: row; /* Cartas y botón estarán en la misma fila */
-    justify-content: space-between; /* Espaciado entre los elementos */
-    align-items: flex-start; /* Alinear el contenido arriba */
-    gap: 20px; /* Separación entre las cartas y el botón */
+    display: flex;
+    flex-direction: row; 
+    justify-content: space-between; 
+    align-items: flex-start; 
+    gap: 20px; 
 }
 
 .cards-container {
     display: flex;
-    flex-wrap: wrap; /* Permitir que las cartas salten de línea si hay muchas */
+    flex-wrap: wrap; 
     gap: 20px;
 }
 
@@ -33,10 +38,10 @@
     margin-bottom: 8px;
 }
 
-/* Responsividad: Ajustar las cartas y el botón en pantallas pequeñas */
+
 @media (max-width: 768px) {
     .cardsOnSale {
-        flex-direction: column; /* Cambiar a columna en pantallas pequeñas */
+        flex-direction: column; 
         align-items: center;
     }
 
