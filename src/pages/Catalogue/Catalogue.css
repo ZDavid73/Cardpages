@@ -34,11 +34,12 @@
 }
 .infocard{
     position: absolute;
-    bottom: 0; 
+    bottom: 10px; 
     left: 0;
     width: 100%;
     background: rgba(0, 0, 0, 0.7); 
     padding-left: 10px;
+    padding-bottom: 10px;
     box-sizing: border-box;
     border-radius: 0 0 4px 4px;
 }
