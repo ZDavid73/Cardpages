@@ -16,7 +16,7 @@ const Catalogue = () => {
                 <Profile />
                 <Header />
             </div>
-            <section>
+            <section className='cardsOnSale'>
             <Tittle variant="white">Cards On Sale</Tittle>
             <section className="cards-section">
                 {cardsState.loading && <Text variant="white">Loading cards...</Text>}
