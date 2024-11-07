@@ -1,12 +1,14 @@
 import { postDeck, uploadImage } from '../services/databaseService'; // Importamos desde databaseService
 import { Deck } from '../types/deckTypes';
-import { useSelector } from 'react-redux';
+import {  useSelector } from 'react-redux';
 import { AppState } from '../types/stateType';
 import { ItemType } from './useDragDrop';
 import { FormEvent } from 'react';
+import useModal from './useModal';
 
 export const useDeckBuilder = () => {
   const userId = useSelector((state: AppState) => state.user.id);
+  const { handleClose } = useModal();
 
 interface HandlePostDeckProps {
   deckCover: File | null;
@@ -40,6 +42,8 @@ interface HandlePostDeckProps {
     } else {
       console.log('Deck saved successfully!');
     }
+
+    handleClose();
   };
 
   return {
