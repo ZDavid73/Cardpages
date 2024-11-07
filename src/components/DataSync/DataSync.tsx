@@ -7,6 +7,7 @@ import { AppDispatch } from '../../store/store';
 import { RealtimePostgresChangesPayload } from '@supabase/supabase-js';
 import { deleteCardData, insertCardData, updateCardData } from '../../features/cardSlice';
 import { fetchAllCards } from '../../features/cardSlice';
+import { deleteDeckData, fetchAllDecks, insertDeckData, updateDeckData } from '../../features/deckSlice';
 
 const DataSync = () => {
   const dispatch: AppDispatch = useDispatch();
@@ -51,6 +52,37 @@ const DataSync = () => {
         subscriptionCard.unsubscribe();
     }
   }, [dispatch]);
+
+  useEffect(() => {
+    dispatch(fetchAllDecks());
+
+    const subsDeck = supabase
+    .channel('decks')
+    .on(
+        'postgres_changes', 
+        { event: '*', schema: 'public', table: 'decks' },
+        (payload) => {
+          console.log('Change received:', payload);
+          handleChangeDeck(payload);
+        }
+    )
+    .subscribe();
+
+    return () => {
+      subsDeck.unsubscribe();
+    }
+  }, [dispatch]);
+
+  const handleChangeDeck = (payload: RealtimePostgresChangesPayload<{[key: string]: any;}>) => {
+    if (payload.eventType === 'INSERT') {
+      dispatch(insertDeckData(payload.new))
+    }
+    if (payload.eventType === 'UPDATE') {
+      dispatch(updateDeckData(payload.new))
+    }
+    if (payload.eventType === 'DELETE') {
+      dispatch(deleteDeckData(payload.old))
+  }}
 
   const handleChangeCard = (payload: RealtimePostgresChangesPayload<{[key: string]: any;}>) => {
     if (payload.eventType === 'INSERT') {

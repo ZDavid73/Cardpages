@@ -11,6 +11,9 @@ const Tournament = () => {
     const { handleOpen } = useModal()
     const tournaments = useSelector((state: AppState) => state.tournaments)
     const userId = useSelector((state: AppState) => state.user.id)
+    const decks = useSelector((state: AppState) => state.decks)
+
+    console.log(decks)
 
     return (
         <>

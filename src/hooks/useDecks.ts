@@ -30,8 +30,6 @@ interface HandlePostDeckProps {
       cover: String(deckCover),
     };
 
-    console.log('Deck to save:', newDeck);
-
     const { error } = await postDeck(newDeck);
     if (error) {
       console.error('Error saving deck to Supabase:', error.message);
