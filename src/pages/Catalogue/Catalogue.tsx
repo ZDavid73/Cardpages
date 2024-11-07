@@ -17,7 +17,7 @@ const Catalogue = () => {
                 <Header />
             </div>
             <Tittle variant="white">Cards On Sale</Tittle>
-            <section className="cardsOnSale">
+    <section className="cardsOnSale">
     <div className="cards-container">
         {cardsState.loading && <Text variant="white">Loading cards...</Text>}
         {cardsState.error && (
@@ -30,11 +30,7 @@ const Catalogue = () => {
             <>
                 {cardsState.cards.map((card) => (
                     <div key={card.id} className="card-item">
-                        <img
-                            src={card.images.small}
-                            alt={`Card ${card.id}`}
-                            className="card-image"
-                        />
+                        <img src={card.images.small} alt={`Card ${card.id}`} className="card-image"/>
                         <Text variant="white">Price: ${card.price}</Text>
                         <Button variant="purple" className="edit-button">Edit</Button>
                     </div>
@@ -42,11 +38,8 @@ const Catalogue = () => {
             </>
         )}<SellCardButton />
     </div>
-    
 </section>
-            <AddButton />
-
-            
+            <AddButton />  
         </>
     );
 };
