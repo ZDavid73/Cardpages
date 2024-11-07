@@ -16,9 +16,7 @@ const Catalogue = () => {
     const cardsState = useSelector((state: AppState) => state.cards);
     const tournaments = useSelector((state: AppState) => state.tournaments);
     const userId = useSelector((state: AppState) => state.user.id);
-
     const { handleOpen } = useModal();
-    const userId = useSelector((state: AppState) => state.user.id);
 
     return (
         <>
