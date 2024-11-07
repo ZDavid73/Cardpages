@@ -5,7 +5,7 @@ import Header from "../../components/Header/Header"
 import Profile from "../../components/Profile/Profile"
 import AddButton from '../../components/AddButton/AddButton'
 import SellCardButton from '../../components/AddCard/AddCard'
-import { Tittle, Text  } from '../../theme/styledcomponents';
+import { Tittle, Text, Button  } from '../../theme/styledcomponents';
 
 const Catalogue = () => {
     const cardsState = useSelector((state: AppState) => state.cards);
@@ -37,7 +37,7 @@ const Catalogue = () => {
                                 />
                                 <Text variant="white">Price: ${card.price}</Text>
                                 <Text variant="white">{card.description}</Text>
-                                <button className="edit-button">Edit</button>
+                                <Button variant='purple' className="edit-button">Edit</Button>
                             </div>
                         ))}
                     </div>
