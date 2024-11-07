@@ -6,6 +6,7 @@ import { insertTourData, deleteTourData, fetchAllTournaments, updateTourData } f
 import { AppDispatch } from '../../store/store';
 import { RealtimePostgresChangesPayload } from '@supabase/supabase-js';
 import { deleteCardData, insertCardData, updateCardData } from '../../features/cardSlice';
+import { fetchAllCards } from '../../features/cardSlice';
 
 const DataSync = () => {
   const dispatch: AppDispatch = useDispatch();
