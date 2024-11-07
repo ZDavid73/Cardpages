@@ -21,7 +21,7 @@ const AddDeck = () => {
         <SearchCard />
       </div>
       <div className="create-deck">
-        <DeckForm handleClose={handleClose} />
+        <DeckForm handleClose={handleClose} /> {/* Pasamos handleClose */}
       </div>
     </div>
   );
