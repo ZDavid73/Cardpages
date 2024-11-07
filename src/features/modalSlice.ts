@@ -1,7 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit'
 import { Tournament } from '../types/tournamentTypes';
 import { Deck } from '../types/deckTypes';
-import { Card, SellingCard } from '../types/cardTypes';
+import { SellingCard } from '../types/cardTypes';
 
 export interface ModalState {
     isOpen: boolean;
