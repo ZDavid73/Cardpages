@@ -1,4 +1,5 @@
 import './Catalogue.css'
+import { useSelector } from "react-redux";
 import Header from "../../components/Header/Header"
 import Profile from "../../components/Profile/Profile"
 import AddButton from '../../components/AddButton/AddButton'
