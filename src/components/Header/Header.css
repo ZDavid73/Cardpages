@@ -10,3 +10,9 @@
     align-items: center;
     justify-content: space-between;
 }
+.username-headers{
+    margin-left: 3%;
+}
+.number-of-sales{
+    width: 8%;
+}
