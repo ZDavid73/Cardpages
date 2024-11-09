@@ -6,7 +6,6 @@ import { useGameTournament } from '../../hooks/useGameTournament';
 import { DndProvider } from 'react-dnd';
 import { HTML5Backend } from 'react-dnd-html5-backend';
 import WinnerBox from '../../components/WinnerBox/WinnerBox';
-import Header from '../../components/Header/Header';
 import { Tittle } from '../../theme/styledcomponents';
 import { FaArrowCircleLeft } from 'react-icons/fa';
 import { useLocation, useNavigate } from 'react-router-dom';
@@ -17,6 +16,7 @@ import { UserState } from '../../features/auth/userSlice';
 import './GamePage.css'
 import TournamentWinner from '../../components/TournamentWinner/TournamentWinner';
 import { useTimer, useTournament } from '../../hooks/useTournament';
+import GameHeader from '../../components/GameHeader/GameHeader';
 
 const GamePage: React.FC = () => {
   //const { players, addPlayer, resetPlayers } = useSetup();
@@ -27,6 +27,7 @@ const GamePage: React.FC = () => {
   const location = useLocation()
   const tournament: Tournament = location.state.tournament
   const { timeLeft } = useTimer(tournament.date, tournament.hour)
+  const [tourHost, setTourHost] = useState<UserState | null>(null)
 
 
   useEffect(() => {
@@ -38,6 +39,11 @@ const GamePage: React.FC = () => {
             return res;
           })
         );
+
+        const hostInfo = await getUserInfo(tournament.host);
+        if (hostInfo) {
+          setTourHost(hostInfo);
+        }
         
         if ( fetchedUsers.every((user) => user !== null && typeof user === 'object' && 'username' in user) ) {
           setUsersInfo(fetchedUsers);
@@ -64,7 +70,7 @@ const GamePage: React.FC = () => {
 
       <div className="catalogue-sectionheader">
            <Setup players={usersInfo} tournament={tournament} timeLeft={timeLeft}/>
-            <Header/> 
+            <GameHeader tournament={tournament} userInfo={usersInfo} host={tourHost}/> 
       </div>
 
       { tournament.status === 'upcoming' && (
