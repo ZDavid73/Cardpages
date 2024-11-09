@@ -17,6 +17,8 @@ import './GamePage.css'
 import TournamentWinner from '../../components/TournamentWinner/TournamentWinner';
 import { useTimer, useTournament } from '../../hooks/useTournament';
 import GameHeader from '../../components/GameHeader/GameHeader';
+import { useSelector } from 'react-redux';
+import { AppState } from '../../types/stateType';
 
 const GamePage: React.FC = () => {
   //const { players, addPlayer, resetPlayers } = useSetup();
@@ -25,7 +27,8 @@ const GamePage: React.FC = () => {
   const { handleFinishTournament } = useTournament();
   const navigate = useNavigate()
   const location = useLocation()
-  const tournament: Tournament = location.state.tournament
+  const tournament: Tournament = useSelector((state: AppState) => state.tournaments.tournaments.find((tour: Tournament) => tour.id === location.state.tournament.id)) || location.state.tournament
+
   const { timeLeft } = useTimer(tournament.date, tournament.hour)
   const [tourHost, setTourHost] = useState<UserState | null>(null)
 
@@ -54,7 +57,7 @@ const GamePage: React.FC = () => {
     };
   
     fetchUserInfo();
-  }, [tournament.players]);
+  }, [tournament.players, tournament.host]);
 
   if (tournamentWinner){
     handleFinishTournament(tournament.id, tournamentWinner)
