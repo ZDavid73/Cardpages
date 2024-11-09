@@ -1,3 +1,11 @@
+.setup-container{
+    width: 25%;
+    height: 62vh;
+    margin-right: 3%;
+    display: flex;
+    flex-direction: column;
+}
+
 .tour-players{
     width: 20vw;
     display: flex;

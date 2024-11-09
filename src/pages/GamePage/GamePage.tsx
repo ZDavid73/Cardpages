@@ -17,7 +17,6 @@ import { UserState } from '../../features/auth/userSlice';
 import './GamePage.css'
 import TournamentWinner from '../../components/TournamentWinner/TournamentWinner';
 import { useTimer, useTournament } from '../../hooks/useTournament';
-import Timer from '../../components/Timer/Timer';
 
 const GamePage: React.FC = () => {
   //const { players, addPlayer, resetPlayers } = useSetup();
@@ -57,7 +56,6 @@ const GamePage: React.FC = () => {
 
   return (
     <DndProvider backend={HTML5Backend}>
-      <Timer timeLeft={timeLeft}/>
       <div className="game-page">
       <section className="create-tour-tittle">
             <FaArrowCircleLeft onClick={() => navigate(-1)} color="white"/>
@@ -65,7 +63,7 @@ const GamePage: React.FC = () => {
       </section>
 
       <div className="catalogue-sectionheader">
-           <Setup players={usersInfo} tournament={tournament}/>
+           <Setup players={usersInfo} tournament={tournament} timeLeft={timeLeft}/>
             <Header/> 
       </div>
 

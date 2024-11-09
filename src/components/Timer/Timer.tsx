@@ -1,4 +1,4 @@
-import { Container, Text, Tittle } from '../../theme/styledcomponents';
+import { Text, Tittle } from '../../theme/styledcomponents';
 import './Timer.css';
 
 interface TimerProps {
@@ -15,11 +15,11 @@ const Timer = ({ timeLeft }: TimerProps) => {
         return
     }
     return (
-        <Container variant='small'>
-            <Text variant='purple'>The tournament will start in...</Text>
+        <section className='tour-timer'>
             <Tittle variant='white'>{timeLeft.days > 0 ? timeLeft.days + ' days' : timeLeft.hours + ' hours'}</Tittle>
             <Tittle variant='white'>{timeLeft.days > 0 ? timeLeft.hours : null}:{timeLeft.minutes}:{timeLeft.seconds}</Tittle>
-        </Container>
+            <Text variant='purple'>Left to start</Text>
+        </section>
     );
 }
 
