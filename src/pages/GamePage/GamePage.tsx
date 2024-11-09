@@ -16,7 +16,7 @@ import { getUserInfo } from '../../services/databaseService';
 import { UserState } from '../../features/auth/userSlice';
 import './GamePage.css'
 import TournamentWinner from '../../components/TournamentWinner/TournamentWinner';
-import { useTournament } from '../../hooks/useTournament';
+import { useTimer, useTournament } from '../../hooks/useTournament';
 
 const GamePage: React.FC = () => {
   //const { players, addPlayer, resetPlayers } = useSetup();
@@ -26,6 +26,7 @@ const GamePage: React.FC = () => {
   const navigate = useNavigate()
   const location = useLocation()
   const tournament: Tournament = location.state.tournament
+  const { timeLeft } = useTimer(tournament.date, tournament.hour)
 
 
   useEffect(() => {
