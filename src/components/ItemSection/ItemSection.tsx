@@ -1,4 +1,3 @@
-import { TournamentState } from '../../features/tournamentSlice';
 import { Text } from '../../theme/styledcomponents';
 import { Tournament } from '../../types/tournamentTypes';
 import { isTournament } from '../../utils/typeGuards';
@@ -8,7 +7,7 @@ import './ItemSection.css';
 
 type TourSectionProps = {
     items: Tournament[];
-    state: TournamentState;
+    state: { loading: boolean; error: string | null };
     action?: () => void;
 }
 
