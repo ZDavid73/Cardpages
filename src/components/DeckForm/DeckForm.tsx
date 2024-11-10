@@ -5,7 +5,7 @@ import useDragDrop from '../../hooks/useDragDrop';
 import { useState, useEffect } from 'react';
 import { useDeckBuilder } from '../../hooks/useDecks';
 
-const DeckForm = ({ handleClose }: { handleClose: () => void }) => { // Recibimos handleClose como prop
+const DeckForm = () => { // Recibimos handleClose como prop
   const { items, handleDrop, handleDragOver, handleClickRemove } = useDragDrop();
   const cardCount = items.reduce((acc, item) => acc + item.quantity, 0);
   const maxCards = 50;
@@ -27,7 +27,7 @@ const DeckForm = ({ handleClose }: { handleClose: () => void }) => { // Recibimo
   useEffect(() => {}, [cardCount, deckName, deckCover, deckPrice, deckDescription]);
 
   return (
-    <form className="Deck-form" onSubmit={(e) => handlePostDeck({deckCover, deckDescription, deckName, deckPrice, items, e, handleClose})}>
+    <form className="Deck-form" onSubmit={(e) => handlePostDeck({deckCover, deckDescription, deckName, deckPrice, items, e})}>
       <div className="header-deck-form">
         <div 
           contentEditable="true" 

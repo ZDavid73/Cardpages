@@ -11,6 +11,8 @@ const DecksOnSale = () => {
     const decksState = useSelector((state: AppState) => state.decks);
     const { handleOpen } = useModal();
 
+    console.log(decksState);
+
     return (
         <section className="Decks-sale-section">
             <Tittle variant="white">Decks On Sale</Tittle>

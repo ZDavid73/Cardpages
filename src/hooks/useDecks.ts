@@ -6,10 +6,6 @@ import { ItemType } from './useDragDrop';
 import { FormEvent } from 'react';
 import useModal from './useModal';
 
-export const useDeckBuilder = () => {
-  const userId = useSelector((state: AppState) => state.user.id);
-  const { handleClose } = useModal();
-
 interface HandlePostDeckProps {
   deckCover: File | null;
   deckDescription: string;
@@ -17,13 +13,13 @@ interface HandlePostDeckProps {
   deckPrice: string;
   items: ItemType[];
   e: FormEvent;
-  handleClose: () => void; // Añadimos handleClose como parámetro
 }
 
 export const useDeckBuilder = () => {
   const userId = useSelector((state: AppState) => state.user.id);
+  const { handleClose } = useModal();
 
-  const handlePostDeck = async ({ deckCover, deckDescription, deckName, deckPrice, items, e, handleClose }: HandlePostDeckProps) => {
+  const handlePostDeck = async ({ deckCover, deckDescription, deckName, deckPrice, items, e }: HandlePostDeckProps) => {
     e.preventDefault();
 
     if (deckCover) {
@@ -37,6 +33,8 @@ export const useDeckBuilder = () => {
         cards: items,
         price: Number(deckPrice),
         cover: `https://zyemimihfcilkfzgwsxv.supabase.co/storage/v1/object/public/${data.data?.fullPath}`,
+        isSold: false,
+        buyerId: null,
       };
 
       const { error } = await postDeck(newDeck);
@@ -47,11 +45,9 @@ export const useDeckBuilder = () => {
         handleClose(); // Cerramos el modal después de guardar el deck
       }
     }
-
-    handleClose();
   };
 
   return {
     handlePostDeck,
   };
-};}
+};

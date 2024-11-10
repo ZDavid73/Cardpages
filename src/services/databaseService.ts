@@ -30,6 +30,8 @@ export const fetchDecks = async (): Promise<Deck[]> => {
     return [];
   }
 
+  console.log(data);
+
   // Aquí aseguramos que data es un arreglo de Decks
   return data as Deck[];
 };
@@ -113,7 +115,7 @@ export const getUserInfo = async (userId: string) => {
 }
 
 export const uploadImage = async (file: File) => {
-  const { data, error } = await supabase.storage.from('Decks').upload(file.name, file);
+  const { data, error } = await supabase.storage.from('Decks').upload(String(Math.random())+file.name, file);
 
   if (error) {
     return { data: null, error };
