@@ -8,7 +8,10 @@ interface CardSectionProps {
   altText: string;
   reverse: boolean;
   variantText: 'purpleForm' | 'grayForm' | 'greenForm' | 'whiteForm' | 'grayhomeForm' | 'orangeForm';
+  variantText: 'purpleForm' | 'grayForm' | 'greenForm' | 'whiteForm' | 'grayhomeForm' | 'orangeForm';
   onExploreClick: () => void;
+  imgAos?: string;
+  textAos?: string;
   imgAos?: string;
   textAos?: string;
 }
@@ -19,7 +22,10 @@ const CardSection: React.FC<CardSectionProps> = ({
   altText,
   reverse,
   variantText,
+  variantText,
   onExploreClick,
+  imgAos,
+  textAos,
   imgAos,
   textAos,
 }) => {
