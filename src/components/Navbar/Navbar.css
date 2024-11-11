@@ -41,7 +41,7 @@
 .navbar-links a, .navbar-links button {
     cursor: pointer;
     text-decoration: none ;
-    width: 100%;
+    width: 8vw;
     height: 7vh;
 }
 

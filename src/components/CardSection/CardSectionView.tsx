@@ -31,7 +31,7 @@ const CardSection: React.FC<CardSectionProps> = ({
             className="HomepageTextContainer1"
             id={`section-heading-right`}
             style={{
-              backgroundImage: `url(https://zyemimihfcilkfzgwsxv.supabase.co/storage/v1/object/public/Homepage%20Images/BackgroundPurple.svg)`,
+              backgroundImage: `url(https://zyemimihfcilkfzgwsxv.supabase.co/storage/v1/object/public/Homepage%20Images/Background-Purple.svg)`,
             }}
           >
             <div className="HomepageText" data-aos={textAos}>
@@ -49,7 +49,7 @@ const CardSection: React.FC<CardSectionProps> = ({
             className="HomepageTextContainer"
             id={`section-heading-left`}
             style={{
-              backgroundImage: `url(https://zyemimihfcilkfzgwsxv.supabase.co/storage/v1/object/public/Homepage%20Images/BackgroundBlack.svg)`,
+              backgroundImage: `url(https://zyemimihfcilkfzgwsxv.supabase.co/storage/v1/object/public/Homepage%20Images/Background-Black.svg)`,
             }}
           >
             <img src={imgSrc} alt={altText} data-aos={imgAos} aria-labelledby={`section-heading-left`} />
