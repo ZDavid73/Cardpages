@@ -1,10 +1,8 @@
 .HomepageContainer {
     width: 99vw;
-    width: 99vw;
     display: flex;
     align-items: center;
     justify-content: space-between;
-    box-sizing: border-box;
     box-sizing: border-box;
 }
 
@@ -13,22 +11,16 @@
 }
 
 .HomepageContainer img, .HomepageContainer1 img{
-.HomepageContainer img, .HomepageContainer1 img{
     height: 65vh;
     width: auto;
 }
 
 .HomepageTextContainer{
     width: 100%;
-    height: 95vh;
+    height: 90vh;
     background-size: cover;
     background-position: center;
     display: flex;
-    justify-content:space-between;
-    align-items: center;
-    box-sizing: border-box;
-    padding-left: 10%;
-    padding-right: 4vw;
     justify-content:space-between;
     align-items: center;
     box-sizing: border-box;
@@ -49,21 +41,7 @@
 }
 
 .HomepageText{
-    width: 45%;
-    width: 100%;
-    height: 100vh;
-    background-size: cover;
-    background-position: center;
-    display: flex;
-    justify-content:space-between;
-    align-items: center;
-    box-sizing: border-box;
-    padding-right: 10%;
-    padding-left: 5vw;
-}
-
-.HomepageText{
-    width: 45%;
+    width: 40%;
 }
 
 .HomepageTextContainer button, .HomepageTextContainer1 button {
