@@ -338,32 +338,20 @@ const divVariants = {
       small: '20px',
     },
     backgroundColor: 'rgba(16, 15, 15, 0.5)',  
-    marginBottom: {
-      default: '30px',   
-      small: '20px',
-    }
   },
   smallopacity: {
     padding: {
-      default: '25px',   
-      small: '10px',
+      default: '35px',   
+      small: '20px',
     },
     backgroundColor: 'rgba(16, 15, 15, 0.5)',  
-    marginBottom: {
-      default: '20px',   
-      small: '10px',
-    }
   },
   big: {
     padding: {
       default: '30px',   
       small: '20px',
     },
-    backgroundColor: '#2D2D2D',  
-    marginBottom: {
-      default: '30px',   
-      small: '20px',
-    }
+    backgroundColor: '#2D2D2D', 
   },
   small: {
     padding: {
@@ -371,10 +359,6 @@ const divVariants = {
       small: '8px',
     },
     backgroundColor: '#2D2D2D',  
-    marginBottom: {
-      default: '15px',   
-      small: '8px',
-    }
   },
 };
 
@@ -383,11 +367,9 @@ export const Container = styled.div<{ variant: 'bigopacity' | 'smallopacity' | '
   background-color: ${(props) => divVariants[props.variant].backgroundColor};
   border-radius: 15px;
   box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
-  margin-bottom: ${(props) => divVariants[props.variant].marginBottom.default};
 
   @media (max-width: 700px) {
     padding: ${(props) => divVariants[props.variant].padding.small};
-    margin-bottom: ${(props) => divVariants[props.variant].marginBottom.small};
     border-radius: 10px;
   }
 `;

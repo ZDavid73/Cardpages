@@ -1,3 +1,4 @@
+import './HomePage.css'
 import { useEffect, Suspense, lazy } from "react";
 import AOS from "aos"; // Importa AOS
 import "aos/dist/aos.css";

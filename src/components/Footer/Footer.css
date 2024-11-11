@@ -25,9 +25,8 @@
 @media (max-width: 768px) {
     .footerContainer {
         height: auto;
-        width: 90% ;
+        width: 100vw;
         padding: 5%;
-        margin-top: 10px;
     }
 
     .footerIcons {

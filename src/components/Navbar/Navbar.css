@@ -13,6 +13,7 @@
     color: white;
     backdrop-filter: blur(8px);
     box-sizing: border-box;
+    overflow: hidden;
 }
   
 .navbar-logo {
@@ -50,9 +51,8 @@
 
 @media (max-width: 768px) {
     .navbar {
-        height: 5vh;
-        padding: 10px 2vw;
-        width: 90%vw;
+        height: 8vh;
+        width: 100vw;
         padding: 5%;
         align-items: center;
         align-content: center;
