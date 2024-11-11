@@ -36,7 +36,7 @@ const Footer: React.FC = () => {
         </li>
         
       </ol>
-      <Text variant='white'>Copyright © 2024 Capsule Corp Inc.</Text>
+      <Text variant='white' className='footerText'>Copyright © 2024 Capsule Corp Inc.</Text>
     </div>
   );
 };

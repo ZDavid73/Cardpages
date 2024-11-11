@@ -1,11 +1,18 @@
 .navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 12vh;
+    z-index: 1000;
     display: flex;
-    height: 8vh;
     justify-content: space-between;
     align-items: center;
     padding: 10px 5vw;
-    background-color: #1B1B1B;
+    background-color: #1b1b1bd7;
     color: white;
+    backdrop-filter: blur(8px);
+    box-sizing: border-box;
 }
   
 .navbar-logo {

@@ -4,9 +4,9 @@ import styled from 'styled-components';
 export const TextHome = styled.p`
   color: #ffffff; 
   text-align:left;
-  margin-bottom: 20px;
+  margin-bottom: 30px;
   font-family: 'Sora', sans-serif;
-  font-size: 35px;
+  font-size: 28px;
   font-weight: bold;
   
   @media (max-width: 700px) {
@@ -94,15 +94,21 @@ const buttonVariantsForm = {
     hoverColor: '#008f4a',
     padding: '10px 20px',
   },
+  orangeForm: {
+    bgColor: '#F88108',
+    textColor: '#fff',
+    hoverColor: '#C83D02',
+    padding: '10px 20px',
+  },
   whiteForm: {
     bgColor: '#ffffff',
     textColor: '#000000',
-    hoverColor: '#898989',
+    hoverColor: '#AFAFAF',
     padding: '10px 30px',
   },
 };
 
-export const ButtonForm = styled.button<{ variant: 'purpleForm' | 'grayForm' | 'greenForm' | 'whiteForm'| 'grayhomeForm' }>`
+export const ButtonForm = styled.button<{ variant: 'purpleForm' | 'grayForm' | 'greenForm' | 'whiteForm'| 'grayhomeForm' | 'orangeForm' }>`
   font-family: 'Sora', sans-serif;
   font-size: 18px;
   font-weight: 600;
@@ -317,7 +323,7 @@ export const TextLogo = styled.p`
   color: #ffffff; 
   text-align:left;
   font-family: 'Fuente Logo', sans-serif;
-  font-size: 60px;
+  font-size: 50px;
   font-weight: normal;
 
   @media (max-width: 700px) {
@@ -339,7 +345,7 @@ const divVariants = {
   },
   smallopacity: {
     padding: {
-      default: '20px',   
+      default: '25px',   
       small: '10px',
     },
     backgroundColor: 'rgba(16, 15, 15, 0.5)',  
@@ -375,7 +381,7 @@ const divVariants = {
 export const Container = styled.div<{ variant: 'bigopacity' | 'smallopacity' | 'big' | 'small' }>`
   padding: ${(props) => divVariants[props.variant].padding.default};
   background-color: ${(props) => divVariants[props.variant].backgroundColor};
-  border-radius: 20px;
+  border-radius: 15px;
   box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
   margin-bottom: ${(props) => divVariants[props.variant].marginBottom.default};
 

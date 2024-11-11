@@ -1,12 +1,14 @@
 .footerContainer{
-    height: 12vh;
-    width: 89vw;
+    width: 99vw;
     display: flex;
     flex-direction: column;
     justify-content:center;
     align-items:center;
-    padding: 5vw;
+    padding: 2vw;
     background-color: #1B1B1B;
+    box-sizing: border-box;
+    gap: 3%;
+
 }
 .footerIcons{
     width: 20vw;
@@ -14,7 +16,6 @@
     justify-content: space-between;
     align-items: center;
     padding: 0;
-    margin: 0;
 }
 .footerContainer ol{
     list-style-type: none;
