@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { addTournament, addPlayerToTournament, removePlayerFromTournament, finishTournament } from '../services/databaseService'; // Importamos desde databaseService
+import { addTournament, addPlayerToTournament, removePlayerFromTournament, finishTournament, levelUpPlayer } from '../services/databaseService'; // Importamos desde databaseService
 import { NewTournamentData, Player, Tournament } from "../types/tournamentTypes";
 import { useDispatch, useSelector } from "react-redux";
 import { AppState } from "../types/stateType";
@@ -119,13 +119,22 @@ export const useTournament = () => {
     dispatch(closeModal());
   }
 
-  const handleFinishTournament = async (id: string, winner: string) => {
+  const handleFinishTournament = async (id: string, winner: string, winnerId: string) => {
     const { error } = await finishTournament(id, winner);
-
     if (error) {
       console.error('Error finishing tournament in Supabase:', error.message);
     }
+    handleLevelUp(winnerId);
   }
+
+  const handleLevelUp = async (id: string) => {
+    const response = await levelUpPlayer(id);
+
+    if (response?.error) {
+      console.error('Error leveling up player in Supabase:', response.error.message);
+    }
+  }
+
 
   return {
     handleAddTournament,

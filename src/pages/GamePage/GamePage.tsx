@@ -60,7 +60,9 @@ const GamePage: React.FC = () => {
   }, [tournament.players, tournament.host]);
 
   if (tournamentWinner){
-    handleFinishTournament(tournament.id, tournamentWinner)
+    const winner = usersInfo.find(u => u.username === tournamentWinner)
+
+    handleFinishTournament(tournament.id, tournamentWinner, winner?.id || '')
   }
 
   return (

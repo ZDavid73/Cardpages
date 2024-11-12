@@ -30,7 +30,6 @@ export const fetchDecks = async (): Promise<Deck[]> => {
     return [];
   }
 
-  console.log(data);
 
   // Aquí aseguramos que data es un arreglo de Decks
   return data as Deck[];
@@ -105,6 +104,28 @@ export const finishTournament = async (id: string, winner: string) => {
   .update({ status: 'finished', winner })
   .eq('id', id);
 };
+
+export const levelUpPlayer = async (userId: string) => {
+  const { data: currentData } = await supabase
+  .from('users')
+  .select('level')
+  .eq('id', userId)
+  .single();
+
+  if (currentData) {
+    const newLevel: number = currentData.level + 1;
+    const { data, error } = await supabase
+      .from('users')
+      .update({ level: newLevel })
+      .eq('id', userId);
+
+    if (error) {
+      return { data: null, error };
+    }
+
+    return { data, error: null };
+  }
+}
 
 export const getUserInfo = async (userId: string) => {
   const user =  await supabase.from('users').select('*').eq('id', userId);
