@@ -8,6 +8,8 @@ import useModal from '../../hooks/useModal';
 import PlayerThumb from '../PlayerThumb/PlayerThumb';
 import { Swiper, SwiperSlide } from 'swiper/react'
 import { Autoplay } from 'swiper/modules'
+import { useState } from 'react';
+import 'swiper/css';
 
 type GameHeaderProps = {
     tournament: Tournament;
@@ -18,6 +20,7 @@ type GameHeaderProps = {
 const GameHeader = ({tournament, userInfo, host}: GameHeaderProps) => {
     const user = useSelector((state: AppState) => state.user);
     const {handleOpen} = useModal();
+    const [activeIndex, setActiveIndex] = useState(0);
 
     return (
     <div className='game-header'>
@@ -33,12 +36,17 @@ const GameHeader = ({tournament, userInfo, host}: GameHeaderProps) => {
                     disableOnInteraction: false,
                     pauseOnMouseEnter: true,
                 }}
+                onActiveIndexChange={(swiper) => setActiveIndex(swiper.realIndex)}
         >
-                { userInfo.map((player, idx) => (
-                <SwiperSlide key={idx}>
-                <PlayerThumb key={idx} player={player} deck={tournament.players.find(p => p.id === player.id)?.deck} />
-                </SwiperSlide>
-                ))}
+                { userInfo.map((player, idx) => {
+                const isCenter = idx === activeIndex;
+
+                return (
+                    <SwiperSlide key={idx}>
+                    <PlayerThumb key={idx} player={player} deck={tournament.players.find(p => p.id === player.id)?.deck} isCenter={isCenter} />
+                    </SwiperSlide>
+                )
+                })}
         </Swiper>
     </div>
     

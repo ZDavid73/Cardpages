@@ -5,9 +5,10 @@ import './PlayerThumb.css';
 type PlayerThumbProps = {
     player: UserState;
     deck: string | undefined;
+    isCenter: boolean;
 }
 
-const PlayerThumb = ({ player, deck }: PlayerThumbProps) => {
+const PlayerThumb = ({ player, deck, isCenter }: PlayerThumbProps) => {
     return (
         <div className='player-thumb'>
             <img src={player.picture} alt={player.username} />
