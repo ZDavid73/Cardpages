@@ -8,12 +8,15 @@ interface TimerProps {
         minutes: number;
         seconds: number;
     } | null;
+    status: string;
 }
 
-const Timer = ({ timeLeft }: TimerProps) => {
-    if (!timeLeft) {
-        return
-    }
+const Timer = ({ timeLeft, status }: TimerProps) => {
+    if (!timeLeft) return (
+        <section className='tour-timer'>
+            {status === 'upcoming' ? <Tittle variant='white'>Starting soon</Tittle> : <Tittle variant='white'>Finished</Tittle>}
+        </section>
+    );
     return (
         <section className='tour-timer'>
             <Tittle variant='white'>{timeLeft.days > 0 ? timeLeft.days + ' days' : timeLeft.hours + ' hours'}</Tittle>

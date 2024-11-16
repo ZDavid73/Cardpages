@@ -23,7 +23,7 @@ const Setup: React.FC<SetupProps> = ({ players, tournament, timeLeft }) => {
   return (
     <Container variant='small' className='setup-container'>
 
-      <Timer timeLeft={timeLeft} />
+      <Timer timeLeft={timeLeft} status={tournament.status} />
 
       <StyledHr />
 
@@ -42,7 +42,7 @@ const Setup: React.FC<SetupProps> = ({ players, tournament, timeLeft }) => {
       }
 
         <Text variant='white'>{players.length}/{tournament.max} players</Text>
-        <Text variant='purple'>{players.length === tournament.max ? tournament.status === 'finished' ? 'This tournament has finished!' : 'Players ready!' : `There's not enough people to start yet!`}</Text>
+        <Text variant='purple'>{players.length === tournament.max ? tournament.status === 'finished' ? null : 'Players ready!' : `There's not enough people to start yet!`}</Text>
       </section>
     </Container>
   );
