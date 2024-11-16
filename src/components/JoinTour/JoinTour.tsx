@@ -52,7 +52,7 @@ const JoinTour = () => {
                             <select name="deck" id="seldeck" onChange={(e) => handleChangeAddPlayerToTournament(e.target.value, e.target.name)}>
                                 <option value="">Select a deck</option>
                                 { userDecks.map(d => (
-                                    <option key={d.id} value={d.id}>{d.name}</option>
+                                    <option key={d.id} value={d.name}>{d.name}</option>
                                 )) }
                             </select>
                             <Button variant='purple' type="submit" onClick={(e) => handleAddPlayer(modalDetails.id, e)}>Join me in!</Button>

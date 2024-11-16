@@ -1,0 +1,13 @@
+.game-header{
+    width: 100%;
+    padding: 0%;
+    margin: 0%;
+}
+
+.game-carrusel{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}

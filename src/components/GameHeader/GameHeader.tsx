@@ -5,6 +5,9 @@ import { AppState } from "../../types/stateType";
 import { Tournament } from '../../types/tournamentTypes';
 import { UserState } from '../../features/auth/userSlice';
 import useModal from '../../hooks/useModal';
+import PlayerThumb from '../PlayerThumb/PlayerThumb';
+import { Swiper, SwiperSlide } from 'swiper/react'
+import { EffectCoverflow, Navigation } from 'swiper/modules'
 
 type GameHeaderProps = {
     tournament: Tournament;
@@ -17,18 +20,34 @@ const GameHeader = ({tournament, userInfo, host}: GameHeaderProps) => {
     const {handleOpen} = useModal();
 
     return (
-    <div className='calatogues-header'>
-    <div className='catalogues-image' 
-        style={{
-        backgroundImage: `url('https://zyemimihfcilkfzgwsxv.supabase.co/storage/v1/object/public/Header%20Images/pokemon-101-1280x960.webp')`, 
-        backgroundSize: 'cover',
-        backgroundPosition: 'center',
-        backgroundRepeat: 'no-repeat',
-        width: '100%',
-        height: '50vh',
-        borderRadius: '10px',
-        }}
-    ></div>
+    <div className='game-header'>
+    <div className='game-carrusel'>
+        <Swiper  effect={'coverflow'}
+                grabCursor={true}
+                centeredSlides={true}
+                loop={true}
+                slidesPerView={3}
+                coverflowEffect={{
+                    rotate: 0,
+                    stretch: -75,
+                    depth: 250,
+                    modifier: 3.5,
+                    slideShadows: false,
+                }}
+                modules={[EffectCoverflow, Navigation]}
+                autoplay={{
+                    delay: 3000,
+                    disableOnInteraction: false,
+                    pauseOnMouseEnter: true,
+                }}
+        >
+                { userInfo.map((player, idx) => (
+                <SwiperSlide key={idx}>
+                <PlayerThumb key={idx} player={player} deck={tournament.players.find(p => p.id === player.id)?.deck} />
+                </SwiperSlide>
+                ))}
+        </Swiper>
+    </div>
     
     <Container variant='small' className='username-calatogues'>
         <Tittle variant='white' className='username-headers'>{host?.username}'s tournament</Tittle>
