@@ -10,6 +10,7 @@ import { useTournament } from '../../hooks/useTournament';
 const JoinTour = () => {
     const { modalDetails } = useSelector((state: AppState) => state.modal);
     const userId = useSelector((state: AppState) => state.user.id);
+    const userDecks = useSelector((state: AppState) => state.decks.decks.filter(deck => deck.creator === userId))
 
     const { handleClose } = useModal()
     const { handleAddPlayer, handleChangeAddPlayerToTournament, handleRemovePlayer } = useTournament()
@@ -49,8 +50,10 @@ const JoinTour = () => {
                             :
                             <form>
                             <select name="deck" id="seldeck" onChange={(e) => handleChangeAddPlayerToTournament(e.target.value, e.target.name)}>
-                                <option value="deck1">Deck 1</option>
-                                <option value="deck2">Deck 2</option>
+                                <option value="">Select a deck</option>
+                                { userDecks.map(d => (
+                                    <option key={d.id} value={d.id}>{d.name}</option>
+                                )) }
                             </select>
                             <Button variant='purple' type="submit" onClick={(e) => handleAddPlayer(modalDetails.id, e)}>Join me in!</Button>
                             </form>
