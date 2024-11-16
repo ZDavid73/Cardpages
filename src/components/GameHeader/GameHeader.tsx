@@ -27,11 +27,12 @@ const GameHeader = ({tournament, userInfo, host}: GameHeaderProps) => {
                 centeredSlides={true}
                 loop={true}
                 slidesPerView={3}
+                slidesPerGroup={1}
                 coverflowEffect={{
                     rotate: 0,
-                    stretch: -75,
-                    depth: 250,
-                    modifier: 3.5,
+                    stretch: 0,
+                    depth: 200,
+                    modifier: 1,
                     slideShadows: false,
                 }}
                 modules={[EffectCoverflow, Navigation]}
