@@ -7,7 +7,7 @@ import { UserState } from '../../features/auth/userSlice';
 import useModal from '../../hooks/useModal';
 import PlayerThumb from '../PlayerThumb/PlayerThumb';
 import { Swiper, SwiperSlide } from 'swiper/react'
-import { EffectCoverflow, Navigation } from 'swiper/modules'
+import { Autoplay } from 'swiper/modules'
 
 type GameHeaderProps = {
     tournament: Tournament;
@@ -22,20 +22,12 @@ const GameHeader = ({tournament, userInfo, host}: GameHeaderProps) => {
     return (
     <div className='game-header'>
     <div className='game-carrusel'>
-        <Swiper  effect={'coverflow'}
+        <Swiper modules={[Autoplay]}
                 grabCursor={true}
                 centeredSlides={true}
                 loop={true}
                 slidesPerView={3}
                 slidesPerGroup={1}
-                coverflowEffect={{
-                    rotate: 0,
-                    stretch: 0,
-                    depth: 200,
-                    modifier: 1,
-                    slideShadows: false,
-                }}
-                modules={[EffectCoverflow, Navigation]}
                 autoplay={{
                     delay: 3000,
                     disableOnInteraction: false,

@@ -73,7 +73,7 @@ const GamePage: React.FC = () => {
             <Tittle variant="white">Tournament's details</Tittle>
       </section>
 
-      <div className="catalogue-sectionheader">
+      <div className="tour-sectionheader">
            <Setup players={usersInfo} tournament={tournament} timeLeft={timeLeft}/>
             <GameHeader tournament={tournament} userInfo={usersInfo} host={tourHost}/> 
       </div>
