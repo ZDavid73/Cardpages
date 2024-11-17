@@ -57,7 +57,10 @@ const DraggablePlayer: React.FC<{ player: UserState, won?: boolean }> = ({ playe
   return (
     <div className={`tour-profile ${won ? 'winner' : null}`} ref={dragRef}>
             <img src={player.picture} alt={player.username} />
+            <span>
             <Text variant="white">{player.username}</Text>
+            <Text variant="purple">level {player.level.toString().padStart(2, '0')}</Text>
+            </span>
             { won && <FaCrown color="orange" size={24}/> }
     </div>
   );
