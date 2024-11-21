@@ -14,6 +14,7 @@
 .card-item-search img{
     width: 8.5vw;
     border-radius: 8px;
+    cursor: pointer;
 }
 
 /* Personalización de la barra de desplazamiento */

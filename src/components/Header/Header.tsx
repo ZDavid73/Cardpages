@@ -1,5 +1,5 @@
 import './Header.css'
-import {Container, Tittle, Text} from '../../theme/styledcomponents';
+import {Container, Tittle} from '../../theme/styledcomponents';
 import { useSelector } from "react-redux";
 import { AppState } from "../../types/stateType";
 
@@ -19,8 +19,8 @@ const Header = () => {
           }}
           ></div>
         <Container variant='small' className='username-calatogues'>
-            <Tittle variant='white'>{user.username}'s catalogue</Tittle>
-            <Text variant='purple' className='number-of-sales'>0 sales</Text>
+            <Tittle variant='white' className='username-headers'>{user.username}'s catalogue</Tittle>
+            <Tittle variant='purple' className='number-of-sales'>0 sales</Tittle>
         </Container>
       </div>
     );

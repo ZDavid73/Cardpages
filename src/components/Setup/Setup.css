@@ -1,5 +1,12 @@
+.setup-container{
+    width: 25%;
+    height: 100%;
+    margin-right: 3%;
+    display: flex;
+    flex-direction: column;
+}
+
 .tour-players{
-    width: 20vw;
     display: flex;
     flex-direction: column;
     gap: 12px;
@@ -11,16 +18,37 @@
     justify-content: flex-start;
     height: 32px;
     gap: 12px;
-    padding: 4px;
-    border-radius: 8px;
+    padding: 8px 4px;
+    border-bottom: #a71fd073 1px solid;
+    justify-content: center;
 }
 
 .winner{
     background-color: #bd6615;
+    border-bottom: none;
 }
 
 .tour-profile img{
     height: 100%;
     border-radius: 50%;
     object-fit: cover;
+}
+
+@media (max-width: 768px){
+    .setup-container{
+        width: 100%;
+        margin-right: 0%;
+        align-items: center;
+    }
+
+    .tour-players{
+        width: 100%;
+        display: flex;
+        align-items: center;
+    }
+
+    .tour-profile{
+        width: 50%;
+        justify-content: center;
+    }
 }

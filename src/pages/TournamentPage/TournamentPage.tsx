@@ -11,9 +11,11 @@ const Tournament = () => {
     const { handleOpen } = useModal()
     const tournaments = useSelector((state: AppState) => state.tournaments)
     const userId = useSelector((state: AppState) => state.user.id)
-    const decks = useSelector((state: AppState) => state.decks)
 
-    console.log(decks)
+    const tourState = {
+        loading: tournaments.loading,
+        error: tournaments.error
+    }
 
     return (
         <>
@@ -24,13 +26,20 @@ const Tournament = () => {
 
         <section className="page-content">
         <Tittle variant='white'>Your Tournaments</Tittle>
-        <TourSection state={tournaments} items={tournaments.tournaments.filter(t => t.host === userId)} action={() => handleOpen('createTournament')}/>
+        <TourSection 
+            state={tourState} 
+            items={tournaments.tournaments.filter(t => t.host === userId)} 
+            action={() => handleOpen('createTournament')}/>
 
         <Tittle variant='white'>Tournaments you have joined</Tittle>
-        <TourSection state={tournaments} items={tournaments.tournaments.filter(t => t.players.some(p => p.id === userId))}/>
+        <TourSection 
+            state={tourState} 
+            items={tournaments.tournaments.filter(t => t.players.some(p => p.id === userId) && t.status === 'upcoming')}/>
 
         <Tittle variant='white'>Tournaments you have participated in</Tittle>
-        <TourSection state={tournaments} items={tournaments.tournaments.filter(t => t.status === 'finished' && t.players.some(p => p.id === userId))}/>
+        <TourSection 
+            state={tourState} 
+            items={tournaments.tournaments.filter(t => t.status === 'finished' && t.players.some(p => p.id === userId))}/>
         </section>
         </>
     )

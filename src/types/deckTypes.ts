@@ -8,4 +8,6 @@ export interface Deck {
     cards: ItemType[];
     price: number;
     cover: string;
+    isSold: boolean;
+    buyerId: string | null;
 }

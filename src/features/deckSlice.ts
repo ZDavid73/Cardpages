@@ -18,7 +18,7 @@ export const fetchAllDecks = createAsyncThunk(
     'decks/fetchAllDecks',
     async (_, { rejectWithValue }) => {
       try {
-        const {data} = await fetchDecks();
+        const data = await fetchDecks();
         return data ?? [];
       } catch (error) {
         return rejectWithValue(error);
