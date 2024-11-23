@@ -1,8 +1,8 @@
 import { supabase } from './supabaseClient';
 import {Deck} from '../types/deckTypes';
 import { Player, Tournament } from '../types/tournamentTypes';
-import { UserState } from '../features/auth/userSlice';
 import { SellingCard } from '../types/cardTypes';
+import { User } from '../types/userTypes';
 
 // Cards-related functions
 export const fetchCards = async () => {
@@ -131,7 +131,7 @@ export const getUserInfo = async (userId: string) => {
   const user =  await supabase.from('users').select('*').eq('id', userId);
 
   if (user.data) {
-    return user.data[0] as UserState;
+    return user.data[0] as User;
   }
 }
 
@@ -147,6 +147,32 @@ export const uploadImage = async (file: File) => {
 
 export const fetchCart = async (userId: string) => {
   const { data, error } = await supabase.from('users').select('cart').eq('id', userId).single();
+
+  if (error) {
+    return { data: null, error };
+  }
+
+  return { data, error: null };
+}
+
+export const addCardToCart = async (userId: string, card: SellingCard) => {
+  const { data, error } = await supabase
+  .from('users')
+  .update({ cart: { cards: [card] } })
+  .eq('id', userId);
+
+  if (error) {
+    return { data: null, error };
+  }
+
+  return { data, error: null };
+}
+
+export const addDeckToCart = async (userId: string, deck: Deck) => {
+  const { data, error } = await supabase
+  .from('users')
+  .update({ cart: { decks: [deck] } })
+  .eq('id', userId);
 
   if (error) {
     return { data: null, error };

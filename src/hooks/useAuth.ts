@@ -4,6 +4,7 @@ import { loginUser, registerUser } from '../services/AuthService';
 import { clearAuthUserId, getAuthUserId, setAuthUserId } from '../utils/storage';
 import { useDispatch } from 'react-redux';
 import { login, logout } from '../features/auth/userSlice';
+import { setCart } from '../features/cartSlice';
 import { getUserInfo } from '../services/databaseService';
 
 
@@ -21,6 +22,7 @@ export const useAuth = () => {
         const actualUser = await getUserInfo(user.id);
          if (actualUser) {
           dispatch(login(actualUser));
+          dispatch(setCart(actualUser.cart));
         }
 
         setAuthUserId(user.id);
