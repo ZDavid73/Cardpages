@@ -18,6 +18,7 @@ const BuyCard = () => {
                     <FaArrowCircleLeft onClick={() => handleClose()} color="white"/>
                     <Tittle variant='white'>{modalDetails.name}</Tittle>
                     </span>
+                    <img src={modalDetails.images.small} alt={`image of the card: ${modalDetails.name}`} />
                 </section>
                 <section className='buy-card-info'>
                     <StyledHr/>
