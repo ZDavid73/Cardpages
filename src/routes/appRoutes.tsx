@@ -10,7 +10,8 @@ import ProtectedRoutes from './ProtectedRoutes';
 import Dashboard from '../pages/Dashboard/Dashboard';
 import { AppState } from '../types/stateType';
 import Modal from '../components/Modal/Modal';
-import React from 'react';
+import React, { Suspense } from 'react';
+import Loading from '../pages/Loading/Loading';
 
 const LazyGamePage = React.lazy(() => import('../pages/GamePage/GamePage'));
 
@@ -37,7 +38,7 @@ const AppRouter = () => {
             <Route path="/tournaments" element={<Tournament />} />
             <Route path="/search" element={<SearchPage/>} />
             <Route path="/about" element={<AboutPage/>} />
-            <Route path="/game" element={<LazyGamePage/>} />
+            <Route path="/game" element={<Suspense fallback={<Loading/>}><LazyGamePage/></Suspense>} />
             
           </Route>
           </Routes>
