@@ -4,18 +4,16 @@ import { AppState } from "../../types/stateType";
 import Header from "../../components/Header/Header"
 import Profile from "../../components/Profile/Profile"
 import AddButton from '../../components/AddButton/AddButton'
-import SellCardButton from '../../components/AddCard/AddCard'
-import { Tittle, Text  } from '../../theme/styledcomponents';
+import { Tittle  } from '../../theme/styledcomponents';
 import Footer from '../../components/Footer/Footer';
-import TourSection from '../../components/ItemSection/ItemSection';
-import useModal from '../../hooks/useModal';
+import ItemSection from '../../components/ItemSection/ItemSection';
 
 
-const Catalogue = () => {
+const Dashboard = () => {
     const cardsState = useSelector((state: AppState) => state.cards);
-    const tournaments = useSelector((state: AppState) => state.tournaments);
-    const { handleOpen } = useModal();
-   
+    const tournaments = useSelector((state: AppState) => state.tournaments);  
+    const decks = useSelector((state: AppState) => state.decks);
+    const userId = useSelector((state: AppState) => state.user.id); 
 
     return (
         <>
@@ -26,36 +24,14 @@ const Catalogue = () => {
 
             
     <section className="cardsOnSale">
-    <Tittle variant="white">Upcoming events</Tittle>
+    <Tittle variant="white">Upcoming Events</Tittle>
+    <ItemSection state={tournaments} items={tournaments.tournaments.filter(t => t.status === 'upcoming').reverse() }/>
 
+    <Tittle variant="white">Cards On Sale</Tittle>
+    <ItemSection state={cardsState} items={cardsState.cards.filter(c => c.sellerId !== userId).reverse()}/>
 
-<TourSection state={tournaments} items={tournaments.tournaments}/>
-        <Tittle variant="white">Cards On Sale</Tittle>
-
-        
-    <div className="cards-container">
-        {cardsState.loading && <Text variant="white">Loading cards...</Text>}
-        {cardsState.error && (
-            <Text variant="white">Oh no! There was an error loading the cards. Try again later.</Text>
-        )}
-        {!cardsState.loading && !cardsState.error && cardsState.cards.length === 0 && (
-            <Text variant="white">No cards available for sale.</Text>
-        )}
-        {!cardsState.loading && !cardsState.error && cardsState.cards.length > 0 && (
-            <>
-                {cardsState.cards.map((card) => (
-                    <div key={card.id} className="card-item"
-                    onClick={() => {handleOpen('buyCard', card)}}>
-                        <img src={card.images.small} alt={`Card ${card.id}`} className="card-image"/>
-                        <div className='infocard'>
-                        <Tittle variant="white">{card.name}</Tittle>
-                        <Text variant="white">$ {card.price} USD</Text>
-                        </div>
-                    </div>
-                ))}
-            </>
-        )}<SellCardButton />
-    </div>
+    <Tittle variant="white">Decks On Sale</Tittle>
+    <ItemSection state={decks} items={decks.decks.filter(d => d.creator !== userId && !d.isSold)}/>
     
 </section>
             <AddButton /> 
@@ -65,4 +41,4 @@ const Catalogue = () => {
     );
 };
 
-export default Catalogue;
+export default Dashboard;
