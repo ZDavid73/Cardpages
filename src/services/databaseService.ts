@@ -1,7 +1,7 @@
 import { supabase } from './supabaseClient';
 import {Deck} from '../types/deckTypes';
 import { Player, Tournament } from '../types/tournamentTypes';
-import { SellingCard } from '../types/cardTypes';
+import { Card, SellingCard } from '../types/cardTypes';
 import { User } from '../types/userTypes';
 
 // Cards-related functions
@@ -155,10 +155,12 @@ export const fetchCart = async (userId: string) => {
   return { data, error: null };
 }
 
-export const addCardToCart = async (userId: string, card: SellingCard) => {
+export const addCardToCart = async (cart: Card[], userId: string, card: SellingCard) => {
+  const updatedCart = cart ? [...cart, card] : [card];
+
   const { data, error } = await supabase
   .from('users')
-  .update({ cart: { cards: [card] } })
+  .update({ cart: { cards: updatedCart } })
   .eq('id', userId);
 
   if (error) {
@@ -168,10 +170,13 @@ export const addCardToCart = async (userId: string, card: SellingCard) => {
   return { data, error: null };
 }
 
-export const addDeckToCart = async (userId: string, deck: Deck) => {
+export const addDeckToCart = async (cart: Deck[], userId: string, deck: Deck) => {
+
+  const updatedCart = cart ? [...cart, deck] : [deck];
+
   const { data, error } = await supabase
   .from('users')
-  .update({ cart: { decks: [deck] } })
+  .update({ cart: { decks: updatedCart } })
   .eq('id', userId);
 
   if (error) {

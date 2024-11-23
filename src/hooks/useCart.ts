@@ -7,12 +7,13 @@ import { addCardToCart, addDeckToCart } from "../services/databaseService"
 
 const useCart = () => {
     const userId = useSelector((state: AppState) => state.user.id)
+    const cart = useSelector((state: AppState) => state.cart)
 
     const addToCart = ( product: Deck | SellingCard) => {
         if (isCard(product)) {
-            addCardToCart(userId, product)
+            addCardToCart(cart.cards, userId, product)
         } else {
-            addDeckToCart(userId, product)
+            addDeckToCart(cart.decks, userId, product)
         }
     }
 

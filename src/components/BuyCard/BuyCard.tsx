@@ -5,10 +5,15 @@ import { isCard } from '../../utils/typeGuards';
 import { Button, Container, StyledHr, Text, Tittle } from '../../theme/styledcomponents';
 import { FaArrowCircleLeft } from 'react-icons/fa';
 import useModal from '../../hooks/useModal';
+import useCart from '../../hooks/useCart';
 
 const BuyCard = () => {
     const { modalDetails } = useSelector((state: AppState) => state.modal);
     const { handleClose } = useModal();
+    const { addToCart } = useCart();
+
+    const cart = useSelector((state: AppState) => state.cart);
+    console.log(cart);
 
     if(isCard(modalDetails)){
         return (
@@ -31,7 +36,7 @@ const BuyCard = () => {
 
                         {modalDetails.flavorText}
                     </Text>
-                    <Button variant='purple'>Add to cart</Button>
+                    <Button variant='purple' onClick={() => {addToCart(modalDetails)}}>Add to cart</Button>
                 </section>
             </Container>
         ) 
