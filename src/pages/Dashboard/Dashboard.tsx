@@ -8,11 +8,13 @@ import SellCardButton from '../../components/AddCard/AddCard'
 import { Tittle, Text  } from '../../theme/styledcomponents';
 import Footer from '../../components/Footer/Footer';
 import TourSection from '../../components/ItemSection/ItemSection';
+import useModal from '../../hooks/useModal';
 
 
 const Catalogue = () => {
     const cardsState = useSelector((state: AppState) => state.cards);
     const tournaments = useSelector((state: AppState) => state.tournaments);
+    const { handleOpen } = useModal();
    
 
     return (
@@ -42,7 +44,8 @@ const Catalogue = () => {
         {!cardsState.loading && !cardsState.error && cardsState.cards.length > 0 && (
             <>
                 {cardsState.cards.map((card) => (
-                    <div key={card.id} className="card-item">
+                    <div key={card.id} className="card-item"
+                    onClick={() => {handleOpen('buyCard', card)}}>
                         <img src={card.images.small} alt={`Card ${card.id}`} className="card-image"/>
                         <div className='infocard'>
                         <Tittle variant="white">{card.name}</Tittle>
