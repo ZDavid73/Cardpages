@@ -5,18 +5,21 @@
     justify-content:center;
     align-items:center;
     padding: 2vw;
-    background-color: #1B1B1B;
+    background-color: #100F0F;
     box-sizing: border-box;
-    gap: 3%;
-
 }
 .footerIcons{
-    width: 20vw;
+    width: 15vw;
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding: 0;
 }
+.footerIcon {
+    width: 2.5vw;
+    height: 2.5vw;
+}
+
 .footerContainer ol{
     list-style-type: none;
 }
@@ -25,16 +28,15 @@
 @media (max-width: 768px) {
     .footerContainer {
         height: auto;
-        width: 90% ;
+        width: 100vw;
         padding: 5%;
-        margin-top: 10px;
     }
 
     .footerIcons {
         width: 40vw; /* Increase width to make icons more spaced out */
     }
-
-    .footerIcons a svg {
-        width: 8vw; /* Aumenta el tamaño de los íconos en tablets */
+    .footerIcon {
+        width: 7vw; /* Ajusta el tamaño según necesites */
+        height: 7vw;
     }
 }

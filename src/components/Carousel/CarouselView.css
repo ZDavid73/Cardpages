@@ -23,10 +23,11 @@
     align-items: end;
     padding: 5vw;
     box-sizing: border-box;
+    overflow: hidden;
 } 
 .overlay{
     width: 38vw;
-    height: 30vh;
+    height: 27vh;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -73,15 +74,16 @@
         background-size: cover;
         background-position: center;
         background-repeat: no-repeat;
-        height: 45vh;
-        width: 90vw;
-        padding: 5vw;
+        height: 70vh;
+        width: 100vw;
+        padding: 5%;
         align-items: center;
         justify-content: center;
+        padding-top: 20%;
     }
 
     .overlay {
-        width: 65vw;
+        width: 90%;
         height: 25vh;
         margin-bottom: 2vh; /* Añade espacio entre el texto y la imagen */
     }

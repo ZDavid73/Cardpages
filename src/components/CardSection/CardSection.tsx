@@ -1,4 +1,4 @@
-import { useEffect, useState, useRef } from 'react';
+import { useEffect, useRef } from 'react';
 import AOS from 'aos'; // Importa AOS
 import { useNavigate } from 'react-router-dom';
 import 'aos/dist/aos.css'; // Asegúrate de que los estilos de AOS están importados
@@ -24,7 +24,6 @@ function CardSectionContainer({
   reverse = false,
 }: CardSectionProps) {
   const navigate = useNavigate();
-  const [isMobile, setIsMobile] = useState(window.innerWidth < 768);
   const sectionRef = useRef<HTMLDivElement | null>(null);
 
   useEffect(() => {
@@ -34,18 +33,6 @@ function CardSectionContainer({
       once: false,
     });
 
-    const handleResize = () => {
-      setIsMobile(window.innerWidth < 768);
-    };
-
-    window.addEventListener('resize', handleResize);
-
-    return () => {
-      window.removeEventListener('resize', handleResize);
-    };
-  }, []);
-
-  useEffect(() => {
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {
@@ -71,15 +58,13 @@ function CardSectionContainer({
     navigate('/register');
   };
 
-  const shouldReverse = isMobile ? false : reverse;
-
   return (
     <div ref={sectionRef}>
       <CardSection
         text={text}
         imgSrc={imgSrc}
         altText={altText}
-        reverse={shouldReverse}
+        reverse={reverse}  // Se pasa la propiedad 'reverse' sin ningún ajuste
         variantText={variantText}
         onExploreClick={handleExploreClick}
         imgAos={imgAos}

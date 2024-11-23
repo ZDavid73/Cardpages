@@ -1,4 +1,4 @@
-import { Navigate, Routes, Route, BrowserRouter } from 'react-router-dom';
+import { Navigate, Routes, Route, HashRouter } from 'react-router-dom';
 import { HomePage, SearchPage } from '../pages/imports';
 import { Login, Navbar, Register } from '../components/imports';
 import Catalogue from '../pages/Catalogue/Catalogue';
@@ -20,7 +20,7 @@ const AppRouter = () => {
   const isLoggedIn = user.id !== "" ? true : false;
 
   return (
-    <BrowserRouter>
+    <HashRouter>
       <>
         <Navbar isLoggedIn={isLoggedIn}/>
         <Modal/>
@@ -43,7 +43,7 @@ const AppRouter = () => {
           </Route>
           </Routes>
       </>
-    </BrowserRouter>
+    </HashRouter>
   )
 }
 
