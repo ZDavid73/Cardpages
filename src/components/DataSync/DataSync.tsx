@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { useEffect } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { supabase } from '../../services/supabaseClient';
 import { insertTourData, deleteTourData, fetchAllTournaments, updateTourData } from '../../features/tournamentSlice';
 import { AppDispatch } from '../../store/store';
@@ -8,9 +8,30 @@ import { RealtimePostgresChangesPayload } from '@supabase/supabase-js';
 import { deleteCardData, insertCardData, updateCardData } from '../../features/cardSlice';
 import { fetchAllCards } from '../../features/cardSlice';
 import { deleteDeckData, fetchAllDecks, insertDeckData, updateDeckData } from '../../features/deckSlice';
+import { setCart } from '../../features/cartSlice';
+import { updateUser } from '../../features/auth/userSlice';
 
 const DataSync = () => {
   const dispatch: AppDispatch = useDispatch();
+  const userId = useSelector((state: any) => state.user.id);
+
+  useEffect(() => {
+    const subscriptionUser = supabase
+      .channel('users')
+      .on(
+        'postgres_changes',
+        { event: '*', schema: 'public', table: 'users', filter: `id=eq.${userId}` },
+        (payload) => {
+          console.log('Change received:', payload);
+          handleChangeUser(payload);
+        }
+      )
+      .subscribe();
+
+    return () => {
+      subscriptionUser.unsubscribe();
+    };
+  }, []);
 
   useEffect(() => {
 
@@ -104,6 +125,18 @@ const DataSync = () => {
     }
     if (payload.eventType === 'DELETE') {
       dispatch(deleteTourData(payload.old))
+    }
+  }
+
+  const handleChangeUser = (payload: RealtimePostgresChangesPayload<{[key: string]: any;}>) => {
+    if (payload.eventType === 'UPDATE'){
+      if (payload.new.cart !== payload.old.cart) {
+        console.log('Cart property changed:', payload.new.cart);
+        dispatch(setCart(payload.new.cart));
+      } else {
+        console.log('Other property changed');
+        dispatch(updateUser(payload.new));
+      }
     }
   }
 

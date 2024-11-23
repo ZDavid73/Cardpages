@@ -34,7 +34,7 @@ const Tournament = () => {
         <Tittle variant='white'>Tournaments you have joined</Tittle>
         <TourSection 
             state={tourState} 
-            items={tournaments.tournaments.filter(t => t.players.some(p => p.id === userId))}/>
+            items={tournaments.tournaments.filter(t => t.players.some(p => p.id === userId) && t.status === 'upcoming')}/>
 
         <Tittle variant='white'>Tournaments you have participated in</Tittle>
         <TourSection 

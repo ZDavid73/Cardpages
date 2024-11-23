@@ -14,7 +14,7 @@ const Profile = () => {
                 <img src={user.picture} alt="" />
                 <div className="profile-info-text">
                     <Text variant="white">Welcome, {user.username}!</Text>
-                    <Text variant="purple">Level 00</Text>
+                    <Text variant="purple">Level {user.level.toString().padStart(2, '0')}</Text>
                 </div>
             </section>
 

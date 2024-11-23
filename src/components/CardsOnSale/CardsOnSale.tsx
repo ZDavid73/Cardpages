@@ -10,6 +10,7 @@ const CardsOnSale = () => {
     const cardsState = useSelector((state: AppState) => state.cards);
     const { handleOpen } = useModal();
 
+
     return (
         <section className='Cards-sale-section'>
             <Tittle variant="white">Cards On Sale</Tittle>
@@ -29,7 +30,9 @@ const CardsOnSale = () => {
                 // Mostrar si hay cartas
                 <div className="Cards-on-sale">
                     {cardsState.cards.map((card) => (
-                        <div key={card.id} className="card-item">
+                        <div key={card.id} className="card-item"
+                        onClick={() => handleOpen('buyCard', card)}
+                        >
                             <img src={card.images.small} alt={`Card ${card.id}`} className="card-image" />
                             <div className='infocard'>
                                 <Tittle variant="white">{card.name}</Tittle>
