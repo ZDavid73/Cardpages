@@ -180,3 +180,16 @@ export const addDeckToCart = async (userId: string, deck: Deck) => {
 
   return { data, error: null };
 }
+
+export const updateUserSupa = async (user: User) => {
+  const { data, error } = await supabase
+  .from('users')
+  .update(user)
+  .eq('id', user.id);
+
+  if (error) {
+    return { data: null, error };
+  }
+
+  return { data, error: null };
+}

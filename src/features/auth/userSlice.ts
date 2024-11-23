@@ -32,9 +32,14 @@ export const userSlice = createSlice({
       state.picture = '';
       state.level = 0;
     },
-
+    updateUser: (state, action) => {
+      state.id = action.payload.id;
+      state.username = action.payload.username;
+      state.picture = action.payload.picture;
+      state.level = action.payload.level;
+    },
   },
 })
 
-export const { login, logout } = userSlice.actions
+export const { login, logout, updateUser } = userSlice.actions
 export default userSlice.reducer
