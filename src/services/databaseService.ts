@@ -144,3 +144,13 @@ export const uploadImage = async (file: File) => {
 
   return { data, error: null };
 }
+
+export const fetchCart = async (userId: string) => {
+  const { data, error } = await supabase.from('users').select('cart').eq('id', userId).single();
+
+  if (error) {
+    return { data: null, error };
+  }
+
+  return { data, error: null };
+}

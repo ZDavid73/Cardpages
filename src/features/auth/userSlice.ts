@@ -12,7 +12,7 @@ const initialState: UserState = {
     id: '',
     username: '',
     picture: '',
-    level: 0
+    level: 0,
 }
 
 export const userSlice = createSlice({
@@ -23,7 +23,7 @@ export const userSlice = createSlice({
       state.id = action.payload.id;
       state.username = action.payload.username;
       state.picture = action.payload.picture;
-      state.level = action.payload.level
+      state.level = action.payload.level;
     },
     logout: (state) => {
       console.log('logout desde slice');
@@ -31,7 +31,8 @@ export const userSlice = createSlice({
       state.username = '';
       state.picture = '';
       state.level = 0;
-    }
+    },
+
   },
 })
 
