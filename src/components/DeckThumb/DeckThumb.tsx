@@ -3,7 +3,11 @@ import { Deck } from '../../types/deckTypes';
 import './DeckThumb.css';
 import useModal from '../../hooks/useModal';
 
-const DeckThumb = (deck: Deck) => {
+type DeckThumbProps = {
+    deck: Deck;
+}
+
+const DeckThumb = ({deck}: DeckThumbProps) => {
     const { handleOpen } = useModal();
 
     return (

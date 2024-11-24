@@ -1,6 +1,7 @@
 import { Text } from '../../theme/styledcomponents';
 import { isCard, isDeck, isTournament } from '../../utils/typeGuards';
 import SellingCardThumb from '../CardThumb/CardThum';
+import DeckThumb from '../DeckThumb/DeckThumb';
 import ItemHolder from '../ItemHolder/ItemHolder';
 import TourThumb from '../TourThumb/TourThumb';
 import './ItemSection.css';
@@ -30,7 +31,7 @@ const ItemSection = ({state, items, action}: ItemSection) => {
                 } else if (isCard(item)){
                     return <SellingCardThumb key={item.id} card={item}/>
                 } else if (isDeck(item)){
-                    return <p>{item.name}</p>
+                    return <DeckThumb key={item.id} deck={item}/>
                 }
                 return null;
             })}
