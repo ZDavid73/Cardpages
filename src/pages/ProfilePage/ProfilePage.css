@@ -26,7 +26,7 @@
   height: 150px;
   border-radius: 50%;
   overflow: hidden;
-  border: 4px solid #6c63ff;
+  border: 4px solid #A82CD4;
 }
 
 .profile-image {
@@ -64,14 +64,6 @@
   display: none;
 }
 
-/* Level text styling */
-.profile-image-section .Text {
-  margin-top: 10px;
-  font-size: 18px;
-  color: #6c63ff;
-  font-weight: bold;
-}
-
 /* Form section styling */
 .profile-info-section {
   margin-top: 20px;
@@ -104,10 +96,6 @@ label .Text {
   font-size: 14px;
 }
 
-.form-input:focus {
-  outline: 2px solid #6c63ff;
-}
-
 /* Action buttons styling */
 .profile-actions {
   margin-top: 20px;
@@ -116,29 +104,4 @@ label .Text {
   gap: 20px;
 }
 
-.profile-actions .Button {
-  padding: 10px 20px;
-  font-size: 16px;
-  border-radius: 5px;
-}
-
-.profile-actions .Button.purple {
-  background-color: #6c63ff;
-  color: white;
-  border: none;
-}
-
-.profile-actions .Button.purple:hover {
-  background-color: #594ad3;
-}
-
-.profile-actions .Button.gray {
-  background-color: #444;
-  color: white;
-  border: none;
-}
-
-.profile-actions .Button.gray:hover {
-  background-color: #333;
-}
 
