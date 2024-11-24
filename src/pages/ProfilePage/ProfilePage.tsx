@@ -60,7 +60,7 @@ const ProfilePage = () => {
         </label>
       </div>
 
-      <Container variant="big" className="profile-settings-container">
+      
         <div className="profile-image-section">
           {/* Profile Image */}
           <div className="profile-image-wrapper">
@@ -133,7 +133,6 @@ const ProfilePage = () => {
           <Button variant="purple">Save</Button>
           <Button variant="gray">Cancel</Button>
         </div>
-      </Container>
     </div>
   );
 };
