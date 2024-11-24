@@ -15,7 +15,7 @@ const CartPage = () => {
     return (
         <section className="cart-page">
             <Tittle variant="white">Shopping Cart</Tittle>
-            <section>
+            <section className='cart-list'>
                 { organizedCart.map((item) =>
                 <CartListItem key={item.id} item={item}/>)}
             </section>

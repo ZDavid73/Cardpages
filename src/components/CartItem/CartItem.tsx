@@ -1,4 +1,4 @@
-import { Text, Tittle } from '../../theme/styledcomponents'
+import { Button, Container, StyledHr, Text, Tittle } from '../../theme/styledcomponents'
 import { CartItem } from '../../types/cartTypes'
 import { FaTrash } from 'react-icons/fa'
 import './CartItem.css'
@@ -9,15 +9,18 @@ type CartItemProps = {
 
 const CartListItem = ({item}: CartItemProps) => {
     return (
-        <div className="cart-item">
-            <FaTrash/>
+        <Container variant='small' className="cart-item">
+            <FaTrash color='#2D2D2D' size={30} className='cart-item-trash'/>
             <img src={item.image} alt={`image of the ${item.name} ${item.type}`} />
             <div className='cart-item-info'>
                 <Tittle variant='white'>{item.name}</Tittle>
-                <Tittle variant='purple'>$ {item.price} USD</Tittle>
-                <Text variant='white'>seller: @user</Text>
+                <Tittle variant='white'>$ {item.price} USD</Tittle>
+                <Text variant='purple'>seller: @user</Text>
+                <StyledHr/>
+                <Text variant='white'>{item.desc}</Text>
             </div>
-        </div>
+            <Button variant='purple'>Buy</Button>
+        </Container>
     )
 }
 
