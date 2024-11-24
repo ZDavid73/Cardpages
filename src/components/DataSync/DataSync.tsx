@@ -17,7 +17,7 @@ const DataSync = () => {
 
   useEffect(() => {
     dispatch(fetchUserCart())
-    
+
     const subscriptionUser = supabase
       .channel('users')
       .on(
@@ -129,7 +129,6 @@ const DataSync = () => {
   const handleChangeUser = (payload: RealtimePostgresChangesPayload<{[key: string]: any;}>) => {
     if (payload.eventType === 'UPDATE'){
       if (payload.new.cart !== payload.old.cart) {
-        console.log('Cart property changed:', payload.new.cart);
         dispatch(setCart(payload.new.cart));
       } else {
         console.log('Other property changed');
