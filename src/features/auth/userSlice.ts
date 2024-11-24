@@ -6,6 +6,7 @@ export interface UserState {
     username: string;
     picture: string;
     level: number;
+    headerImageUrl?: string;
 }
 
 const initialState: UserState = {
