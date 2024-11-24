@@ -10,5 +10,5 @@ export interface User {
         cards: SellingCard[];
         decks: Deck[];
     };
-    headerImageUrl: string;
+    header: string;
 }

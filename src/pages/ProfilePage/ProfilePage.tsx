@@ -2,7 +2,7 @@ import { useState } from "react";
 import { Text, Button } from "../../theme/styledcomponents";
 import { useSelector, useDispatch } from "react-redux";
 import { AppState } from "../../types/stateType";
-import { updateHeaderImage } from "../../features/auth/userSlice"; 
+import { updateHeader } from "../../features/auth/userSlice"; 
 import { FaEdit } from "react-icons/fa";
 import "./ProfilePage.css";
 
@@ -27,7 +27,7 @@ const ProfilePage = () => {
         if (type === "profile") {
           setProfileImage(reader.result as string);
         } else {
-          dispatch(updateHeaderImage(reader.result as string));
+          dispatch(updateHeader(reader.result as string));
         }
       };
       reader.readAsDataURL(file);
@@ -39,7 +39,7 @@ const ProfilePage = () => {
       <div
         className="profile-header-image"
         style={{
-          backgroundImage: `url('${user.headerImageUrl}')`, 
+          backgroundImage: `url('${user.header}')`, 
           backgroundSize: "cover",
           backgroundPosition: "center",
           backgroundRepeat: "no-repeat",

@@ -11,7 +11,7 @@ const Header = () => {
       <div
         className="catalogues-image"
         style={{
-          backgroundImage: `url('${user.headerImageUrl}')`, 
+          backgroundImage: `url('${user.header}')`, 
           backgroundSize: 'cover',
           backgroundPosition: 'center',
           backgroundRepeat: 'no-repeat',
