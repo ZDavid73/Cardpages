@@ -2,8 +2,8 @@ import { useState } from "react";
 import { Text, Button } from "../../theme/styledcomponents";
 import { useSelector, useDispatch } from "react-redux";
 import { AppState } from "../../types/stateType";
-import { updateHeader } from "../../features/auth/userSlice"; 
 import { FaEdit } from "react-icons/fa";
+import { updatePicture, updateHeader } from "../../features/auth/userSlice"; 
 import "./ProfilePage.css";
 
 const ProfilePage = () => {
@@ -14,8 +14,6 @@ const ProfilePage = () => {
   const [gender, setGender] = useState("");
   const [country, setCountry] = useState("");
 
-  const [profileImage, setProfileImage] = useState(user.picture);
-
   const handleImageChange = (
     e: React.ChangeEvent<HTMLInputElement>,
     type: "profile" | "header"
@@ -25,7 +23,7 @@ const ProfilePage = () => {
       const reader = new FileReader();
       reader.onload = () => {
         if (type === "profile") {
-          setProfileImage(reader.result as string);
+          dispatch(updatePicture(reader.result as string));
         } else {
           dispatch(updateHeader(reader.result as string));
         }
@@ -62,7 +60,7 @@ const ProfilePage = () => {
 
       <div className="profile-image-section">
         <div className="profile-image-wrapper">
-          <img src={profileImage} alt="Profile" className="profile-image" />
+          <img src={user.picture} alt="Profile" className="profile-image" />
           <label htmlFor="profile-image-upload" className="edit-icon-wrapper">
             <FaEdit className="edit-icon" />
             <input
@@ -136,4 +134,5 @@ const ProfilePage = () => {
 };
 
 export default ProfilePage;
+
 
