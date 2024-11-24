@@ -36,6 +36,7 @@ const ProfilePage = () => {
       <Container variant="small" className="profile-settings-container">
         <div className="profile-image-section">
           <img src={user.picture} alt="Profile" className="profile-image" />
+          <Text variant="purple">Level: {user.level.toString().padStart(2, '0')}</Text>
         </div>
         
         <div className="profile-info-section">
