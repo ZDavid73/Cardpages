@@ -75,6 +75,11 @@ const ProfilePage = () => {
         <Text variant="purple">Level: {user.level.toString().padStart(2, "0")}</Text>
       </div>
 
+      <div className="profile-actions">
+        <Button variant="purple">Save</Button>
+        <Button variant="gray">Cancel</Button>
+      </div>
+      
       <div className="profile-info-section">
         <div className="form-group">
           <label htmlFor="username">
@@ -125,10 +130,7 @@ const ProfilePage = () => {
         </div>
       </div>
 
-      <div className="profile-actions">
-        <Button variant="purple">Save</Button>
-        <Button variant="gray">Cancel</Button>
-      </div>
+      
     </div>
   );
 };
