@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Container, Text, Button } from "../../theme/styledcomponents";
+import { Text, Button } from "../../theme/styledcomponents";
 import { useSelector } from "react-redux";
 import { AppState } from "../../types/stateType";
 import { FaEdit } from "react-icons/fa";
