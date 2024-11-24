@@ -3,7 +3,7 @@ import { Text, Button, Tittle } from "../../theme/styledcomponents";
 import { useSelector, useDispatch } from "react-redux";
 import { AppState } from "../../types/stateType";
 import { FaEdit } from "react-icons/fa";
-import { updatePicture, updateHeader } from "../../features/auth/userSlice"; 
+import { updatePicture, updateHeader } from "../../features/auth/userSlice";
 import "./ProfilePage.css";
 
 const ProfilePage = () => {
@@ -13,6 +13,11 @@ const ProfilePage = () => {
   const [username, setUsername] = useState(user.username);
   const [gender, setGender] = useState("");
   const [country, setCountry] = useState("");
+  const [birthDate, setBirthDate] = useState({
+    day: "",
+    month: "",
+    year: "",
+  });
 
   const handleImageChange = (
     e: React.ChangeEvent<HTMLInputElement>,
@@ -32,12 +37,16 @@ const ProfilePage = () => {
     }
   };
 
+  const handleBirthDateChange = (field: "day" | "month" | "year", value: string) => {
+    setBirthDate({ ...birthDate, [field]: value });
+  };
+
   return (
     <div className="profile-page">
       <div
         className="profile-header-image"
         style={{
-          backgroundImage: `url('${user.header}')`, 
+          backgroundImage: `url('${user.header}')`,
           backgroundSize: "cover",
           backgroundPosition: "center",
           backgroundRepeat: "no-repeat",
@@ -131,13 +140,51 @@ const ProfilePage = () => {
             <option value="uk">United Kingdom</option>
           </select>
         </div>
-      </div>
 
-      
+        {/* Birth Date Section */}
+        <div className="form-group">
+          <label htmlFor="birth-date">
+            <Tittle variant="white">Birth date</Tittle>
+          </label>
+          <div className="birth-date-fields">
+            <input
+              type="text"
+              placeholder="Day"
+              value={birthDate.day}
+              onChange={(e) => handleBirthDateChange("day", e.target.value)}
+              className="form-input birth-date-input"
+            />
+            <select
+              value={birthDate.month}
+              onChange={(e) => handleBirthDateChange("month", e.target.value)}
+              className="form-input birth-date-input"
+            >
+              <option value="">Month</option>
+              <option value="January">January</option>
+              <option value="February">February</option>
+              <option value="March">March</option>
+              <option value="April">April</option>
+              <option value="May">May</option>
+              <option value="June">June</option>
+              <option value="July">July</option>
+              <option value="August">August</option>
+              <option value="September">September</option>
+              <option value="October">October</option>
+              <option value="November">November</option>
+              <option value="December">December</option>
+            </select>
+            <input
+              type="text"
+              placeholder="Year"
+              value={birthDate.year}
+              onChange={(e) => handleBirthDateChange("year", e.target.value)}
+              className="form-input birth-date-input"
+            />
+          </div>
+        </div>
+      </div>
     </div>
   );
 };
 
 export default ProfilePage;
-
-
