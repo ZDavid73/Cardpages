@@ -26,6 +26,7 @@ export const userSlice = createSlice({
       state.username = action.payload.username;
       state.picture = action.payload.picture;
       state.level = action.payload.level;
+      state.headerImageUrl = action.payload.headerImageUrl || initialState.headerImageUrl;
     },
     logout: (state) => {
       console.log('logout desde slice');
