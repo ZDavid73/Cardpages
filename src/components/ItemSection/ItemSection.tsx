@@ -13,7 +13,7 @@ type ItemSection = {
     action?: () => void;
 }
 
-const ItemSection = ({state, items, action}: ItemSection) => {
+const ItemSection = ({state, items, action,}: ItemSection) => {
     return (
         <section className='item-section'>
 
