@@ -9,10 +9,10 @@ type DeckThumbProps = {
 
 const DeckThumb = ({deck}: DeckThumbProps) => {
     const { handleOpen } = useModal();
-
     return (
-        <div key={deck.id} className="deck-item">
-            <img src={deck.cover} alt={`Deck ${deck.id}`} className="deck-image" />
+        <div key={deck.id} 
+            className="deck-item"
+            style={{ backgroundImage: `url(${deck.cover})`, backgroundSize: 'cover', backgroundPosition: 'center' }}>
             <div className="infodeck">
                 <Tittle variant="white">{deck.name}</Tittle>
                 <Text variant="white">$ {deck.price} USD</Text>

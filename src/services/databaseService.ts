@@ -136,7 +136,9 @@ export const getUserInfo = async (userId: string) => {
 }
 
 export const uploadImage = async (file: File) => {
-  const { data, error } = await supabase.storage.from('Decks').upload(String(Math.random())+file.name, file);
+  const safeFileName = file.name.replace(/\s+/g, '_').toLowerCase();
+
+  const { data, error } = await supabase.storage.from('Decks').upload(String(Math.random())+safeFileName, file);
 
   if (error) {
     return { data: null, error };
