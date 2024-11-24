@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Text, Button } from "../../theme/styledcomponents";
+import { Text, Button, Input } from "../../theme/styledcomponents";
 import { useSelector, useDispatch } from "react-redux";
 import { AppState } from "../../types/stateType";
 import { FaEdit } from "react-icons/fa";
@@ -80,7 +80,8 @@ const ProfilePage = () => {
           <label htmlFor="username">
             <Text variant="white">Username</Text>
           </label>
-          <input
+          <Input
+            variant="boxwhite"
             id="username"
             type="text"
             value={username}
