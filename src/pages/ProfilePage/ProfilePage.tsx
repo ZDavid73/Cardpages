@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Text, Button, Input } from "../../theme/styledcomponents";
+import { Text, Button, Tittle } from "../../theme/styledcomponents";
 import { useSelector, useDispatch } from "react-redux";
 import { AppState } from "../../types/stateType";
 import { FaEdit } from "react-icons/fa";
@@ -78,10 +78,9 @@ const ProfilePage = () => {
       <div className="profile-info-section">
         <div className="form-group">
           <label htmlFor="username">
-            <Text variant="white">Username</Text>
+            <Tittle variant="white">Username</Tittle>
           </label>
-          <Input
-            variant="boxwhite"
+          <input
             id="username"
             type="text"
             value={username}
@@ -92,7 +91,7 @@ const ProfilePage = () => {
 
         <div className="form-group">
           <label htmlFor="gender">
-            <Text variant="white">Gender</Text>
+            <Tittle variant="white">Gender</Tittle>
           </label>
           <select
             id="gender"
@@ -109,7 +108,7 @@ const ProfilePage = () => {
 
         <div className="form-group">
           <label htmlFor="country">
-            <Text variant="white">Country</Text>
+            <Tittle variant="white">Country</Tittle>
           </label>
           <select
             id="country"
