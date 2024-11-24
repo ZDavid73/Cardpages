@@ -60,7 +60,7 @@ const ProfilePage = () => {
         </label>
       </div>
 
-      <Container variant="small" className="profile-settings-container">
+      <Container variant="big" className="profile-settings-container">
         <div className="profile-image-section">
           {/* Profile Image */}
           <div className="profile-image-wrapper">
