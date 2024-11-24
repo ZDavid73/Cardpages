@@ -137,7 +137,9 @@ const ProfilePage = () => {
             <option value="usa">United States</option>
             <option value="mexico">Mexico</option>
             <option value="canada">Canada</option>
+            <option value="brazil">Colombia</option>
             <option value="uk">United Kingdom</option>
+            <option value="germany">Germany</option>
           </select>
         </div>
 
