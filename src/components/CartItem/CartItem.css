@@ -35,3 +35,14 @@
     top: 12px;
     right: 12px;
 }
+
+@media (max-width: 768px){
+    .cart-item{
+        width: 90vw;
+        height: 200px;
+    }
+
+    .cart-item img{
+        width: 40%;
+    }
+}

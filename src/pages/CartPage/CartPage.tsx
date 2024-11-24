@@ -7,10 +7,8 @@ import CartListItem from '../../components/CartItem/CartItem';
 
 const CartPage = () => {
     const cart = useSelector((state: AppState) => state.cart);
-    console.log(cart);
     const { organiceCart } = useCart();
     const organizedCart = organiceCart(cart);
-    console.log(organizedCart);
 
     return (
         <section className="cart-page">

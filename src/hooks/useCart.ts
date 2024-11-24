@@ -3,7 +3,7 @@ import { SellingCard } from "../types/cardTypes"
 import { Deck } from "../types/deckTypes"
 import { AppState } from "../types/stateType"
 import { isCard } from "../utils/typeGuards"
-import { addCardToCart, addDeckToCart } from "../services/databaseService"
+import { addCardToCart, addDeckToCart, removeCardFromCart, removeDeckFromCart } from "../services/databaseService"
 import { CartState } from "../features/cartSlice"
 import { CartItem } from "../types/cartTypes"
 
@@ -18,6 +18,13 @@ const useCart = () => {
             addDeckToCart(cart.decks, userId, product)
         }
     }
+
+    const removeFromCart = (product: CartItem) => {
+        if (product.type === 'card') {
+            removeCardFromCart(cart.cards, userId, product.id)
+        } else {
+            removeDeckFromCart(cart.decks, userId, product.id)
+    }}
 
     const organiceCart = (cart: CartState) => {
         const organizedCart: CartItem[] = []
@@ -51,7 +58,7 @@ const useCart = () => {
         return organizedCart
     }
 
-    return { addToCart, organiceCart }
+    return { addToCart, organiceCart, removeFromCart }
 }
 
 export default useCart

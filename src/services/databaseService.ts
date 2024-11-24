@@ -188,6 +188,36 @@ export const addDeckToCart = async (cart: Deck[], userId: string, deck: Deck) =>
   return { data, error: null };
 }
 
+export const removeCardFromCart = async (cart: SellingCard[], userId: string, id: string) => {
+  const updatedCart = cart.filter((card) => card.id !== id);
+
+  const { data, error } = await supabase
+  .from('users')
+  .update({ cart: { cards: updatedCart } })
+  .eq('id', userId);
+
+  if (error) {
+    return { data: null, error };
+  }
+
+  return { data, error: null };
+}
+
+export const removeDeckFromCart = async (cart: Deck[], userId: string, id: string) => {
+  const updatedCart = cart.filter((deck) => deck.id !== id);
+
+  const { data, error } = await supabase
+  .from('users')
+  .update({ cart: { decks: updatedCart } })
+  .eq('id', userId);
+
+  if (error) {
+    return { data: null, error };
+  }
+
+  return { data, error: null };
+}
+
 export const updateUserSupa = async (user: User) => {
   const { data, error } = await supabase
   .from('users')
