@@ -48,8 +48,11 @@ export const userSlice = createSlice({
     updateHeader: (state, action: PayloadAction<string>) => {
       state.header = action.payload;  
   },
+  updatePicture: (state, action: PayloadAction<string>) => {
+    state.picture = action.payload; 
+  },
 },
 })
 
-export const { login, logout, updateUser, updateHeader } = userSlice.actions
+export const { login, logout, updateUser, updateHeader, updatePicture } = userSlice.actions
 export default userSlice.reducer
