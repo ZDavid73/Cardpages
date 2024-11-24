@@ -4,6 +4,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { AppState } from "../../types/stateType";
 import { FaEdit } from "react-icons/fa";
 import { updatePicture, updateHeader } from "../../features/auth/userSlice";
+import Footer from "../../components/Footer/Footer";
 import "./ProfilePage.css";
 
 const ProfilePage = () => {
