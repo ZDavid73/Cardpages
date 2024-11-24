@@ -1,6 +1,6 @@
 .selling-card-thumbnail{
     width: 20%;
-    height: 200px;
+    height: 300px;
     display: flex;
     flex-direction: column;
     justify-content: flex-end;
@@ -30,4 +30,11 @@
 .card-thumb-info{
     background-color: rgba(0, 0, 0, 0.7);
     padding: 12px;
+}
+
+@media (max-width: 768px){
+    .selling-card-thumbnail{
+        width: 40%;
+        height: 200px;
+    }
 }
