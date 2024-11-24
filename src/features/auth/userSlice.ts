@@ -14,6 +14,7 @@ const initialState: UserState = {
     username: '',
     picture: '',
     level: 0,
+    headerImageUrl: 'https://zyemimihfcilkfzgwsxv.supabase.co/storage/v1/object/public/Header%20Images/pokemon-101-1280x960.webp',
 }
 
 export const userSlice = createSlice({
