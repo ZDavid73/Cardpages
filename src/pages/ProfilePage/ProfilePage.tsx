@@ -44,6 +44,9 @@ const ProfilePage = () => {
           width: "60%",
           height: "50vh",
           borderRadius: "10px",
+          display: "flex",
+          justifyContent: "center",
+          margin: "auto",
         }}
       >
         <label htmlFor="header-image-upload" className="edit-icon-wrapper">
@@ -79,7 +82,7 @@ const ProfilePage = () => {
         <Button variant="purple">Save</Button>
         <Button variant="gray">Cancel</Button>
       </div>
-      
+
       <div className="profile-info-section">
         <div className="form-group">
           <label htmlFor="username">
