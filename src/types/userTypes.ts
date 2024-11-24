@@ -9,5 +9,6 @@ export interface User {
     cart: {
         cards: SellingCard[];
         decks: Deck[];
-    }
+    };
+    headerImageUrl: string;
 }
