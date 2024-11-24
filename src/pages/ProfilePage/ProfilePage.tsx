@@ -4,21 +4,18 @@ import { useSelector } from "react-redux";
 import { AppState } from "../../types/stateType";
 import "./ProfilePage.css";
 
-// URL de la imagen centralizada
 export const headerImageUrl =
   "https://zyemimihfcilkfzgwsxv.supabase.co/storage/v1/object/public/Header%20Images/pokemon-101-1280x960.webp";
 
 const ProfilePage = () => {
   const user = useSelector((state: AppState) => state.user);
 
-  // Estados para los campos del formulario
   const [username, setUsername] = useState(user.username);
   const [gender, setGender] = useState("");
   const [country, setCountry] = useState("");
 
   return (
     <div className="profile-page">
-      {/* Imagen del header */}
       <div
         className="profile-header-image"
         style={{
@@ -32,7 +29,6 @@ const ProfilePage = () => {
         }}
       ></div>
 
-      {/* Contenedor principal */}
       <Container variant="small" className="profile-settings-container">
         <div className="profile-image-section">
           <img src={user.picture} alt="Profile" className="profile-image" />
@@ -40,7 +36,6 @@ const ProfilePage = () => {
         </div>
         
         <div className="profile-info-section">
-          {/* Input para username */}
           <div className="form-group">
             <label htmlFor="username">
               <Text variant="white">Username</Text>
@@ -54,7 +49,6 @@ const ProfilePage = () => {
             />
           </div>
 
-          {/* Dropdown para género */}
           <div className="form-group">
             <label htmlFor="gender">
               <Text variant="white">Gender</Text>
@@ -72,7 +66,6 @@ const ProfilePage = () => {
             </select>
           </div>
 
-          {/* Dropdown para país */}
           <div className="form-group">
             <label htmlFor="country">
               <Text variant="white">Country</Text>
@@ -88,12 +81,10 @@ const ProfilePage = () => {
               <option value="mexico">Mexico</option>
               <option value="canada">Canada</option>
               <option value="uk">United Kingdom</option>
-              {/* Puedes agregar más países aquí */}
             </select>
           </div>
         </div>
 
-        {/* Botones */}
         <div className="profile-actions">
           <Button variant="purple">Save</Button>
           <Button variant="gray">Cancel</Button>
