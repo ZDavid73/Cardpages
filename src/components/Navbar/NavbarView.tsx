@@ -52,7 +52,8 @@ const NavbarView: React.FC<NavbarViewProps> = ({
             </Button>
             <Button 
               variant='gray' 
-              aria-label="Ver carrito de compras" // Añadido
+              aria-label="Ver carrito de compras"
+              onClick={() => navigate('/cart')}
             >
               <FaShoppingCart />
             </Button>

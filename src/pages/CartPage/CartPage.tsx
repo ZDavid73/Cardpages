@@ -1,10 +1,15 @@
+import { useSelector } from 'react-redux';
+import { Tittle } from '../../theme/styledcomponents';
 import './CartPage.css';
+import { AppState } from '../../types/stateType';
 
 const CartPage = () => {
+    const cart = useSelector((state: AppState) => state.cart);
+
     return (
-        <div className="cart-page">
-            <h1>Cart Page</h1>
-        </div>
+        <section className="cart-page">
+            <Tittle variant="white">Shopping Cart</Tittle>
+        </section>
     );
 }
 
