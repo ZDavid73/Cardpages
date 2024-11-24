@@ -40,7 +40,7 @@ const AppRouter = () => {
             <Route path="/search" element={<SearchPage/>} />
             <Route path="/about" element={<AboutPage/>} />
             <Route path="/game" element={<Suspense fallback={<Loading/>}><LazyGamePage/></Suspense>} />
-            <Route path="/profile-settings" element={<ProfilePage/>} />
+            <Route path="/profile-page" element={<ProfilePage/>} />
             
           </Route>
           </Routes>
