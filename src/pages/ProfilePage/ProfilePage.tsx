@@ -2,7 +2,7 @@ import { useState } from "react";
 import { Text, Button } from "../../theme/styledcomponents";
 import { useSelector, useDispatch } from "react-redux";
 import { AppState } from "../../types/stateType";
-import { updateHeaderImage } from "../../features/auth/userSlice"; // Nueva acción importada
+import { updateHeaderImage } from "../../features/auth/userSlice"; 
 import { FaEdit } from "react-icons/fa";
 import "./ProfilePage.css";
 
@@ -27,7 +27,6 @@ const ProfilePage = () => {
         if (type === "profile") {
           setProfileImage(reader.result as string);
         } else {
-          // Actualiza la imagen de encabezado en el estado global (Redux)
           dispatch(updateHeaderImage(reader.result as string));
         }
       };
@@ -37,11 +36,10 @@ const ProfilePage = () => {
 
   return (
     <div className="profile-page">
-      {/* Header Image */}
       <div
         className="profile-header-image"
         style={{
-          backgroundImage: `url('${user.headerImageUrl}')`, // Ahora toma la URL del header desde Redux
+          backgroundImage: `url('${user.headerImageUrl}')`, 
           backgroundSize: "cover",
           backgroundPosition: "center",
           backgroundRepeat: "no-repeat",
@@ -63,7 +61,6 @@ const ProfilePage = () => {
       </div>
 
       <div className="profile-image-section">
-        {/* Profile Image */}
         <div className="profile-image-wrapper">
           <img src={profileImage} alt="Profile" className="profile-image" />
           <label htmlFor="profile-image-upload" className="edit-icon-wrapper">

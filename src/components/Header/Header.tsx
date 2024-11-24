@@ -11,7 +11,7 @@ const Header = () => {
       <div
         className="catalogues-image"
         style={{
-          backgroundImage: `url('${user.headerImageUrl}')`, // Ahora toma la imagen desde Redux
+          backgroundImage: `url('${user.headerImageUrl}')`, 
           backgroundSize: 'cover',
           backgroundPosition: 'center',
           backgroundRepeat: 'no-repeat',
