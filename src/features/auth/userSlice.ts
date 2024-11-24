@@ -34,15 +34,22 @@ export const userSlice = createSlice({
       state.username = '';
       state.picture = '';
       state.level = 0;
+      state.headerImageUrl = initialState.headerImageUrl;
     },
     updateUser: (state, action) => {
       state.id = action.payload.id;
       state.username = action.payload.username;
       state.picture = action.payload.picture;
       state.level = action.payload.level;
+      if (action.payload.headerImageUrl) {
+        state.headerImageUrl = action.payload.headerImageUrl;
+      }
     },
+    updateHeaderImage: (state, action: PayloadAction<string>) => {
+      state.headerImageUrl = action.payload;  
   },
+},
 })
 
-export const { login, logout, updateUser } = userSlice.actions
+export const { login, logout, updateUser, updateHeaderImage } = userSlice.actions
 export default userSlice.reducer
