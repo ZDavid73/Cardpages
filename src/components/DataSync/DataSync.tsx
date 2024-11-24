@@ -22,7 +22,6 @@ const DataSync = () => {
         'postgres_changes',
         { event: '*', schema: 'public', table: 'users', filter: `id=eq.${userId}` },
         (payload) => {
-          console.log('Change received:', payload);
           handleChangeUser(payload);
         }
       )
@@ -43,7 +42,6 @@ const DataSync = () => {
         'postgres_changes', 
         { event: '*', schema: 'public', table: 'tournaments' },
         (payload) => {
-          console.log('Change received:', payload);
           handleChangeTournament(payload);
         }
     )
@@ -63,7 +61,6 @@ const DataSync = () => {
         'postgres_changes', 
         { event: '*', schema: 'public', table: 'cards' },
         (payload) => {
-          console.log('Change received:', payload);
           handleChangeCard(payload);
         }
     )
@@ -83,7 +80,6 @@ const DataSync = () => {
         'postgres_changes', 
         { event: '*', schema: 'public', table: 'decks' },
         (payload) => {
-          console.log('Change received:', payload);
           handleChangeDeck(payload);
         }
     )
