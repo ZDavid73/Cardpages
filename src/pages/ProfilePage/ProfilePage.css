@@ -1,4 +1,3 @@
-/* Estilos para el ícono de edición */
 .edit-icon-wrapper {
     position: absolute;
     top: 10px;
@@ -22,12 +21,10 @@
     font-size: 20px;
   }
   
-  /* Ocultar el input de archivo */
   .image-upload-input {
     display: none;
   }
   
-  /* Estilo para la imagen de perfil y su wrapper */
   .profile-image-wrapper {
     position: relative;
     display: inline-block;
