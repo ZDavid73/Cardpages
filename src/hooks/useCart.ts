@@ -35,7 +35,7 @@ const useCart = () => {
             organizedCart.push(card)
         })
 
-        cart.decks.forEach(d => {
+        cart.decks?.forEach(d => {
             const deck = {
                 id: d.id,
                 name: d.name,

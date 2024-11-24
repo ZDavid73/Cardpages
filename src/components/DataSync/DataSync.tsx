@@ -8,7 +8,7 @@ import { RealtimePostgresChangesPayload } from '@supabase/supabase-js';
 import { deleteCardData, insertCardData, updateCardData } from '../../features/cardSlice';
 import { fetchAllCards } from '../../features/cardSlice';
 import { deleteDeckData, fetchAllDecks, insertDeckData, updateDeckData } from '../../features/deckSlice';
-import { setCart } from '../../features/cartSlice';
+import { fetchUserCart, setCart } from '../../features/cartSlice';
 import { updateUser } from '../../features/auth/userSlice';
 
 const DataSync = () => {
@@ -16,6 +16,8 @@ const DataSync = () => {
   const userId = useSelector((state: any) => state.user.id);
 
   useEffect(() => {
+    dispatch(fetchUserCart())
+    
     const subscriptionUser = supabase
       .channel('users')
       .on(
