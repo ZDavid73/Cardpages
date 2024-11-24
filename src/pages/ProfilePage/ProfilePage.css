@@ -1,4 +1,4 @@
-/* Header image styling */
+
 .profile-header-image {
   position: relative;
   width: 100%;
@@ -12,7 +12,7 @@
   background-position: center;
 }
 
-/* Profile image styling */
+
 .profile-image-section {
   margin-top: -75px;
   display: flex;
@@ -35,7 +35,7 @@
   object-fit: cover;
 }
 
-/* Edit icon */
+
 .edit-icon-wrapper {
   position: absolute;
   top: 50%;
@@ -64,7 +64,7 @@
   display: none;
 }
 
-/* Form section styling */
+
 .profile-info-section {
   margin-top: 20px;
   width: 100%;
@@ -81,9 +81,17 @@
   display: flex;
   flex-direction: column;
 }
+
+.form-input:focus {
+  outline: 1px solid #6c63ff;
+}
+.form-input{
+  margin: 5px;
+}
+
 .birth-date-fields {
   display: flex;
-  gap: 35px;
+  gap: 20px;
 }
 
 label .Text {
@@ -102,7 +110,7 @@ label .Text {
 
 }
 
-/* Action buttons styling */
+
 .profile-actions {
   margin-top: 20px;
   display: flex;
