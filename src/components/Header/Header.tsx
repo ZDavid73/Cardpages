@@ -2,7 +2,6 @@ import './Header.css';
 import { Container, Tittle } from '../../theme/styledcomponents';
 import { useSelector } from "react-redux";
 import { AppState } from "../../types/stateType";
-import { headerImageUrl } from '../../pages/ProfilePage/ProfilePage'; 
 
 const Header = () => {
   const user = useSelector((state: AppState) => state.user);
@@ -12,7 +11,7 @@ const Header = () => {
       <div
         className="catalogues-image"
         style={{
-          backgroundImage: `url('${headerImageUrl}')`, 
+          backgroundImage: `url('${user.headerImageUrl}')`, // Ahora toma la imagen desde Redux
           backgroundSize: 'cover',
           backgroundPosition: 'center',
           backgroundRepeat: 'no-repeat',
@@ -32,3 +31,4 @@ const Header = () => {
 };
 
 export default Header;
+
