@@ -2,6 +2,7 @@ import { useState } from "react";
 import { Container, Text, Button } from "../../theme/styledcomponents";
 import { useSelector } from "react-redux";
 import { AppState } from "../../types/stateType";
+import { FaEdit } from "react-icons/fa";
 import "./ProfilePage.css";
 
 export const headerImageUrl =
@@ -14,27 +15,70 @@ const ProfilePage = () => {
   const [gender, setGender] = useState("");
   const [country, setCountry] = useState("");
 
+  const [profileImage, setProfileImage] = useState(user.picture);
+  const [headerImage, setHeaderImage] = useState(headerImageUrl);
+
+  const handleImageChange = (e: React.ChangeEvent<HTMLInputElement>, type: "profile" | "header") => {
+    const file = e.target.files?.[0];
+    if (file) {
+      const reader = new FileReader();
+      reader.onload = () => {
+        if (type === "profile") {
+          setProfileImage(reader.result as string);
+        } else {
+          setHeaderImage(reader.result as string);
+        }
+      };
+      reader.readAsDataURL(file);
+    }
+  };
+
   return (
     <div className="profile-page">
+      {/* Header Image */}
       <div
         className="profile-header-image"
         style={{
-          backgroundImage: `url('${headerImageUrl}')`,
-          backgroundSize: "cover",
-          backgroundPosition: "center",
-          backgroundRepeat: "no-repeat",
-          width: "100%",
-          height: "50vh",
-          borderRadius: "10px",
+          backgroundImage: `url('${headerImageUrl}')`, 
+          backgroundSize: 'cover',
+          backgroundPosition: 'center',
+          backgroundRepeat: 'no-repeat',
+          width: '100%',
+          height: '50vh',
+          borderRadius: '10px',
         }}
-      ></div>
+      >
+        <label htmlFor="header-image-upload" className="edit-icon-wrapper">
+          <FaEdit className="edit-icon" />
+          <input
+            type="file"
+            id="header-image-upload"
+            accept="image/*"
+            onChange={(e) => handleImageChange(e, "header")}
+            className="image-upload-input"
+          />
+        </label>
+      </div>
 
       <Container variant="small" className="profile-settings-container">
         <div className="profile-image-section">
-          <img src={user.picture} alt="Profile" className="profile-image" />
-          <Text variant="purple">Level: {user.level.toString().padStart(2, '0')}</Text>
+          {/* Profile Image */}
+          <div className="profile-image-wrapper">
+            <img src={profileImage} alt="Profile" className="profile-image" />
+            <label htmlFor="profile-image-upload" className="edit-icon-wrapper">
+              <FaEdit className="edit-icon" />
+              <input
+                type="file"
+                id="profile-image-upload"
+                accept="image/*"
+                onChange={(e) => handleImageChange(e, "profile")}
+                className="image-upload-input"
+              />
+            </label>
+          </div>
+          <Text variant="purple">Level: {user.level.toString().padStart(2, "0")}</Text>
         </div>
-        
+
         <div className="profile-info-section">
           <div className="form-group">
             <label htmlFor="username">
