@@ -3,6 +3,7 @@ import { Button, Text } from '../../theme/styledcomponents';
 import { SellingCard } from '../../types/cardTypes';
 import { AppState } from '../../types/stateType';
 import './CardThumb.css';
+import useModal from '../../hooks/useModal';
 
 type SellingCardThumbProps = {
     card: SellingCard;
@@ -10,6 +11,7 @@ type SellingCardThumbProps = {
 
 const SellingCardThumb = ({ card }: SellingCardThumbProps) => {
     const userId = useSelector((state: AppState) => state.user.id);
+    const { handleOpen } = useModal(); 
 
     return (
         <section 
@@ -25,12 +27,13 @@ const SellingCardThumb = ({ card }: SellingCardThumbProps) => {
                     userId === card.sellerId ? 
                     <Button 
                         variant='gray' 
-                        onClick={() => {}}
+                        onClick={() => handleOpen('buyCard', card)}
                     >
                         See
                     </Button>
                     :
-                    <Button variant='purple'>
+                    <Button variant='purple'
+                        onClick={() => handleOpen('buyCard', card)}>
                         Buy
                     </Button>
                 }
