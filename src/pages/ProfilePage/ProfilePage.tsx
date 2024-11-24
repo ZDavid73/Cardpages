@@ -46,7 +46,6 @@ const ProfilePage = () => {
           width: '60%',
           height: '50vh',
           borderRadius: '10px',
-          marginTop: '200px',
         }}
       >
         <label htmlFor="header-image-upload" className="edit-icon-wrapper">
