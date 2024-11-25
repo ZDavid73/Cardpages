@@ -13,6 +13,7 @@ const BuyCard = () => {
     const { handleClose } = useModal();
     const { addToCart } = useCart();
     const { handleGetUserInfo, tempUser } = useAuth();
+    const cart = useSelector((state: AppState) => state.cart);
 
     if(isCard(modalDetails)){
         handleGetUserInfo(modalDetails.sellerId);
@@ -41,7 +42,9 @@ const BuyCard = () => {
                     <Text variant='white'>
                         {modalDetails.flavorText}
                     </Text>
-                    <Button variant='purple' onClick={() => {addToCart(modalDetails)}}>Add to cart</Button>
+                    { cart.cards.find((card) => card.id === modalDetails.id) ? 
+                        <Button variant='gray'>Already in cart</Button> : <Button variant='purple' onClick={() => {addToCart(modalDetails)}}>Add to cart</Button>}
+                    
                 </section>
             </Container>
         ) 
