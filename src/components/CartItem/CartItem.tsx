@@ -3,6 +3,7 @@ import { CartItem } from '../../types/cartTypes'
 import { FaTrash } from 'react-icons/fa'
 import './CartItem.css'
 import useCart from '../../hooks/useCart'
+import { useAuth } from '../../hooks/useAuth'
 
 type CartItemProps = {
     item: CartItem
@@ -10,6 +11,9 @@ type CartItemProps = {
 
 const CartListItem = ({item}: CartItemProps) => {
     const { removeFromCart } = useCart()
+    const { handleGetUserInfo, tempUser } = useAuth();
+
+    handleGetUserInfo(item.sellerId);
 
     return (
         <Container variant='small' className="cart-item">
@@ -18,7 +22,7 @@ const CartListItem = ({item}: CartItemProps) => {
             <div className='cart-item-info'>
                 <Tittle variant='white'>{item.name}</Tittle>
                 <Tittle variant='white'>$ {item.price} USD</Tittle>
-                <Text variant='purple'>seller: @user</Text>
+                <Text variant='purple'>seller: @{tempUser?.username || 'loading...'}</Text>
                 <StyledHr/>
                 <Text variant='white'>{item.desc}</Text>
             </div>
