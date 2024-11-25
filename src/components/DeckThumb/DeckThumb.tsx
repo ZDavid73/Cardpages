@@ -14,7 +14,7 @@ const DeckThumb = ({deck}: DeckThumbProps) => {
         <div key={deck.id} 
             className="deck-item"
             style={{ backgroundImage: `url(${deck.cover})`, backgroundSize: 'cover', backgroundPosition: 'center' }}
-            onClick={() => handleOpen('')}>
+            onClick={() => handleOpen('buyDeck', deck)}>
             <div className="infodeck">
                 <Tittle variant="white">{deck.name}</Tittle>
                 <Text variant="white">$ {deck.price} USD</Text>

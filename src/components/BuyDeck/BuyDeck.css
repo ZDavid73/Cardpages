@@ -1,0 +1,12 @@
+.buy-deck{
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    width: 60vw;
+}
+
+.buy-deck-header{
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}

@@ -9,6 +9,7 @@ import { Deck } from "../types/deckTypes";
 import { SellingCard } from "../types/cardTypes";
 import SellPage from "../pages/SellPage/SellPage";
 import BuyCard from "../components/BuyCard/BuyCard";
+import BuyDeck from "../components/BuyDeck/BuyDeck";
 
 const useModal = () => {
     const dispatch = useDispatch();
@@ -28,10 +29,9 @@ const useModal = () => {
             case "createTournament":
                 return <CreateTour/>
 
-                case "createDeck":
+            case "createDeck":
                 return <AddDeck />;
 
-                default:
             case 'joinTournament':
                 return <JoinTour/>
 
@@ -40,6 +40,12 @@ const useModal = () => {
 
             case 'buyCard':
                 return <BuyCard/>
+            
+            case 'buyDeck':
+                return <BuyDeck/>
+            
+            default:
+                return null;
         }
     }
 
