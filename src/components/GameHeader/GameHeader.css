@@ -2,6 +2,9 @@
     width: 72%;
     padding: 0%;
     margin: 0%;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
 }
 
 .swiper-wrapper{

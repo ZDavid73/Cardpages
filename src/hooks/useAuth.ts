@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useCallback, useRef, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { loginUser, registerUser } from '../services/AuthService';
 import { clearAuthUserId, getAuthUserId, setAuthUserId } from '../utils/storage';
@@ -11,18 +11,17 @@ import { User } from '../types/userTypes';
 
 export const useAuth = () => {
   const [error, setError] = useState<string | null>(null);
-  const [tempUser, setTempUser] = useState<User | null>(null);
-
+  const tempUser = useRef<User | null>(null);
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
-  const handleGetUserInfo = async (userId: string) => {
+  const handleGetUserInfo = useCallback(async (userId: string): Promise<User | null> => {
     const user = await getUserInfo(userId);
-    
     if (user) {
-      setTempUser(user);
+      tempUser.current = user; // Store in useRef instead of state
     }
-  }
+    return user || null; // Allow the caller to use the fetched user data
+  }, []);
 
   const handleLogin = async (email: string, password: string) => {
     try {
@@ -71,5 +70,5 @@ export const useAuth = () => {
     dispatch(logout());
   }
 
-  return { error, handleLogin, handleRegister, handleLogout, tempUser, handleGetUserInfo };
+  return { error, handleLogin, handleRegister, handleLogout, tempUser: tempUser.current, handleGetUserInfo };
 };
