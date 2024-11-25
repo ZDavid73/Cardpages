@@ -42,6 +42,17 @@ const ProfilePage = () => {
   const handleBirthDateChange = (field: "day" | "month" | "year", value: string) => {
     setBirthDate({ ...birthDate, [field]: value });
   };
+  const handleSave = async () => {
+    // Construimos el objeto de usuario actualizado
+    const updatedUser = {
+      ...user,
+      username,
+      picture: user.picture, // Mantiene la imagen actualizada en el estado global
+      header: user.header,
+      gender,
+      country,
+      birthDate: `${birthDate.day}/${birthDate.month}/${birthDate.year}`,
+    };
 
   return (
     <div className="profile-page">
