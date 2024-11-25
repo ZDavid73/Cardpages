@@ -103,7 +103,7 @@ const GamePage: React.FC = () => {
       const winner = usersInfo.find((u) => u.username === tournamentWinner);
       handleFinishTournament(tournament.id, tournamentWinner, winner?.id || '');
     }
-  }, [tournamentWinner, handleFinishTournament, tournament.id, usersInfo]);
+  }, [tournamentWinner]);
 
   return (
     <DndProvider backend={TouchBackend} options={{ enableMouseEvents: true }}>

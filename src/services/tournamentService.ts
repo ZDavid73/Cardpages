@@ -10,6 +10,7 @@ export const saveMatch = async (
   players: string[],
   winner: string
 ) => {
+  console.log('Saving match:', tournamentId, roundIndex, matchIndex, players, winner);
   const { data, error } = await supabase.from('Matches').insert([
     {
       tournament_id: tournamentId,
