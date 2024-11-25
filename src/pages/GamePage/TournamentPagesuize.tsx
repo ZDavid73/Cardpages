@@ -4,6 +4,7 @@ import AddPlayerForm from '../../components/AddPlayerForm/AddPlayerForm';
 import PlayerList from '../../components/PlayerList/PlayerList';
 import MatchList from '../../components/MatchList/MatchList';
 import RankingList from '../../components/RankingList/RankingList';
+import './GamePage.css';
 
 const TournamentPage: React.FC = () => {
   const {

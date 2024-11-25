@@ -20,9 +20,20 @@ import { AppState } from '../../types/stateType';
 import { Tournament } from '../../types/tournamentTypes';
 import './GamePage.css';
 
+// Definimos el tipo Match
+interface Match {
+  id: string;
+  tournament_id: string;
+  round_index: number;
+  match_index: number;
+  players: string[];
+  winner: string;
+  created_at: string;
+}
+
 const GamePage: React.FC = () => {
   const [usersInfo, setUsersInfo] = useState<UserState[]>([]);
-  const [matches, setMatches] = useState<MyMatchType[]>([]);
+  const [matches, setMatches] = useState<Match[]>([]); // Usamos el tipo Match
   const [tourHost, setTourHost] = useState<UserState | null>(null);
 
   const navigate = useNavigate();
@@ -38,7 +49,6 @@ const GamePage: React.FC = () => {
     useGameTournament(usersInfo.map((user) => user.username));
   const { handleFinishTournament } = useTournament();
 
-  // Fetch user information and matches
   useEffect(() => {
     const fetchUserInfo = async () => {
       try {
@@ -69,7 +79,7 @@ const GamePage: React.FC = () => {
     const fetchTournamentMatches = async () => {
       try {
         const data = await getTournamentMatches(tournament.id); // Recupera enfrentamientos
-        setMatches(data);
+        setMatches(data); // Aquí el tipo `Match[]` asegura que los datos sean válidos
       } catch (error) {
         console.error('Error fetching matches:', error);
       }
@@ -79,9 +89,8 @@ const GamePage: React.FC = () => {
     fetchTournamentMatches();
   }, [tournament.players, tournament.host, tournament.id]);
 
-  // Save match results to Supabase
   const handleSaveMatch = async (roundIdx: number, matchIdx: number, winner: string) => {
-    const players = rounds[roundIdx][matchIdx]; // Lista de jugadores
+    const players = rounds[roundIdx][matchIdx];
     try {
       await saveMatch(tournament.id, roundIdx, matchIdx, players, winner);
     } catch (error) {
@@ -89,7 +98,6 @@ const GamePage: React.FC = () => {
     }
   };
 
-  // Handle tournament finish
   useEffect(() => {
     if (tournamentWinner) {
       const winner = usersInfo.find((u) => u.username === tournamentWinner);
@@ -120,7 +128,7 @@ const GamePage: React.FC = () => {
                 }
                 onWin={(roundIdx, matchIdx, winner) => {
                   handleWin(roundIdx, matchIdx, winner);
-                  handleSaveMatch(roundIdx, matchIdx, winner); // Guardar datos del match
+                  handleSaveMatch(roundIdx, matchIdx, winner);
                 }}
               />
             )}
