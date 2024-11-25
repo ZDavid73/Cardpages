@@ -6,12 +6,23 @@ import { useDispatch } from 'react-redux';
 import { login, logout } from '../features/auth/userSlice';
 import { setCart } from '../features/cartSlice';
 import { getUserInfo } from '../services/databaseService';
+import { User } from '../types/userTypes';
 
 
 export const useAuth = () => {
   const [error, setError] = useState<string | null>(null);
+  const [tempUser, setTempUser] = useState<User | null>(null);
+
   const navigate = useNavigate();
   const dispatch = useDispatch();
+
+  const handleGetUserInfo = async (userId: string) => {
+    const user = await getUserInfo(userId);
+    
+    if (user) {
+      setTempUser(user);
+    }
+  }
 
   const handleLogin = async (email: string, password: string) => {
     try {
@@ -60,5 +71,5 @@ export const useAuth = () => {
     dispatch(logout());
   }
 
-  return { error, handleLogin, handleRegister, handleLogout };
+  return { error, handleLogin, handleRegister, handleLogout, tempUser, handleGetUserInfo };
 };

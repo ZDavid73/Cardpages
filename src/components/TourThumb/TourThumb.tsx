@@ -5,14 +5,18 @@ import './TourThumb.css';
 import { FaLocationPin } from 'react-icons/fa6';
 import { AppState } from '../../types/stateType';
 import { useNavigate } from 'react-router-dom';
+import { useAuth } from '../../hooks/useAuth';
 
 type TourThumbProps = {
     tournament: Tournament
 }
 
-const TourThumb = ({ tournament }: TourThumbProps) => {
+const TourThumb =  ({ tournament }: TourThumbProps) => {
     const id = useSelector((state: AppState) => state.user.id);
     const navigate = useNavigate();
+    const { handleGetUserInfo, tempUser } = useAuth();
+    
+    handleGetUserInfo(tournament.host);
 
     return (
         <section 
@@ -36,6 +40,7 @@ const TourThumb = ({ tournament }: TourThumbProps) => {
             <div className='thumb-tour-info'>
             <Text variant='white'><FaLocationPin/>{tournament.location}</Text>
             <Text variant='white'>{tournament.date}</Text>
+            <Text variant='purple'>by {tempUser?.username}</Text>
             </div>
         </section>
     );
