@@ -16,9 +16,9 @@ const ProfilePage = () => {
   const [gender, setGender] = useState("");
   const [country, setCountry] = useState("");
   const [birthDate, setBirthDate] = useState({
-    day: "",
-    month: "",
-    year: "",
+    day: user.birthDate?.split("/")[0] || "",
+    month: user.birthDate?.split("/")[1] || "",
+    year: user.birthDate?.split("/")[2] || "",
   });
 
   const handleImageChange = (
@@ -42,17 +42,35 @@ const ProfilePage = () => {
   const handleBirthDateChange = (field: "day" | "month" | "year", value: string) => {
     setBirthDate({ ...birthDate, [field]: value });
   };
+
   const handleSave = async () => {
-    // Construimos el objeto de usuario actualizado
+    // Construir objeto User para Supabase
     const updatedUser = {
-      ...user,
+      id: user.id,
       username,
-      picture: user.picture, // Mantiene la imagen actualizada en el estado global
+      picture: user.picture,
       header: user.header,
+      level: user.level,
       gender,
       country,
-      birthDate: `${birthDate.day}/${birthDate.month}/${birthDate.year}`,
+      birthDate: `${birthDate.day}/${birthDate.month}/${birthDate.year}`, // Formato compatible
     };
+
+    try {
+      const { data, error } = await updateUserSupa(updatedUser);
+
+      if (error) {
+        console.error("Error updating user:", error.message);
+        alert("Failed to update profile. Please try again.");
+      } else {
+        alert("Profile updated successfully!");
+        dispatch(updateUser(updatedUser)); // Actualizar Redux
+      }
+    } catch (error) {
+      console.error("Unexpected error:", error);
+      alert("An unexpected error occurred.");
+    }
+  };
 
   return (
     <div className="profile-page">
@@ -101,7 +119,9 @@ const ProfilePage = () => {
       </div>
 
       <div className="profile-actions">
-        <Button variant="purple">Save</Button>
+        <Button variant="purple" onClick={handleSave}>
+          Save
+        </Button>
         <Button variant="gray">Cancel</Button>
       </div>
 
@@ -152,7 +172,7 @@ const ProfilePage = () => {
             <option value="usa">United States</option>
             <option value="mexico">Mexico</option>
             <option value="canada">Canada</option>
-            <option value="brazil">Colombia</option>
+            <option value="Colombia">Colombia</option>
             <option value="uk">United Kingdom</option>
             <option value="germany">Germany</option>
           </select>

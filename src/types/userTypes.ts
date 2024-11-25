@@ -11,4 +11,7 @@ export interface User {
         decks: Deck[];
     };
     header: string;
+    gender?: string;
+    country?: string;
+    birthDate?: string;
 }
