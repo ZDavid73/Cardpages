@@ -1,4 +1,4 @@
-import { Text, Tittle } from '../../theme/styledcomponents';
+import { Button, Text, Tittle } from '../../theme/styledcomponents';
 import { Deck } from '../../types/deckTypes';
 import './DeckThumb.css';
 import useModal from '../../hooks/useModal';
@@ -19,6 +19,7 @@ const DeckThumb = ({deck}: DeckThumbProps) => {
                 <Tittle variant="white">{deck.name}</Tittle>
                 <Text variant="white">$ {deck.price} USD</Text>
             </div>
+            <Button variant='purple' onClick={() => handleOpen('buyDeck', deck)}>Buy</Button>
         </div>
     )
 }
