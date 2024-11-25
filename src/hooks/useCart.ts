@@ -6,10 +6,12 @@ import { isCard } from "../utils/typeGuards"
 import { addCardToCart, addDeckToCart, removeCardFromCart, removeDeckFromCart } from "../services/databaseService"
 import { CartState } from "../features/cartSlice"
 import { CartItem } from "../types/cartTypes"
+import useModal from "./useModal"
 
 const useCart = () => {
     const userId = useSelector((state: AppState) => state.user.id)
     const cart = useSelector((state: AppState) => state.cart)
+    const { handleClose } = useModal();
 
     const addToCart = ( product: Deck | SellingCard) => {
         if (isCard(product)) {
@@ -17,6 +19,8 @@ const useCart = () => {
         } else {
             addDeckToCart(cart.decks, userId, product)
         }
+
+        handleClose()
     }
 
     const removeFromCart = (product: CartItem) => {
