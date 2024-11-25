@@ -7,6 +7,9 @@ export interface UserState {
     picture: string;
     level: number;
     header?: string;
+    gender?: string;
+    country?: string;
+    birthDate?: string;
 }
 
 const initialState: UserState = {
