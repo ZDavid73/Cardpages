@@ -47,6 +47,9 @@ export const userSlice = createSlice({
       state.username = action.payload.username;
       state.picture = action.payload.picture;
       state.level = action.payload.level;
+      state.gender = action.payload.gender;
+      state.country = action.payload.country;
+      state.birthDate = action.payload.birthDate;
       if (action.payload.header) {
         state.header = action.payload.header;
       }
@@ -57,6 +60,8 @@ export const userSlice = createSlice({
   updatePicture: (state, action: PayloadAction<string>) => {
     state.picture = action.payload; 
   },
+
+
 },
 })
 

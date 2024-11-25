@@ -3,7 +3,7 @@ import { Text, Button, Tittle } from "../../theme/styledcomponents";
 import { useSelector, useDispatch } from "react-redux";
 import { AppState } from "../../types/stateType";
 import { FaEdit } from "react-icons/fa";
-import { updatePicture, updateHeader } from "../../features/auth/userSlice";
+import { updatePicture, updateHeader, updateUser } from "../../features/auth/userSlice";
 import Footer from "../../components/Footer/Footer";
 import { updateUserSupa } from "../../services/databaseService";
 import "./ProfilePage.css";
