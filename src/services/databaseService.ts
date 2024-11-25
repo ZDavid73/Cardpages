@@ -191,7 +191,7 @@ export const addDeckToCart = async (cart: CartState, userId: string, deck: Deck)
 }
 
 export const removeCardFromCart = async (cart: CartState, userId: string, id: string) => {
-  const updatedCart = cart.cards.filter((card) => card.cardId !== id);
+  const updatedCart = cart.cards.filter((card) => card.id !== id);
 
   const { data, error } = await supabase
   .from('users')

@@ -15,9 +15,9 @@ const useCart = () => {
 
     const addToCart = ( product: Deck | SellingCard) => {
         if (isCard(product)) {
-            addCardToCart(cart.cards, userId, product)
+            addCardToCart(cart, userId, product)
         } else {
-            addDeckToCart(cart.decks, userId, product)
+            addDeckToCart(cart, userId, product)
         }
 
         handleClose()
@@ -25,9 +25,9 @@ const useCart = () => {
 
     const removeFromCart = (product: CartItem) => {
         if (product.type === 'card') {
-            removeCardFromCart(cart.cards, userId, product.id)
+            removeCardFromCart(cart, userId, product.id)
         } else {
-            removeDeckFromCart(cart.decks, userId, product.id)
+            removeDeckFromCart(cart, userId, product.id)
     }}
 
     const organiceCart = (cart: CartState) => {
