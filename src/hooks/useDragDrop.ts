@@ -10,6 +10,7 @@ const useDragDrop = () => {
     const [items, setItems] = useState<ItemType[]>([]);
 
     const handleDrag = (e: React.DragEvent, item: string, image: string) => {
+        console.log('dragging', item);
         e.dataTransfer.setData('text', JSON.stringify({ item, image }));
     };
 
@@ -64,6 +65,15 @@ const useDragDrop = () => {
         });
     };
 
+    const handleTouchStart = (e: React.TouchEvent, item: string, image: string) => {
+        const touch = e.touches[0];
+        const data = JSON.stringify({ item, image });
+        (e.target as HTMLElement).dataset.touchData = data;
+        console.log('touching', item);
+        (e.target as HTMLElement).dataset.touchStartX = touch.clientX.toString();
+        (e.target as HTMLElement).dataset.touchStartY = touch.clientY.toString();
+    };
+
     return {
         items,
         handleDrag,
@@ -71,6 +81,7 @@ const useDragDrop = () => {
         handleDragOver,
         handleDropDelete,
         handleClickRemove,
+        handleTouchStart
     };
 };
 

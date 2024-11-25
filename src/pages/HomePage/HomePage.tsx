@@ -18,6 +18,7 @@ function HomePage() {
 
   return (
     <Suspense fallback={<div>Loading...</div>}>
+      <div className='homepage-container'>
       <Carousel />
       <CardSection
         text="Buy, sell, and trade cards and decks to build your ultimate collection."
@@ -45,6 +46,7 @@ function HomePage() {
         textAos="fade-up"
       />
       <Footer />
+      </div>
     </Suspense>
   );
 }
