@@ -12,9 +12,6 @@ const BuyCard = () => {
     const { handleClose } = useModal();
     const { addToCart } = useCart();
 
-    const cart = useSelector((state: AppState) => state.cart);
-    console.log(cart);
-
     if(isCard(modalDetails)){
         return (
             <Container variant='big' className='buy-card'>

@@ -7,6 +7,10 @@
     width: 100%;
 }
 
+.item-section > * {
+    flex: 0 0 auto; /* Prevent children from shrinking or stretching */
+}
+
 .item-section::-webkit-scrollbar {
     height: 10px; /* Ancho de la barra de desplazamiento */
 }

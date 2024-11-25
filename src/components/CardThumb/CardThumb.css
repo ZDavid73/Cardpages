@@ -1,4 +1,4 @@
-.tournament-thumbnail{
+.selling-card-thumbnail{
     width: 25%;
     height: 300px;
     display: flex;
@@ -12,21 +12,29 @@
     transition: transform 0.3s;
 }
 
-.tour-button{
+.card-button{
     position: absolute;
     right: 4px;
     top: 4px;
 }
 
-.thumb-tour-info{
+.card-flavortext{
+    display: -webkit-box;
+    -webkit-box-orient: vertical; 
+    overflow: hidden;
+    text-overflow: ellipsis; 
+    line-clamp: 2;
+    -webkit-line-clamp: 2;
+}
+
+.card-thumb-info{
     background-color: rgba(0, 0, 0, 0.7);
     padding: 12px;
 }
 
 @media (max-width: 768px){
-    .tournament-thumbnail{
+    .selling-card-thumbnail{
         width: 40%;
         height: 200px;
     }
-    
 }

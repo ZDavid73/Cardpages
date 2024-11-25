@@ -13,6 +13,7 @@ import Modal from '../components/Modal/Modal';
 import React, { Suspense } from 'react';
 import Loading from '../pages/Loading/Loading';
 import ProfilePage from '../pages/ProfilePage/ProfilePage';
+import CartPage from '../pages/CartPage/CartPage';
 
 const LazyGamePage = React.lazy(() => import('../pages/GamePage/GamePage'));
 
@@ -41,6 +42,7 @@ const AppRouter = () => {
             <Route path="/about" element={<AboutPage/>} />
             <Route path="/game" element={<Suspense fallback={<Loading/>}><LazyGamePage/></Suspense>} />
             <Route path="/profile-page" element={<ProfilePage/>} />
+            <Route path='/cart' element={<CartPage/>}/>
             
           </Route>
           </Routes>

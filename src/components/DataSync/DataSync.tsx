@@ -8,7 +8,7 @@ import { RealtimePostgresChangesPayload } from '@supabase/supabase-js';
 import { deleteCardData, insertCardData, updateCardData } from '../../features/cardSlice';
 import { fetchAllCards } from '../../features/cardSlice';
 import { deleteDeckData, fetchAllDecks, insertDeckData, updateDeckData } from '../../features/deckSlice';
-import { setCart } from '../../features/cartSlice';
+import { fetchUserCart, setCart } from '../../features/cartSlice';
 import { updateUser } from '../../features/auth/userSlice';
 
 const DataSync = () => {
@@ -16,13 +16,14 @@ const DataSync = () => {
   const userId = useSelector((state: any) => state.user.id);
 
   useEffect(() => {
+    dispatch(fetchUserCart())
+
     const subscriptionUser = supabase
       .channel('users')
       .on(
         'postgres_changes',
         { event: '*', schema: 'public', table: 'users', filter: `id=eq.${userId}` },
         (payload) => {
-          console.log('Change received:', payload);
           handleChangeUser(payload);
         }
       )
@@ -43,7 +44,6 @@ const DataSync = () => {
         'postgres_changes', 
         { event: '*', schema: 'public', table: 'tournaments' },
         (payload) => {
-          console.log('Change received:', payload);
           handleChangeTournament(payload);
         }
     )
@@ -63,7 +63,6 @@ const DataSync = () => {
         'postgres_changes', 
         { event: '*', schema: 'public', table: 'cards' },
         (payload) => {
-          console.log('Change received:', payload);
           handleChangeCard(payload);
         }
     )
@@ -83,7 +82,6 @@ const DataSync = () => {
         'postgres_changes', 
         { event: '*', schema: 'public', table: 'decks' },
         (payload) => {
-          console.log('Change received:', payload);
           handleChangeDeck(payload);
         }
     )
@@ -131,7 +129,6 @@ const DataSync = () => {
   const handleChangeUser = (payload: RealtimePostgresChangesPayload<{[key: string]: any;}>) => {
     if (payload.eventType === 'UPDATE'){
       if (payload.new.cart !== payload.old.cart) {
-        console.log('Cart property changed:', payload.new.cart);
         dispatch(setCart(payload.new.cart));
       } else {
         console.log('Other property changed');

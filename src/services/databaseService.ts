@@ -136,7 +136,9 @@ export const getUserInfo = async (userId: string) => {
 }
 
 export const uploadImage = async (file: File) => {
-  const { data, error } = await supabase.storage.from('Decks').upload(String(Math.random())+file.name, file);
+  const safeFileName = file.name.replace(/\s+/g, '_').toLowerCase();
+
+  const { data, error } = await supabase.storage.from('Decks').upload(String(Math.random())+safeFileName, file);
 
   if (error) {
     return { data: null, error };
@@ -173,6 +175,36 @@ export const addCardToCart = async (cart: Card[], userId: string, card: SellingC
 export const addDeckToCart = async (cart: Deck[], userId: string, deck: Deck) => {
 
   const updatedCart = cart ? [...cart, deck] : [deck];
+
+  const { data, error } = await supabase
+  .from('users')
+  .update({ cart: { decks: updatedCart } })
+  .eq('id', userId);
+
+  if (error) {
+    return { data: null, error };
+  }
+
+  return { data, error: null };
+}
+
+export const removeCardFromCart = async (cart: SellingCard[], userId: string, id: string) => {
+  const updatedCart = cart.filter((card) => card.id !== id);
+
+  const { data, error } = await supabase
+  .from('users')
+  .update({ cart: { cards: updatedCart } })
+  .eq('id', userId);
+
+  if (error) {
+    return { data: null, error };
+  }
+
+  return { data, error: null };
+}
+
+export const removeDeckFromCart = async (cart: Deck[], userId: string, id: string) => {
+  const updatedCart = cart.filter((deck) => deck.id !== id);
 
   const { data, error } = await supabase
   .from('users')

@@ -1,16 +1,40 @@
-import { createSlice } from '@reduxjs/toolkit'
+import { createAsyncThunk, createSlice } from '@reduxjs/toolkit'
 import { SellingCard } from '../types/cardTypes';
 import { Deck } from '../types/deckTypes';
+import { fetchCart } from '../services/databaseService';
+import { getAuthUserId } from '../utils/storage';
 
 export interface CartState {
     cards: SellingCard[];
     decks: Deck[];
+    loading?: boolean;
+    error?: string | null;
 }
 
 const initialState: CartState = {
     cards: [],
     decks: [],
+    loading: false,
+    error: null,
 }
+
+export const fetchUserCart = createAsyncThunk(
+  'cart/fetchUserCart',
+  async (_, { rejectWithValue }) => {
+    try {
+      const userId = getAuthUserId();
+
+      if (!userId) {
+        return rejectWithValue('User not authenticated');
+      }
+
+      const data = await fetchCart(userId);
+      return data ?? { cards: [], decks: [] };
+    } catch (error) {
+      return rejectWithValue(error);
+    }
+  }
+);
 
 export const cartSlice = createSlice({
   name: 'cart',
@@ -32,6 +56,22 @@ export const cartSlice = createSlice({
     deleteCartDeck: (state, action) => {
       state.decks = state.decks.filter(deck => deck.id !== action.payload);
     },
+  },
+  extraReducers: (builder) => {
+    builder
+      .addCase(fetchUserCart.pending, (state) => {
+        state.loading = true;
+        state.error = null;
+      })
+      .addCase(fetchUserCart.fulfilled, (state, action) => {
+        state.loading = false;
+        state.cards = action.payload.data?.cart.cards || [];
+        state.decks = action.payload.data?.cart.decks || [];
+      })
+      .addCase(fetchUserCart.rejected, (state, action) => {
+        state.loading = false;
+        state.error = action.payload as string;
+      });
   },
 })
 

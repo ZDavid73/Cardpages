@@ -1,0 +1,22 @@
+.deck-item {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    background-color: #1a1a1a;
+    border-radius: 10px;
+    overflow: hidden;
+    position: relative;
+    width: 50%; 
+    height: 300px;
+}
+
+.infodeck {
+    background-color: rgba(0, 0, 0, 0.7);
+    padding: 12px;
+}
+
+@media (max-width: 768px){
+    .deck-item{
+        height: 200px;
+    }
+}
