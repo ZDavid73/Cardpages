@@ -5,6 +5,7 @@ import { AppState } from "../../types/stateType";
 import { FaEdit } from "react-icons/fa";
 import { updatePicture, updateHeader } from "../../features/auth/userSlice";
 import Footer from "../../components/Footer/Footer";
+import { updateUserSupa } from "../../services/databaseService";
 import "./ProfilePage.css";
 
 const ProfilePage = () => {
