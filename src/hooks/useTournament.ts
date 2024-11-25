@@ -4,6 +4,7 @@ import { NewTournamentData, Player, Tournament } from "../types/tournamentTypes"
 import { useDispatch, useSelector } from "react-redux";
 import { AppState } from "../types/stateType";
 import { closeModal } from "../features/modalSlice";
+import { getRandomImg } from "../utils/images";
 
 export const useTimer = (targetDate: string, targetTime: string) => {
   const [timeLeft, setTimeLeft] = useState(calculateTimeLeft(targetDate, targetTime));
@@ -62,7 +63,7 @@ export const useTournament = () => {
     const newTournament: Tournament = {
       ...createTourForm,
       id: crypto.randomUUID(),
-      picture: 'https://i.blogs.es/82d7ef/pokemon/450_1000.webp',
+      picture: getRandomImg().image,
       host: user.id,
       status: 'upcoming',
       players: [],
