@@ -3,7 +3,7 @@ import { Text, Button, Tittle } from "../../theme/styledcomponents";
 import { useSelector, useDispatch } from "react-redux";
 import { AppState } from "../../types/stateType";
 import { FaEdit } from "react-icons/fa";
-import { updatePicture, updateHeader, updateUser } from "../../features/auth/userSlice";
+import { updateUser } from "../../features/auth/userSlice";
 import Footer from "../../components/Footer/Footer";
 import { updateUserSupa } from "../../services/databaseService";
 import "./ProfilePage.css";
@@ -13,14 +13,17 @@ const ProfilePage = () => {
   const dispatch = useDispatch();
 
   const [username, setUsername] = useState(user.username);
-  const [gender, setGender] = useState("");
-  const [country, setCountry] = useState("");
+  const [gender, setGender] = useState(user.gender || "");
+  const [country, setCountry] = useState(user.country || "");
   const [birthDate, setBirthDate] = useState({
     day: user.birthDate?.split("/")[0] || "",
     month: user.birthDate?.split("/")[1] || "",
     year: user.birthDate?.split("/")[2] || "",
   });
+  const [profilePicture, setProfilePicture] = useState(user.picture);
+  const [headerImage, setHeaderImage] = useState(user.header);
 
+  // Manejador para imágenes de perfil y header
   const handleImageChange = (
     e: React.ChangeEvent<HTMLInputElement>,
     type: "profile" | "header"
@@ -30,9 +33,9 @@ const ProfilePage = () => {
       const reader = new FileReader();
       reader.onload = () => {
         if (type === "profile") {
-          dispatch(updatePicture(reader.result as string));
+          setProfilePicture(reader.result as string); // Imagen temporal de perfil
         } else {
-          dispatch(updateHeader(reader.result as string));
+          setHeaderImage(reader.result as string); // Imagen temporal de header
         }
       };
       reader.readAsDataURL(file);
@@ -44,16 +47,16 @@ const ProfilePage = () => {
   };
 
   const handleSave = async () => {
-    // Construir objeto User para Supabase
+    // Construir el objeto actualizado
     const updatedUser = {
       id: user.id,
       username,
-      picture: user.picture,
-      header: user.header,
+      picture: profilePicture, // Imagen de perfil seleccionada
+      header: headerImage, // Header seleccionado
       level: user.level,
       gender,
       country,
-      birthDate: `${birthDate.day}/${birthDate.month}/${birthDate.year}`, // Formato compatible
+      birthDate: `${birthDate.day}/${birthDate.month}/${birthDate.year}`, // Fecha de nacimiento formateada
     };
 
     try {
@@ -74,10 +77,11 @@ const ProfilePage = () => {
 
   return (
     <div className="profile-page">
+      {/* Imagen de Header */}
       <div
         className="profile-header-image"
         style={{
-          backgroundImage: `url('${user.header}')`,
+          backgroundImage: `url('${headerImage}')`, // Imagen temporal del estado local
           backgroundSize: "cover",
           backgroundPosition: "center",
           backgroundRepeat: "no-repeat",
@@ -101,9 +105,10 @@ const ProfilePage = () => {
         </label>
       </div>
 
+      {/* Imagen de Perfil */}
       <div className="profile-image-section">
         <div className="profile-image-wrapper">
-          <img src={user.picture} alt="Profile" className="profile-image" />
+          <img src={profilePicture} alt="Profile" className="profile-image" /> {/* Imagen temporal */}
           <label htmlFor="profile-image-upload" className="edit-icon-wrapper">
             <FaEdit className="edit-icon" />
             <input
@@ -118,6 +123,7 @@ const ProfilePage = () => {
         <Text variant="purple">Level: {user.level.toString().padStart(2, "0")}</Text>
       </div>
 
+      {/* Botones de acción */}
       <div className="profile-actions">
         <Button variant="purple" onClick={handleSave}>
           Save
@@ -125,6 +131,7 @@ const ProfilePage = () => {
         <Button variant="gray">Cancel</Button>
       </div>
 
+      {/* Información del usuario */}
       <div className="profile-info-section">
         <div className="form-group">
           <label htmlFor="username">
