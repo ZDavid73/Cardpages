@@ -54,16 +54,10 @@ export const userSlice = createSlice({
         state.header = action.payload.header;
       }
     },
-    updateHeader: (state, action: PayloadAction<string>) => {
-      state.header = action.payload;  
-  },
-  updatePicture: (state, action: PayloadAction<string>) => {
-    state.picture = action.payload; 
-  },
 
 
 },
 })
 
-export const { login, logout, updateUser, updateHeader, updatePicture } = userSlice.actions
+export const { login, logout, updateUser} = userSlice.actions
 export default userSlice.reducer
