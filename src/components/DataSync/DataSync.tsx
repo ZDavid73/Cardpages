@@ -24,6 +24,7 @@ const DataSync = () => {
         'postgres_changes',
         { event: '*', schema: 'public', table: 'users', filter: `id=eq.${userId}` },
         (payload) => {
+          console.log('change received', payload.new);
           handleChangeUser(payload);
         }
       )

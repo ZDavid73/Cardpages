@@ -1,8 +1,9 @@
 import { supabase } from './supabaseClient';
 import {Deck} from '../types/deckTypes';
 import { Player, Tournament } from '../types/tournamentTypes';
-import { Card, SellingCard } from '../types/cardTypes';
+import { SellingCard } from '../types/cardTypes';
 import { User } from '../types/userTypes';
+import { CartState } from '../features/cartSlice';
 
 // Cards-related functions
 export const fetchCards = async () => {
@@ -157,12 +158,29 @@ export const fetchCart = async (userId: string) => {
   return { data, error: null };
 }
 
-export const addCardToCart = async (cart: Card[], userId: string, card: SellingCard) => {
-  const updatedCart = cart ? [...cart, card] : [card];
+export const addCardToCart = async (cart: CartState, userId: string, card: SellingCard) => {
+  const updatedCart = cart.cards ? [...cart.cards, card] : [card];
 
   const { data, error } = await supabase
   .from('users')
-  .update({ cart: { cards: updatedCart } })
+  .update({ cart: { cards: updatedCart, decks: cart.decks } })
+  .eq('id', userId);
+
+  console.log(updatedCart)
+
+  if (error) {
+    return { data: null, error };
+  }
+
+  return { data, error: null };
+}
+
+export const addDeckToCart = async (cart: CartState, userId: string, deck: Deck) => {
+  const updatedCart = cart.decks ? [...cart.decks, deck] : [deck];
+
+  const { data, error } = await supabase
+  .from('users')
+  .update({ cart: { cards: cart.cards, decks: updatedCart } })
   .eq('id', userId);
 
   if (error) {
@@ -172,13 +190,12 @@ export const addCardToCart = async (cart: Card[], userId: string, card: SellingC
   return { data, error: null };
 }
 
-export const addDeckToCart = async (cart: Deck[], userId: string, deck: Deck) => {
-
-  const updatedCart = cart ? [...cart, deck] : [deck];
+export const removeCardFromCart = async (cart: CartState, userId: string, id: string) => {
+  const updatedCart = cart.cards.filter((card) => card.cardId !== id);
 
   const { data, error } = await supabase
   .from('users')
-  .update({ cart: { decks: updatedCart } })
+  .update({ cart: { cards: updatedCart, decks: cart.decks } })
   .eq('id', userId);
 
   if (error) {
@@ -188,27 +205,12 @@ export const addDeckToCart = async (cart: Deck[], userId: string, deck: Deck) =>
   return { data, error: null };
 }
 
-export const removeCardFromCart = async (cart: SellingCard[], userId: string, id: string) => {
-  const updatedCart = cart.filter((card) => card.id !== id);
+export const removeDeckFromCart = async (cart: CartState, userId: string, id: string) => {
+  const updatedCart = cart.decks.filter((deck) => deck.id !== id);
 
   const { data, error } = await supabase
   .from('users')
-  .update({ cart: { cards: updatedCart } })
-  .eq('id', userId);
-
-  if (error) {
-    return { data: null, error };
-  }
-
-  return { data, error: null };
-}
-
-export const removeDeckFromCart = async (cart: Deck[], userId: string, id: string) => {
-  const updatedCart = cart.filter((deck) => deck.id !== id);
-
-  const { data, error } = await supabase
-  .from('users')
-  .update({ cart: { decks: updatedCart } })
+  .update({ cart: { cards: cart.cards, decks: updatedCart } })
   .eq('id', userId);
 
   if (error) {

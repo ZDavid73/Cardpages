@@ -33,7 +33,7 @@ const useCart = () => {
     const organiceCart = (cart: CartState) => {
         const organizedCart: CartItem[] = []
 
-        cart.cards.forEach(c => {
+        cart.cards?.forEach(c => {
             const card = {
                 id: c.id,
                 name: c.name,

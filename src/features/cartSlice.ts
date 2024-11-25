@@ -29,7 +29,10 @@ export const fetchUserCart = createAsyncThunk(
       }
 
       const data = await fetchCart(userId);
+      console.log(data.data?.cart);
+
       return data ?? { cards: [], decks: [] };
+
     } catch (error) {
       return rejectWithValue(error);
     }

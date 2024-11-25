@@ -14,7 +14,9 @@ const CartPage = () => {
         <section className="cart-page">
             <Tittle variant="white">Shopping Cart</Tittle>
             <section className='cart-list'>
-                { organizedCart.map((item) =>
+                { organizedCart.length === 0 ?
+                    <Tittle variant='purple'>Your cart is empty</Tittle> :
+                organizedCart.map((item) =>
                 <CartListItem key={item.id} item={item}/>)}
             </section>
         </section>
