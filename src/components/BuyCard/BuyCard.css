@@ -25,4 +25,12 @@
     flex-direction: column;
     justify-content: flex-start;
     gap: 8px;
+    position: relative;
+
+    button{
+        position: absolute;
+        bottom: 0;
+        right: 0;
+        width: 100%;
+    }
 }
