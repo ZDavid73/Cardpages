@@ -23,7 +23,7 @@ const App = () => {
 
     return (
         <>
-        { userId && <DataSync/> }
+        <DataSync/>
         <AppRouter />
         </>
     );
