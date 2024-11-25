@@ -18,6 +18,9 @@ const initialState: UserState = {
     picture: '',
     level: 0,
     header: 'https://zyemimihfcilkfzgwsxv.supabase.co/storage/v1/object/public/Header%20Images/pokemon-101-1280x960.webp',
+    gender: '',
+    country: '',
+    birthDate: '',
 }
 
 export const userSlice = createSlice({
