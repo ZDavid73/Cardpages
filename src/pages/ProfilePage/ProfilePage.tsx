@@ -23,7 +23,7 @@ const ProfilePage = () => {
   const [profilePicture, setProfilePicture] = useState(user.picture);
   const [headerImage, setHeaderImage] = useState(user.header);
 
-  // Manejador para imágenes de perfil y header
+  
   const handleImageChange = (
     e: React.ChangeEvent<HTMLInputElement>,
     type: "profile" | "header"
@@ -33,9 +33,9 @@ const ProfilePage = () => {
       const reader = new FileReader();
       reader.onload = () => {
         if (type === "profile") {
-          setProfilePicture(reader.result as string); // Imagen temporal de perfil
+          setProfilePicture(reader.result as string); 
         } else {
-          setHeaderImage(reader.result as string); // Imagen temporal de header
+          setHeaderImage(reader.result as string); 
         }
       };
       reader.readAsDataURL(file);
@@ -47,16 +47,16 @@ const ProfilePage = () => {
   };
 
   const handleSave = async () => {
-    // Construir el objeto actualizado
+    
     const updatedUser = {
       id: user.id,
       username,
-      picture: profilePicture, // Imagen de perfil seleccionada
-      header: headerImage, // Header seleccionado
+      picture: profilePicture, 
+      header: headerImage, 
       level: user.level,
       gender,
       country,
-      birthDate: `${birthDate.day}/${birthDate.month}/${birthDate.year}`, // Fecha de nacimiento formateada
+      birthDate: `${birthDate.day}/${birthDate.month}/${birthDate.year}`, 
     };
 
     try {
@@ -67,7 +67,7 @@ const ProfilePage = () => {
         alert("Failed to update profile. Please try again.");
       } else {
         alert("Profile updated successfully!");
-        dispatch(updateUser(updatedUser)); // Actualizar Redux
+        dispatch(updateUser(updatedUser)); 
       }
     } catch (error) {
       console.error("Unexpected error:", error);
@@ -77,11 +77,10 @@ const ProfilePage = () => {
 
   return (
     <div className="profile-page">
-      {/* Imagen de Header */}
       <div
         className="profile-header-image"
         style={{
-          backgroundImage: `url('${headerImage}')`, // Imagen temporal del estado local
+          backgroundImage: `url('${headerImage}')`, 
           backgroundSize: "cover",
           backgroundPosition: "center",
           backgroundRepeat: "no-repeat",
@@ -105,7 +104,6 @@ const ProfilePage = () => {
         </label>
       </div>
 
-      {/* Imagen de Perfil */}
       <div className="profile-image-section">
         <div className="profile-image-wrapper">
           <img src={profilePicture} alt="Profile" className="profile-image" /> {/* Imagen temporal */}
@@ -123,7 +121,6 @@ const ProfilePage = () => {
         <Text variant="purple">Level: {user.level.toString().padStart(2, "0")}</Text>
       </div>
 
-      {/* Botones de acción */}
       <div className="profile-actions">
         <Button variant="purple" onClick={handleSave}>
           Save
@@ -131,7 +128,6 @@ const ProfilePage = () => {
         <Button variant="gray">Cancel</Button>
       </div>
 
-      {/* Información del usuario */}
       <div className="profile-info-section">
         <div className="form-group">
           <label htmlFor="username">
