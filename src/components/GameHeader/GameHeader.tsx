@@ -43,7 +43,7 @@ const GameHeader = ({tournament, userInfo, host}: GameHeaderProps) => {
 
                 return (
                     <SwiperSlide key={idx}>
-                    <PlayerThumb key={idx} player={player} deck={tournament.players.find(p => p.id === player.id)?.deck} isCenter={isCenter} />
+                    <PlayerThumb key={idx} player={player} deck={tournament.players.find(p => p.id === player.id)?.deck} isCenter={isCenter} isWinner={tournament.winner === player.username ? true : false} />
                     </SwiperSlide>
                 )
                 })}
