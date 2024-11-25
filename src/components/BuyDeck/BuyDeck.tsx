@@ -14,6 +14,7 @@ const BuyDeck = () => {
     const { handleClose } = useModal();
     const { addToCart } = useCart();
     const cart = useSelector((state: AppState) => state.cart.decks);
+    const userId = useSelector((state: AppState) => state.user.id);
 
     if(isDeck(modalDetails)){
         handleGetUserInfo(modalDetails.creator);
@@ -39,9 +40,10 @@ const BuyDeck = () => {
                         </div>
                     ))}
                 </section>
-                { cart.find((deck) => deck.id === modalDetails.id) ?
+                { modalDetails.creator === userId ? null : cart.find((deck) => deck.id === modalDetails.id) ?
                     <Button variant='gray'>Already in cart</Button> :
                     <Button variant='purple' onClick={() => addToCart(modalDetails)}>Add to cart</Button>}
+
                 
             </Container>
         )
