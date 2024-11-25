@@ -1,31 +1,45 @@
-.tour-sectionheader{
-    margin: 0%;
-    padding: 3%;
-    display: flex;
-}
-
-.bracket-tree{
+.bracket-tree {
     display: flex;
     justify-content: center;
     gap: 32px;
     height: 100%;
+    position: relative; /* Necesario para posicionar las líneas */
 }
 
-.round-tree, .winner-box{
+.round-tree {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    gap: 32px;;
+    gap: 32px;
     width: max-content;
+    position: relative; /* Permite líneas dentro de la ronda */
 }
 
-.match-node{
+.match-node {
     display: flex;
     flex-direction: column;
     gap: 8px;
+    position: relative;
+    align-items: center; /* Asegura que las líneas se conecten correctamente */
 }
 
-.player-slot{
+/* Líneas hacia la siguiente ronda */
+.match-node::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    right: -16px;
+    width: 32px;
+    height: 2px;
+    background-color: #a71fd0;
+}
+
+.round-tree:last-child .match-node::after {
+    display: none; /* Elimina la línea de la última ronda */
+}
+
+/* Líneas verticales entre jugadores */
+.player-slot {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -33,36 +47,55 @@
     padding: 8px;
     width: 100%;
     border-radius: 8px;
+    position: relative; /* Permite posicionar las líneas */
 }
 
-.winner-box{
+.player-slot::before {
+    content: '';
+    position: absolute;
+    top: -12px;
+    left: 50%;
+    width: 2px;
+    height: 12px;
+    background-color: #a71fd0;
+    transform: translateX(-50%);
+}
+
+.player-slot:first-child::before {
+    display: none; /* No agrega línea superior al primer jugador */
+}
+
+.player-slot.filled {
+    background-color: #a71fd0;
+    color: white;
+}
+
+.player-slot.empty {
+    background-color: #616161;
+}
+
+/* Winner box */
+.winner-box {
     background-color: #bd6615;
     padding: 16px;
     border-radius: 8px;
 }
 
-.empty{
-    background-color: #616161;
-}
-
-.filled{
-    background-color: #a71fd0;
-}
-
-.whole-tree{
+/* Resto del diseño responsivo */
+.whole-tree {
     display: flex;
     gap: 32px;
     align-items: center;
     justify-content: center;
 }
 
-@media (max-width: 768px){
-    .game-page{
+@media (max-width: 768px) {
+    .game-page {
         flex-direction: column;
         align-items: center;
     }
 
-    .tour-sectionheader{
+    .tour-sectionheader {
         flex-direction: column;
         align-items: center;
         width: 90%;
