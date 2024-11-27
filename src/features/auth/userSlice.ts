@@ -44,6 +44,9 @@ export const userSlice = createSlice({
       state.picture = '';
       state.level = 0;
       state.header = initialState.header;
+      state.gender = '';
+      state.country = '';
+      state.birthDate = '';
     },
     updateUser: (state, action) => {
       state.id = action.payload.id;
