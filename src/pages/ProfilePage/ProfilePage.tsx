@@ -29,6 +29,19 @@ const ProfilePage = () => {
   useEffect(() => {
     setOriginalUser(user);
   }, [user]);
+
+  const handleCancel = () => {
+    setUsername(originalUser.username);
+    setGender(originalUser.gender || "");
+    setCountry(originalUser.country || "");
+    setBirthDate({
+      day: originalUser.birthDate?.split("/")[0] || "",
+      month: originalUser.birthDate?.split("/")[1] || "",
+      year: originalUser.birthDate?.split("/")[2] || "",
+    });
+    setProfilePicture(originalUser.picture);
+    setHeaderImage(originalUser.header);
+  };
   
   const handleImageChange = (
     e: React.ChangeEvent<HTMLInputElement>,
