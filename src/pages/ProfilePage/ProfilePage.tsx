@@ -173,7 +173,7 @@ const ProfilePage = () => {
             className="form-input"
           >
            {
-            countries
+            countries.countries.map((country) => (
            }
           </select>
         </div>
