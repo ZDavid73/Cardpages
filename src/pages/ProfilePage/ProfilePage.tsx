@@ -173,7 +173,10 @@ const ProfilePage = () => {
             className="form-input"
           >
            {
-            countries.countries.map((country) => ( )
+            countries.countries.map((country) => ( 
+              <option value={country.name} key={country.code}>
+                {country.name}
+              </option>)
            }
           </select>
         </div>
