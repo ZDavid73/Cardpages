@@ -7,7 +7,7 @@ import { updateUser } from "../../features/auth/userSlice";
 import Footer from "../../components/Footer/Footer";
 import { updateUserSupa } from "../../services/databaseService";
 import "./ProfilePage.css";
-import regions from "../../utils/regions";
+import countries from "../../utils/countries";
 import months from "../../utils/months";
 
 const ProfilePage = () => {
@@ -213,9 +213,9 @@ const ProfilePage = () => {
             className="form-datainput"
           >
            {
-            regions.regions.map((region ) => ( 
-              <option value={region.name}>
-                {region.name}
+            countries.countries.map((country) => ( 
+              <option value={country.name}>
+                {country.name}
               </option>))
            }
           </select>
