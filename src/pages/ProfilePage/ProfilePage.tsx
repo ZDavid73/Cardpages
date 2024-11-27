@@ -176,7 +176,7 @@ const ProfilePage = () => {
             countries.countries.map((country) => ( 
               <option value={country.name} key={country.code}>
                 {country.name}
-              </option>)
+              </option>))
            }
           </select>
         </div>
