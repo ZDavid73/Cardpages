@@ -33,6 +33,9 @@ export const userSlice = createSlice({
       state.picture = action.payload.picture;
       state.level = action.payload.level;
       state.header = action.payload.header || initialState.header;
+      state.gender = action.payload.gender;
+      state.country = action.payload.country;
+      state.birthDate = action.payload.birthDate;
     },
     logout: (state) => {
       console.log('logout desde slice');
