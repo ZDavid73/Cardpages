@@ -25,6 +25,8 @@ const ProfilePage = () => {
   });
   const [profilePicture, setProfilePicture] = useState(user.picture);
   const [headerImage, setHeaderImage] = useState(user.header);
+  const [notification, setNotification] = useState({ message: "", type: "" });
+
 
   useEffect(() => {
     setOriginalUser(user);
