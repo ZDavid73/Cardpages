@@ -172,7 +172,7 @@ const ProfilePage = () => {
             className="form-input"
           >
            {
-            co
+            countries
            }
           </select>
         </div>
