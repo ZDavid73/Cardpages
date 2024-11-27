@@ -144,7 +144,9 @@ const ProfilePage = () => {
         <Button variant="purple" onClick={handleSave}>
           Save
         </Button>
-        <Button variant="gray">Cancel</Button>
+        <Button variant="gray" onClick={handleCancel}>
+          Cancel
+          </Button>
       </div>
 
       <div className="profile-info-section">
