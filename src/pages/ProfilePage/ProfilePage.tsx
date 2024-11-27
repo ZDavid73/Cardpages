@@ -81,20 +81,20 @@ const ProfilePage = () => {
     };
 
     try {
-    const { error } = await updateUserSupa(updatedUser);
-
-    if (error) {
-      console.error("Error updating user:", error.message);
-      setNotification({ message: "Failed to update profile. Please try again.", type: "error" });
-    } else {
-      setNotification({ message: "Profile updated successfully!", type: "success" });
-      dispatch(updateUser(updatedUser));
+      const { error } = await updateUserSupa(updatedUser);
+  
+      if (error) {
+        console.error("Error updating user:", error.message);
+        setNotification({ message: "Failed to update profile. Please try again.", type: "error" });
+      } else {
+        setNotification({ message: "Profile updated successfully!", type: "success" });
+        dispatch(updateUser(updatedUser));
+      }
+    } catch (error) {
+      console.error("Unexpected error:", error);
+      setNotification({ message: "An unexpected error occurred.", type: "error" });
     }
-  } catch (error) {
-    console.error("Unexpected error:", error);
-    setNotification({ message: "An unexpected error occurred.", type: "error" });
-  }
-};
+  };
 
   return (
     <div className="profile-page">
@@ -140,6 +140,13 @@ const ProfilePage = () => {
           </label>
         </div>
         <Text variant="purple">Level: {user.level.toString().padStart(2, "0")}</Text>
+
+        {notification.message && (
+  <div className={`notification ${notification.type}`}>
+    {notification.message}
+  </div>
+)}
+
       </div>
 
       <div className="profile-actions">
