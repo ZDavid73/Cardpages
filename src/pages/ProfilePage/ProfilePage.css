@@ -67,8 +67,7 @@
 
 .profile-info-section {
   margin-top: 20px;
-  width: 100%;
-  max-width: 600px;
+  width: 40%;
   padding: 0 20px;
   display: flex;
   flex-direction: column;
@@ -85,22 +84,8 @@
 .form-datainput:focus {
   outline: 1px solid #6c63ff;
 }
-.form-datainput{
-  margin: 5px;
-}
-
-.birth-date-fields {
-  display: flex;
-  gap: 20px;
-}
-
-label .Text {
-  color: white;
-  font-size: 14px;
-  margin-bottom: 5px;
-}
-
 .form-datainput {
+  margin: 5px;
   background-color: #222;
   color: white;
   border: none;
@@ -108,6 +93,11 @@ label .Text {
   padding: 15px;
   font-size: 14px;
 
+}
+
+.birth-date-fields {
+  display: flex;
+  gap: 3%;
 }
 
 
@@ -123,7 +113,7 @@ label .Text {
   font-size: 20px;
   font-family: poppins;
   text-align: center;
-  width: 50%;
+  width: 40%;
   margin-top: 20px;
 }
 
@@ -139,3 +129,11 @@ label .Text {
   border: none;
 }
 
+select::-webkit-scrollbar {
+  width: 10px;
+}
+
+select::-webkit-scrollbar-thumb {
+  background-color: #888;
+  border-radius: 4px;
+}
