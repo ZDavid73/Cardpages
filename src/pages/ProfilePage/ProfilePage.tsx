@@ -11,7 +11,7 @@ import countries from "../../utils/countries";
 import months from "../../utils/months";
 
 const ProfilePage = () => {
-  const user = useSelector((state: AppState) => state.user);
+  const user = useSelector((state: AppState) => state.user || {});
   const dispatch = useDispatch();
 
   const [originalUser, setOriginalUser] = useState(user);
