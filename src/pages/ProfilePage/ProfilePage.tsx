@@ -7,7 +7,7 @@ import { updateUser } from "../../features/auth/userSlice";
 import Footer from "../../components/Footer/Footer";
 import { updateUserSupa } from "../../services/databaseService";
 import "./ProfilePage.css";
-import countries from "../../utils/countries";
+import countries from "../../utils/Countries";
 
 const ProfilePage = () => {
   const user = useSelector((state: AppState) => state.user);
@@ -198,19 +198,7 @@ const ProfilePage = () => {
               onChange={(e) => handleBirthDateChange("month", e.target.value)}
               className="form-input birth-date-input"
             >
-              <option value="">Month</option>
-              <option value="January">January</option>
-              <option value="February">February</option>
-              <option value="March">March</option>
-              <option value="April">April</option>
-              <option value="May">May</option>
-              <option value="June">June</option>
-              <option value="July">July</option>
-              <option value="August">August</option>
-              <option value="September">September</option>
-              <option value="October">October</option>
-              <option value="November">November</option>
-              <option value="December">December</option>
+              {months.months.map((month) => (}
             </select>
             <input
               type="text"
