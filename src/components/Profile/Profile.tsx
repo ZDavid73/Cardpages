@@ -1,4 +1,4 @@
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom"; 
 import { Button, Container, Text } from "../../theme/styledcomponents";
 import './Profile.css';
 import { useSelector } from "react-redux";
@@ -6,12 +6,17 @@ import { AppState } from "../../types/stateType";
 
 const Profile = () => {
     const user = useSelector((state: AppState) => state.user);
+    const navigate = useNavigate(); 
 
     return (
         <Container variant='small' className="profile-container">
 
-            <section className="profile-info">
-                <img src={user.picture} alt="" />
+            <section
+                className="profile-info"
+                onClick={() => navigate('/profile-page')} 
+                style={{ cursor: 'pointer' }} 
+            >
+                <img src={user.picture} alt="Profile" />
                 <div className="profile-info-text">
                     <Text variant="white">Welcome, {user.username}!</Text>
                     <Text variant="purple">Level {user.level.toString().padStart(2, '0')}</Text>
