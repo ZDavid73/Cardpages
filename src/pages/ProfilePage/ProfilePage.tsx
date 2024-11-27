@@ -171,13 +171,7 @@ const ProfilePage = () => {
             onChange={(e) => setCountry(e.target.value)}
             className="form-input"
           >
-            <option value="">Select country</option>
-            <option value="usa">United States</option>
-            <option value="mexico">Mexico</option>
-            <option value="canada">Canada</option>
-            <option value="Colombia">Colombia</option>
-            <option value="uk">United Kingdom</option>
-            <option value="germany">Germany</option>
+           
           </select>
         </div>
 
