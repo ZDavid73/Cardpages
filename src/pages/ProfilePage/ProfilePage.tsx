@@ -82,17 +82,17 @@ const ProfilePage = () => {
 
     try {
       const { error } = await updateUserSupa(updatedUser);
-  
+
       if (error) {
         console.error("Error updating user:", error.message);
-        setNotification({ message: "Failed to update profile. Please try again.", type: "error" });
+        alert("Failed to update profile. Please try again.");
       } else {
-        setNotification({ message: "Profile updated successfully!", type: "success" });
-        dispatch(updateUser(updatedUser));
+        alert("Profile updated successfully!");
+        dispatch(updateUser(updatedUser)); 
       }
     } catch (error) {
       console.error("Unexpected error:", error);
-      setNotification({ message: "An unexpected error occurred.", type: "error" });
+      alert("An unexpected error occurred.");
     }
   };
 
