@@ -198,7 +198,11 @@ const ProfilePage = () => {
               onChange={(e) => handleBirthDateChange("month", e.target.value)}
               className="form-input birth-date-input"
             >
-              {months.months.map((month) => (}
+              {months.months.map((month) => ( 
+                <option value={month.number.toString().padStart(2, "0")}>
+                  {month.name}
+                </option>)
+              )}
             </select>
             <input
               type="text"
