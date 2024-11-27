@@ -78,7 +78,21 @@ const ProfilePage = () => {
       birthDate: `${birthDate.day}/${birthDate.month}/${birthDate.year}`, 
     };
 
+    try {
+      const { error } = await updateUserSupa(updatedUser);
 
+      if (error) {
+        console.error("Error updating user:", error.message);
+        alert("Failed to update profile. Please try again.");
+      } else {
+        alert("Profile updated successfully!");
+        dispatch(updateUser(updatedUser)); 
+      }
+    } catch (error) {
+      console.error("Unexpected error:", error);
+      alert("An unexpected error occurred.");
+    }
+  };
 
   return (
     <div className="profile-page">
