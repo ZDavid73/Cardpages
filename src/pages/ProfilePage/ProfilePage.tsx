@@ -7,8 +7,8 @@ import { updateUser } from "../../features/auth/userSlice";
 import Footer from "../../components/Footer/Footer";
 import { updateUserSupa } from "../../services/databaseService";
 import "./ProfilePage.css";
-import countries from "../../utils/Countries";
-import months from "../../utils/Months";
+import countries from "../../utils/countries";
+import months from "../../utils/months";
 
 const ProfilePage = () => {
   const user = useSelector((state: AppState) => state.user);
