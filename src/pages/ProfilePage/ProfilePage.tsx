@@ -14,7 +14,6 @@ const ProfilePage = () => {
   const user = useSelector((state: AppState) => state.user || {});
   const dispatch = useDispatch();
 
-  const [originalUser, setOriginalUser] = useState(user);
   const [username, setUsername] = useState(user.username);
   const [gender, setGender] = useState(user.gender || "");
   const [country, setCountry] = useState(user.country || "");
@@ -29,7 +28,6 @@ const ProfilePage = () => {
 
 
   useEffect(() => {
-    setOriginalUser(user);
     setUsername(user.username);
     setGender(user.gender || "");
     setCountry(user.country || "");
@@ -42,18 +40,19 @@ const ProfilePage = () => {
     setHeaderImage(user.header);
   }, [user]);
   
+  
 
   const handleCancel = () => {
-    setUsername(originalUser.username);
-    setGender(originalUser.gender || "");
-    setCountry(originalUser.country || "");
+    setUsername(user.username);
+    setGender(user.gender || "");
+    setCountry(user.country || "");
     setBirthDate({
-      day: originalUser.birthDate?.split("/")[0] || "",
-      month: originalUser.birthDate?.split("/")[1] || "",
-      year: originalUser.birthDate?.split("/")[2] || "",
+      day: user.birthDate?.split("/")[0] || "",
+      month: user.birthDate?.split("/")[1] || "",
+      year: user.birthDate?.split("/")[2] || "",
     });
-    setProfilePicture(originalUser.picture);
-    setHeaderImage(originalUser.header);
+    setProfilePicture(user.picture);
+    setHeaderImage(user.header);
   };
   
   const handleImageChange = (
@@ -138,7 +137,7 @@ const ProfilePage = () => {
 
       <div className="profile-image-section">
         <div className="profile-image-wrapper">
-          <img src={profilePicture} alt="Profile" className="profile-image" /> {/* Imagen temporal */}
+          <img src={profilePicture} alt="Profile" className="profile-image" /> 
           <label htmlFor="profile-image-upload" className="edit-icon-wrapper">
             <FaEdit className="edit-icon" />
             <input
