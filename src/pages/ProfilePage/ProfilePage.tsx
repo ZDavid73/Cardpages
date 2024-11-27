@@ -159,7 +159,7 @@ const ProfilePage = () => {
       </div>
 
       <div className="profile-info-section">
-        <div className="form-group">
+        <div className="form-datagroup">
           <label htmlFor="username">
             <Tittle variant="white">Username</Tittle>
           </label>
@@ -168,11 +168,11 @@ const ProfilePage = () => {
             type="text"
             value={username}
             onChange={(e) => setUsername(e.target.value)}
-            className="form-input"
+            className="form-datainput"
           />
         </div>
 
-        <div className="form-group">
+        <div className="form-datagroup">
           <label htmlFor="gender">
             <Tittle variant="white">Gender</Tittle>
           </label>
@@ -180,7 +180,7 @@ const ProfilePage = () => {
             id="gender"
             value={gender}
             onChange={(e) => setGender(e.target.value)}
-            className="form-input"
+            className="form-datainput"
           >
             <option value="">Select gender</option>
             <option value="prefer-not-to-say">Prefer not to say</option>
@@ -191,7 +191,7 @@ const ProfilePage = () => {
           </select>
         </div>
 
-        <div className="form-group">
+        <div className="form-datagroup">
           <label htmlFor="country">
             <Tittle variant="white">Country</Tittle>
           </label>
@@ -199,7 +199,7 @@ const ProfilePage = () => {
             id="country"
             value={country}
             onChange={(e) => setCountry(e.target.value)}
-            className="form-input"
+            className="form-datainput"
           >
            {
             countries.countries.map((country) => ( 
@@ -210,7 +210,7 @@ const ProfilePage = () => {
           </select>
         </div>
 
-        <div className="form-group">
+        <div className="form-datagroup">
           <label htmlFor="birth-date">
             <Tittle variant="white">Birth date</Tittle>
           </label>
@@ -220,12 +220,12 @@ const ProfilePage = () => {
               placeholder="Day"
               value={birthDate.day}
               onChange={(e) => handleBirthDateChange("day", e.target.value)}
-              className="form-input birth-date-input"
+              className="form-datainput birth-date-input"
             />
             <select
               value={birthDate.month}
               onChange={(e) => handleBirthDateChange("month", e.target.value)}
-              className="form-input birth-date-input"
+              className="form-datainput birth-date-input"
             >
               {months.months.map((month) => ( 
                 <option value={month.number.toString().padStart(2, "0")}>
@@ -238,7 +238,7 @@ const ProfilePage = () => {
               placeholder="Year"
               value={birthDate.year}
               onChange={(e) => handleBirthDateChange("year", e.target.value)}
-              className="form-input birth-date-input"
+              className="form-datainput birth-date-input"
             />
           </div>
         </div>

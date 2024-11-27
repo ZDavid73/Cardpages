@@ -77,15 +77,15 @@
   margin: auto;
 }
 
-.form-group {
+.form-datagroup {
   display: flex;
   flex-direction: column;
 }
 
-.form-input:focus {
+.form-datainput:focus {
   outline: 1px solid #6c63ff;
 }
-.form-input{
+.form-datainput{
   margin: 5px;
 }
 
@@ -100,7 +100,7 @@ label .Text {
   margin-bottom: 5px;
 }
 
-.form-input {
+.form-datainput {
   background-color: #222;
   color: white;
   border: none;
@@ -138,3 +138,4 @@ label .Text {
   color: #ff0019;
   border: none;
 }
+
