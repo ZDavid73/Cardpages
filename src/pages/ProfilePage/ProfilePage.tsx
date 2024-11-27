@@ -28,9 +28,7 @@ const ProfilePage = () => {
   const [notification, setNotification] = useState({ message: "", type: "" });
 
 
-  useEffect(() => {
-    setOriginalUser(user);
-  }, [user]);
+
 
   const handleCancel = () => {
     setUsername(originalUser.username);
