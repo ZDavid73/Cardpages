@@ -61,8 +61,8 @@
 .profile-image-wrapper:hover .edit-icon-wrapper {
   transform: translate(-50%, -50%) scale(1.5);
 }
-.profile-image-wrapper:hover .edit-icon-wrapper {
-  transform: translate(-50%, -50%) scale(1.5);
+.profile-header-image:hover .edit-icon-wrapper {
+  transform: translate(-50%, -50%) scale(2.0);
 }
 
 .edit-icon-wrapper:hover {
