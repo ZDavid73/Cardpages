@@ -14,6 +14,7 @@ const ProfilePage = () => {
   const user = useSelector((state: AppState) => state.user);
   const dispatch = useDispatch();
 
+  const [originalUser, setOriginalUser] = useState(user);
   const [username, setUsername] = useState(user.username);
   const [gender, setGender] = useState(user.gender || "");
   const [country, setCountry] = useState(user.country || "");
