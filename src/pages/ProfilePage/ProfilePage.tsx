@@ -60,7 +60,7 @@ const ProfilePage = () => {
     };
 
     try {
-      const { data, error } = await updateUserSupa(updatedUser);
+      const { error } = await updateUserSupa(updatedUser);
 
       if (error) {
         console.error("Error updating user:", error.message);
