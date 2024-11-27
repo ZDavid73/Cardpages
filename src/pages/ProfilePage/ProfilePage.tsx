@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Text, Button, Tittle } from "../../theme/styledcomponents";
 import { useSelector, useDispatch } from "react-redux";
 import { AppState } from "../../types/stateType";
@@ -26,6 +26,9 @@ const ProfilePage = () => {
   const [profilePicture, setProfilePicture] = useState(user.picture);
   const [headerImage, setHeaderImage] = useState(user.header);
 
+  useEffect(() => {
+    setOriginalUser(user);
+  }, [user]);
   
   const handleImageChange = (
     e: React.ChangeEvent<HTMLInputElement>,
