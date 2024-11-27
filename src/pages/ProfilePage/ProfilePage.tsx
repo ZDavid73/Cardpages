@@ -8,6 +8,7 @@ import Footer from "../../components/Footer/Footer";
 import { updateUserSupa } from "../../services/databaseService";
 import "./ProfilePage.css";
 import countries from "../../utils/Countries";
+import months from "../../utils/Months";
 
 const ProfilePage = () => {
   const user = useSelector((state: AppState) => state.user);
