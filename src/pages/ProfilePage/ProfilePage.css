@@ -10,8 +10,11 @@
   align-items: center;
   background-size: cover;
   background-position: center;
+  transition: filter 0.3s ease;
 }
-
+.profile-header-image:hover {
+  filter:drop-shadow(0 0 10px #A82CD4);
+}
 
 .profile-image-section {
   margin-top: -75px;
@@ -27,6 +30,10 @@
   border-radius: 50%;
   overflow: hidden;
   border: 4px solid #A82CD4;
+  transition: filter 0.3s ease;
+}
+.profile-image-wrapper:hover {
+  filter: grayscale(100%); 
 }
 
 .profile-image {
