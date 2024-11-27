@@ -28,7 +28,20 @@ const ProfilePage = () => {
   const [notification, setNotification] = useState({ message: "", type: "" });
 
 
-
+  useEffect(() => {
+    setOriginalUser(user);
+    setUsername(user.username);
+    setGender(user.gender || "");
+    setCountry(user.country || "");
+    setBirthDate({
+      day: user.birthDate?.split("/")[0] || "",
+      month: user.birthDate?.split("/")[1] || "",
+      year: user.birthDate?.split("/")[2] || "",
+    });
+    setProfilePicture(user.picture);
+    setHeaderImage(user.header);
+  }, [user]);
+  
 
   const handleCancel = () => {
     setUsername(originalUser.username);
