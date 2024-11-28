@@ -236,3 +236,21 @@ export const saveTournamentRounds = async (tournamentId: string, rounds: Round[]
 
   return { data, error: null };
 };
+
+export const getTournamentInfo = async (tournamentId: string | undefined) => {
+  if (!tournamentId) {
+    return { data: null, error: 'Tournament ID is missing' };
+  }
+  
+  const { data, error } = await supabase
+    .from('tournaments')
+    .select('*')
+    .eq('id', tournamentId);
+
+  if (error) {
+    console.error('Error fetching tournament info:', error);
+    return { data: null, error };
+  }
+
+  return { data, error: null };
+}
