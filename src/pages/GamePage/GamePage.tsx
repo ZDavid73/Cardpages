@@ -41,55 +41,26 @@ const GamePage: React.FC = () => {
   const [loading, setLoading] = useState(!tournamentRedux);
   const [error, setError] = useState(false);
 
-  const [rounds, setRounds] = useState<Round[]>(tournament?.rounds || []);
-  const [usersInfo, setUsersInfo] = useState<User[]>([]);
-  const [tournamentWinner, setTournamentWinner] = useState<string | null>(tournament?.winner || null);
-  const [tourHost, setTourHost] = useState<User | null>(null);
-  const { timeLeft } = useTimer(tournament?.date || '1970-01-01', tournament?.hour || '00:00');
+  const [rounds, setRounds] = useState<Round[]>(tournament.rounds || []);
+  const [usersInfo, setUsersInfo] = useState<UserState[]>([]);
+  const { timeLeft } = useTimer(tournament.date, tournament.hour);
+  const [tournamentWinner, setTournamentWinner] = useState<string | null>(tournament.winner || null);
+  const [tourHost, setTourHost] = useState<UserState | null>(null);
 
-
+  // Fetch user information for all players and host
   useEffect(() => {
-    if (!tournamentRedux) {
-      setLoading(true);
-      const fetchTournament = async () => {
-        try {
-          const fetchedTournament = await getTournamentInfo(gameId);
-          console.log('fetchedTournament', fetchedTournament);
-          if (fetchedTournament.data && isTournament(fetchedTournament.data[0])) {
-            setTournament(fetchedTournament.data[0]);
-          } else {
-            setError(true);
-            throw new Error('Fetched data is not a valid tournament');
-          }
-          setLoading(false);
-        } catch (error) {
-          console.error('Error fetching tournament:', error);
-          setError(true);
-        }
-      };
-      fetchTournament();
-    }
-  }, [gameId, tournamentRedux]);
-
-  useEffect(() => {
-    if (!tournament || loading || error) return;
-
     const fetchUserInfo = async () => {
       try {
         const fetchedUsers = await Promise.all(
           tournament.players.map(async (player) => {
             const res = await getUserInfo(player.id);
-            if (res) { 
-              return { ...res };
-            }
-            return null;
+            return res;
           })
         );
 
         const hostInfo = await getUserInfo(tournament.host);
         if (hostInfo) setTourHost(hostInfo);
-
-        setUsersInfo(fetchedUsers.filter((user): user is User => user !== null) as User[]);
+        setUsersInfo(fetchedUsers as UserState[]);
       } catch (error) {
         console.error('Error fetching user info:', error);
       }
@@ -97,6 +68,7 @@ const GamePage: React.FC = () => {
     fetchUserInfo();
   }, [tournament?.players, tournament?.host]);
 
+  // Generate rounds if they are not yet initialized
   useEffect(() => {
     if (!tournament || loading || error) return;
 
@@ -108,32 +80,23 @@ const GamePage: React.FC = () => {
         const matches = [];
         for (let i = 0; i < currentPlayers.length; i += 2) {
           matches.push({
-            id: `match-${rounds.length}-${Math.floor(i / 2)}`,  // Keeping id as string
+            id: `match-${rounds.length}-${i / 2}`,
             player1: currentPlayers[i] || '',
             player2: currentPlayers[i + 1] || '',
             winner: '',
           });
         }
-        rounds.push({ id: rounds.length, matches });
+        rounds.push({ id: `round-${rounds.length}`, matches });
         currentPlayers = matches.map((match) => match.winner || '');
       }
       return rounds;
     };
 
     if (!tournament.rounds || tournament.rounds.length === 0) {
-      const playerUsernames = tournament.players.map((p) => p.id); // Assuming players' id or another field needed here
-      const initialRounds = generateEliminationBrackets(playerUsernames);
+      const initialRounds = generateEliminationBrackets(tournament.players.map((p) => p.username));
       setRounds(initialRounds);
     }
-  }, [tournament?.players, tournament?.rounds, tournament?.id]);
-
-  if (loading) {
-    return <Tittle variant='white'>Loading</Tittle>;
-  }
-
-  if (error || !tournament) {
-    return <Tittle variant='white'>Oh no! Looks like there was an error, try again later</Tittle>;
-  }
+  }, [tournament.players, tournament.rounds]);
 
   const handlePlacePlayer = (
     roundIdx: number,
@@ -152,6 +115,7 @@ const GamePage: React.FC = () => {
     const updatedRounds = [...rounds];
     updatedRounds[roundIdx].matches[matchIdx].winner = winner;
 
+    // If not last round, advance the winner to the next match
     if (roundIdx < updatedRounds.length - 1) {
       const nextRound = updatedRounds[roundIdx + 1];
       const nextMatchIdx = Math.floor(matchIdx / 2);
