@@ -16,7 +16,7 @@ const Header = () => {
           backgroundPosition: 'center',
           backgroundRepeat: 'no-repeat',
           width: '100%',
-          height: '50vh',
+          height: '52.8vh',
           borderRadius: '10px',
         }}
       ></div>

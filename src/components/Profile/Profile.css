@@ -1,11 +1,11 @@
 .profile-container{
-    width: 25%;
-    height: 62vh;
+    width: 25vw;
+    height: 65vh;
     margin-right: 3%;
     display: flex;
     flex-direction: column;
     border-radius: 10px;
-    gap: 5%;
+    gap: 8%;
 }
 
 .profile-info{
@@ -20,9 +20,26 @@
     gap: 10px;
 }
 
+.profile-links a {
+    text-decoration: none;
+}
+
 .profile-info img{
     width: 70px;
     height: 70px;
     border-radius: 50%;
     object-fit: cover;
+}
+
+.profile-icons{
+    width: 1.5vw;
+    height: 1.5vw;
+    color: white;
+}
+.profile-button{
+    width: 100%;
+    height: 7vh;
+    display: flex;
+    gap: 10px;
+    align-items: center;
 }

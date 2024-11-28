@@ -361,9 +361,16 @@ const divVariants = {
     },
     backgroundColor: '#2D2D2D',  
   },
+  profile: {
+    padding: {
+      default: '30px 30px 0px 30px',   
+      small: '8px',
+    },
+    backgroundColor: '#2D2D2D',  
+  },
 };
 
-export const Container = styled.div<{ variant: 'bigopacity' | 'smallopacity' | 'big' | 'small' }>`
+export const Container = styled.div<{ variant: 'bigopacity' | 'smallopacity' | 'big' | 'small' | 'profile'}>`
   padding: ${(props) => divVariants[props.variant].padding.default};
   background-color: ${(props) => divVariants[props.variant].backgroundColor};
   border-radius: 15px;
