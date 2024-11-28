@@ -30,14 +30,14 @@ const RegisterView: React.FC<RegisterViewProps> = ({
       role="form" 
       aria-labelledby="registerTitle"
       aria-describedby="registerInstructions"
-      style={{backgroundImage: `url('https://zyemimihfcilkfzgwsxv.supabase.co/storage/v1/object/public/Img%20login%20register/register%20(1).webp')`}}
+      style={{backgroundImage: `url('https://zyemimihfcilkfzgwsxv.supabase.co/storage/v1/object/public/Img%20login%20register/Image%20Register.svg')`}}
     >
       <form onSubmit={onSubmit}>
         <Link to="/">
           <TextLogo className='loginfont'>{'Capsule Corp'}</TextLogo>
         </Link>
         
-        <Tittle id="registerTitle" variant="white">Register</Tittle>
+        <Tittle id="registerTitle" variant="white">Create an account</Tittle>
 
         {error && (
           <Text variant="purple" role="alert" aria-live="assertive">{error}</Text>
@@ -76,7 +76,7 @@ const RegisterView: React.FC<RegisterViewProps> = ({
           required
         />
         
-        <Button variant="purple" type="submit" aria-label="Register">Register</Button>
+        <Button variant="green" type="submit" aria-label="Register">Register</Button>
         
         <Text variant="gray" id="registerInstructions">
           Already have an account? <Link to="/login">Log in here</Link>

@@ -1,8 +1,8 @@
 body {
     background-color: #100F0F;
-    margin: 0;
-    padding: 0;
-    margin-top: 12vh;
+    margin: 0%;
+    padding: 0%;
+    margin-top: 10vh;
   }
 @font-face{
   font-family: 'Fuente Logo';
@@ -20,4 +20,9 @@ body {
 .divregister a{
   text-decoration: none !important;
   margin: 0% !important;
+}
+@media (max-width: 768px) {
+  body {
+    margin-top: 10vh;
+  }
 }

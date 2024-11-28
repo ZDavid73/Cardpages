@@ -1,0 +1,15 @@
+.HomePageAnouncement{
+    background-image: url(https://zyemimihfcilkfzgwsxv.supabase.co/storage/v1/object/public/Homepage%20Images/AdvertisementBack.svg);
+    background-position: center;
+    width: 100vw;
+    height: 15vh;
+    padding: 10px 5vw;
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.HomePageAnouncement a{
+    cursor: pointer;
+    text-decoration: none ;
+}

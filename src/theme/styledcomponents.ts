@@ -161,7 +161,7 @@ const inputVariants = {
     width: '90%',
     fontWeight: 'normal', 
     fontSize: {
-      default: '20px',   
+      default: '19px',   
       small: '16px',
     } 
   },
@@ -325,6 +325,7 @@ export const TextLogo = styled.p`
   font-family: 'Fuente Logo', sans-serif;
   font-size: 50px;
   font-weight: normal;
+  margin:0%;
 
   @media (max-width: 700px) {
     font-size: 35px;

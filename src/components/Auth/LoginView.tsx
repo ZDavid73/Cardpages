@@ -19,7 +19,7 @@ const LoginView: React.FC<LoginViewProps> = ({ email, setEmail, password, setPas
       role="form" 
       aria-labelledby="loginTitle" 
       aria-describedby="loginInstructions"
-      style={{ backgroundImage: `url('https://zyemimihfcilkfzgwsxv.supabase.co/storage/v1/object/public/Img%20login%20register/login%20(1).webp')` }}
+      style={{ backgroundImage: `url('https://zyemimihfcilkfzgwsxv.supabase.co/storage/v1/object/public/Img%20login%20register/Image%20Login.svg')` }}
     >
       <form onSubmit={handleLogin}>
         <Link to="/">

@@ -3,7 +3,7 @@
     top: 0;
     left: 0;
     width: 100vw;
-    height: 12vh;
+    height: 10vh;
     z-index: 1000;
     display: flex;
     justify-content: space-between;
@@ -51,7 +51,7 @@
 
 @media (max-width: 768px) {
     .navbar {
-        height: 8vh;
+        height: 10vh;
         width: 100vw;
         padding: 5%;
         align-items: center;
