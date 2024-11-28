@@ -1,9 +1,8 @@
-import './Header.css';
 import { Container, Tittle } from '../../theme/styledcomponents';
 import { useSelector } from "react-redux";
 import { AppState } from "../../types/stateType";
 
-const Header = () => {
+const HeaderTour = () => {
   const user = useSelector((state: AppState) => state.user);
 
   return (
@@ -22,7 +21,7 @@ const Header = () => {
       ></div>
       <Container variant="small" className="username-calatogues">
         <Tittle variant="white" className="username-headers">
-          {user.username}'s catalogue
+          {user.username}'s tournaments
         </Tittle>
         <Tittle variant="purple" className="number-of-sales">0 sales</Tittle>
       </Container>
@@ -30,4 +29,4 @@ const Header = () => {
   );
 };
 
-export default Header;
+export default HeaderTour;

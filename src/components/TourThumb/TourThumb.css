@@ -12,10 +12,11 @@
     box-sizing: border-box;
 }
 
-.tour-button{
+.yournament-thumbnail-button{
     position: absolute;
-    right: 4px;
-    top: 4px;
+    width: 8vw;
+    top: 10px;
+    right: 10px;
 }
 
 .thumb-tour-info{
@@ -52,9 +53,22 @@
 }
 
 @media (max-width: 768px){
+    .yournament-thumbnail-button{
+        width: 25vw;
+    }
     .tournament-thumbnail{
-        width: 40%;
-        height: 200px;
+        width: 40vw;
+        height: 28vh;
+    }
+    .card-thumb-info{
+        height: 11vh;
+    }
+    #tour-thum-info-title{
+        font-size: 16px;
+    }
+    .tour-thum-info-title{
+        font-size: 14px;
+        margin-bottom: 8px;
     }
     
 }

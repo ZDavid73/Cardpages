@@ -3,7 +3,6 @@ import { useSelector } from "react-redux";
 import { AppState } from "../../types/stateType";
 import Profile from "../../components/Profile/Profile"
 import { Tittle } from '../../theme/styledcomponents';
-import Footer from '../../components/Footer/Footer';
 import ItemSection from '../../components/ItemSection/ItemSection';
 import HeaderDashboard from '../../components/HeaderDashboard/HeaderDashboard';
 import './Dasboard.css'
@@ -43,7 +42,6 @@ const Dashboard = () => {
                     aria-label="Decks available for sale"
                 />
             </section>
-            <Footer aria-label="Page footer" /> 
         </>
     );
 };

@@ -1,10 +1,9 @@
 import { useSelector } from 'react-redux';
-import { Button} from '../../theme/styledcomponents';
 import { SellingCard } from '../../types/cardTypes';
 import { AppState } from '../../types/stateType';
 import './CardThumb.css';
 import useModal from '../../hooks/useModal';
-import { FiMoreHorizontal } from "react-icons/fi";
+import { FiMoreHorizontal, FiEdit2 } from "react-icons/fi";
 
 type SellingCardThumbProps = {
     card: SellingCard;
@@ -26,11 +25,11 @@ const SellingCardThumb = ({ card }: SellingCardThumbProps) => {
             <div className='card-button'>
                 {
                     userId === card.sellerId ? 
-                    <Button 
-                        variant='purple'
+                    <div 
+                        className='card-button-icon'
                         onClick={() => handleOpen('buyCard', card)}
-                    > See
-                    </Button>
+                    >   <FiEdit2 className='icon-buttonCard'/>
+                    </div>
                     :
                     <div
                         className='card-button-icon'

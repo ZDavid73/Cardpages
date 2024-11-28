@@ -1,8 +1,9 @@
 import { useSelector } from "react-redux";
 import Profile from "../../components/Profile/Profile"
-import { Container, Tittle } from "../../theme/styledcomponents"
-import { AppState } from "../../types/stateType";
+import {Tittle } from "../../theme/styledcomponents"
+import {AppState} from "../../types/stateType";
 import ItemSection from "../../components/ItemSection/ItemSection";
+import HeaderPurch from "../../components/HeaderPurchases/HeaderPurchases";
 
 const Purchases = () => {
     const user = useSelector((state: AppState) => state.user);
@@ -13,26 +14,7 @@ const Purchases = () => {
         <>
         <div className="catalogue-sectionheader">
             <Profile />
-            <div className="calatogues-header">
-            <div
-                className="catalogues-image"
-                style={{
-                backgroundImage: `url('${user.header}')`, 
-                backgroundSize: 'cover',
-                backgroundPosition: 'center',
-                backgroundRepeat: 'no-repeat',
-                width: '100%',
-                height: '50vh',
-                borderRadius: '10px',
-                }}
-            ></div>
-            <Container variant="small" className="username-calatogues">
-                <Tittle variant="white" className="username-headers">
-                {user.username}'s purchases
-                </Tittle>
-                <Tittle variant="purple" className="number-of-sales">0 purchases</Tittle>
-            </Container>
-            </div>
+            <HeaderPurch/>
         </div> 
 
         <div className="catalogue-sectioncards">

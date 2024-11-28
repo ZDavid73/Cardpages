@@ -1,7 +1,8 @@
 import { useState } from 'react';
 import './AddButton.css';
 import useModal from '../../hooks/useModal';
-import { Button  } from '../../theme/styledcomponents';
+import { ButtonForm } from '../../theme/styledcomponents';
+import { FiPlus } from "react-icons/fi";
 
 const AddButton = () => {
   const { handleOpen } = useModal();
@@ -22,11 +23,11 @@ const AddButton = () => {
 
   return (
     <div className='catalogues-button'>
-      <Button variant="purple"onClick={toggleOptions}>+</Button>
+      <button className='catalogues-button-button' onClick={toggleOptions}><FiPlus className='catalogues-button-icon'/></button>
       {showOptions && (
         <div className='options-menu'>
-          <Button variant="white" onClick={() => handleOptionClick('Add Card')}>Add Card</Button>
-          <Button variant="white" onClick={() => handleOptionClick('Add Deck')}>Add Deck</Button>
+          <ButtonForm id='options-menu-button1' variant="whiteForm" onClick={() => handleOptionClick('Add Card')}>Add Card</ButtonForm>
+          <ButtonForm variant="whiteForm" id='options-menu-button2' onClick={() => handleOptionClick('Add Deck')}>Add Deck</ButtonForm>
         </div>
       )}
     </div>

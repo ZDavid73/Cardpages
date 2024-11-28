@@ -1,0 +1,54 @@
+.catalogues-button-icon{
+   width: 2vw;
+   height: 2vw; 
+   border-radius: 50px;
+   color: white;
+}
+.catalogues-button-button{
+    background-color: #a71fd0;
+    border-radius: 100px;
+    width: 4vw;
+    height: 4vw;
+    border-style: none;
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    cursor: pointer;
+}
+#options-menu-button1{
+    position: fixed;
+    top: 580px;
+    width: 20vw;
+    right: 30px;
+    cursor: pointer;
+}
+#options-menu-button2{
+    position: fixed;
+    top: 520px;
+    right: 30px;
+    width: 20vw;
+    cursor: pointer;
+}
+
+@media (max-width: 768px){
+    .catalogues-button{
+        right: 20px;
+        bottom: 20px;
+    }
+    .catalogues-button-icon{
+        width: 8vw;
+        height: 8vw;
+    }
+    .catalogues-button button{
+        width: 14vw;
+        height: 14vw;
+    }
+    #options-menu-button1{
+        top: 590px;
+        width: 50vw;
+    }
+    #options-menu-button2{
+        top: 530px;
+        width: 50vw;
+    }
+}

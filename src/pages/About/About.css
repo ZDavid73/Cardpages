@@ -1,16 +1,12 @@
 .About-sectionheader{
     margin: 0%;
-    padding: 3%;
     display: flex;
-    justify-content: space-between;
 }
 .Vision,.Mission ,.Community, .Offer {
-    margin: 50px;
     margin-top: 0px;
 }
 
 .Offer li {
-    margin: 20px;
     margin-top:30px ;
 }
 .Offer ul {
@@ -22,4 +18,26 @@
 .Mission, .Vision {
     width: 40%;
 }
+.About-Content{
+    margin-top: 5%;
+    width: 100vw;
+    height: auto;
+    padding-left: 5vw;
+    padding-right: 5vw;
+    box-sizing: border-box;
+    margin-bottom: 5%;
+}
 
+@media (max-width: 768px) {
+    .Mi-Vi{
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+    }
+    .Mission, .Vision {
+        width: 100%;
+    }
+    .Offer li {
+        margin-top:10px ;
+    }
+}

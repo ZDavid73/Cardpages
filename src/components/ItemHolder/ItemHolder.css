@@ -1,7 +1,7 @@
 .item-holder{
+    width: 15vw;
+    height: 45vh;
     text-align: center;
-    width: 20%;
-    height: 300px;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -11,9 +11,20 @@
     background-color: rgba(58, 55, 55, 0.5);
 
 }
+.item-holder-icon{
+    width: 3vw;
+    height: 3vw;
+    color: white;
+    cursor: pointer;
+}
 
 @media (max-width: 768px){
     .item-holder{
-        width: 40%;
+        width: 40vw;
+        height: 28vh;
+    }
+    .item-holder-icon{
+        width: 10vw;
+        height: 10vw;
     }
 }

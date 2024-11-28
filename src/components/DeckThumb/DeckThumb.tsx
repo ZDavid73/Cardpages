@@ -3,7 +3,7 @@ import './DeckThumb.css';
 import useModal from '../../hooks/useModal';
 import { useSelector } from 'react-redux';
 import { AppState } from '../../types/stateType';
-import { FiMoreHorizontal } from "react-icons/fi";
+import { FiMoreHorizontal, FiEdit2 } from "react-icons/fi";
 
 type DeckThumbProps = {
     deck: Deck;
@@ -24,7 +24,7 @@ const DeckThumb = ({deck}: DeckThumbProps) => {
                 <p className='deck-flavortext'>{deck.desc}</p>
             </div>
             { deck.creator === userId ? 
-            <button onClick={() => handleOpen('buyDeck', deck)}>See</button> : <div onClick={() => handleOpen('buyDeck', deck)} className='deck-button-icon'><FiMoreHorizontal className='icon-buttonDeck'/></div> }
+            <div onClick={() => handleOpen('buyDeck', deck)} className='deck-button-icon'><FiEdit2 className='icon-buttonDeck'/></div> : <div onClick={() => handleOpen('buyDeck', deck)} className='deck-button-icon'><FiMoreHorizontal className='icon-buttonDeck'/></div> }
         </div>
     )
 }

@@ -4,8 +4,8 @@ import useModal from "../../hooks/useModal"
 import { Tittle } from "../../theme/styledcomponents"
 import { AppState } from "../../types/stateType"
 import ItemSection from "../../components/ItemSection/ItemSection"
-import Header from "../../components/Header/Header"
 import './TournamentPage.css'
+import HeaderTour from "../../components/HeaderTournament/HeaderTour"
 
 const Tournament = () => {
     const { handleOpen } = useModal()
@@ -21,7 +21,7 @@ const Tournament = () => {
         <>
         <div className="catalogue-sectionheader">
            <Profile/>
-            <Header/> 
+            <HeaderTour/> 
         </div>
 
         <section className="page-content">

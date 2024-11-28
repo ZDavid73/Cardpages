@@ -1,5 +1,5 @@
 import { Tittle } from '../../theme/styledcomponents';
-import { FaPlusCircle } from 'react-icons/fa';
+import { FiPlus } from "react-icons/fi";
 import './ItemHolder.css';
 
 type ItemHolderProps = {
@@ -10,7 +10,7 @@ type ItemHolderProps = {
 const ItemHolder = ({text, action}: ItemHolderProps) => {
     return (
         <div className="item-holder">
-            {action && <FaPlusCircle onClick={action} color='gray' size={'35%'}/>}
+            {action && <FiPlus onClick={action} className='item-holder-icon'/>}
             <Tittle variant='white'>{text}</Tittle>
         </div>
     )

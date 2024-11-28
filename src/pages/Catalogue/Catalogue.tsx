@@ -29,7 +29,7 @@ const Catalogue = () => {
                 <ItemSection state={cards} items={cards.cards.filter(c => c.isSold && c.sellerId === userId).reverse()}/>
 
                 <Tittle variant='white'>Decks on sale</Tittle>
-                <ItemSection state={decks} items={decks.decks.filter(d => !d.isSold && d.creator === userId).reverse()}/>
+                <ItemSection state={decks} items={decks.decks.filter(d => !d.isSold && d.creator === userId).reverse()}action={() => handleOpen('createDeck')}/>
 
                 <Tittle variant='white'>Decks Sold</Tittle>
                 <ItemSection state={decks} items={decks.decks.filter(d => d.isSold && d.creator === userId).reverse()}/>

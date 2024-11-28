@@ -1,0 +1,26 @@
+.aboutcompany-header{
+    width: 100%;
+    height: 69vh;
+    margin-top: 3vw;
+    margin-right: 4vw;
+}
+.aboutcompany-image{
+    margin-bottom: 1.25vw;
+}
+
+@media (max-width: 768px) {
+    .aboutcompany-header{
+        width: 90vw;
+        margin-top: 5%;
+        margin-left: 5%;
+        margin-right: 5%;
+    }
+    .aboutcompany-image{
+        width: 90vw;
+        height: 50vh;
+    }
+    .usercompany{
+        height: 9vh;
+        align-items: center;
+    }
+}
