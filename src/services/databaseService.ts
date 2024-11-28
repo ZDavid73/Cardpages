@@ -224,6 +224,7 @@ export const updateUserSupa = async (user: User) => {
 };
 
 export const saveTournamentRounds = async (tournamentId: string, rounds: Round[]) => {
+  console.log('rounds', rounds);
   const { data, error } = await supabase
     .from('tournaments')
     .update({ rounds })
@@ -241,7 +242,7 @@ export const getTournamentInfo = async (tournamentId: string | undefined) => {
   if (!tournamentId) {
     return { data: null, error: 'Tournament ID is missing' };
   }
-  
+
   const { data, error } = await supabase
     .from('tournaments')
     .select('*')

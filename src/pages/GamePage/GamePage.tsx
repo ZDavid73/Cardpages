@@ -124,12 +124,11 @@ const GamePage: React.FC = () => {
       const playerUsernames = tournament.players.map((p) => p.id); // Assuming players' id or another field needed here
       const initialRounds = generateEliminationBrackets(playerUsernames);
       setRounds(initialRounds);
-      saveTournamentRounds(tournament.id, initialRounds);
     }
   }, [tournament?.players, tournament?.rounds, tournament?.id]);
 
   if (loading) {
-    return <Tittle variant='white'>Loading...</Tittle>;
+    return <Tittle variant='white'>Loading</Tittle>;
   }
 
   if (error || !tournament) {
