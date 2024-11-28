@@ -1,6 +1,8 @@
 import React from 'react';
 import { useDrop } from 'react-dnd';
 import { Match } from '../../types/tournamentTypes';
+import { Text } from '../../theme/styledcomponents';
+
 
 interface MatchNodeProps {
   match: Match;
@@ -24,10 +26,10 @@ const MatchNode: React.FC<MatchNodeProps> = ({ match, onPlacePlayer, onWin }) =>
   return (
     <div ref={dropRef} className={`match-node ${isOver ? 'highlight' : ''}`}>
       <div className={`player-slot ${match.player1 ? 'filled' : 'empty'}`} onClick={() => match.player1 && onWin(match.player1)}>
-        {match.player1 || 'Drag here'}
+        <Text variant="white">{match.player1 || 'Drag here'}</Text>
       </div>
       <div className={`player-slot ${match.player2 ? 'filled' : 'empty'}`} onClick={() => match.player2 && onWin(match.player2)}>
-        {match.player2 || 'Drag here'}
+        <Text variant="white">{match.player2 || 'Drag here'}</Text>
       </div>
     </div>
   );
