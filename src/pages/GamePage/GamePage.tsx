@@ -179,21 +179,23 @@ const GamePage: React.FC = () => {
           <GameHeader tournament={tournament} userInfo={usersInfo} host={tourHost} />
         </div>
 
-        <section className="whole-tree">
-          {tournament.players.length >= 2 && (
-            <Bracket rounds={rounds} onPlacePlayer={handlePlacePlayer} onWin={handleWin} />
-          )}
-          {rounds.length > 0 &&
-            rounds[rounds.length - 1].matches.length === 1 &&
-            rounds[rounds.length - 1].matches[0].player1 &&
-            rounds[rounds.length - 1].matches[0].player2 && (
-              <WinnerBox setWinner={setTournamentWinner} winner={tournamentWinner} />
+        <section className='tournament-info'>
+          <section className="whole-tree">
+            {tournament.players.length >= 2 && (
+              <Bracket rounds={rounds} onPlacePlayer={handlePlacePlayer} onWin={handleWin} />
             )}
-        </section>
+            {rounds.length > 0 &&
+              rounds[rounds.length - 1].matches.length === 1 &&
+              rounds[rounds.length - 1].matches[0].player1 &&
+              rounds[rounds.length - 1].matches[0].player2 && (
+                <WinnerBox setWinner={setTournamentWinner} winner={tournamentWinner} />
+              )}
+          </section>
 
-        {tournamentWinner && (
-          <TournamentWinner winner={usersInfo.find((u) => u.username === tournamentWinner)} />
-        )}
+          {tournamentWinner && (
+            <TournamentWinner winner={usersInfo.find((u) => u.username === tournamentWinner)} />
+          )}
+        </section>
       </div>
     </DndProvider>
   );

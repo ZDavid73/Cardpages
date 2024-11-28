@@ -57,6 +57,13 @@
   justify-content: center;
 }
 
+.tournament-info{
+  display: flex;
+  gap: 16px;
+  align-items: center;
+  justify-content: center;
+}
+
 @media (max-width: 768px){
   .game-page{
       flex-direction: column;
@@ -70,9 +77,7 @@
       padding: 0%;
       margin-left: 5%;
   }
-}
-/* Scroll vertical solo en móvil */
-@media (max-width: 768px) {
+
   .bracket-tree {
     flex-direction: flex;
     align-items: center;
@@ -97,5 +102,13 @@
 
   .bracket-tree::-webkit-scrollbar-track {
     background-color: #333; /* Color del fondo */
+  }
+
+  .tournament-info{
+    flex-direction: column;
+    flex-flow: column-reverse;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
   }
 }
