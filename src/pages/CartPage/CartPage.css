@@ -1,0 +1,9 @@
+.cart-page{
+    padding: 3%;
+}
+
+.cart-list{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 32px;
+}

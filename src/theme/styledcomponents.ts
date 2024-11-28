@@ -4,9 +4,9 @@ import styled from 'styled-components';
 export const TextHome = styled.p`
   color: #ffffff; 
   text-align:left;
-  margin-bottom: 20px;
+  margin-bottom: 30px;
   font-family: 'Sora', sans-serif;
-  font-size: 35px;
+  font-size: 28px;
   font-weight: bold;
   
   @media (max-width: 700px) {
@@ -94,15 +94,21 @@ const buttonVariantsForm = {
     hoverColor: '#008f4a',
     padding: '10px 20px',
   },
+  orangeForm: {
+    bgColor: '#F88108',
+    textColor: '#fff',
+    hoverColor: '#C83D02',
+    padding: '10px 20px',
+  },
   whiteForm: {
     bgColor: '#ffffff',
     textColor: '#000000',
-    hoverColor: '#898989',
+    hoverColor: '#AFAFAF',
     padding: '10px 30px',
   },
 };
 
-export const ButtonForm = styled.button<{ variant: 'purpleForm' | 'grayForm' | 'greenForm' | 'whiteForm'| 'grayhomeForm' }>`
+export const ButtonForm = styled.button<{ variant: 'purpleForm' | 'grayForm' | 'greenForm' | 'whiteForm'| 'grayhomeForm' | 'orangeForm' }>`
   font-family: 'Sora', sans-serif;
   font-size: 18px;
   font-weight: 600;
@@ -155,7 +161,7 @@ const inputVariants = {
     width: '90%',
     fontWeight: 'normal', 
     fontSize: {
-      default: '20px',   
+      default: '19px',   
       small: '16px',
     } 
   },
@@ -317,8 +323,9 @@ export const TextLogo = styled.p`
   color: #ffffff; 
   text-align:left;
   font-family: 'Fuente Logo', sans-serif;
-  font-size: 60px;
+  font-size: 50px;
   font-weight: normal;
+  margin:0%;
 
   @media (max-width: 700px) {
     font-size: 35px;
@@ -332,32 +339,20 @@ const divVariants = {
       small: '20px',
     },
     backgroundColor: 'rgba(16, 15, 15, 0.5)',  
-    marginBottom: {
-      default: '30px',   
-      small: '20px',
-    }
   },
   smallopacity: {
     padding: {
-      default: '20px',   
-      small: '10px',
+      default: '35px',   
+      small: '20px',
     },
     backgroundColor: 'rgba(16, 15, 15, 0.5)',  
-    marginBottom: {
-      default: '20px',   
-      small: '10px',
-    }
   },
   big: {
     padding: {
       default: '30px',   
       small: '20px',
     },
-    backgroundColor: '#2D2D2D',  
-    marginBottom: {
-      default: '30px',   
-      small: '20px',
-    }
+    backgroundColor: '#2D2D2D', 
   },
   small: {
     padding: {
@@ -365,23 +360,24 @@ const divVariants = {
       small: '8px',
     },
     backgroundColor: '#2D2D2D',  
-    marginBottom: {
-      default: '15px',   
+  },
+  profile: {
+    padding: {
+      default: '30px 30px 0px 30px',   
       small: '8px',
-    }
+    },
+    backgroundColor: '#2D2D2D',  
   },
 };
 
-export const Container = styled.div<{ variant: 'bigopacity' | 'smallopacity' | 'big' | 'small' }>`
+export const Container = styled.div<{ variant: 'bigopacity' | 'smallopacity' | 'big' | 'small' | 'profile'}>`
   padding: ${(props) => divVariants[props.variant].padding.default};
   background-color: ${(props) => divVariants[props.variant].backgroundColor};
-  border-radius: 20px;
+  border-radius: 15px;
   box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
-  margin-bottom: ${(props) => divVariants[props.variant].marginBottom.default};
 
   @media (max-width: 700px) {
     padding: ${(props) => divVariants[props.variant].padding.small};
-    margin-bottom: ${(props) => divVariants[props.variant].marginBottom.small};
     border-radius: 10px;
   }
 `;

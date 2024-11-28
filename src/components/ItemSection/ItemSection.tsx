@@ -1,17 +1,19 @@
 import { Text } from '../../theme/styledcomponents';
-import { Tournament } from '../../types/tournamentTypes';
-import { isTournament } from '../../utils/typeGuards';
+import { isCard, isDeck, isTournament } from '../../utils/typeGuards';
+import SellingCardThumb from '../CardThumb/CardThum';
+import DeckThumb from '../DeckThumb/DeckThumb';
 import ItemHolder from '../ItemHolder/ItemHolder';
 import TourThumb from '../TourThumb/TourThumb';
 import './ItemSection.css';
 
-type TourSectionProps = {
-    items: Tournament[];
+type ItemSection = {
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    items: any[];
     state: { loading: boolean; error: string | null };
     action?: () => void;
 }
 
-const TourSection = ({state, items, action}: TourSectionProps) => {
+const ItemSection = ({state, items, action,}: ItemSection) => {
     return (
         <section className='item-section'>
 
@@ -26,6 +28,10 @@ const TourSection = ({state, items, action}: TourSectionProps) => {
             {!state.loading && !state.error && items.map((item) => {
                 if (isTournament(item)) {
                     return <TourThumb key={item.id} tournament={item} />;
+                } else if (isCard(item)){
+                    return <SellingCardThumb key={item.id} card={item}/>
+                } else if (isDeck(item)){
+                    return <DeckThumb key={item.id} deck={item}/>
                 }
                 return null;
             })}
@@ -33,4 +39,4 @@ const TourSection = ({state, items, action}: TourSectionProps) => {
     );
 }
 
-export default TourSection;
+export default ItemSection;

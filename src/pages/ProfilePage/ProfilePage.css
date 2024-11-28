@@ -1,0 +1,152 @@
+.profile-header-image {
+  position: relative;
+  width: 100%;
+  height: 200px;
+  border-radius: 10px;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-size: cover;
+  background-position: center;
+  transition: filter 0.3s ease;
+}
+.profile-header-image:hover {
+  filter:drop-shadow(0 0 10px #A82CD4);
+}
+
+.profile-image-section {
+  margin-top: -75px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.profile-image-wrapper {
+  position: relative;
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  overflow: hidden;
+  border: 4px solid #A82CD4;
+  transition: filter 0.3s ease;
+}
+.profile-image-wrapper:hover {
+  filter:drop-shadow(0 0 10px #A82CD4); 
+}
+
+.profile-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+
+.edit-icon-wrapper {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  cursor: pointer;
+  background-color: rgba(0, 0, 0, 0.6);
+  border-radius: 50%;
+  padding: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: background-color 0.3s ease;
+  transition: transform 0.3s ease;
+}
+.profile-image-wrapper:hover .edit-icon-wrapper {
+  transform: translate(-50%, -50%) scale(1.5);
+}
+.profile-header-image:hover .edit-icon-wrapper {
+  transform: translate(-50%, -50%) scale(2.0);
+}
+
+.edit-icon-wrapper:hover {
+  background-color: rgba(0, 0, 0, 0.8);
+}
+
+.edit-icon {
+  color: white;
+  font-size: 18px;
+}
+
+.image-upload-input {
+  display: none;
+}
+
+
+.profile-info-section {
+  margin-top: 20px;
+  width: 40%;
+  padding: 0 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  align-self: center;
+  margin: auto;
+}
+
+.form-datagroup {
+  display: flex;
+  flex-direction: column;
+}
+
+.form-datainput:focus {
+  outline: 1px solid #6c63ff;
+}
+.form-datainput {
+  margin: 5px;
+  background-color: #222;
+  color: white;
+  border: none;
+  border-radius: 20px;
+  padding: 15px;
+  font-size: 14px;
+
+}
+
+.birth-date-fields {
+  display: flex;
+  gap: 3%;
+}
+
+
+.profile-actions {
+  margin-top: 20px;
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+}
+.notification {
+  padding: 10px 20px;
+  border-radius: 8px;
+  font-size: 20px;
+  font-family: poppins;
+  text-align: center;
+  width: 40%;
+  margin-top: 20px;
+}
+
+.notification.success {
+  background-color: #00ff3c;
+  color: #000000;
+  border: none;
+}
+
+.notification.error {
+  background-color: #000000;
+  color: #ff0019;
+  border: none;
+}
+
+select::-webkit-scrollbar {
+  width: 10px;
+}
+
+select::-webkit-scrollbar-thumb {
+  background-color: #888;
+  border-radius: 4px;
+}

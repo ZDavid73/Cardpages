@@ -3,7 +3,7 @@ import Profile from "../../components/Profile/Profile"
 import useModal from "../../hooks/useModal"
 import { Tittle } from "../../theme/styledcomponents"
 import { AppState } from "../../types/stateType"
-import TourSection from "../../components/ItemSection/ItemSection"
+import ItemSection from "../../components/ItemSection/ItemSection"
 import Header from "../../components/Header/Header"
 import './TournamentPage.css'
 
@@ -26,18 +26,18 @@ const Tournament = () => {
 
         <section className="page-content">
         <Tittle variant='white'>Your Tournaments</Tittle>
-        <TourSection 
+        <ItemSection 
             state={tourState} 
             items={tournaments.tournaments.filter(t => t.host === userId)} 
             action={() => handleOpen('createTournament')}/>
 
         <Tittle variant='white'>Tournaments you have joined</Tittle>
-        <TourSection 
+        <ItemSection 
             state={tourState} 
             items={tournaments.tournaments.filter(t => t.players.some(p => p.id === userId) && t.status === 'upcoming')}/>
 
         <Tittle variant='white'>Tournaments you have participated in</Tittle>
-        <TourSection 
+        <ItemSection 
             state={tourState} 
             items={tournaments.tournaments.filter(t => t.status === 'finished' && t.players.some(p => p.id === userId))}/>
         </section>

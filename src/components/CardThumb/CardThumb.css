@@ -1,0 +1,40 @@
+.selling-card-thumbnail{
+    width: 25%;
+    height: 300px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    position: relative;
+    transition: transform 0.3s;
+}
+
+.card-button{
+    position: absolute;
+    right: 4px;
+    top: 4px;
+}
+
+.card-flavortext{
+    display: -webkit-box;
+    -webkit-box-orient: vertical; 
+    overflow: hidden;
+    text-overflow: ellipsis; 
+    line-clamp: 2;
+    -webkit-line-clamp: 2;
+}
+
+.card-thumb-info{
+    background-color: rgba(0, 0, 0, 0.7);
+    padding: 12px;
+}
+
+@media (max-width: 768px){
+    .selling-card-thumbnail{
+        width: 40%;
+        height: 200px;
+    }
+}

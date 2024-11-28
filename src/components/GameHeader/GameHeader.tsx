@@ -1,5 +1,5 @@
 import './GameHeader.css'
-import {Button, Container, Tittle} from '../../theme/styledcomponents';
+import {Button, Container, Text, Tittle} from '../../theme/styledcomponents';
 import { useSelector } from "react-redux";
 import { AppState } from "../../types/stateType";
 import { Tournament } from '../../types/tournamentTypes';
@@ -43,7 +43,7 @@ const GameHeader = ({tournament, userInfo, host}: GameHeaderProps) => {
 
                 return (
                     <SwiperSlide key={idx}>
-                    <PlayerThumb key={idx} player={player} deck={tournament.players.find(p => p.id === player.id)?.deck} isCenter={isCenter} />
+                    <PlayerThumb key={idx} player={player} deck={tournament.players.find(p => p.id === player.id)?.deck} isCenter={isCenter} isWinner={tournament.winner === player.username ? true : false} />
                     </SwiperSlide>
                 )
                 })}
@@ -56,6 +56,8 @@ const GameHeader = ({tournament, userInfo, host}: GameHeaderProps) => {
         
         { tournament.host !== user.id && tournament.status === 'upcoming' && tournament.players.length !== tournament.max ? <Button variant='gray' onClick={() => handleOpen('joinTournament', tournament)}>{tournament.players.some(p => p.id === user.id) ? 'Abandon' : 'Join'}</Button> : null }
     </Container>
+
+    <span><Text variant='purple'>@{host?.username}</Text><Text variant='white'>{tournament.desc}</Text></span>
     </div>
     );
   };

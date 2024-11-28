@@ -1,26 +1,56 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useRef } from 'react';
+import AOS from 'aos'; // Importa AOS
 import { useNavigate } from 'react-router-dom';
-import CardSection from './CardSectionView';  // Importa el componente visual
+import 'aos/dist/aos.css'; // Asegúrate de que los estilos de AOS están importados
+import CardSection from './CardSectionView';
 
 interface CardSectionProps {
   text: string;
   imgSrc: string;
   altText: string;
+  variantText: 'purpleForm' | 'grayForm' | 'greenForm' | 'whiteForm' | 'grayhomeForm' | 'orangeForm';
   reverse?: boolean;
+  imgAos: string;
+  textAos: string;
 }
 
-function CardSectionContainer({ text, imgSrc, altText, reverse = false }: CardSectionProps) {
+function CardSectionContainer({
+  text,
+  imgSrc,
+  altText,
+  variantText,
+  imgAos,
+  textAos,
+  reverse = false,
+}: CardSectionProps) {
   const navigate = useNavigate();
-  const [isMobile, setIsMobile] = useState(window.innerWidth < 768);
+  const sectionRef = useRef<HTMLDivElement | null>(null);
 
   useEffect(() => {
-    const handleResize = () => {
-      setIsMobile(window.innerWidth < 768);
-    };
+    AOS.init({
+      duration: 1000,
+      easing: "ease-in-out",
+      once: false,
+    });
 
-    window.addEventListener('resize', handleResize);
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          AOS.refresh();
+        }
+      },
+      { threshold: 0.1 }
+    );
+
+    const sectionNode = sectionRef.current;
+    if (sectionNode) {
+      observer.observe(sectionNode);
+    }
+
     return () => {
-      window.removeEventListener('resize', handleResize);
+      if (sectionNode) {
+        observer.unobserve(sectionNode);
+      }
     };
   }, []);
 
@@ -28,16 +58,19 @@ function CardSectionContainer({ text, imgSrc, altText, reverse = false }: CardSe
     navigate('/register');
   };
 
-  const shouldReverse = isMobile ? false : reverse;
-
   return (
-    <CardSection
-      text={text}
-      imgSrc={imgSrc}
-      altText={altText}
-      reverse={shouldReverse}
-      onExploreClick={handleExploreClick}
-    />
+    <div ref={sectionRef}>
+      <CardSection
+        text={text}
+        imgSrc={imgSrc}
+        altText={altText}
+        reverse={reverse}  // Se pasa la propiedad 'reverse' sin ningún ajuste
+        variantText={variantText}
+        onExploreClick={handleExploreClick}
+        imgAos={imgAos}
+        textAos={textAos}
+      />
+    </div>
   );
 }
 

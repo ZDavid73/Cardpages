@@ -1,8 +1,9 @@
 import { useSelector } from 'react-redux';
-import { Button, Container, Text } from '../../theme/styledcomponents';
+import { Button, Text } from '../../theme/styledcomponents';
 import { SellingCard } from '../../types/cardTypes';
 import { AppState } from '../../types/stateType';
-import { useNavigate } from 'react-router-dom';
+import './CardThumb.css';
+import useModal from '../../hooks/useModal';
 
 type SellingCardThumbProps = {
     card: SellingCard;
@@ -10,7 +11,7 @@ type SellingCardThumbProps = {
 
 const SellingCardThumb = ({ card }: SellingCardThumbProps) => {
     const userId = useSelector((state: AppState) => state.user.id);
-    const navigate = useNavigate();
+    const { handleOpen } = useModal(); 
 
     return (
         <section 
@@ -25,21 +26,22 @@ const SellingCardThumb = ({ card }: SellingCardThumbProps) => {
                 {
                     userId === card.sellerId ? 
                     <Button 
-                        variant='purple' 
-                        onClick={() => navigate('/editCard', { state: { card } })}
+                        variant='gray' 
+                        onClick={() => handleOpen('buyCard', card)}
                     >
-                        Edit
+                        See
                     </Button>
                     :
-                    <Button variant='gray' disabled>
-                        Sold
+                    <Button variant='purple'
+                        onClick={() => handleOpen('buyCard', card)}>
+                        Buy
                     </Button>
                 }
             </div>
-            <Container variant='smallopacity'>
-                <Text variant='white'>{card.flavorText}</Text>
+            <div className='card-thumb-info'>
+                <Text variant='white' className='card-flavortext'>{card.flavorText}</Text>
                 <Text variant='white'>${card.price}</Text>
-            </Container>
+            </div>
         </section>
     );
 }

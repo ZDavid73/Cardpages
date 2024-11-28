@@ -9,5 +9,9 @@ export interface User {
     cart: {
         cards: SellingCard[];
         decks: Deck[];
-    }
+    };
+    header: string;
+    gender?: string;
+    country?: string;
+    birthDate?: string;
 }

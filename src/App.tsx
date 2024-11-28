@@ -11,10 +11,6 @@ const App = () => {
     const dispatch = useDispatch<AppDispatch>();
     const userId = useMemo(() => getAuthUserId(), []);
 
-    //PENDIENTE: hacer ese mundo de fetchs en otro archivo y llamarlo desde acá
-
-    
-
     useEffect(() => {
         if (userId){
             getUserInfo(userId).then((user) => {

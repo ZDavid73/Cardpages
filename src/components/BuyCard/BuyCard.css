@@ -1,0 +1,53 @@
+.buy-card{
+    display: flex;
+    justify-content: center;
+    gap: 38px;
+    width: 60vw;
+}
+
+.buy-card-img{
+    width: 40%;
+
+    img{
+        width: 100%;
+    }
+
+    div{
+        display: flex;
+        gap: 8px;
+        align-items: center;
+    }
+}
+
+.buy-card-info{
+    width: 60%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    gap: 8px;
+    position: relative;
+
+    button{
+        position: absolute;
+        bottom: 0;
+        right: 0;
+        width: 100%;
+    }
+}
+
+@media (max-width: 768px){
+    .buy-card{
+        flex-direction: column;
+        gap: 16px;
+        width: 90vw;
+    }
+
+    .buy-card-info{
+        width: 100%;
+
+        button{
+            position: relative;
+            width: 100%;
+        }
+    }
+}

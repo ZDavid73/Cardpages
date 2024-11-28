@@ -4,7 +4,8 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
 import 'swiper/css/pagination';
 import 'swiper/css/autoplay';
-import { Pagination, Autoplay } from 'swiper/modules';
+import { Pagination, Autoplay, EffectFade } from 'swiper/modules';
+import 'swiper/css/effect-fade';
 import { Slide } from '../../services/slidesData';
 import { TextHome, ButtonForm, Container } from '../../theme/styledcomponents';
 
@@ -16,16 +17,19 @@ interface CarouselViewProps {
 const CarouselView: React.FC<CarouselViewProps> = ({ slidesData, onSlideClick }) => {
   return (
     <Swiper
-      modules={[Pagination, Autoplay]}
+      modules={[Pagination, Autoplay, EffectFade]} // Agregar EffectFade aquí
       spaceBetween={50}
       slidesPerView={1}
       pagination={{ clickable: true }}
       loop={true}
+      speed={2000}
       autoplay={{
         delay: 3000,
         disableOnInteraction: false,
         pauseOnMouseEnter: true,
       }}
+      effect="fade" // Configuración del efecto fade
+      fadeEffect={{ crossFade: true }} // Ajuste para que los slides se desvanezcan
       aria-roledescription="carousel"
     >
       {slidesData.map((slide, index) => (
@@ -46,7 +50,7 @@ const CarouselView: React.FC<CarouselViewProps> = ({ slidesData, onSlideClick })
             <Container variant="smallopacity" className="overlay" aria-hidden="true">
               <TextHome>{slide.text}</TextHome>
               <ButtonForm 
-                variant="greenForm" 
+                variant={slide.variant} // Usar el variant correspondiente
                 onClick={() => onSlideClick('/register')} 
                 aria-label="Register now"
               >

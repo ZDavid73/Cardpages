@@ -10,7 +10,7 @@ type TourThumbProps = {
     tournament: Tournament
 }
 
-const TourThumb = ({ tournament }: TourThumbProps) => {
+const TourThumb =  ({ tournament }: TourThumbProps) => {
     const id = useSelector((state: AppState) => state.user.id);
     const navigate = useNavigate();
 

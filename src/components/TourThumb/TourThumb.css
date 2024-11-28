@@ -1,6 +1,6 @@
 .tournament-thumbnail{
-    width: 20%;
-    height: 200px;
+    width: 25%;
+    height: 300px;
     display: flex;
     flex-direction: column;
     justify-content: flex-end;
@@ -26,6 +26,7 @@
 @media (max-width: 768px){
     .tournament-thumbnail{
         width: 40%;
+        height: 200px;
     }
     
 }

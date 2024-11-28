@@ -1,11 +1,19 @@
 .navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 10vh;
+    z-index: 1000;
     display: flex;
-    height: 8vh;
     justify-content: space-between;
     align-items: center;
     padding: 10px 5vw;
-    background-color: #1B1B1B;
+    background-color: #1b1b1bdd;
     color: white;
+    backdrop-filter: blur(8px);
+    box-sizing: border-box;
+    overflow: hidden;
 }
   
 .navbar-logo {
@@ -33,7 +41,7 @@
 .navbar-links a, .navbar-links button {
     cursor: pointer;
     text-decoration: none ;
-    width: 100%;
+    width: 8vw;
     height: 7vh;
 }
 
@@ -43,9 +51,8 @@
 
 @media (max-width: 768px) {
     .navbar {
-        height: 5vh;
-        padding: 10px 2vw;
-        width: 90%vw;
+        height: 10vh;
+        width: 100vw;
         padding: 5%;
         align-items: center;
         align-content: center;

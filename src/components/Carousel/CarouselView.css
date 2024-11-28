@@ -1,20 +1,37 @@
+@keyframes horizontalFlip {
+    0% {
+      transform: rotateY(0deg);
+    }
+    40% {
+      transform: rotateY(360deg); /* Rotación completa */
+    }
+    60% {
+      transform: rotateY(360deg) perspective(800px) rotateY(20deg); /* Aplica una perspectiva más fuerte */
+    }
+    100% {
+        transform: rotateY(360deg) perspective(1000px) rotateY(0deg); /* Vuelve a la posición original */
+    }
+}
 .carousel-item {
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
-    height: 67vh;
-    width: 90vw;
+    height: 90vh;
+    width: 100vw;
     display: flex;
     justify-content:space-between;
     align-items: end;
     padding: 5vw;
+    box-sizing: border-box;
+    overflow: hidden;
 } 
 .overlay{
-    width: 40vw;
-    height: 40vh;
+    width: 38vw;
+    height: 27vh;
     display: flex;
     flex-direction: column;
     justify-content: center;
+    backdrop-filter: blur(3px);
 }
 .overlay Button{
     width: 15vw;
@@ -22,15 +39,29 @@
 }
 .carousel-item img{
     height: 45vh;
+    margin-bottom: 20px;
 }
+.carousel-image {
+    transition: transform 2s ease-in-out;
+    transform-origin: center;
+    opacity: 1;
+  }
+  .swiper-slide-active .carousel-image {
+    animation: horizontalFlip 2.5s ease-in-out forwards; 
+  }
+  .swiper-slide-prev .carousel-image,
+  .swiper-slide-next .carousel-image {
+    animation: none;
+  }
 
 .swiper-pagination-bullet {
-    width: 12px !important;
-    height: 12px !important;
+    width: 10px !important;
+    height: 10px !important;
     background-color: rgba(16, 15, 15, 0.5) !important;
     opacity: 1 !important;
     border-radius: 50% !important;
     transition: background-color 0.3s ease !important;
+    margin-bottom: 1.5% !important;
 }
   
 .swiper-pagination-bullet-active {
@@ -43,15 +74,16 @@
         background-size: cover;
         background-position: center;
         background-repeat: no-repeat;
-        height: 45vh;
-        width: 90vw;
-        padding: 5vw;
+        height: 70vh;
+        width: 100vw;
+        padding: 5%;
         align-items: center;
         justify-content: center;
+        padding-top: 20%;
     }
 
     .overlay {
-        width: 65vw;
+        width: 90%;
         height: 25vh;
         margin-bottom: 2vh; /* Añade espacio entre el texto y la imagen */
     }

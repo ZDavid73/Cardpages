@@ -18,11 +18,11 @@ import {
 } from '../../services/databaseService';
 import { Tittle } from '../../theme/styledcomponents';
 import { useTimer } from '../../hooks/useTournament';
-import { UserState } from '../../features/auth/userSlice';
 import { AppState } from '../../types/stateType';
 import { Tournament, Round } from '../../types/tournamentTypes';
 
 import './GamePage.css';
+import { User } from '../../types/userTypes';
 
 const GamePage: React.FC = () => {
   const navigate = useNavigate();
@@ -35,10 +35,10 @@ const GamePage: React.FC = () => {
     ) || location.state.tournament;
 
   const [rounds, setRounds] = useState<Round[]>(tournament.rounds || []);
-  const [usersInfo, setUsersInfo] = useState<UserState[]>([]);
+  const [usersInfo, setUsersInfo] = useState<User[]>([]);
   const { timeLeft } = useTimer(tournament.date, tournament.hour);
   const [tournamentWinner, setTournamentWinner] = useState<string | null>(tournament.winner || null);
-  const [tourHost, setTourHost] = useState<UserState | null>(null);
+  const [tourHost, setTourHost] = useState<User | null>(null);
 
   useEffect(() => {
     const fetchUserInfo = async () => {
@@ -47,7 +47,7 @@ const GamePage: React.FC = () => {
           tournament.players.map(async (player) => {
             const res = await getUserInfo(player.id);
             if (res) { 
-              return { username: res.username, ...res }; // Ensure 'username' is included here if it matches UserState
+              return { ...res };
             }
             return null;
           })
@@ -56,7 +56,7 @@ const GamePage: React.FC = () => {
         const hostInfo = await getUserInfo(tournament.host);
         if (hostInfo) setTourHost(hostInfo);
 
-        setUsersInfo(fetchedUsers.filter((user): user is UserState => user !== null));
+        setUsersInfo(fetchedUsers.filter((user): user is User => user !== null) as User[]);
       } catch (error) {
         console.error('Error fetching user info:', error);
       }

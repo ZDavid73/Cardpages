@@ -6,23 +6,26 @@ import { Button, Container, StyledHr, Text, Tittle } from '../../theme/styledcom
 import { FaArrowCircleLeft } from 'react-icons/fa';
 import useModal from '../../hooks/useModal';
 import useCart from '../../hooks/useCart';
+import { useAuth } from '../../hooks/useAuth';
 
 const BuyCard = () => {
     const { modalDetails } = useSelector((state: AppState) => state.modal);
     const { handleClose } = useModal();
     const { addToCart } = useCart();
-
-    const cart = useSelector((state: AppState) => state.cart);
-    console.log(cart);
+    const { handleGetUserInfo, tempUser } = useAuth();
+    const cart = useSelector((state: AppState) => state.cart.cards);
+    const userId = useSelector((state: AppState) => state.user.id);
 
     if(isCard(modalDetails)){
+        handleGetUserInfo(modalDetails.sellerId);
+
         return (
             <Container variant='big' className='buy-card'>
                 <section className='buy-card-img'>
-                    <span>
+                    <div>
                     <FaArrowCircleLeft onClick={() => handleClose()} color="white"/>
                     <Tittle variant='white'>{modalDetails.name}</Tittle>
-                    </span>
+                    </div>
                     <img src={modalDetails.images.small} alt={`image of the card: ${modalDetails.name}`} />
                 </section>
                 <section className='buy-card-info'>
@@ -31,12 +34,17 @@ const BuyCard = () => {
                         ${modalDetails.price} USD
                     </Tittle>
                     <Text variant='white'>
-                        by @user
+                        by @{tempUser?.username}
+                    </Text>
+                    <Text variant='white'>
                         {modalDetails.description}
-
+                    </Text>
+                    <StyledHr/>
+                    <Text variant='white'>
                         {modalDetails.flavorText}
                     </Text>
-                    <Button variant='purple' onClick={() => {addToCart(modalDetails)}}>Add to cart</Button>
+                    { modalDetails.sellerId === userId ? null : cart.find((card) => card.id === modalDetails.id) ? 
+                        <Button variant='gray'>Already in cart</Button> : <Button variant='purple' onClick={() => {addToCart(modalDetails)}}>Add to cart</Button>}
                 </section>
             </Container>
         ) 

@@ -1,4 +1,4 @@
-import { Navigate, Routes, Route, BrowserRouter } from 'react-router-dom';
+import { Navigate, Routes, Route, HashRouter } from 'react-router-dom';
 import { HomePage, SearchPage } from '../pages/imports';
 import { Login, Navbar, Register } from '../components/imports';
 import Catalogue from '../pages/Catalogue/Catalogue';
@@ -12,6 +12,8 @@ import { AppState } from '../types/stateType';
 import Modal from '../components/Modal/Modal';
 import React, { Suspense } from 'react';
 import Loading from '../pages/Loading/Loading';
+import ProfilePage from '../pages/ProfilePage/ProfilePage';
+import CartPage from '../pages/CartPage/CartPage';
 
 const LazyGamePage = React.lazy(() => import('../pages/GamePage/GamePage'));
 
@@ -20,7 +22,7 @@ const AppRouter = () => {
   const isLoggedIn = user.id !== "" ? true : false;
 
   return (
-    <BrowserRouter>
+    <HashRouter>
       <>
         <Navbar isLoggedIn={isLoggedIn}/>
         <Modal/>
@@ -39,11 +41,12 @@ const AppRouter = () => {
             <Route path="/search" element={<SearchPage/>} />
             <Route path="/about" element={<AboutPage/>} />
             <Route path="/game" element={<Suspense fallback={<Loading/>}><LazyGamePage/></Suspense>} />
-            
+            <Route path="/profile-page" element={<ProfilePage/>} />
+            <Route path='/cart' element={<CartPage/>}/>
           </Route>
           </Routes>
       </>
-    </BrowserRouter>
+    </HashRouter>
   )
 }
 
