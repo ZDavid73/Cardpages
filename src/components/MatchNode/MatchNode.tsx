@@ -1,7 +1,7 @@
 import React from 'react';
 import { useDrop } from 'react-dnd';
 import { Match } from '../../types/tournamentTypes';
-import { Text } from '../../theme/styledcomponents';
+import {Text} from '../../theme/styledcomponents';
 
 
 interface MatchNodeProps {
@@ -13,8 +13,7 @@ interface MatchNodeProps {
 const MatchNode: React.FC<MatchNodeProps> = ({ match, onPlacePlayer, onWin }) => {
   const [{ isOver }, dropRef] = useDrop({
     accept: 'PLAYER',
-    drop: (item: { name: string }) => {
-      // Asigna al jugador en la posición adecuada, asegura que haya un valor correcto
+    drop: (item: { name: string }, monitor) => {
       const dropPosition: 'player1' | 'player2' = !match.player1 ? 'player1' : 'player2';
       onPlacePlayer(item.name, dropPosition);
     },
