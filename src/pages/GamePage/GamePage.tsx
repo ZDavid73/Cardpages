@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { useLocation, useNavigate } from 'react-router-dom';
+import { useLocation, useNavigate, useParams } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import { FaArrowCircleLeft } from 'react-icons/fa';
 import { DndProvider } from 'react-dnd';
@@ -15,6 +15,7 @@ import {
   saveTournamentRounds,
   finishTournament,
   getUserInfo,
+  getTournamentInfo,
 } from '../../services/databaseService';
 import { Tittle } from '../../theme/styledcomponents';
 import { useTimer } from '../../hooks/useTournament';
@@ -23,25 +24,58 @@ import { AppState } from '../../types/stateType';
 import { Tournament, Round } from '../../types/tournamentTypes';
 
 import './GamePage.css';
+import { isTournament } from '../../utils/typeGuards';
 
 const GamePage: React.FC = () => {
+  const { gameId } = useParams();
   const navigate = useNavigate();
   const location = useLocation();
   const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
 
-  const tournament: Tournament =
+  const tournamentRedux: Tournament | undefined =
     useSelector((state: AppState) =>
       state.tournaments.tournaments.find((tour: Tournament) => tour.id === location.state.tournament.id)
-    ) || location.state.tournament;
+    );
 
-  const [rounds, setRounds] = useState<Round[]>(tournament.rounds || []);
+  const [tournament, setTournament] = useState<Tournament | null>(tournamentRedux || null);
+  
+  const [loading, setLoading] = useState(!tournamentRedux);
+  const [error, setError] = useState(false);
+
+  const [rounds, setRounds] = useState<Round[]>(tournament?.rounds || []);
   const [usersInfo, setUsersInfo] = useState<UserState[]>([]);
-  const { timeLeft } = useTimer(tournament.date, tournament.hour);
-  const [tournamentWinner, setTournamentWinner] = useState<string | null>(tournament.winner || null);
+  const { timeLeft } = useTimer(tournament?.date || '1970-01-01', tournament?.hour || '00:00');
+  const [tournamentWinner, setTournamentWinner] = useState<string | null>(tournament?.winner || null);
   const [tourHost, setTourHost] = useState<UserState | null>(null);
+
+  useEffect(() => {
+    if (!tournamentRedux) {
+      setLoading(true);
+      const fetchTournament = async () => {
+        try {
+          const fetchedTournament = await getTournamentInfo(gameId);
+          console.log('fetchedTournament', fetchedTournament);
+          if (fetchedTournament.data && isTournament(fetchedTournament.data[0])) {
+            setTournament(fetchedTournament.data[0]);
+            console.log('fetched from supa')
+          } else {
+            setError(true);
+            throw new Error('Fetched data is not a valid tournament');
+          }
+          setLoading(false);
+        } catch (error) {
+          console.error('Error fetching tournament:', error);
+          setError(true);
+        }
+      };
+      fetchTournament();
+    }
+  }, [gameId, tournamentRedux]);
 
   // Fetch user information for all players and host
   useEffect(() => {
+    if (!tournament || loading || error) return;
+
     const fetchUserInfo = async () => {
       try {
         const fetchedUsers = await Promise.all(
@@ -59,10 +93,12 @@ const GamePage: React.FC = () => {
       }
     };
     fetchUserInfo();
-  }, [tournament.players, tournament.host]);
+  }, [tournament?.players, tournament?.host, loading, error]);
 
   // Generate rounds if they are not yet initialized
   useEffect(() => {
+    if (!tournament || loading || error) return;
+
     const generateEliminationBrackets = (players: string[]): Round[] => {
       const rounds: Round[] = [];
       let currentPlayers = [...players];
@@ -88,7 +124,15 @@ const GamePage: React.FC = () => {
       setRounds(initialRounds);
       saveTournamentRounds(tournament.id, initialRounds);
     }
-  }, [tournament.players, tournament.rounds]);
+  }, [tournament?.players, tournament?.rounds, usersInfo, loading, error]);
+
+  if (loading) {
+    return <Tittle variant='white'>Loading</Tittle>;
+  }
+
+  if (error || !tournament) {
+    return <Tittle variant='white'>Oh no! Looks like there was an error, try again later</Tittle>;
+  }
 
   const handlePlacePlayer = (
     roundIdx: number,
