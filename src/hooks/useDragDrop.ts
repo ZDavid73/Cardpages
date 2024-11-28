@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 export interface ItemType {
     item: string;
@@ -8,9 +8,68 @@ export interface ItemType {
 
 const useDragDrop = () => {
     const [items, setItems] = useState<ItemType[]>([]);
+    const [draggedItem, setDraggedItem] = useState<{item: string, image: string}| null>(null);
+
+    useEffect(() => {
+        const handleTouchMove = (e: TouchEvent) => {
+            console.log('Touch move');
+            if (draggedItem) {
+                e.preventDefault(); // Prevent scrolling
+            }
+        };
+
+        const handleTouchEnd = (e: TouchEvent) => {
+            console.log('Touch end');
+            if (draggedItem) {
+                // Detect where the touch ends
+                const targetElement = document.elementFromPoint(
+                    e.changedTouches[0].clientX,
+                    e.changedTouches[0].clientY
+                );
+
+                if (targetElement?.classList.contains("deck-creation-form")) {
+                    // Add the dragged item to the list
+                    const totalCardCount = items.reduce(
+                        (acc, currentItem) => acc + currentItem.quantity,
+                        0
+                    );
+                    const existingItem = items.find(i => i.item === draggedItem.item);
+
+                    if (totalCardCount < 50) {
+                        if (existingItem) {
+                            if (existingItem.quantity < 4) {
+                                setItems(prevItems =>
+                                    prevItems.map(i =>
+                                        i.item === draggedItem.item
+                                            ? { ...i, quantity: i.quantity + 1 }
+                                            : i
+                                    )
+                                );
+                            }
+                        } else {
+                            setItems(prevItems => [
+                                ...prevItems,
+                                { ...draggedItem, quantity: 1 },
+                            ]);
+                        }
+                    }
+                }
+                setDraggedItem(null); // Clear the dragged item
+            }
+        };
+
+        // Add global event listeners
+        document.addEventListener("touchmove", handleTouchMove, { passive: false });
+        document.addEventListener("touchend", handleTouchEnd);
+
+        // Cleanup
+        return () => {
+            document.removeEventListener("touchmove", handleTouchMove);
+            document.removeEventListener("touchend", handleTouchEnd);
+        };
+    }, [draggedItem, items]);
 
     const handleDrag = (e: React.DragEvent, item: string, image: string) => {
-        console.log('dragging', item);
         e.dataTransfer.setData('text', JSON.stringify({ item, image }));
     };
 
@@ -36,16 +95,6 @@ const useDragDrop = () => {
         }
     };
 
-    const handleDropDelete = (e: React.DragEvent) => {
-        const data = e.dataTransfer.getData('text');
-        const { item } = JSON.parse(data);
-        setItems(prevItems => {
-            return prevItems
-                .map(i => i.item === item ? { ...i, quantity: i.quantity - 1 } : i)
-                .filter(i => i.quantity > 0);
-        });
-    };
-
     const handleDragOver = (e: React.DragEvent) => {
         e.preventDefault();
     };
@@ -66,12 +115,10 @@ const useDragDrop = () => {
     };
 
     const handleTouchStart = (e: React.TouchEvent, item: string, image: string) => {
-        const touch = e.touches[0];
-        const data = JSON.stringify({ item, image });
-        (e.target as HTMLElement).dataset.touchData = data;
-        console.log('touching', item);
-        (e.target as HTMLElement).dataset.touchStartX = touch.clientX.toString();
-        (e.target as HTMLElement).dataset.touchStartY = touch.clientY.toString();
+        console.log(item, image)
+        setDraggedItem({ item, image });
+        console.log('Touch start');
+        console.log('draggeditem:', draggedItem);
     };
 
     return {
@@ -79,9 +126,8 @@ const useDragDrop = () => {
         handleDrag,
         handleDrop,
         handleDragOver,
-        handleDropDelete,
         handleClickRemove,
-        handleTouchStart
+        handleTouchStart,
     };
 };
 

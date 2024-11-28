@@ -4,6 +4,7 @@ import { FaChevronLeft } from "react-icons/fa";
 import useModal from '../../hooks/useModal';
 import { Tittle } from '../../theme/styledcomponents';
 import DeckForm from '../DeckForm/DeckForm';
+import { DragDropProvider } from '../../context/dragDropContext';
 
 const AddDeck = () => {
   const { handleClose } = useModal();
@@ -12,6 +13,7 @@ const AddDeck = () => {
   };
 
   return (
+    <DragDropProvider>
     <div className='catalogues-deckmodal'>
       <div className="search-deck">
         <div className='header-deck'>
@@ -21,9 +23,10 @@ const AddDeck = () => {
         <SearchCard />
       </div>
       <div className="create-deck">
-        <DeckForm handleClose={handleClose} /> {/* Pasamos handleClose */}
+        <DeckForm /> {/* Pasamos handleClose */}
       </div>
     </div>
+    </DragDropProvider>
   );
 };
 
