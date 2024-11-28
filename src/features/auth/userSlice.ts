@@ -17,7 +17,7 @@ const initialState: UserState = {
     username: '',
     picture: '',
     level: 0,
-    header: 'https://zyemimihfcilkfzgwsxv.supabase.co/storage/v1/object/public/Header%20Images/pokemon-101-1280x960.webp',
+    header: 'https://zyemimihfcilkfzgwsxv.supabase.co/storage/v1/object/public/Header%20Images/Dashboard.webp',
     gender: '',
     country: '',
     birthDate: '',

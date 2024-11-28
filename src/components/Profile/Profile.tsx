@@ -20,10 +20,10 @@ const Profile = () => {
                 <img 
                 src={user.picture} alt="Profile" 
                 style={{
-                    width: '4.5vw',
-                    height: '4.5vw',
+                    width: '4.3vw',
+                    height: '4.3vw',
                     borderRadius: '150px',
-                    marginRight: '6%',
+                    marginRight: '5%',
                   }}
                 />
                 <div className="profile-info-text">
@@ -94,7 +94,6 @@ const Profile = () => {
                     }
                 </NavLink>
             </section>
-            
         </Container>
     )
 }

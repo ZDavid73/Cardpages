@@ -1,6 +1,6 @@
 .tournament-thumbnail{
-    width: 25%;
-    height: 300px;
+    width: 15vw;
+    height: 45vh;
     display: flex;
     flex-direction: column;
     justify-content: flex-end;
@@ -9,7 +9,7 @@
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     overflow: hidden;
     position: relative;
-    transition: transform 0.3s;
+    box-sizing: border-box;
 }
 
 .tour-button{
@@ -19,8 +19,36 @@
 }
 
 .thumb-tour-info{
-    background-color: rgba(0, 0, 0, 0.7);
-    padding: 12px;
+    height: 13vh;
+    background-color: #100f0fd4;
+    padding-left: 10px;
+    padding-right: 10px;
+    display:flex;
+    flex-direction: column;
+}
+#tour-thum-info-title{
+    font-family: 'Sora', sans-serif;
+    font-size: 17px;
+    font-weight: 600;
+    margin-top: 10px;
+}
+.tour-thum-info-text{
+    font-family: 'Sora', sans-serif;
+    font-size: 16px;
+    font-weight: 400;
+    margin-top: -14px;
+}
+.tour-flavortext{
+    font-family: 'Sora', sans-serif;
+    font-size: 14px;
+    font-weight: 400;
+    margin-top: -10px;
+    display: -webkit-box;
+    -webkit-box-orient: vertical; 
+    overflow: hidden;
+    text-overflow: ellipsis; 
+    line-clamp: 2;
+    -webkit-line-clamp: 2;
 }
 
 @media (max-width: 768px){

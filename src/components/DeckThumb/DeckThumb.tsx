@@ -1,9 +1,9 @@
-import { Button, Text, Tittle } from '../../theme/styledcomponents';
 import { Deck } from '../../types/deckTypes';
 import './DeckThumb.css';
 import useModal from '../../hooks/useModal';
 import { useSelector } from 'react-redux';
 import { AppState } from '../../types/stateType';
+import { FiMoreHorizontal } from "react-icons/fi";
 
 type DeckThumbProps = {
     deck: Deck;
@@ -17,13 +17,14 @@ const DeckThumb = ({deck}: DeckThumbProps) => {
         <div key={deck.id} 
             className="deck-item"
             style={{ backgroundImage: `url(${deck.cover})`, backgroundSize: 'cover', backgroundPosition: 'center' }}
-            onClick={() => handleOpen('buyDeck', deck)}>
+            onClick={() => handleOpen('buyDeck', deck)} >
             <div className="infodeck">
-                <Tittle variant="white">{deck.name}</Tittle>
-                <Text variant="white">$ {deck.price} USD</Text>
+                <p id='deck-thum-info-title'>{deck.name}</p>
+                <p className='deck-item-text'>$ {deck.price} USD</p>
+                <p className='deck-flavortext'>{deck.desc}</p>
             </div>
             { deck.creator === userId ? 
-            <Button variant='gray' onClick={() => handleOpen('buyDeck', deck)}>See</Button> : <Button variant='purple' onClick={() => handleOpen('buyDeck', deck)}>Add to cart</Button> }
+            <button onClick={() => handleOpen('buyDeck', deck)}>See</button> : <div onClick={() => handleOpen('buyDeck', deck)} className='deck-button-icon'><FiMoreHorizontal className='icon-buttonDeck'/></div> }
         </div>
     )
 }

@@ -1,6 +1,8 @@
 .profile-container{
-    width: 25vw;
-    height: 65vh;
+    margin-top: 3vw;
+    margin-left: 5vw;
+    width: 26vw;
+    height: 63.2vh;
     margin-right: 3%;
     display: flex;
     flex-direction: column;
@@ -12,6 +14,7 @@
     display: flex;
     gap: 10px;
     height: max-content;
+    align-items: center;
 }
 
 .profile-links{
@@ -24,11 +27,8 @@
     text-decoration: none;
 }
 
-.profile-info img{
-    width: 70px;
-    height: 70px;
-    border-radius: 50%;
-    object-fit: cover;
+.profile-info-text{
+    width: 100%;
 }
 
 .profile-icons{
@@ -42,4 +42,10 @@
     display: flex;
     gap: 10px;
     align-items: center;
+}
+
+@media (max-width: 768px) {
+    .profile-container {
+        display: none;
+    }
 }

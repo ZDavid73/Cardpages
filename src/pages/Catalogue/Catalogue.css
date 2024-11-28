@@ -1,6 +1,5 @@
 .catalogue-sectionheader{
     margin: 0%;
-    padding: 3%;
     display: flex;
 }
 
@@ -9,10 +8,6 @@
     align-items:center;
     flex-wrap: wrap; 
     gap: 20px;
-}
-.cardsOnSale{
-    padding-left: 3%;
-    padding-right: 3%;
 }
 .card-item {
     border-radius: 10px;

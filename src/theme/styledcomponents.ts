@@ -298,7 +298,7 @@ export const Tittle = styled.h1<{ variant: 'white' | 'purple' }>`
   text-align:left;
   margin-bottom: 20px;
   font-family: 'Sora', sans-serif;
-  font-size: 20px;
+  font-size: 22px;
   font-weight: 600;
 
   @media (max-width: 700px) {
@@ -345,7 +345,7 @@ const divVariants = {
       default: '35px',   
       small: '20px',
     },
-    backgroundColor: 'rgba(16, 15, 15, 0.5)',  
+    backgroundColor: 'rgba(16, 15, 15, 0.8)',  
   },
   big: {
     padding: {
@@ -363,7 +363,7 @@ const divVariants = {
   },
   profile: {
     padding: {
-      default: '30px 30px 0px 30px',   
+      default: '40px 30px 0px 30px',   
       small: '8px',
     },
     backgroundColor: '#2D2D2D',  

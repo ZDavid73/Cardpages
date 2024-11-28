@@ -1,10 +1,11 @@
 import { useSelector } from 'react-redux';
-import { Button, Text } from '../../theme/styledcomponents';
+import { Button, } from '../../theme/styledcomponents';
 import { Tournament } from '../../types/tournamentTypes';
 import './TourThumb.css';
 import { FaLocationPin } from 'react-icons/fa6';
 import { AppState } from '../../types/stateType';
 import { useNavigate } from 'react-router-dom';
+import { FiMoreHorizontal } from 'react-icons/fi';
 
 type TourThumbProps = {
     tournament: Tournament
@@ -28,14 +29,15 @@ const TourThumb =  ({ tournament }: TourThumbProps) => {
                     Start
                 </Button>
                 :
-                <Button variant='gray' onClick={() => navigate('/game', { state: { tournament } })}>
-                    See
-                </Button>
+                <div className='card-button-icon' onClick={() => navigate('/game', { state: { tournament } })}>
+                    <FiMoreHorizontal className='icon-buttonCard'/>
+                </div>
             }
             </div>
             <div className='thumb-tour-info'>
-            <Text variant='white'><FaLocationPin/>{tournament.location}</Text>
-            <Text variant='white'>{tournament.date}</Text>
+                <p id='tour-thum-info-title'> <FaLocationPin/>{tournament.location}</p>
+                <p className='tour-thum-info-text'>${tournament.date}</p>
+                <p className='tour-flavortext'>{tournament.desc}</p>
             </div>
         </section>
     );

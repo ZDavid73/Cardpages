@@ -6,23 +6,89 @@
     border-radius: 10px;
     overflow: hidden;
     position: relative;
-    width: 50%; 
-    height: 300px;
-
-    button{
-        position: absolute;
-        top: 4px;
-        right: 4px;
-    }
+    width: 38.8vw; 
+    height: 45vh;
 }
 
 .infodeck {
+    height: 12vh;
     background-color: rgba(0, 0, 0, 0.7);
     padding: 12px;
 }
 
+.deck-button-icon{
+    width: 2.5vw;
+    height: 2.5vw;
+    border-radius: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #100f0fd4;
+    cursor: pointer;
+    position: absolute;
+    right: 10px;
+    top: 10px;
+}
+
+.deck-button-icon:hover{
+    background-color: #700099dc;
+}
+
+.icon-buttonDeck{
+    width: 1.5vw;
+    height: 1.5vw;
+    color: white;
+}
+.deck-item-text{
+    font-family: 'Sora', sans-serif;
+    font-size: 16px;
+    font-weight: 400;
+    margin-top: -14px;
+}
+
+.deck-flavortext{
+    font-family: 'Sora', sans-serif;
+    font-size: 14px;
+    font-weight: 400;
+    margin-top: -10px;
+    display: -webkit-box;
+    -webkit-box-orient: vertical; 
+    overflow: hidden;
+    text-overflow: ellipsis; 
+    line-clamp: 2;
+    -webkit-line-clamp: 2;
+}
+#deck-thum-info-title{
+    font-family: 'Sora', sans-serif;
+    font-size: 17px;
+    font-weight: 600;
+    margin-top: 10px;
+}
+
 @media (max-width: 768px){
     .deck-item{
-        height: 200px;
+        width: 84vw;
+        height: 28vh;
+    }
+    .deck-flavortext{
+        margin-top: -8px;
+    }
+    .deck-button-icon{
+        width: 10vw;
+        height: 10vw;
+    }
+    .icon-buttonDeck{
+        width: 5vw;
+        height: 5vw;
+    }
+    .infodeck{
+        height: 11vh;
+    }
+    #deckk-thum-info-title{
+        font-size: 16px;
+    }
+    .deck-thum-info-text{
+        font-size: 14px;
+        margin-bottom: 8px;
     }
 }

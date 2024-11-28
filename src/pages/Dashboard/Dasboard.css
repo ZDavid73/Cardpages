@@ -1,0 +1,12 @@
+.cardsOnSale{
+    width: 90vw;
+    padding-left: 5vw;
+    padding-right: 5vw;
+}
+
+@media (max-width: 768px) {
+    .cardsOnSale{
+        padding-right: 5vw;
+        padding-left: 5vw;
+    }
+}

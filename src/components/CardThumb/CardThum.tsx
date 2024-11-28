@@ -1,9 +1,10 @@
 import { useSelector } from 'react-redux';
-import { Button, Text } from '../../theme/styledcomponents';
+import { Button} from '../../theme/styledcomponents';
 import { SellingCard } from '../../types/cardTypes';
 import { AppState } from '../../types/stateType';
 import './CardThumb.css';
 import useModal from '../../hooks/useModal';
+import { FiMoreHorizontal } from "react-icons/fi";
 
 type SellingCardThumbProps = {
     card: SellingCard;
@@ -26,21 +27,22 @@ const SellingCardThumb = ({ card }: SellingCardThumbProps) => {
                 {
                     userId === card.sellerId ? 
                     <Button 
-                        variant='gray' 
+                        variant='purple'
                         onClick={() => handleOpen('buyCard', card)}
-                    >
-                        See
+                    > See
                     </Button>
                     :
-                    <Button variant='purple'
+                    <div
+                        className='card-button-icon'
                         onClick={() => handleOpen('buyCard', card)}>
-                        Buy
-                    </Button>
+                        <FiMoreHorizontal className='icon-buttonCard'/>
+                    </div>
                 }
             </div>
             <div className='card-thumb-info'>
-                <Text variant='white' className='card-flavortext'>{card.flavorText}</Text>
-                <Text variant='white'>${card.price}</Text>
+                <p id='card-thum-info-title'> {card.name}</p>
+                <p className='card-thum-info-text'>${card.price}</p>
+                <p className='card-flavortext'>{card.flavorText}</p>
             </div>
         </section>
     );

@@ -1,6 +1,6 @@
-.selling-card-thumbnail{
-    width: 25%;
-    height: 300px;
+.selling-card-thumbnail {
+    width: 15vw;
+    height: 45vh;
     display: flex;
     flex-direction: column;
     justify-content: flex-end;
@@ -9,16 +9,41 @@
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     overflow: hidden;
     position: relative;
-    transition: transform 0.3s;
+    box-sizing: border-box;
+}
+
+.card-button-icon{
+    width: 2.5vw;
+    height: 2.5vw;
+    border-radius: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #100f0fd4;
+    cursor: pointer;
+}
+
+.card-button-icon:hover{
+    background-color: #700099dc;
+}
+
+.icon-buttonCard{
+    width: 1.5vw;
+    height: 1.5vw;
+    color: white;
 }
 
 .card-button{
     position: absolute;
-    right: 4px;
-    top: 4px;
+    right: 10px;
+    top: 10px;
 }
 
 .card-flavortext{
+    font-family: 'Sora', sans-serif;
+    font-size: 14px;
+    font-weight: 400;
+    margin-top: -10px;
     display: -webkit-box;
     -webkit-box-orient: vertical; 
     overflow: hidden;
@@ -28,13 +53,52 @@
 }
 
 .card-thumb-info{
-    background-color: rgba(0, 0, 0, 0.7);
-    padding: 12px;
+    height: 13vh;
+    background-color: #100f0fd4;
+    padding-left: 10px;
+    padding-right: 10px;
+    display:flex;
+    flex-direction: column;
+}
+
+.card-thum-info-text{
+    font-family: 'Sora', sans-serif;
+    font-size: 16px;
+    font-weight: 400;
+    margin-top: -14px;
+}
+
+#card-thum-info-title{
+    font-family: 'Sora', sans-serif;
+    font-size: 17px;
+    font-weight: 600;
+    margin-top: 10px;
 }
 
 @media (max-width: 768px){
     .selling-card-thumbnail{
-        width: 40%;
-        height: 200px;
+        width: 40vw;
+        height: 28vh;
+    }
+    .card-flavortext{
+        margin-top: -8px;
+    }
+    .card-button-icon{
+        width: 10vw;
+        height: 10vw;
+    }
+    .icon-buttonCard{
+        width: 5vw;
+        height: 5vw;
+    }
+    .card-thumb-info{
+        height: 11vh;
+    }
+    #card-thum-info-title{
+        font-size: 16px;
+    }
+    .card-thum-info-text{
+        font-size: 14px;
+        margin-bottom: 8px;
     }
 }
