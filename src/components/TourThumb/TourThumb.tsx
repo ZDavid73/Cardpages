@@ -23,13 +23,13 @@ const TourThumb =  ({ tournament }: TourThumbProps) => {
             <div className='tour-button'>
             {
                 tournament.status === 'finished' ?
-                <Button variant='gray' onClick={() => navigate('/game', { state: { tournament} })}>Finished</Button> :
+                <Button variant='gray' onClick={() => navigate(`/game/${tournament.id}`, { state: { tournament} })}>Finished</Button> :
                 id === tournament.host ? 
-                <Button variant='purple' onClick={() => navigate('/game', { state: { tournament } })}>
+                <Button variant='purple' onClick={() => navigate(`/game/${tournament.id}`, { state: { tournament } })}>
                     Start
                 </Button>
                 :
-                <div className='card-button-icon' onClick={() => navigate('/game', { state: { tournament } })}>
+                <div onClick={() => navigate(`/game/${tournament.id}`, { state: { tournament } })}>
                     <FiMoreHorizontal className='icon-buttonCard'/>
                 </div>
             }

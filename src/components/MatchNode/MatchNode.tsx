@@ -1,17 +1,22 @@
 import React from 'react';
-import { useDrag, useDrop } from 'react-dnd';
-import { Text } from '../../theme/styledcomponents';
+import { useDrop } from 'react-dnd';
+import { Match } from '../../types/tournamentTypes';
+import {Text} from '../../theme/styledcomponents';
+
 
 interface MatchNodeProps {
-  match: string[];
-  onPlacePlayer: (player: string) => void;
+  match: Match;
+  onPlacePlayer: (player: string, position: 'player1' | 'player2') => void;
   onWin: (winner: string) => void;
 }
 
 const MatchNode: React.FC<MatchNodeProps> = ({ match, onPlacePlayer, onWin }) => {
   const [{ isOver }, dropRef] = useDrop({
     accept: 'PLAYER',
-    drop: (item: { name: string }) => onPlacePlayer(item.name),
+    drop: (item: { name: string }) => {
+      const dropPosition: 'player1' | 'player2' = !match.player1 ? 'player1' : 'player2';
+      onPlacePlayer(item.name, dropPosition);
+    },
     collect: (monitor) => ({
       isOver: monitor.isOver(),
     }),
@@ -19,35 +24,12 @@ const MatchNode: React.FC<MatchNodeProps> = ({ match, onPlacePlayer, onWin }) =>
 
   return (
     <div ref={dropRef} className={`match-node ${isOver ? 'highlight' : ''}`}>
-      {match.map((player, idx) => (
-        <PlayerSlot key={idx} player={player} onWin={onWin} />
-      ))}
-    </div>
-  );
-};
-
-interface PlayerSlotProps {
-  player: string;
-  onWin: (winner: string) => void;
-}
-
-const PlayerSlot: React.FC<PlayerSlotProps> = ({ player, onWin }) => {
-  const [{ isDragging }, dragRef] = useDrag({
-    type: 'PLAYER',
-    item: { name: player },
-    canDrag: !!player,
-    collect: (monitor) => ({
-      isDragging: monitor.isDragging(),
-    }),
-  });
-
-  return (
-    <div
-      ref={dragRef}
-      className={`player-slot ${player ? 'filled' : 'empty'} ${isDragging ? 'dragging' : ''}`}
-      onClick={() => player && onWin(player)}
-    >
-      <Text variant={player ? 'white' : 'gray'}>{player || 'Drag here'}</Text>
+      <div className={`player-slot ${match.player1 ? 'filled' : 'empty'}`} onClick={() => match.player1 && onWin(match.player1)}>
+        <Text variant="white">{match.player1 || 'Drag here'}</Text>
+      </div>
+      <div className={`player-slot ${match.player2 ? 'filled' : 'empty'}`} onClick={() => match.player2 && onWin(match.player2)}>
+        <Text variant="white">{match.player2 || 'Drag here'}</Text>
+      </div>
     </div>
   );
 };
