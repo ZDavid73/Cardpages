@@ -1,31 +1,57 @@
-.tour-sectionheader{
-    margin: 0%;
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  body {
+    font-family: 'Arial', sans-serif;
+    background-color: #2b2b2b;
+    color: #fff;
+  }
+  
+  .game-page {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 16px;
+    gap: 16px;
+  }
+  
+  .tour-sectionheader {
+    margin: 0 auto;
     padding: 3%;
     display: flex;
-}
-
-.bracket-tree{
+    align-items: center;
+    justify-content: space-between;
+    width: 90%;
+  }
+  
+  .bracket-tree {
     display: flex;
     justify-content: center;
     gap: 32px;
+    flex-wrap: wrap; /* Para que se ajusten en pantallas pequeñas */
     height: 100%;
-}
-
-.round-tree, .winner-box{
+  }
+  
+  .round-tree,
+  .winner-box {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    gap: 32px;;
+    gap: 32px;
     width: max-content;
-}
-
-.match-node{
+  }
+  
+  .match-node {
     display: flex;
     flex-direction: column;
     gap: 8px;
-}
-
-.player-slot{
+    align-items: center;
+  }
+  
+  .player-slot {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -33,40 +59,80 @@
     padding: 8px;
     width: 100%;
     border-radius: 8px;
-}
-
-.winner-box{
+    color: #fff;
+    text-align: center;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+  }
+  
+  /* Hover dinámico */
+  .player-slot:hover {
+    transform: scale(1.05);
+    background-color: #ff5722;
+  }
+  
+  .winner-box {
     background-color: #bd6615;
     padding: 16px;
     border-radius: 8px;
-}
-
-.empty{
+    font-size: 18px;
+    text-align: center;
+  }
+  
+  /* Colores dinámicos */
+  .empty {
     background-color: #616161;
-}
-
-.filled{
+  }
+  
+  .filled {
     background-color: #a71fd0;
-}
-
-.whole-tree{
+  }
+  
+  .whole-tree {
     display: flex;
     gap: 32px;
     align-items: center;
     justify-content: center;
-}
-
-@media (max-width: 768px){
-    .game-page{
-        flex-direction: column;
-        align-items: center;
+    width: 100%;
+  }
+  
+  /* Estilos generales */
+.bracket-tree {
+    display: flex;
+    justify-content: center;
+    gap: 32px;
+    flex-wrap: wrap;
+    height: 100%;
+    overflow-x: hidden; /* Evita scroll horizontal */
+  }
+  
+  /* Scroll vertical solo en móvil */
+  @media (max-width: 768px) {
+    .bracket-tree {
+      flex-direction: flex;
+      align-items: center;
+      gap: 24px;
+      overflow-y: auto; /* Scroll vertical */
+      max-height: 70vh; /* Ajusta la altura máxima */
     }
-
-    .tour-sectionheader{
-        flex-direction: column;
-        align-items: center;
-        width: 90%;
-        padding: 0%;
-        margin-left: 5%;
+  
+    /* Estilos del scrollbar */
+    .bracket-tree::-webkit-scrollbar {
+      width: 8px;
     }
-}
+  
+    .bracket-tree::-webkit-scrollbar-thumb {
+      background-color: #888; /* Color de la barra */
+      border-radius: 4px;
+    }
+  
+    .bracket-tree::-webkit-scrollbar-thumb:hover {
+      background-color: #555; /* Color al pasar el mouse */
+    }
+  
+    .bracket-tree::-webkit-scrollbar-track {
+      background-color: #333; /* Color del fondo */
+    }
+  }
+  
