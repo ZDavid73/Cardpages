@@ -17,6 +17,7 @@ import "./ProfilePage.css";
 const ProfilePage = () => {
   const user = useSelector((state: AppState) => state.user || {});
   const dispatch = useDispatch();
+  const cart = useSelector((state: AppState) => state.cart);
 
   const [username, setUsername] = useState(user.username);
   const [gender, setGender] = useState(user.gender || "");
@@ -88,6 +89,7 @@ const ProfilePage = () => {
       gender,
       country,
       birthDate: `${birthDate.day}/${birthDate.month}/${birthDate.year}`,
+      cart: cart,
     };
 
     try {

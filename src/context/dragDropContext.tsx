@@ -8,7 +8,7 @@ interface DragDropContextProps {
     handleDrop: (e: React.DragEvent) => void;
     handleDragOver: (e: React.DragEvent) => void;
     handleClickRemove: (item: string) => void;
-    handleTouchStart: (e: React.TouchEvent, item: string, image: string) => void;
+    handleTouchStart: (item: string, image: string) => void;
 }
 
 // Create the context

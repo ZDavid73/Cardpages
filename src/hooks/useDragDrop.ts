@@ -114,7 +114,7 @@ const useDragDrop = () => {
         });
     };
 
-    const handleTouchStart = (e: React.TouchEvent, item: string, image: string) => {
+    const handleTouchStart = (item: string, image: string) => {
         console.log(item, image)
         setDraggedItem({ item, image });
         console.log('Touch start');

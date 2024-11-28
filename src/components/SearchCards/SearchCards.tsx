@@ -34,7 +34,7 @@ const SearchCard: React.FC = () => {
             className="card-item-search"
             draggable
             onDragStart={(e) => handleDrag(e, card.id, card.images.small)}
-            onTouchStart={(e) => handleTouchStart(e, card.id, card.images.small)}
+            onTouchStart={() => handleTouchStart(card.id, card.images.small)}
           >
             <img src={card.images.small} alt={card.name} />
           </div>

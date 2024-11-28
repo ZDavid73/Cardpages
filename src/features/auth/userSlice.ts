@@ -6,7 +6,7 @@ export interface UserState {
     username: string;
     picture: string;
     level: number;
-    header?: string;
+    header: string;
     gender?: string;
     country?: string;
     birthDate?: string;
