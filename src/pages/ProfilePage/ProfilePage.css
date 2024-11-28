@@ -134,6 +134,7 @@
   background-color: #00ff3c;
   color: #000000;
   border: none;
+  font-family: 'Poppins';
 }
 
 .notification.error {
