@@ -43,7 +43,6 @@ const AppRouter = () => {
             <Route path="/game" element={<Suspense fallback={<Loading/>}><LazyGamePage/></Suspense>} />
             <Route path="/profile-page" element={<ProfilePage/>} />
             <Route path='/cart' element={<CartPage/>}/>
-            
           </Route>
           </Routes>
       </>
