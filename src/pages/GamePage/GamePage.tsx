@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { useLocation, useNavigate, useParams } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import { FaArrowCircleLeft } from 'react-icons/fa';
 import { DndProvider } from 'react-dnd';
@@ -15,31 +15,24 @@ import {
   saveTournamentRounds,
   finishTournament,
   getUserInfo,
-  getTournamentInfo,
 } from '../../services/databaseService';
 import { Tittle } from '../../theme/styledcomponents';
 import { useTimer } from '../../hooks/useTournament';
+import { UserState } from '../../features/auth/userSlice';
 import { AppState } from '../../types/stateType';
 import { Tournament, Round } from '../../types/tournamentTypes';
 
 import './GamePage.css';
-import { User } from '../../types/userTypes';
-import { isTournament } from '../../utils/typeGuards';
 
 const GamePage: React.FC = () => {
-  const { gameId } = useParams();
   const navigate = useNavigate();
   const location = useLocation();
   const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
 
-  const tournamentRedux: Tournament | undefined =
+  const tournament: Tournament =
     useSelector((state: AppState) =>
       state.tournaments.tournaments.find((tour: Tournament) => tour.id === location.state.tournament.id)
-    );
-
-  const [tournament, setTournament] = useState<Tournament | null>(tournamentRedux || null);
-  const [loading, setLoading] = useState(!tournamentRedux);
-  const [error, setError] = useState(false);
+    ) || location.state.tournament;
 
   const [rounds, setRounds] = useState<Round[]>(tournament.rounds || []);
   const [usersInfo, setUsersInfo] = useState<UserState[]>([]);
@@ -66,12 +59,10 @@ const GamePage: React.FC = () => {
       }
     };
     fetchUserInfo();
-  }, [tournament?.players, tournament?.host]);
+  }, [tournament.players, tournament.host]);
 
   // Generate rounds if they are not yet initialized
   useEffect(() => {
-    if (!tournament || loading || error) return;
-
     const generateEliminationBrackets = (players: string[]): Round[] => {
       const rounds: Round[] = [];
       let currentPlayers = [...players];
@@ -93,8 +84,9 @@ const GamePage: React.FC = () => {
     };
 
     if (!tournament.rounds || tournament.rounds.length === 0) {
-      const initialRounds = generateEliminationBrackets(tournament.players.map((p) => p.username));
+      const initialRounds = generateEliminationBrackets(usersInfo.map((p) => p.username));
       setRounds(initialRounds);
+      saveTournamentRounds(tournament.id, initialRounds);
     }
   }, [tournament.players, tournament.rounds]);
 
@@ -129,7 +121,6 @@ const GamePage: React.FC = () => {
     setRounds(updatedRounds);
     saveTournamentRounds(tournament.id, updatedRounds);
   };
-
 
   return (
     <DndProvider backend={isMobile ? TouchBackend : HTML5Backend}>

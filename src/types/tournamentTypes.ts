@@ -6,7 +6,7 @@ export interface Match {
 };
 
 export interface Round {
-    id: number;
+    id: string;
     matches: Match[]; 
 };
 
