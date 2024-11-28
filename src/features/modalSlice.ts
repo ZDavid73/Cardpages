@@ -10,8 +10,8 @@ export interface ModalState {
 }
 
 const initialState: ModalState = {
-    isOpen: true,
-    modal: 'createDeck',
+    isOpen: false,
+    modal: null,
     modalDetails: null,
 }
 
