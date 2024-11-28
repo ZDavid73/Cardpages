@@ -13,7 +13,7 @@ interface MatchNodeProps {
 const MatchNode: React.FC<MatchNodeProps> = ({ match, onPlacePlayer, onWin }) => {
   const [{ isOver }, dropRef] = useDrop({
     accept: 'PLAYER',
-    drop: (item: { name: string }, monitor) => {
+    drop: (item: { name: string }) => {
       const dropPosition: 'player1' | 'player2' = !match.player1 ? 'player1' : 'player2';
       onPlacePlayer(item.name, dropPosition);
     },
